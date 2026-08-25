@@ -5,7 +5,7 @@
 
 // Application State
 const AppState = {
-  activeView: 'marketplace', // 'marketplace' | 'campaigns' | 'providers-showcase' | 'boost' | 'about' | 'contact'
+  activeView: 'marketplace', // 'marketplace' | 'discovery' | 'campaigns' | 'boost' | 'about' | 'contact' | 'list-your-care'
   activeBigScreenIndex: 0,
   bigScreenDisplayMode: 'billboard', // 'billboard' | 'spotlight' | 'mobile'
   selectedLocation: 'all',
@@ -17,6 +17,10 @@ const AppState = {
   currentAdIndex: 0,
   adAutoPlayInterval: null,
   bigScreenAutoPlayInterval: null,
+  discoverySlideIndex: 0,
+  discoveryReviewIndex: 0,
+  discoveryRatedTab: 'hospitals',
+  discoverySelectedLocation: 'loc-1',
   providers: [],
   activeProvider: null,
   toastTimeout: null
@@ -890,165 +894,556 @@ function initBigScreenAutoPlay() {
 function bindCampaignsEvents() {}
 
 // ==========================================
-// 2. DISCOVERY VIEW (HEALTHCARE PROVIDERS & BADGES SHOWCASE)
+// 2. DISCOVERY VIEW (BOOKMYSHOW SCREEN CAROUSEL, GOOGLE MAP FORMAT, SAINO RATED MATRICES & BADGES)
 // ==========================================
 function renderDiscoveryView() {
+  const campaigns = window.SAINO_DATA.bigScreenCampaigns || [];
+  const currentSlide = campaigns[AppState.discoverySlideIndex] || campaigns[0];
+  const ratedData = window.SAINO_DATA.sainoRated || {};
+  const activeRatedList = ratedData[AppState.discoveryRatedTab] || ratedData.hospitals || [];
+  const locations = window.SAINO_DATA.mapLocations || [];
+  const activeLocation = locations.find(l => l.id === AppState.discoverySelectedLocation) || locations[0];
+  const reviews = window.SAINO_DATA.talkOfTheTown || [];
+
+  // 3 reviews window for carousel
+  const revCount = reviews.length;
+  const rIdx = AppState.discoveryReviewIndex % revCount;
+  const visibleReviews = [
+    reviews[rIdx],
+    reviews[(rIdx + 1) % revCount],
+    reviews[(rIdx + 2) % revCount]
+  ];
+
   return `
-    <div class="max-w-6xl mx-auto mb-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
       
-      <!-- Top Header Banner -->
-      <div class="text-center mb-10">
-        <div class="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-rose-50 border border-rose-200 text-rose-800 text-xs font-bold mb-3 shadow-xs">
+      <!-- Top Title & Navigation Quick Jump -->
+      <div class="text-center mb-8 pt-2">
+        <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-rose-50 border border-rose-200 text-rose-800 text-xs font-black mb-3 shadow-xs">
           <i data-lucide="compass" class="w-4 h-4 text-rose-600"></i>
-          <span class="uppercase tracking-wider">HEALTHCARE DISCOVERY & BADGES · NEPAL</span>
+          <span class="uppercase tracking-wider">HEALTHCARE DISCOVERY PORTAL · NEPAL</span>
         </div>
-        <h1 class="text-2xl sm:text-4xl md:text-5xl font-black text-slate-900 tracking-tight leading-tight mb-3">
-          Discover Verified Healthcare Providers
+        <h1 class="text-2xl sm:text-4xl md:text-5xl font-black text-slate-900 tracking-tight leading-tight mb-2">
+          Discovery & Verified Healthcare Map
         </h1>
-        <p class="text-sm sm:text-base text-slate-600 max-w-2xl mx-auto leading-relaxed">
-          Explore participating clinics, hospitals, diagnostic centres, and verified doctor practices across Nepal. Learn about our verification badges and patient experiences.
+        <p class="text-xs sm:text-sm text-slate-600 max-w-2xl mx-auto leading-relaxed">
+          Explore BookMyShow-style hospital campaigns, interactive Nepal medical maps, SAINO Rated top providers, and verified badges.
         </p>
-        <div class="mt-6 flex flex-wrap items-center justify-center gap-3">
-          <button onclick="navigateTo('list-your-care')" class="px-5 py-2.5 bg-rose-600 hover:bg-rose-700 text-white font-extrabold rounded-2xl text-xs sm:text-sm shadow-md transition flex items-center space-x-2">
-            <i data-lucide="plus-circle" class="w-4 h-4"></i>
-            <span>List my Care / Join Directory</span>
-          </button>
-          <button onclick="navigateTo('marketplace')" class="px-5 py-2.5 bg-white border border-slate-300 text-slate-700 font-bold rounded-2xl text-xs sm:text-sm hover:bg-slate-50 transition shadow-sm">
-            Search Doctors on Marketplace →
-          </button>
-        </div>
       </div>
 
-      <!-- 30 Vendor Logos Grid (Verified vs Non-Verified side-by-side) -->
-      <div class="bg-white rounded-3xl border border-slate-200 p-6 md:p-8 shadow-sm mb-12">
-        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6 pb-4 border-b border-slate-100">
-          <div>
-            <h3 class="text-lg font-bold text-slate-900">Healthcare Providers Directory (30 Participating Vendors)</h3>
-            <p class="text-xs text-slate-500">
-              Verified providers have active clickable profiles with direct WhatsApp patient dispatch.
-            </p>
+      <!-- ========================================================================= -->
+      <!-- 1. TOP SECTION: BOOKMYSHOW SCREEN PAGE / CINEMA CAROUSEL (< > & DOTS)     -->
+      <!-- ========================================================================= -->
+      <div class="relative bg-slate-950 text-white rounded-3xl overflow-hidden shadow-2xl border border-slate-800 mb-14">
+        
+        <!-- Screen Marquee Header Bar -->
+        <div class="px-6 py-3 bg-gradient-to-r from-slate-900 via-rose-950/40 to-slate-900 border-b border-white/10 flex items-center justify-between">
+          <div class="flex items-center space-x-2 text-xs">
+            <span class="w-2.5 h-2.5 rounded-full bg-rose-500 animate-pulse"></span>
+            <span class="font-extrabold uppercase tracking-widest text-rose-400">SAINO BIG SCREEN · BOOKMYSHOW FORMAT</span>
           </div>
-          <div class="flex items-center space-x-4 text-xs">
-            <span class="inline-flex items-center space-x-1.5 text-rose-700 font-bold">
-              <span class="w-2.5 h-2.5 rounded-full bg-rose-600"></span>
-              <span>Paid Verified (Clickable)</span>
-            </span>
-            <span class="inline-flex items-center space-x-1.5 text-slate-400 font-medium">
-              <span class="w-2.5 h-2.5 rounded-full bg-slate-300"></span>
-              <span>Free Listed (Unverified)</span>
-            </span>
+          <div class="flex items-center space-x-2 text-xs text-slate-400">
+            <span>Slide <strong>${AppState.discoverySlideIndex + 1}</strong> of ${campaigns.length}</span>
           </div>
         </div>
 
-        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-6 gap-3.5">
-          ${window.SAINO_DATA.vendorLogos.map(v => {
-            const isClickable = v.isClickable && v.providerId;
-            return `
-              <div onclick="${isClickable ? `openProviderModal('${v.providerId}')` : `openUpgradeBadgeModal('prime')`}" 
-                class="vendor-logo-box p-3.5 rounded-2xl border ${v.verified ? 'border-rose-200 bg-rose-50/40 hover:bg-rose-50 cursor-pointer shadow-xs' : 'border-slate-200 bg-slate-50/80 hover:border-slate-300 cursor-pointer'} flex flex-col items-center justify-between text-center min-h-[125px] transition hover:scale-105">
-                <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-2 ${v.verified ? 'bg-rose-600 text-white shadow-sm' : 'bg-slate-200 text-slate-500'}">
-                  <i data-lucide="${v.icon}" class="w-5 h-5"></i>
-                </div>
-                <span class="text-xs font-bold leading-tight ${v.verified ? 'text-slate-900' : 'text-slate-600'} line-clamp-2">${v.name}</span>
-                <div class="mt-2">
-                  ${v.verified ? `
-                    <span class="inline-flex items-center space-x-0.5 text-[10px] font-bold text-rose-700 bg-white px-2 py-0.5 rounded-full shadow-xs border border-rose-100">
-                      <span>✓ Verified</span>
-                    </span>
-                  ` : `
-                    <span class="text-[10px] text-slate-400 font-medium">
-                      Unverified · Upgrade →
-                    </span>
-                  `}
-                </div>
+        <!-- Carousel Slide Content -->
+        <div class="relative min-h-[360px] md:min-h-[420px] p-6 sm:p-10 md:p-12 flex flex-col justify-between overflow-hidden">
+          
+          <!-- Background Banner with Dark Overlay -->
+          <div class="absolute inset-0 z-0">
+            <img src="${currentSlide.bannerImage}" alt="${currentSlide.title}" class="w-full h-full object-cover opacity-25 filter blur-[1px] transform scale-105 transition-all duration-700">
+            <div class="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/90 to-slate-900/70"></div>
+          </div>
+
+          <!-- Slide Content Layer -->
+          <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            
+            <div class="lg:col-span-8 space-y-4">
+              <div class="flex flex-wrap items-center gap-2">
+                <span class="px-3 py-1 rounded-full bg-rose-600 text-white text-[10px] font-black uppercase tracking-wider shadow">
+                  ${currentSlide.tagline || 'PREMIER HEALTHCARE'}
+                </span>
+                <span class="px-3 py-1 rounded-full bg-white/10 border border-white/20 text-rose-200 text-[10px] font-bold">
+                  ${currentSlide.tag || currentSlide.sponsorTier}
+                </span>
+                ${currentSlide.discountBadge ? `
+                  <span class="px-3 py-1 rounded-full bg-amber-400 text-slate-950 text-[10px] font-black shadow">
+                    ⭐ ${currentSlide.discountBadge}
+                  </span>
+                ` : ''}
               </div>
-            `;
-          }).join('')}
-        </div>
-      </div>
 
-      <!-- WHAT PATIENTS SAY ABOUT HEALTHCARE PROVIDERS (Page 11 & User Prompt Requirement) -->
-      <div class="bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900 text-white rounded-3xl p-6 md:p-10 shadow-xl mb-12">
-        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8 pb-6 border-b border-white/10">
-          <div>
-            <span class="px-2.5 py-0.5 rounded-full bg-rose-500 text-white text-xs font-black uppercase tracking-wider">
-              WHAT PATIENTS SAY
-            </span>
-            <h3 class="text-xl md:text-3xl font-extrabold mt-2">Verified Patient Reviews & Experiences</h3>
-            <p class="text-xs sm:text-sm text-slate-300 mt-1">Read transparent stories from patients who booked appointments through SAINO HEALTH.</p>
-          </div>
-          <button onclick="openWriteReviewModal('prov-1')" class="px-4 py-2.5 rounded-xl bg-white hover:bg-rose-50 text-slate-900 font-bold text-xs shadow transition flex items-center space-x-2 self-start md:self-auto">
-            <i data-lucide="edit-3" class="w-4 h-4 text-rose-600"></i>
-            <span>Write a Patient Review</span>
-          </button>
-        </div>
+              <h2 class="text-xl sm:text-3xl md:text-4xl font-black text-white leading-tight tracking-tight">
+                ${currentSlide.title}
+              </h2>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          ${window.SAINO_DATA.talkOfTheTown.map(talk => `
-            <div class="bg-white/10 backdrop-blur-md rounded-2xl p-5 border border-white/10 flex flex-col justify-between hover:border-white/20 transition">
-              <div>
-                <div class="flex items-center space-x-2 text-rose-400 text-xs font-bold mb-2">
-                  <i data-lucide="${talk.icon}" class="w-4 h-4"></i>
-                  <span>${talk.tag}</span>
-                </div>
-                <h4 class="text-sm font-bold text-white mb-2 leading-snug">"${talk.title}"</h4>
-                <p class="text-xs text-slate-300 leading-relaxed mb-4">"${talk.body}"</p>
+              <p class="text-xs sm:text-sm text-slate-300 max-w-2xl leading-relaxed">
+                ${currentSlide.subtitle}
+              </p>
+
+              <!-- Stats Pill Matrix -->
+              <div class="grid grid-cols-3 gap-3 pt-2 max-w-lg">
+                ${currentSlide.stats.map(st => `
+                  <div class="p-3 rounded-2xl bg-white/10 backdrop-blur-md border border-white/10 text-center">
+                    <span class="text-sm sm:text-base font-black text-rose-400 block">${st.val}</span>
+                    <span class="text-[10px] text-slate-400 block truncate">${st.label}</span>
+                  </div>
+                `).join('')}
               </div>
-              <div class="pt-3 border-t border-white/10 flex items-center justify-between text-xs">
-                <div>
-                  <strong class="text-white block">${talk.author}</strong>
-                  <span class="text-[11px] text-slate-400">${talk.role}</span>
-                </div>
-                <span class="text-[11px] font-semibold text-rose-300">${talk.provider}</span>
+
+              <!-- Action CTAs -->
+              <div class="pt-3 flex flex-wrap items-center gap-3">
+                <button onclick="openCustomWhatsApp('${currentSlide.title}', '${currentSlide.whatsappMsg}')" class="px-6 py-3 bg-rose-600 hover:bg-rose-700 text-white font-extrabold rounded-2xl text-xs sm:text-sm shadow-xl transition transform hover:scale-105 flex items-center space-x-2">
+                  <i data-lucide="message-circle" class="w-4 h-4"></i>
+                  <span>Direct WhatsApp Booking</span>
+                </button>
+                <button onclick="navigateTo('marketplace')" class="px-5 py-3 bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold rounded-2xl text-xs transition">
+                  Explore on Marketplace →
+                </button>
+                <span class="text-[11px] text-slate-400 font-medium ml-1">
+                  ⏱ ${currentSlide.validTill || 'Open Booking 2026'}
+                </span>
               </div>
             </div>
-          `).join('')}
+
+            <!-- Sponsor Card on Right -->
+            <div class="lg:col-span-4 hidden lg:block">
+              <div class="p-6 rounded-3xl bg-white/10 backdrop-blur-xl border border-white/15 shadow-2xl text-center space-y-3">
+                <div class="w-20 h-20 rounded-2xl overflow-hidden mx-auto border-2 border-rose-500 shadow-md">
+                  <img src="${currentSlide.sponsorLogo}" class="w-full h-full object-cover">
+                </div>
+                <div>
+                  <h4 class="text-sm font-bold text-white leading-snug">${currentSlide.sponsor}</h4>
+                  <span class="inline-block mt-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-rose-500/20 text-rose-300 border border-rose-500/30">
+                    ${currentSlide.sponsorTier}
+                  </span>
+                </div>
+                <div class="pt-2 border-t border-white/10 text-[11px] text-slate-300">
+                  <p class="leading-relaxed">Official medical campaign partner on SAINO HEALTH platform.</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Carousel Controls: Left (<) & Right (>) Navigation Arrows -->
+          <button onclick="prevDiscoverySlide()" class="absolute left-3 top-1/2 transform -translate-y-1/2 w-11 h-11 rounded-full bg-slate-900/80 hover:bg-rose-600 text-white border border-white/20 flex items-center justify-center transition shadow-xl z-20" title="Previous Slide">
+            <i data-lucide="chevron-left" class="w-6 h-6"></i>
+          </button>
+          <button onclick="nextDiscoverySlide()" class="absolute right-3 top-1/2 transform -translate-y-1/2 w-11 h-11 rounded-full bg-slate-900/80 hover:bg-rose-600 text-white border border-white/20 flex items-center justify-center transition shadow-xl z-20" title="Next Slide">
+            <i data-lucide="chevron-right" class="w-6 h-6"></i>
+          </button>
+
+          <!-- Carousel Dot Indicators (o o o o o o) -->
+          <div class="relative z-10 flex items-center justify-center space-x-2 pt-6">
+            ${campaigns.map((_, idx) => `
+              <button onclick="setDiscoverySlide(${idx})" class="w-3 h-3 rounded-full transition-all duration-300 ${AppState.discoverySlideIndex === idx ? 'w-8 bg-rose-500' : 'bg-white/30 hover:bg-white/60'}" title="Go to slide ${idx + 1}"></button>
+            `).join('')}
+          </div>
+
         </div>
       </div>
 
-      <!-- SAINO TRUST & VERIFIED BADGES GUIDE -->
-      <div class="p-6 md:p-8 bg-white rounded-3xl border border-slate-200 shadow-sm mb-12">
-        <div class="text-center max-w-2xl mx-auto mb-8">
-          <span class="px-3 py-1 rounded-full text-xs font-black bg-rose-50 text-rose-800 uppercase tracking-wider">
-            SAINO BADGES EXPLAINED
-          </span>
-          <h3 class="text-xl md:text-2xl font-extrabold text-slate-900 mt-2 mb-2">
+      <!-- ========================================================================= -->
+      <!-- 2. MIDDLE SECTION: TWO COLUMNS (GOOGLE MAP ON LEFT + SAINO RATED ON RIGHT) -->
+      <!-- ========================================================================= -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16 items-start">
+        
+        <!-- LEFT COLUMN: GOOGLE MAP FORMAT ("Google map kind of.") -->
+        <div class="lg:col-span-5 bg-white rounded-3xl border border-slate-200 shadow-sm p-5 sm:p-6 space-y-4 sticky top-24">
+          
+          <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+            <div class="flex items-center space-x-2">
+              <div class="w-8 h-8 rounded-xl bg-rose-50 text-rose-600 flex items-center justify-center">
+                <i data-lucide="map-pin" class="w-4 h-4"></i>
+              </div>
+              <div>
+                <h3 class="text-sm font-extrabold text-slate-900">Healthcare Map View</h3>
+                <p class="text-[11px] text-slate-500">Google Map Format · Nepal Medical Corridors</p>
+              </div>
+            </div>
+            <span class="px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 text-[10px] font-bold">
+              6 Active Hubs
+            </span>
+          </div>
+
+          <!-- Interactive Simulated Map Canvas -->
+          <div class="relative w-full h-64 sm:h-72 rounded-2xl bg-gradient-to-br from-slate-100 via-sky-50 to-slate-200 border border-slate-300 overflow-hidden shadow-inner flex items-center justify-center">
+            
+            <!-- Map Grid Texture -->
+            <div class="absolute inset-0 opacity-20 bg-[radial-gradient(#0284c7_1px,transparent_1px)] [background-size:16px_16px]"></div>
+            
+            <!-- River / Geography Graphic Paths -->
+            <svg class="absolute inset-0 w-full h-full opacity-40 pointer-events-none" viewBox="0 0 400 300">
+              <path d="M 10 180 Q 120 140 220 190 T 390 120" fill="none" stroke="#38bdf8" stroke-width="8" stroke-linecap="round"/>
+              <path d="M 80 20 Q 150 100 240 70 T 360 260" fill="none" stroke="#cbd5e1" stroke-width="4" stroke-dasharray="6,6"/>
+            </svg>
+
+            <!-- Map Location Pins -->
+            ${locations.map((loc, i) => {
+              const isSelected = loc.id === activeLocation.id;
+              // Map coordinate positions on SVG canvas
+              const pos = [
+                { top: '35%', left: '42%' }, // Kathmandu
+                { top: '52%', left: '48%' }, // Lalitpur
+                { top: '42%', left: '68%' }, // Bhaktapur
+                { top: '28%', left: '22%' }, // Pokhara
+                { top: '65%', left: '30%' }, // Chitwan
+                { top: '75%', left: '78%' }  // Biratnagar
+              ][i] || { top: '50%', left: '50%' };
+
+              return `
+                <div onclick="setDiscoveryLocation('${loc.id}')" 
+                  style="top: ${pos.top}; left: ${pos.left};" 
+                  class="absolute transform -translate-x-1/2 -translate-y-1/2 cursor-pointer group z-10">
+                  
+                  <div class="relative flex flex-col items-center">
+                    ${isSelected ? `
+                      <span class="w-8 h-8 rounded-full bg-rose-500/30 animate-ping absolute -top-1"></span>
+                    ` : ''}
+                    <div class="w-8 h-8 rounded-full ${isSelected ? 'bg-rose-600 text-white ring-4 ring-rose-200' : 'bg-slate-900 text-white hover:bg-rose-600'} flex items-center justify-center shadow-lg transition-transform transform group-hover:scale-110">
+                      <i data-lucide="hospital" class="w-4 h-4"></i>
+                    </div>
+                    <span class="mt-1 px-2 py-0.5 rounded-md text-[9px] font-extrabold whitespace-nowrap shadow-sm border ${isSelected ? 'bg-rose-900 text-white border-rose-700' : 'bg-white text-slate-800 border-slate-200'}">
+                      ${loc.city}
+                    </span>
+                  </div>
+                </div>
+              `;
+            }).join('')}
+
+            <!-- Map Zoom & Center Indicator -->
+            <div class="absolute bottom-2.5 right-2.5 bg-white/90 backdrop-blur-md rounded-xl px-2.5 py-1 text-[10px] font-bold text-slate-700 border border-slate-200 shadow-sm">
+              📍 Kathmandu Valley & Provinces
+            </div>
+          </div>
+
+          <!-- Active Location Detail Card -->
+          <div class="p-4 rounded-2xl bg-rose-50/50 border border-rose-200 space-y-2">
+            <div class="flex items-start justify-between">
+              <div>
+                <span class="text-[10px] font-black uppercase text-rose-700 tracking-wider">SELECTED MEDICAL CLUSTER</span>
+                <h4 class="text-sm font-bold text-slate-900">${activeLocation.name}</h4>
+                <p class="text-[11px] text-slate-600">${activeLocation.address}</p>
+              </div>
+              <span class="px-2 py-0.5 rounded text-[10px] font-extrabold bg-rose-600 text-white">Active</span>
+            </div>
+
+            <div class="grid grid-cols-2 gap-2 pt-1">
+              <div class="p-2 rounded-xl bg-white border border-rose-100 text-center">
+                <strong class="text-sm font-black text-slate-900 block">${activeLocation.hospitalCount}</strong>
+                <span class="text-[10px] text-slate-500">Verified Hospitals</span>
+              </div>
+              <div class="p-2 rounded-xl bg-white border border-rose-100 text-center">
+                <strong class="text-sm font-black text-slate-900 block">${activeLocation.clinicCount}</strong>
+                <span class="text-[10px] text-slate-500">Specialist Clinics</span>
+              </div>
+            </div>
+
+            <div class="pt-1 text-[11px] text-slate-600">
+              <strong class="text-slate-800">Featured in Hub:</strong> ${activeLocation.featured}
+            </div>
+
+            <button onclick="navigateTo('marketplace', { location: '${activeLocation.city}' })" class="w-full py-2 bg-slate-900 hover:bg-slate-800 text-white font-bold rounded-xl text-xs transition flex items-center justify-center space-x-1.5 shadow-sm">
+              <i data-lucide="compass" class="w-3.5 h-3.5 text-rose-400"></i>
+              <span>View All ${activeLocation.city} Providers →</span>
+            </button>
+          </div>
+
+          <!-- Location Selector Directory List -->
+          <div class="space-y-1.5 pt-1">
+            <span class="text-[10px] font-black uppercase text-slate-400 tracking-wider block mb-1">ALL NEPAL MEDICAL HUBS</span>
+            <div class="max-h-48 overflow-y-auto space-y-1.5 pr-1">
+              ${locations.map(loc => `
+                <div onclick="setDiscoveryLocation('${loc.id}')" class="p-2.5 rounded-xl border transition cursor-pointer flex items-center justify-between text-xs ${loc.id === activeLocation.id ? 'border-rose-400 bg-rose-50/60 font-bold text-rose-900' : 'border-slate-100 bg-slate-50 hover:bg-slate-100 text-slate-700'}">
+                  <div class="flex items-center space-x-2">
+                    <i data-lucide="map-pin" class="w-3.5 h-3.5 ${loc.id === activeLocation.id ? 'text-rose-600' : 'text-slate-400'}"></i>
+                    <span>${loc.city} (${loc.hospitalCount} Hosp, ${loc.clinicCount} Clin)</span>
+                  </div>
+                  <span class="text-[10px] text-rose-600 font-bold">Select</span>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+
+        </div>
+
+        <!-- RIGHT COLUMN: SAINO RATED MATRICES (Hospital 10, Clinic 10, Diag 5, Ambulance 5, Labs 5, Blood 5) -->
+        <div class="lg:col-span-7 bg-white rounded-3xl border border-slate-200 shadow-sm p-5 sm:p-6 space-y-5">
+          
+          <div>
+            <div class="flex items-center justify-between mb-1">
+              <div class="flex items-center space-x-2">
+                <span class="px-2.5 py-0.5 rounded-full bg-rose-600 text-white text-[10px] font-black uppercase tracking-wider">
+                  SAINO RATED
+                </span>
+                <h3 class="text-base sm:text-lg font-black text-slate-900">Top Rated Healthcare Services</h3>
+              </div>
+              <span class="text-xs text-slate-400 font-medium">Ranked by Patient Reviews</span>
+            </div>
+            <p class="text-xs text-slate-500">
+              Validated healthcare establishments in Nepal categorized by speciality and accreditation.
+            </p>
+          </div>
+
+          <!-- Category Navigation Pills (Hospital 10, Clinic 10, Diag 5, Ambulance 5, Labs 5, Blood 5) -->
+          <div class="flex flex-wrap gap-2 pb-2 border-b border-slate-100 text-xs">
+            ${[
+              { key: 'hospitals', label: 'Hospital 10', icon: 'building-2', count: 10 },
+              { key: 'clinics', label: 'Clinic 10', icon: 'stethoscope', count: 10 },
+              { key: 'diagnostics', label: 'Diag 5', icon: 'microscope', count: 5 },
+              { key: 'ambulances', label: 'Ambulance 5', icon: 'truck', count: 5 },
+              { key: 'labs', label: 'Labs 5', icon: 'flask-conical', count: 5 },
+              { key: 'bloodBanks', label: 'Blood 5', icon: 'droplet', count: 5 }
+            ].map(tab => {
+              const isActive = AppState.discoveryRatedTab === tab.key;
+              return `
+                <button onclick="setDiscoveryRatedTab('${tab.key}')" class="px-3 py-2 rounded-xl font-bold transition flex items-center space-x-1.5 ${
+                  isActive 
+                    ? 'bg-rose-600 text-white shadow-md' 
+                    : 'bg-slate-100 hover:bg-slate-200 text-slate-700'
+                }">
+                  <i data-lucide="${tab.icon}" class="w-3.5 h-3.5"></i>
+                  <span>${tab.label}</span>
+                </button>
+              `;
+            }).join('')}
+          </div>
+
+          <!-- List of Rated Providers for Selected Tab -->
+          <div class="space-y-3.5 max-h-[620px] overflow-y-auto pr-1">
+            ${activeRatedList.map((item, idx) => `
+              <div class="p-4 rounded-2xl border border-slate-200 bg-white hover:border-rose-300 hover:shadow-md transition flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                
+                <div class="flex items-start space-x-3.5">
+                  <div class="w-10 h-10 rounded-xl bg-slate-900 text-white font-black text-sm flex items-center justify-center flex-shrink-0 shadow-sm">
+                    #${idx + 1}
+                  </div>
+                  <div>
+                    <div class="flex flex-wrap items-center gap-1.5 mb-1">
+                      <h4 class="text-xs sm:text-sm font-bold text-slate-900 leading-tight">${item.name}</h4>
+                      <span class="px-2 py-0.5 rounded text-[9px] font-black uppercase ${
+                        item.badgeType === 'vvip' ? 'bg-indigo-100 text-indigo-800' :
+                        item.badgeType === 'vip' ? 'bg-amber-100 text-amber-900' :
+                        item.badgeType === 'pro' ? 'bg-rose-100 text-rose-800' :
+                        'bg-slate-100 text-slate-600'
+                      }">
+                        ${item.badge}
+                      </span>
+                    </div>
+
+                    <div class="flex flex-wrap items-center gap-2 text-[11px] text-slate-500">
+                      <span class="flex items-center text-amber-500 font-bold">
+                        ★ ${item.rating} <span class="text-slate-400 font-normal ml-0.5">(${item.reviews} reviews)</span>
+                      </span>
+                      <span>•</span>
+                      <span>📍 ${item.area}</span>
+                    </div>
+
+                    <p class="text-[11px] text-slate-600 mt-1 leading-snug">
+                      <strong class="text-slate-800">Speciality:</strong> ${item.special}
+                    </p>
+
+                    <div class="flex items-center space-x-3 text-[10px] text-slate-500 mt-1">
+                      <span>🕒 ${item.opd}</span>
+                      <span>•</span>
+                      <span class="text-rose-700 font-bold">${item.fee}</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Right Action Button -->
+                <div class="flex-shrink-0 sm:self-center">
+                  <button onclick="openCustomWhatsApp('${item.name}', 'Hello, I want to book an appointment with ${item.name} via SAINO Rated Directory.')" class="w-full sm:w-auto px-4 py-2 bg-rose-600 hover:bg-rose-700 text-white font-extrabold rounded-xl text-xs transition shadow-sm flex items-center justify-center space-x-1.5">
+                    <i data-lucide="message-circle" class="w-3.5 h-3.5"></i>
+                    <span>Book on WhatsApp</span>
+                  </button>
+                </div>
+
+              </div>
+            `).join('')}
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- ========================================================================= -->
+      <!-- 3. LOWER SECTION: WHY VERIFICATION BADGES MATTER (EXACT SPECIFICATION)    -->
+      <!-- ========================================================================= -->
+      <div class="p-6 md:p-10 bg-white rounded-3xl border border-slate-200 shadow-sm mb-14">
+        
+        <div class="text-center max-w-3xl mx-auto mb-10">
+          <h2 class="text-xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mb-2">
             Why Verification Badges Matter for Healthcare
-          </h3>
-          <p class="text-xs md:text-sm text-slate-500">
+          </h2>
+          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
             Because healthcare is sensitive, SAINO validates government registrations, medical operating licenses, and doctor qualifications before granting badges.
           </p>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
-          <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200">
-            <span class="px-2 py-0.5 rounded text-[10px] font-extrabold bg-slate-200 text-slate-700 uppercase">Free</span>
-            <h4 class="text-sm font-bold text-slate-900 mt-2 mb-1">Saino Listed</h4>
-            <p class="text-slate-500 leading-relaxed">Basic directory entry. Free for all legal healthcare providers in Nepal. WhatsApp inquiries routed via manual triage.</p>
+        <!-- 4 Badges Cards (Free, Pro Badge, VIP Badge, VVIP Advantage) -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          
+          <!-- Card 1: FREE - Saino Listed -->
+          <div class="p-5 rounded-2xl bg-slate-50/80 border border-slate-200 flex flex-col justify-between hover:shadow-md transition">
+            <div>
+              <span class="inline-block px-2.5 py-0.5 rounded text-[10px] font-extrabold bg-slate-200 text-slate-700 uppercase tracking-wider mb-3">
+                FREE
+              </span>
+              <h3 class="text-sm font-bold text-slate-900 mb-2">Saino Listed</h3>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                Basic directory entry. Free for all legal healthcare providers in Nepal. WhatsApp inquiries routed via manual triage.
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-200/60">
+              <span class="text-[11px] font-bold text-slate-500">NPR 0 · Free Forever</span>
+            </div>
           </div>
 
-          <div class="p-4 rounded-2xl bg-rose-50/50 border border-rose-200">
-            <span class="px-2 py-0.5 rounded text-[10px] font-extrabold bg-rose-600 text-white uppercase">Pro Badge</span>
-            <h4 class="text-sm font-bold text-slate-900 mt-2 mb-1">✓ SAINO Pro</h4>
-            <p class="text-slate-600 leading-relaxed">For specialist doctors & clinics. Includes rating stars, review replies, 5 service packages, and direct WhatsApp dispatch.</p>
+          <!-- Card 2: PRO BADGE - ✓ SAINO Pro -->
+          <div class="p-5 rounded-2xl bg-rose-50/40 border border-rose-200 flex flex-col justify-between hover:shadow-md transition">
+            <div>
+              <span class="inline-block px-2.5 py-0.5 rounded text-[10px] font-extrabold bg-rose-900 text-white uppercase tracking-wider mb-3">
+                PRO BADGE
+              </span>
+              <h3 class="text-sm font-bold text-slate-900 mb-2">✓ SAINO Pro</h3>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                For specialist doctors & clinics. Includes rating stars, review replies, 5 service packages, and direct WhatsApp dispatch.
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-rose-200/60">
+              <span class="text-[11px] font-bold text-rose-700">NPR 3,600 / month</span>
+            </div>
           </div>
 
-          <div class="p-4 rounded-2xl bg-amber-50/50 border border-amber-200">
-            <span class="px-2 py-0.5 rounded text-[10px] font-extrabold bg-amber-500 text-slate-950 uppercase">VIP Badge</span>
-            <h4 class="text-sm font-bold text-slate-900 mt-2 mb-1">👑 SAINO VIP</h4>
-            <p class="text-slate-600 leading-relaxed">For polyclinics & mid-size hospitals. 15 service packages, intelligent appointment management, and 1 monthly Big Screen campaign.</p>
+          <!-- Card 3: VIP BADGE - 👑 SAINO VIP -->
+          <div class="p-5 rounded-2xl bg-amber-50/40 border border-amber-200 flex flex-col justify-between hover:shadow-md transition">
+            <div>
+              <span class="inline-block px-2.5 py-0.5 rounded text-[10px] font-extrabold bg-amber-500 text-slate-950 uppercase tracking-wider mb-3">
+                VIP BADGE
+              </span>
+              <h3 class="text-sm font-bold text-slate-900 mb-2">👑 SAINO VIP</h3>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                For polyclinics & mid-size hospitals. 15 service packages, intelligent appointment management, and 1 monthly Big Screen campaign.
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-amber-200/60">
+              <span class="text-[11px] font-bold text-amber-800">NPR 5,900 / month</span>
+            </div>
           </div>
 
-          <div class="p-4 rounded-2xl bg-indigo-50/50 border border-indigo-200">
-            <span class="px-2 py-0.5 rounded text-[10px] font-extrabold bg-indigo-600 text-white uppercase">VVIP Advantage</span>
-            <h4 class="text-sm font-bold text-slate-900 mt-2 mb-1">🏆 SAINO VVIP</h4>
-            <p class="text-slate-600 leading-relaxed">Flagship presence for multispeciality hospital enterprises. Includes SEO growth, local optimization, and 2 monthly billboard campaigns.</p>
+          <!-- Card 4: VVIP ADVANTAGE - 🏆 SAINO VVIP -->
+          <div class="p-5 rounded-2xl bg-indigo-50/40 border border-indigo-200 flex flex-col justify-between hover:shadow-md transition">
+            <div>
+              <span class="inline-block px-2.5 py-0.5 rounded text-[10px] font-extrabold bg-indigo-600 text-white uppercase tracking-wider mb-3">
+                VVIP ADVANTAGE
+              </span>
+              <h3 class="text-sm font-bold text-slate-900 mb-2">🏆 SAINO VVIP</h3>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                Flagship presence for multispeciality hospital enterprises. Includes SEO growth, local optimization, and 2 monthly billboard campaigns.
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-indigo-200/60">
+              <span class="text-[11px] font-bold text-indigo-800">NPR 9,999 / month</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- ========================================================================= -->
+      <!-- 4. REVIEWS SECTION: PATIENT REVIEWS SLIDER (Review < >)                  -->
+      <!-- ========================================================================= -->
+      <div class="bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900 text-white rounded-3xl p-6 sm:p-10 shadow-2xl mb-12">
+        
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8 pb-6 border-b border-white/10">
+          <div>
+            <span class="px-2.5 py-0.5 rounded-full bg-rose-600 text-white text-[10px] font-black uppercase tracking-wider">
+              PATIENT EXPERIENCES
+            </span>
+            <h3 class="text-xl sm:text-3xl font-extrabold mt-2">What Patients Say About Healthcare Providers</h3>
+            <p class="text-xs text-slate-300 mt-1">Real stories and hospital feedback from verified patients in Nepal.</p>
+          </div>
+
+          <!-- Carousel Controls: Prev (<) and Next (>) Arrows -->
+          <div class="flex items-center space-x-2">
+            <button onclick="prevDiscoveryReview()" class="w-10 h-10 rounded-xl bg-white/10 hover:bg-rose-600 text-white flex items-center justify-center transition border border-white/10" title="Previous Reviews">
+              <i data-lucide="chevron-left" class="w-5 h-5"></i>
+            </button>
+            <button onclick="nextDiscoveryReview()" class="w-10 h-10 rounded-xl bg-white/10 hover:bg-rose-600 text-white flex items-center justify-center transition border border-white/10" title="Next Reviews">
+              <i data-lucide="chevron-right" class="w-5 h-5"></i>
+            </button>
           </div>
         </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          ${visibleReviews.map(rev => `
+            <div class="bg-white/10 backdrop-blur-md rounded-2xl p-5 border border-white/10 flex flex-col justify-between hover:border-white/20 transition">
+              <div>
+                <div class="flex items-center space-x-2 text-rose-400 text-xs font-bold mb-2">
+                  <i data-lucide="${rev.icon}" class="w-4 h-4"></i>
+                  <span>${rev.tag}</span>
+                </div>
+                <h4 class="text-sm font-bold text-white mb-2 leading-snug">"${rev.title}"</h4>
+                <p class="text-xs text-slate-300 leading-relaxed mb-4">"${rev.body}"</p>
+              </div>
+              <div class="pt-3 border-t border-white/10 flex items-center justify-between text-xs">
+                <div>
+                  <strong class="text-white block">${rev.author}</strong>
+                  <span class="text-[11px] text-slate-400">${rev.role}</span>
+                </div>
+                <span class="text-[11px] font-semibold text-rose-300">${rev.provider}</span>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+
       </div>
 
     </div>
   `;
+}
+
+function prevDiscoverySlide() {
+  const campaigns = window.SAINO_DATA.bigScreenCampaigns || [];
+  AppState.discoverySlideIndex = (AppState.discoverySlideIndex - 1 + campaigns.length) % campaigns.length;
+  renderApp();
+}
+
+function nextDiscoverySlide() {
+  const campaigns = window.SAINO_DATA.bigScreenCampaigns || [];
+  AppState.discoverySlideIndex = (AppState.discoverySlideIndex + 1) % campaigns.length;
+  renderApp();
+}
+
+function setDiscoverySlide(idx) {
+  AppState.discoverySlideIndex = idx;
+  renderApp();
+}
+
+function setDiscoveryRatedTab(tabKey) {
+  AppState.discoveryRatedTab = tabKey;
+  renderApp();
+}
+
+function setDiscoveryLocation(locId) {
+  AppState.discoverySelectedLocation = locId;
+  renderApp();
+}
+
+function prevDiscoveryReview() {
+  const reviews = window.SAINO_DATA.talkOfTheTown || [];
+  AppState.discoveryReviewIndex = (AppState.discoveryReviewIndex - 1 + reviews.length) % reviews.length;
+  renderApp();
+}
+
+function nextDiscoveryReview() {
+  const reviews = window.SAINO_DATA.talkOfTheTown || [];
+  AppState.discoveryReviewIndex = (AppState.discoveryReviewIndex + 1) % reviews.length;
+  renderApp();
 }
 
 function renderProvidersShowcaseView() {
