@@ -1743,52 +1743,52 @@ window.SAINO_DATA = {
     {
       id: 'doc-1',
       name: 'Dr. Anup Bastola',
-      role: 'Senior Infectious Disease & Tropical Specialist',
+      role: 'Senior Infectious Disease Specialist',
       experience: '16+ Years Experience',
       hospital: 'Sukraraj / Kathmandu Hospital',
       image: 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=300&auto=format&fit=crop&q=80',
       fee: 'Rs. 600',
-      status: 'Online Now'
+      status: 'OPD Available'
     },
     {
       id: 'doc-2',
       name: 'Dr. Manisha Rawal',
-      role: 'Consultant Interventional Cardiologist',
+      role: 'Consultant Cardiologist',
       experience: '12+ Years Experience',
       hospital: 'Norvic Heart Institute',
-      image: 'https://images.unsplash.com/photo-1594824813629-9233f208eb67?w=300&auto=format&fit=crop&q=80',
+      image: 'https://images.unsplash.com/photo-1594824813628-4a2368543d07?w=300&auto=format&fit=crop&q=80',
       fee: 'Rs. 800',
-      status: 'Online Now'
+      status: 'OPD Available'
     },
     {
       id: 'doc-3',
       name: 'Dr. Bikash Karki',
-      role: 'Senior General & Laparoscopic Surgeon',
+      role: 'Senior Laparoscopic Surgeon',
       experience: '15+ Years Experience',
-      hospital: 'Civil Hospital',
+      hospital: 'Civil Service Hospital',
       image: 'https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=300&auto=format&fit=crop&q=80',
       fee: 'Rs. 650',
-      status: 'Next Slot: 2 PM'
+      status: 'OPD Available'
     },
     {
       id: 'doc-4',
       name: 'Dr. Sunita Gurung',
-      role: 'Senior Pediatrician & Neonatologist',
+      role: 'Senior Pediatrician',
       experience: '14+ Years Experience',
-      hospital: 'Kanti Children Partner',
+      hospital: 'Kanti Children Care',
       image: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=300&auto=format&fit=crop&q=80',
       fee: 'Rs. 500',
-      status: 'Online Now'
+      status: 'OPD Available'
     },
     {
       id: 'doc-5',
       name: 'Dr. Ramesh Shrestha',
-      role: 'Consultant Orthopedic & Joint Surgeon',
+      role: 'Consultant Orthopedic Surgeon',
       experience: '18+ Years Experience',
-      hospital: 'B&B Trauma Center',
-      image: 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=300&auto=format&fit=crop&q=80',
+      hospital: 'B&B Hospital Partner',
+      image: 'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=300&auto=format&fit=crop&q=80',
       fee: 'Rs. 750',
-      status: 'Next Slot: 3:30 PM'
+      status: 'OPD Available'
     }
   ]
 };

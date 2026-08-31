@@ -149,6 +149,9 @@ function renderMarketplaceView() {
   const clinics = window.SAINO_DATA.sainoRated ? window.SAINO_DATA.sainoRated.clinics : [];
   const topClinics = clinics.slice(0, 3);
   
+  const diagnosticProviders = allProviders.filter(p => p.category === 'diagnostic');
+  const topDiagnostics = diagnosticProviders.slice(0, 3);
+
   const talkReviews = window.SAINO_DATA.talkOfTheTown || [];
   const diagnosticPackages = window.SAINO_DATA.diagnosticPackages || [];
   const onlineDoctors = window.SAINO_DATA.onlineDoctors || [];
@@ -205,12 +208,12 @@ function renderMarketplaceView() {
     <section class="mb-14">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
         
-        <!-- LEFT: CLINICS COLUMN (7 cols) -->
+        <!-- LEFT: CLINICS COLUMN (7 cols) - View All -->
         <div class="lg:col-span-7">
           <div class="flex items-center justify-between mb-5 pb-2 border-b border-slate-200">
             <h3 class="text-base sm:text-lg font-black text-slate-900 uppercase tracking-wide">CLINICS</h3>
             <button onclick="filterCategory('clinic')" class="text-xs font-bold text-[#991b1b] hover:underline">
-              Read All (${clinics.length}) &gt;
+              View All (${clinics.length}) &gt;
             </button>
           </div>
 
@@ -219,12 +222,12 @@ function renderMarketplaceView() {
           </div>
         </div>
 
-        <!-- RIGHT: TALK OF THE TOWN / PATIENT EXPERIENCES COLUMN (5 cols) -->
+        <!-- RIGHT: TALK OF THE TOWN / PATIENT EXPERIENCES COLUMN (5 cols) - Read All -->
         <div class="lg:col-span-5">
           <div class="flex items-center justify-between mb-5 pb-2 border-b border-slate-200">
             <h3 class="text-base sm:text-lg font-black text-slate-900">Real experience from our patients</h3>
             <button onclick="navigateTo('discovery')" class="text-xs font-bold text-[#991b1b] hover:underline">
-              View All &gt;
+              Read All &gt;
             </button>
           </div>
 
@@ -236,20 +239,21 @@ function renderMarketplaceView() {
       </div>
     </section>
 
-    <!-- 4. REAL EXPERIENCES FROM OUR PATIENTS (3 Horizontal Cards) -->
+    <!-- 4. DIAGNOSTIC CENTRES & PATHOLOGY LABS IN NEPAL (Replaces duplicate review section) -->
     <section class="mb-14">
       <div class="flex items-center justify-between mb-6">
         <div>
-          <span class="text-xs font-black uppercase tracking-wider text-[#991b1b]">Verified Stories</span>
-          <h2 class="text-xl sm:text-2xl font-black text-slate-900">Real experiences from our patients</h2>
+          <span class="text-xs font-black uppercase tracking-wider text-[#991b1b]">Advanced Diagnostics & Pathology</span>
+          <h2 class="text-xl sm:text-2xl font-black text-slate-900">Top Diagnostic Centres & Labs in Nepal</h2>
+          <p class="text-xs text-slate-500">ISO-certified pathology, 3.0T MRI, 128 Slice CT & home sample collection</p>
         </div>
-        <button onclick="navigateTo('discovery')" class="text-xs font-bold text-[#991b1b] hover:underline">
-          Explore All &gt;
+        <button onclick="filterCategory('diagnostic')" class="text-xs font-bold text-[#991b1b] hover:underline">
+          View All Labs &gt;
         </button>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-        ${talkReviews.slice(0, 3).map(s => renderPatientStoryCard(s)).join('')}
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        ${topDiagnostics.map(d => renderProviderCard(d)).join('')}
       </div>
     </section>
 
@@ -264,7 +268,7 @@ function renderMarketplaceView() {
           <span class="text-xs text-slate-600">Valid across all partner hospitals and ISO-accredited pathlabs in Kathmandu Valley.</span>
         </div>
       </div>
-      <button onclick="openCustomWhatsApp('Special 20% Offer', 'Hi SAINO, I would like to claim the 20% Diagnostic Lab discount offer on my upcoming OPD appointment.')" class="px-5 py-2.5 bg-[#991b1b] hover:bg-[#881337] text-white font-bold rounded-xl text-xs whitespace-nowrap shadow-md transition">
+      <button onclick="openCustomWhatsApp('Special 20% Offer', 'Hi SAINO, I would like to claim the 20% Diagnostic Lab discount offer on my upcoming OPD appointment. (+977 9761427155)')" class="px-5 py-2.5 bg-[#991b1b] hover:bg-[#881337] text-white font-bold rounded-xl text-xs whitespace-nowrap shadow-md transition">
         CLAIM OFFER NOW
       </button>
     </section>
@@ -341,7 +345,7 @@ function renderMarketplaceView() {
       </div>
     </section>
 
-    <!-- 8. EMERGENCY CARE: BLOOD BANKS & AMBULANCES (2 COLUMNS) -->
+    <!-- 8. EMERGENCY CARE: BLOOD BANKS & AMBULANCES (2 COLUMNS - ENQUIRE NOW WHATSAPP) -->
     <section class="mb-14">
       <div class="flex items-center justify-between mb-6 pb-3 border-b border-slate-200">
         <div>
@@ -366,15 +370,17 @@ function renderMarketplaceView() {
           </div>
           <div class="space-y-3 text-xs">
             ${emergencyBloodBanks.map(b => `
-              <div class="p-3 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-between">
+              <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                 <div>
-                  <strong class="text-slate-900 block font-bold">${b.name}</strong>
+                  <strong class="text-slate-900 block font-bold text-xs">${b.name}</strong>
                   <span class="text-[11px] text-slate-500">${b.area} · <span class="text-rose-600 font-semibold">${b.special}</span></span>
                 </div>
-                <a href="tel:${b.phone.split('/')[0].trim()}" class="px-3 py-1.5 bg-rose-50 text-rose-700 hover:bg-rose-100 font-bold rounded-lg transition text-[11px] flex items-center space-x-1">
-                  <i data-lucide="phone" class="w-3 h-3"></i>
-                  <span>Call Now</span>
-                </a>
+                <div class="flex items-center space-x-2 flex-shrink-0">
+                  <button onclick="openCustomWhatsApp('Blood Bank Enquiry: ${b.name}', 'URGENT: I need blood group availability and assistance at ${b.name}. (Patient query via SAINO HEALTH: +977 9761427155)')" class="px-3 py-1.5 bg-[#25d366] hover:bg-[#1ebd5a] text-white font-bold rounded-lg transition text-[11px] flex items-center space-x-1.5 shadow-xs whitespace-nowrap">
+                    <i data-lucide="message-circle" class="w-3.5 h-3.5"></i>
+                    <span>Enquire on WhatsApp</span>
+                  </button>
+                </div>
               </div>
             `).join('')}
           </div>
@@ -391,15 +397,17 @@ function renderMarketplaceView() {
           </div>
           <div class="space-y-3 text-xs">
             ${emergencyAmbulances.map(a => `
-              <div class="p-3 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-between">
+              <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                 <div>
-                  <strong class="text-slate-900 block font-bold">${a.name}</strong>
+                  <strong class="text-slate-900 block font-bold text-xs">${a.name}</strong>
                   <span class="text-[11px] text-slate-500">${a.area} · <span class="text-emerald-600 font-semibold">${a.opd}</span></span>
                 </div>
-                <a href="tel:${a.phone.split('/')[0].trim()}" class="px-3 py-1.5 bg-[#991b1b] text-white hover:bg-rose-800 font-bold rounded-lg transition text-[11px] flex items-center space-x-1 shadow-xs">
-                  <i data-lucide="phone-call" class="w-3 h-3"></i>
-                  <span>Dispatch</span>
-                </a>
+                <div class="flex items-center space-x-2 flex-shrink-0">
+                  <button onclick="openCustomWhatsApp('Ambulance Dispatch Enquiry: ${a.name}', 'EMERGENCY: Immediate ambulance dispatch enquiry for ${a.name}. (Patient query via SAINO HEALTH: +977 9761427155)')" class="px-3 py-1.5 bg-[#25d366] hover:bg-[#1ebd5a] text-white font-bold rounded-lg transition text-[11px] flex items-center space-x-1.5 shadow-xs whitespace-nowrap">
+                    <i data-lucide="message-circle" class="w-3.5 h-3.5"></i>
+                    <span>Enquire on WhatsApp</span>
+                  </button>
+                </div>
               </div>
             `).join('')}
           </div>
@@ -408,29 +416,32 @@ function renderMarketplaceView() {
       </div>
     </section>
 
-    <!-- 9. DOCTORS ONLINE / CONSULTATION (5 DOCTORS ROW) -->
+    <!-- 9. DOCTORS OPD CONSULTATION & PATIENT QUERIES (WEB BOOKING PLATFORM) -->
     <section class="mb-14">
-      <div class="flex items-center justify-between mb-6">
+      <div class="flex items-center justify-between mb-2">
         <div>
-          <span class="text-xs font-black uppercase tracking-wider text-[#991b1b]">Immediate Care</span>
-          <h2 class="text-xl sm:text-2xl font-black text-slate-900">Doctors Online / Consultation</h2>
+          <span class="text-xs font-black uppercase tracking-wider text-[#991b1b]">Direct Web Booking</span>
+          <h2 class="text-xl sm:text-2xl font-black text-slate-900">Book Doctor Consultation & OPD Tokens</h2>
+          <p class="text-xs text-slate-500">Book specialist consultant tokens across top partner hospitals & clinics in Nepal via direct WhatsApp query.</p>
         </div>
       </div>
 
-      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 mt-6">
         ${onlineDoctors.map(doc => `
-          <div class="bg-white rounded-2xl border border-slate-200 p-4 text-center shadow-xs flex flex-col items-center justify-between">
+          <div class="bg-white rounded-2xl border border-slate-200 p-4 text-center shadow-xs flex flex-col items-center justify-between hover:border-rose-300 transition">
             <div>
-              <div class="relative w-16 h-16 rounded-full overflow-hidden mx-auto mb-2 border-2 border-[#991b1b]/20">
-                <img src="${doc.image}" alt="${doc.name}" class="w-full h-full object-cover">
+              <div class="relative w-16 h-16 rounded-full overflow-hidden mx-auto mb-2 border-2 border-[#991b1b]/20 bg-slate-100">
+                <img src="${doc.image}" alt="${doc.name}" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=300&auto=format&fit=crop&q=80'">
                 <span class="absolute bottom-0 right-0 w-3.5 h-3.5 bg-emerald-500 border-2 border-white rounded-full"></span>
               </div>
               <strong class="text-xs font-bold text-slate-900 block truncate">${doc.name}</strong>
               <span class="text-[10px] text-slate-500 block truncate mt-0.5">${doc.role}</span>
               <span class="text-[10px] text-sky-700 font-semibold block truncate mt-0.5">${doc.hospital}</span>
+              <span class="text-[10px] font-bold text-emerald-600 block mt-1">OPD Fee: ${doc.fee}</span>
             </div>
-            <button onclick="openCustomWhatsApp('Doctor Consultation: ${doc.name}', 'Hi SAINO, I would like to book an online / OPD consultation slot with ${doc.name}.')" class="mt-3 w-full py-1.5 bg-[#991b1b] hover:bg-[#881337] text-white font-bold rounded-xl text-[11px] shadow-xs transition">
-              CONSULT TODAY
+            <button onclick="openCustomWhatsApp('Doctor OPD Consultation: ${doc.name}', 'Hi SAINO Health, I would like to book an OPD consultation token with ${doc.name} (${doc.role}) at ${doc.hospital}. Please confirm available time slots. (+977 9761427155)')" class="mt-3 w-full py-1.5 bg-[#991b1b] hover:bg-[#881337] text-white font-bold rounded-xl text-[11px] shadow-xs transition flex items-center justify-center space-x-1">
+              <i data-lucide="calendar" class="w-3 h-3"></i>
+              <span>BOOK OPD</span>
             </button>
           </div>
         `).join('')}
@@ -2846,10 +2857,10 @@ function handleWhatsAppBookingSubmit(e, providerId) {
   const date = document.getElementById('wbDate').value;
   const notes = document.getElementById('wbNotes').value;
 
-  const textMsg = `Hello ${p.name} (via SAINO HEALTH),%0A%0AI would like to book an appointment:%0A- Patient Name: ${encodeURIComponent(name)}%0A- Service: ${encodeURIComponent(service)}%0A- Preferred Date: ${encodeURIComponent(date)}%0A- Notes: ${encodeURIComponent(notes || 'N/A')}%0A%0APlease confirm available time slots.`;
+  const textMsg = `Hello ${p.name} (via SAINO HEALTH),%0A%0AI would like to book an appointment:%0A- Patient Name: ${encodeURIComponent(name)}%0A- Service: ${encodeURIComponent(service)}%0A- Preferred Date: ${encodeURIComponent(date)}%0A- Notes: ${encodeURIComponent(notes || 'N/A')}%0A%0AAppointment booking helpline: +977 9761427155. Please confirm available time slots.`;
   
-  // Nepal generic triage WhatsApp number or dummy support number
-  const whatsappUrl = `https://wa.me/9779800000000?text=${textMsg}`;
+  // Official SAINO HEALTH WhatsApp Hotline
+  const whatsappUrl = `https://wa.me/9779761427155?text=${textMsg}`;
   
   window.open(whatsappUrl, '_blank');
   closeModal();
@@ -2857,7 +2868,7 @@ function handleWhatsAppBookingSubmit(e, providerId) {
 }
 
 function openCustomWhatsApp(topic, message) {
-  const whatsappUrl = `https://wa.me/9779800000000?text=${encodeURIComponent(`[SAINO HEALTH - ${topic}] ` + message)}`;
+  const whatsappUrl = `https://wa.me/9779761427155?text=${encodeURIComponent(`[SAINO HEALTH - ${topic}] ` + message)}`;
   window.open(whatsappUrl, '_blank');
   showToast(`Opened WhatsApp chat for ${topic}`);
 }

@@ -71,8 +71,8 @@
     </div>
   </div>
 
-  <!-- Top Header with Brand Logo, Integrated Search & Actions (Matching Figma Design) -->
-  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-xs">
+  <!-- Top Header with Brand Logo, Integrated Search & Actions (Grey Theme & Focused Patient Booking) -->
+  <header class="sticky top-0 z-40 bg-slate-50/95 backdrop-blur-md border-b border-slate-200 shadow-xs">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between min-h-[84px] py-2 gap-4">
         
@@ -82,7 +82,7 @@
         </a>
 
         <!-- Header Integrated Search Bar (Figma Exact Spec) -->
-        <div class="hidden md:flex flex-1 max-w-xl items-center bg-slate-50 rounded-full border border-slate-200 p-1 pl-4 shadow-xs">
+        <div class="hidden md:flex flex-1 max-w-xl items-center bg-white rounded-full border border-slate-300 p-1 pl-4 shadow-xs">
           <i data-lucide="search" class="w-4 h-4 text-slate-400 mr-2 flex-shrink-0"></i>
           <input type="text" id="headerSearchInput" placeholder="Search hospitals, clinics, services..." class="bg-transparent flex-1 text-xs text-slate-800 font-medium focus:outline-none placeholder-slate-400">
           <div class="h-4 w-px bg-slate-300 mx-2"></div>
@@ -99,14 +99,14 @@
           </button>
         </div>
 
-        <!-- Right Side Header Actions: Sign In + List your care -->
+        <!-- Right Side Header Actions: Patient Focus (Hotline & Sign In) -->
         <div class="hidden sm:flex items-center space-x-3 flex-shrink-0">
-          <button onclick="openProviderSignInModal('patient')" class="px-4 py-2 text-xs font-bold text-slate-700 hover:text-rose-700 transition">
+          <a href="tel:+9779761427155" class="px-3.5 py-1.5 rounded-full bg-rose-50 border border-rose-200 text-[#991b1b] font-bold text-xs flex items-center space-x-1.5 hover:bg-rose-100 transition shadow-xs">
+            <i data-lucide="phone-call" class="w-3.5 h-3.5 text-[#991b1b]"></i>
+            <span>+977 9761427155</span>
+          </a>
+          <button onclick="openProviderSignInModal('patient')" class="px-4 py-2 text-xs font-bold text-slate-700 hover:text-rose-700 bg-white border border-slate-200 rounded-full shadow-xs transition">
             Sign In
-          </button>
-          <button onclick="navigateTo('list-your-care')" class="px-4 py-2 text-xs font-black bg-[#991b1b] hover:bg-[#881337] text-white rounded-full shadow-md hover:shadow-lg transition flex items-center space-x-1.5 transform hover:-translate-y-0.5">
-            <i data-lucide="plus" class="w-3.5 h-3.5"></i>
-            <span>List your care</span>
           </button>
         </div>
 
@@ -120,8 +120,8 @@
       </div>
     </div>
 
-    <!-- Clean Sub-Navigation Bar (HOME, ABOUT, LIST YOUR CARE, TALK OF THE TOWN, MORE) -->
-    <div class="bg-slate-50/80 border-t border-slate-200/80 px-4 sm:px-6 lg:px-8 py-2">
+    <!-- Clean Grey Sub-Navigation Bar (HOME, ABOUT, LIST YOUR CARE, TALK OF THE TOWN, MORE) -->
+    <div class="bg-slate-100 border-t border-slate-200 px-4 sm:px-6 lg:px-8 py-2">
       <div class="max-w-7xl mx-auto flex items-center justify-between text-xs font-bold text-slate-600">
         <nav class="flex items-center space-x-6">
           <a href="#" data-nav="marketplace" class="text-[#991b1b] font-black uppercase tracking-wider hover:text-rose-800 transition">HOME</a>
@@ -131,19 +131,14 @@
           <a href="#" data-nav="discovery" class="uppercase tracking-wider hover:text-[#991b1b] transition">DISCOVERY & MORE</a>
         </nav>
         <div class="hidden md:flex items-center space-x-5 text-slate-500 font-semibold text-[11px]">
-          <a href="tel:+97714789000" class="flex items-center space-x-1 hover:text-slate-900">
+          <a href="tel:+9779761427155" class="flex items-center space-x-1 hover:text-slate-900">
             <i data-lucide="phone" class="w-3 h-3 text-[#991b1b]"></i>
-            <span>+977-1-4789000</span>
+            <span>Appointment Hotline: +977 9761427155</span>
           </a>
-          <span>|</span>
-          <span class="flex items-center space-x-1">
-            <i data-lucide="map-pin" class="w-3 h-3 text-[#991b1b]"></i>
-            <span>Kathmandu, Nepal</span>
-          </span>
           <span>|</span>
           <a href="#" data-nav="about" class="hover:text-slate-900">About us</a>
           <span>|</span>
-          <a href="#" data-nav="contact" class="hover:text-slate-900">FAQ</a>
+          <a href="#" data-nav="contact" class="hover:text-slate-900">Contact & FAQ</a>
         </div>
       </div>
     </div>
@@ -157,15 +152,17 @@
       </a>
       <a href="#" data-nav="about" class="block px-3 py-2 rounded-lg text-sm font-semibold text-slate-800 hover:bg-slate-50">About us</a>
       <a href="#" data-nav="contact" class="block px-3 py-2 rounded-lg text-sm font-semibold text-slate-800 hover:bg-slate-50">Contact us</a>
+      <a href="#" data-nav="list-your-care" class="block px-3 py-2 rounded-lg text-sm font-semibold text-slate-800 hover:bg-slate-50">List your care</a>
       <div class="pt-3 border-t border-slate-100 mb-2">
         <button onclick="openProviderSignInModal('patient')" class="w-full py-2.5 text-xs font-bold text-slate-700 border border-slate-200 rounded-xl hover:bg-slate-50 flex items-center justify-center space-x-2">
           <i data-lucide="user" class="w-4 h-4 text-rose-600"></i>
           <span>Sign In / Register</span>
         </button>
       </div>
-      <button onclick="navigateTo('list-your-care')" class="w-full py-2.5 text-xs font-bold bg-[#991b1b] text-white rounded-xl shadow">
-        List your care
-      </button>
+      <a href="tel:+9779761427155" class="w-full py-2.5 text-xs font-bold bg-[#991b1b] text-white rounded-xl shadow flex items-center justify-center space-x-2">
+        <i data-lucide="phone-call" class="w-3.5 h-3.5"></i>
+        <span>Call Hotline: +977 9761427155</span>
+      </a>
     </div>
   </header>
 
@@ -225,52 +222,48 @@
     <!-- Populated dynamically via app.js -->
   </main>
 
-  <!-- Comprehensive Footer (Highlighted Vibrant Red Brand Theme with Rich Contrast) -->
-  <footer class="bg-gradient-to-b from-[#881337] via-[#7f1d1d] to-[#4c0519] text-rose-100 pt-16 pb-12 border-t-4 border-rose-500 shadow-2xl relative overflow-hidden">
-    <!-- Subtle background ambient glows -->
-    <div class="absolute top-0 right-1/4 w-96 h-96 bg-rose-500/10 rounded-full blur-3xl pointer-events-none"></div>
-    <div class="absolute bottom-0 left-1/4 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
-
+  <!-- Comprehensive Footer (Clean Modern Grey Theme with Brand Red Accents) -->
+  <footer class="bg-slate-900 text-slate-300 pt-16 pb-12 border-t-4 border-[#991b1b] shadow-2xl relative overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       
       <!-- Main Footer Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-rose-700/60">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-slate-800">
         
         <!-- Brand Column -->
         <div class="lg:col-span-2 space-y-4">
           <div class="flex items-center space-x-3">
-            <div class="bg-white p-2.5 rounded-2xl shadow-xl border-2 border-rose-300 inline-block">
+            <div class="bg-white p-2.5 rounded-2xl shadow-xl border border-slate-200 inline-block">
               <img src="assets/logo.png" alt="SAINO HEALTH" class="h-12 w-auto object-contain">
             </div>
             <div>
               <span class="text-base font-black text-white tracking-tight block">SAINO HEALTH</span>
-              <span class="text-[10px] font-extrabold text-amber-300 tracking-widest uppercase">Connected. Simplified. Better Health.</span>
+              <span class="text-[10px] font-extrabold text-amber-400 tracking-widest uppercase">Connected. Simplified. Better Health.</span>
             </div>
           </div>
-          <p class="text-xs text-rose-100/90 leading-relaxed max-w-sm">
+          <p class="text-xs text-slate-400 leading-relaxed max-w-sm">
             Nepal's premier unified healthcare discovery and booking marketplace, bridging patients directly with verified doctors, clinics, diagnostics, and 24/7 emergency response.
           </p>
-          <div class="text-xs text-rose-200 space-y-1.5 pt-1">
+          <div class="text-xs text-slate-300 space-y-1.5 pt-1">
             <div class="flex items-center space-x-2">
-              <i data-lucide="map-pin" class="w-4 h-4 text-amber-300 flex-shrink-0"></i>
-              <span>Kathmandu-31, Bagmati Province, Nepal</span>
+              <i data-lucide="phone" class="w-4 h-4 text-emerald-400 flex-shrink-0"></i>
+              <span>Appointment Booking: +977 9761427155</span>
             </div>
             <div class="flex items-center space-x-2">
-              <i data-lucide="phone" class="w-4 h-4 text-emerald-300 flex-shrink-0"></i>
-              <span>+977 1 4422000 / +977 9801234567</span>
+              <i data-lucide="mail" class="w-4 h-4 text-amber-400 flex-shrink-0"></i>
+              <span>support@sainohealth.com</span>
             </div>
           </div>
           <!-- Social Icons Filled with High-Quality Brand SVG Icons -->
           <div class="flex items-center space-x-2.5 pt-3">
             <!-- Facebook -->
-            <a href="https://facebook.com" target="_blank" class="w-8 h-8 rounded-full bg-white/15 hover:bg-white text-white hover:text-[#1877f2] border border-white/30 flex items-center justify-center transition-all duration-200 shadow-md hover:scale-110" title="Facebook" aria-label="Facebook">
+            <a href="https://facebook.com" target="_blank" class="w-8 h-8 rounded-full bg-slate-800 hover:bg-white text-slate-300 hover:text-[#1877f2] border border-slate-700 flex items-center justify-center transition-all duration-200 shadow-md hover:scale-110" title="Facebook" aria-label="Facebook">
               <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
                 <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
               </svg>
             </a>
 
             <!-- Instagram -->
-            <a href="https://instagram.com" target="_blank" class="w-8 h-8 rounded-full bg-white/15 hover:bg-white text-white hover:text-[#e4405f] border border-white/30 flex items-center justify-center transition-all duration-200 shadow-md hover:scale-110" title="Instagram" aria-label="Instagram">
+            <a href="https://instagram.com" target="_blank" class="w-8 h-8 rounded-full bg-slate-800 hover:bg-white text-slate-300 hover:text-[#e4405f] border border-slate-700 flex items-center justify-center transition-all duration-200 shadow-md hover:scale-110" title="Instagram" aria-label="Instagram">
               <svg class="w-4 h-4 fill-none stroke-current stroke-2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
                 <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
                 <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
@@ -279,14 +272,14 @@
             </a>
 
             <!-- LinkedIn -->
-            <a href="https://linkedin.com" target="_blank" class="w-8 h-8 rounded-full bg-white/15 hover:bg-white text-white hover:text-[#0a66c2] border border-white/30 flex items-center justify-center transition-all duration-200 shadow-md hover:scale-110" title="LinkedIn" aria-label="LinkedIn">
+            <a href="https://linkedin.com" target="_blank" class="w-8 h-8 rounded-full bg-slate-800 hover:bg-white text-slate-300 hover:text-[#0a66c2] border border-slate-700 flex items-center justify-center transition-all duration-200 shadow-md hover:scale-110" title="LinkedIn" aria-label="LinkedIn">
               <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
                 <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
               </svg>
             </a>
 
             <!-- YouTube -->
-            <a href="https://youtube.com" target="_blank" class="w-8 h-8 rounded-full bg-white/15 hover:bg-white text-white hover:text-[#ff0000] border border-white/30 flex items-center justify-center transition-all duration-200 shadow-md hover:scale-110" title="YouTube" aria-label="YouTube">
+            <a href="https://youtube.com" target="_blank" class="w-8 h-8 rounded-full bg-slate-800 hover:bg-white text-slate-300 hover:text-[#ff0000] border border-slate-700 flex items-center justify-center transition-all duration-200 shadow-md hover:scale-110" title="YouTube" aria-label="YouTube">
               <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
                 <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
               </svg>
@@ -296,10 +289,10 @@
 
         <!-- Links Column 1: Company -->
         <div>
-          <h4 class="text-xs font-black text-amber-300 uppercase tracking-wider mb-4 pb-1.5 border-b border-rose-600/60">
+          <h4 class="text-xs font-black text-amber-400 uppercase tracking-wider mb-4 pb-1.5 border-b border-slate-800">
             Company
           </h4>
-          <ul class="space-y-2.5 text-xs text-rose-100">
+          <ul class="space-y-2.5 text-xs text-slate-300">
             <li><a href="#" data-nav="marketplace" class="hover:text-white hover:underline transition">Home Marketplace</a></li>
             <li><a href="#" data-nav="about" class="hover:text-white hover:underline transition">About Us</a></li>
             <li><a href="#" data-nav="discovery" class="hover:text-white hover:underline transition">Healthcare Discovery</a></li>
@@ -310,10 +303,10 @@
 
         <!-- Links Column 2: Healthcare Services -->
         <div>
-          <h4 class="text-xs font-black text-amber-300 uppercase tracking-wider mb-4 pb-1.5 border-b border-rose-600/60">
+          <h4 class="text-xs font-black text-amber-400 uppercase tracking-wider mb-4 pb-1.5 border-b border-slate-800">
             Care Services
           </h4>
-          <ul class="space-y-2.5 text-xs text-rose-100">
+          <ul class="space-y-2.5 text-xs text-slate-300">
             <li><a href="#" onclick="filterCategory('hospital')" class="hover:text-white hover:underline transition">Hospitals</a></li>
             <li><a href="#" onclick="filterCategory('clinic')" class="hover:text-white hover:underline transition">Specialist Clinics</a></li>
             <li><a href="#" onclick="filterCategory('diagnostic')" class="hover:text-white hover:underline transition">Diagnostic Labs</a></li>
@@ -325,12 +318,12 @@
 
         <!-- Links Column 3: For Care Providers & Legal -->
         <div>
-          <h4 class="text-xs font-black text-amber-300 uppercase tracking-wider mb-4 pb-1.5 border-b border-rose-600/60">
+          <h4 class="text-xs font-black text-amber-400 uppercase tracking-wider mb-4 pb-1.5 border-b border-slate-800">
             Providers & Legal
           </h4>
-          <ul class="space-y-2.5 text-xs text-rose-100">
-            <li><a href="#" onclick="navigateTo('list-your-care')" class="text-amber-300 font-black hover:underline transition">★ List Your Care Facility</a></li>
-            <li><a href="#" onclick="openProviderSignInModal('provider')" class="hover:text-white hover:underline transition font-bold">Provider Login</a></li>
+          <ul class="space-y-2.5 text-xs text-slate-300">
+            <li><a href="#" onclick="navigateTo('list-your-care')" class="text-amber-400 font-bold hover:underline transition">★ List Your Care Facility</a></li>
+            <li><a href="#" onclick="openProviderSignInModal('provider')" class="hover:text-white hover:underline transition">Provider Login</a></li>
             <li><a href="#" onclick="openUpgradeBadgeModal('prime')" class="hover:text-white hover:underline transition">Verification Badges</a></li>
             <li><a href="#" data-nav="about" class="hover:text-white hover:underline transition">Privacy Policy</a></li>
             <li><a href="#" data-nav="contact" class="hover:text-white hover:underline transition">Terms of Service</a></li>
@@ -340,13 +333,13 @@
 
       </div>
 
-      <!-- Bottom Bar -->
-      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-rose-200 gap-4">
+      <!-- Bottom Bar with Exact Requested Copyright -->
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 gap-4">
         <div>
-          © 2026 <strong class="text-white font-bold">Saino Health Pvt. Ltd.</strong> All rights reserved. Nepal's Premier Healthcare Ecosystem.
+          Saino Health 2026 all right reserved Saino Tech Ventures
         </div>
-        <div class="flex items-center space-x-4 text-rose-300">
-          <span>Kathmandu · Pokhara · Chitwan · Biratnagar · Butwal</span>
+        <div class="flex items-center space-x-4 text-slate-400 font-medium">
+          <span>Kathmandu · Pokhara · Chitwan · Biratnagar · Butwal · Nepalgunj · Dhangadhi</span>
         </div>
       </div>
 
