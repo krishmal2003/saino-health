@@ -1702,6 +1702,94 @@ window.SAINO_DATA = {
     { id: 'loc-4', name: 'Pokhara Lakeside Healthcare Zone', city: 'Pokhara', lat: 28.2096, lng: 83.9856, address: 'Lakeside, New Road & Chipledhunga', hospitalCount: 6, clinicCount: 19, icon: 'map-pin', featured: 'Pokhara Lakeside Hospital, Physio Hub' },
     { id: 'loc-5', name: 'Chitwan Medical City Corridor', city: 'Chitwan', lat: 27.6833, lng: 84.4333, address: 'Bharatpur, Narayangarh Medical College Road', hospitalCount: 7, clinicCount: 22, icon: 'map-pin', featured: 'Chitwan Cancer Screening, MediCare' },
     { id: 'loc-6', name: 'Biratnagar Eastern Regional Hub', city: 'Biratnagar', lat: 26.4525, lng: 87.2718, address: 'Main Road & Hospital Chowk', hospitalCount: 6, clinicCount: 18, icon: 'map-pin', featured: 'Biratnagar MediCare, Eastern Bloodline' }
+  ],
+
+  // Diagnostic Packages (Matching Figma Homepage Layout)
+  diagnosticPackages: [
+    {
+      id: 'pkg-1',
+      title: 'Comprehensive Full Body Checkup',
+      testsCount: '64 Essential Tests (CBC, Lipid, LFT, KFT, Thyroid, Sugar, ECG)',
+      originalPrice: 'Rs. 6,000',
+      discountedPrice: 'Rs. 4,500',
+      discount: '25% OFF',
+      hospital: 'Annapurna Diagnostics / CityCare Lab',
+      badge: 'POPULAR'
+    },
+    {
+      id: 'pkg-2',
+      title: 'Executive Cardiac Health Screening',
+      testsCount: 'ECHO, TMT Stress Test, Lipid Subfractions, Trop-I, Cardiac Dietetics',
+      originalPrice: 'Rs. 8,500',
+      discountedPrice: 'Rs. 6,500',
+      discount: '24% OFF',
+      hospital: 'Norvic International Hospital Lab',
+      badge: 'SPECIALIST'
+    },
+    {
+      id: 'pkg-3',
+      title: 'Senior Citizen Complete Wellness',
+      testsCount: 'Bone Mineral Density (DEXA), Vitamin D3/B12, PSA, Renal, Eye & Dental',
+      originalPrice: 'Rs. 7,000',
+      discountedPrice: 'Rs. 5,200',
+      discount: '26% OFF',
+      hospital: 'Patan LifeCare Hospital Network',
+      badge: 'RECOMMENDED'
+    }
+  ],
+
+  // Online / Immediate Doctors for Consultation Row
+  onlineDoctors: [
+    {
+      id: 'doc-1',
+      name: 'Dr. Anup Bastola',
+      role: 'Senior Infectious Disease & Tropical Specialist',
+      experience: '16+ Years Experience',
+      hospital: 'Sukraraj / Kathmandu Hospital',
+      image: 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=300&auto=format&fit=crop&q=80',
+      fee: 'Rs. 600',
+      status: 'Online Now'
+    },
+    {
+      id: 'doc-2',
+      name: 'Dr. Manisha Rawal',
+      role: 'Consultant Interventional Cardiologist',
+      experience: '12+ Years Experience',
+      hospital: 'Norvic Heart Institute',
+      image: 'https://images.unsplash.com/photo-1594824813629-9233f208eb67?w=300&auto=format&fit=crop&q=80',
+      fee: 'Rs. 800',
+      status: 'Online Now'
+    },
+    {
+      id: 'doc-3',
+      name: 'Dr. Bikash Karki',
+      role: 'Senior General & Laparoscopic Surgeon',
+      experience: '15+ Years Experience',
+      hospital: 'Civil Hospital',
+      image: 'https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=300&auto=format&fit=crop&q=80',
+      fee: 'Rs. 650',
+      status: 'Next Slot: 2 PM'
+    },
+    {
+      id: 'doc-4',
+      name: 'Dr. Sunita Gurung',
+      role: 'Senior Pediatrician & Neonatologist',
+      experience: '14+ Years Experience',
+      hospital: 'Kanti Children Partner',
+      image: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=300&auto=format&fit=crop&q=80',
+      fee: 'Rs. 500',
+      status: 'Online Now'
+    },
+    {
+      id: 'doc-5',
+      name: 'Dr. Ramesh Shrestha',
+      role: 'Consultant Orthopedic & Joint Surgeon',
+      experience: '18+ Years Experience',
+      hospital: 'B&B Trauma Center',
+      image: 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=300&auto=format&fit=crop&q=80',
+      fee: 'Rs. 750',
+      status: 'Next Slot: 3:30 PM'
+    }
   ]
 };
 

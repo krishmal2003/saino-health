@@ -51,23 +51,52 @@
   border: 1px solid rgba(51, 65, 85, 0.8);
 }
 
-/* Verification Badges */
-.badge-pro {
-  background: linear-gradient(135deg, #0284c7 0%, #2563eb 100%);
+/* Verification Badges with High Customer Attraction & Glow */
+.badge-vvip {
+  background: linear-gradient(135deg, #3730a3 0%, #4f46e5 50%, #6366f1 100%);
   color: #ffffff;
-  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.25);
+  box-shadow: 0 4px 14px rgba(79, 70, 229, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+}
+
+.badge-vip {
+  background: linear-gradient(135deg, #b45309 0%, #f59e0b 50%, #fbbf24 100%);
+  color: #1e1b4b;
+  box-shadow: 0 4px 14px rgba(245, 158, 11, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.badge-pro {
+  background: linear-gradient(135deg, #881337 0%, #b91c1c 50%, #dc2626 100%);
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(185, 28, 28, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.45);
 }
 
 .badge-prime {
-  background: linear-gradient(135deg, #059669 0%, #0d9488 100%);
+  background: linear-gradient(135deg, #047857 0%, #059669 50%, #10b981 100%);
   color: #ffffff;
-  box-shadow: 0 2px 8px rgba(5, 150, 105, 0.25);
+  box-shadow: 0 4px 14px rgba(5, 150, 105, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.45);
 }
 
 .badge-listed {
-  background: #f1f5f9;
-  color: #64748b;
-  border: 1px solid #cbd5e1;
+  background: rgba(15, 23, 42, 0.8);
+  color: #f1f5f9;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes badge-shimmer {
+  0% { filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.2)); }
+  50% { filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.6)); }
+  100% { filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.2)); }
+}
+
+.shimmer-glow {
+  animation: badge-shimmer 3s infinite ease-in-out;
 }
 
 /* Pulse animation for 24/7 status */
