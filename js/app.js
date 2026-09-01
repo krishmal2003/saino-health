@@ -75,11 +75,11 @@ function navigateTo(viewName, filterParams = null) {
   // Update active nav links
   document.querySelectorAll('[data-nav]').forEach(link => {
     if (link.getAttribute('data-nav') === viewName) {
-      link.classList.add('text-rose-600', 'font-semibold');
-      link.classList.remove('text-slate-600');
+      link.classList.add('text-saino-red', 'font-semibold');
+      link.classList.remove('text-saino-gray-600');
     } else {
-      link.classList.remove('text-rose-600', 'font-semibold');
-      link.classList.add('text-slate-600');
+      link.classList.remove('text-saino-red', 'font-semibold');
+      link.classList.add('text-saino-gray-600');
     }
   });
 
@@ -160,7 +160,7 @@ function renderMarketplaceView() {
 
   return `
     <!-- 1. BIG RED BILLBOARD HERO BANNER (Connecting Nepal to Better Care) -->
-    <section class="mb-14 rounded-3xl bg-[#991b1b] text-white p-8 sm:p-12 shadow-xl relative overflow-hidden text-center">
+    <section class="mb-14 rounded-3xl bg-saino-red text-white p-8 sm:p-12 shadow-xl relative overflow-hidden text-center">
       <div class="relative z-10 max-w-2xl mx-auto">
         <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-white/15 text-white text-xs font-bold mb-3 backdrop-blur-xs">
           <span class="w-2 h-2 rounded-full bg-amber-400"></span>
@@ -172,7 +172,7 @@ function renderMarketplaceView() {
         <p class="text-xs sm:text-base text-rose-100 mb-6 leading-relaxed max-w-xl mx-auto">
           Nepal's most trusted healthcare discovery & direct WhatsApp booking ecosystem.
         </p>
-        <button onclick="navigateTo('discovery')" class="px-6 py-3 rounded-full bg-white text-[#991b1b] font-black text-xs sm:text-sm hover:bg-rose-50 transition shadow-lg inline-flex items-center space-x-2">
+        <button onclick="navigateTo('discovery')" class="px-6 py-3 rounded-full bg-white text-saino-red font-black text-xs sm:text-sm hover:bg-rose-50 transition shadow-lg inline-flex items-center space-x-2">
           <span>EXPLORE NOW</span>
           <i data-lucide="arrow-right" class="w-4 h-4"></i>
         </button>
@@ -185,15 +185,15 @@ function renderMarketplaceView() {
     <!-- 2. DOCTORS TRUSTED HEALTHCARE PROVIDERS (HOSPITALS SECTION) -->
     <section class="mb-14">
       <div class="flex items-center justify-between mb-2">
-        <h2 class="text-lg sm:text-xl font-bold text-slate-900">Doctors trusted healthcare providers</h2>
-        <button onclick="filterCategory('hospital')" class="text-xs font-bold text-[#991b1b] hover:underline flex items-center space-x-1">
+        <h2 class="text-lg sm:text-xl font-bold text-saino-gray-900">Doctors trusted healthcare providers</h2>
+        <button onclick="filterCategory('hospital')" class="text-xs font-bold text-saino-red hover:underline flex items-center space-x-1">
           <span>Explore all hospital providers</span>
           <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
         </button>
       </div>
-      <div class="flex items-center justify-between mb-6 pb-2 border-b border-slate-100">
-        <span class="text-xs font-extrabold uppercase tracking-wider text-slate-500">Hospitals</span>
-        <button onclick="filterCategory('hospital')" class="text-xs font-black text-slate-700 hover:text-[#991b1b]">
+      <div class="flex items-center justify-between mb-6 pb-2 border-b border-saino-gray-100">
+        <span class="text-xs font-extrabold uppercase tracking-wider text-saino-gray-500">Hospitals</span>
+        <button onclick="filterCategory('hospital')" class="text-xs font-black text-saino-gray-700 hover:text-saino-red">
           VIEW ALL (${hospitals.length}) &gt;
         </button>
       </div>
@@ -210,9 +210,9 @@ function renderMarketplaceView() {
         
         <!-- LEFT: CLINICS COLUMN (7 cols) - View All -->
         <div class="lg:col-span-7">
-          <div class="flex items-center justify-between mb-5 pb-2 border-b border-slate-200">
-            <h3 class="text-base sm:text-lg font-black text-slate-900 uppercase tracking-wide">CLINICS</h3>
-            <button onclick="filterCategory('clinic')" class="text-xs font-bold text-[#991b1b] hover:underline">
+          <div class="flex items-center justify-between mb-5 pb-2 border-b border-saino-gray-200">
+            <h3 class="text-base sm:text-lg font-black text-saino-gray-900 uppercase tracking-wide">CLINICS</h3>
+            <button onclick="filterCategory('clinic')" class="text-xs font-bold text-saino-red hover:underline">
               View All (${clinics.length}) &gt;
             </button>
           </div>
@@ -224,9 +224,9 @@ function renderMarketplaceView() {
 
         <!-- RIGHT: TALK OF THE TOWN / PATIENT EXPERIENCES COLUMN (5 cols) - Read All -->
         <div class="lg:col-span-5">
-          <div class="flex items-center justify-between mb-5 pb-2 border-b border-slate-200">
-            <h3 class="text-base sm:text-lg font-black text-slate-900">Real experience from our patients</h3>
-            <button onclick="navigateTo('discovery')" class="text-xs font-bold text-[#991b1b] hover:underline">
+          <div class="flex items-center justify-between mb-5 pb-2 border-b border-saino-gray-200">
+            <h3 class="text-base sm:text-lg font-black text-saino-gray-900">Real experience from our patients</h3>
+            <button onclick="navigateTo('discovery')" class="text-xs font-bold text-saino-red hover:underline">
               Read All &gt;
             </button>
           </div>
@@ -243,11 +243,11 @@ function renderMarketplaceView() {
     <section class="mb-14">
       <div class="flex items-center justify-between mb-6">
         <div>
-          <span class="text-xs font-black uppercase tracking-wider text-[#991b1b]">Advanced Diagnostics & Pathology</span>
-          <h2 class="text-xl sm:text-2xl font-black text-slate-900">Top Diagnostic Centres & Labs in Nepal</h2>
-          <p class="text-xs text-slate-500">ISO-certified pathology, 3.0T MRI, 128 Slice CT & home sample collection</p>
+          <span class="text-xs font-black uppercase tracking-wider text-saino-red">Advanced Diagnostics & Pathology</span>
+          <h2 class="text-xl sm:text-2xl font-black text-saino-gray-900">Top Diagnostic Centres & Labs in Nepal</h2>
+          <p class="text-xs text-saino-gray-500">ISO-certified pathology, 3.0T MRI, 128 Slice CT & home sample collection</p>
         </div>
-        <button onclick="filterCategory('diagnostic')" class="text-xs font-bold text-[#991b1b] hover:underline">
+        <button onclick="filterCategory('diagnostic')" class="text-xs font-bold text-saino-red hover:underline">
           View All Labs &gt;
         </button>
       </div>
@@ -264,11 +264,11 @@ function renderMarketplaceView() {
           OFFER
         </div>
         <div>
-          <strong class="text-xs sm:text-sm font-extrabold text-slate-900 block">Book OPD Consultation via SAINO & get 20% discount on Diagnostic Lab tests.</strong>
-          <span class="text-xs text-slate-600">Valid across all partner hospitals and ISO-accredited pathlabs in Kathmandu Valley.</span>
+          <strong class="text-xs sm:text-sm font-extrabold text-saino-gray-900 block">Book OPD Consultation via SAINO & get 20% discount on Diagnostic Lab tests.</strong>
+          <span class="text-xs text-saino-gray-600">Valid across all partner hospitals and ISO-accredited pathlabs in Kathmandu Valley.</span>
         </div>
       </div>
-      <button onclick="openCustomWhatsApp('Special 20% Offer', 'Hi SAINO, I would like to claim the 20% Diagnostic Lab discount offer on my upcoming OPD appointment. (+977 9761427155)')" class="px-5 py-2.5 bg-[#991b1b] hover:bg-[#881337] text-white font-bold rounded-xl text-xs whitespace-nowrap shadow-md transition">
+      <button onclick="openCustomWhatsApp('Special 20% Offer', 'Hi SAINO, I would like to claim the 20% Diagnostic Lab discount offer on my upcoming OPD appointment. (+977 9761427155)')" class="px-5 py-2.5 bg-saino-red hover:bg-saino-red-dark text-white font-bold rounded-xl text-xs whitespace-nowrap shadow-md transition">
         CLAIM OFFER NOW
       </button>
     </section>
@@ -277,10 +277,10 @@ function renderMarketplaceView() {
     <section class="mb-14">
       <div class="flex items-center justify-between mb-6">
         <div>
-          <span class="text-xs font-black uppercase tracking-wider text-[#991b1b]">Preventive Wellness</span>
-          <h2 class="text-xl sm:text-2xl font-black text-slate-900">Diagnostic Packages</h2>
+          <span class="text-xs font-black uppercase tracking-wider text-saino-red">Preventive Wellness</span>
+          <h2 class="text-xl sm:text-2xl font-black text-saino-gray-900">Diagnostic Packages</h2>
         </div>
-        <button onclick="filterCategory('diagnostic')" class="text-xs font-bold text-[#991b1b] hover:underline">
+        <button onclick="filterCategory('diagnostic')" class="text-xs font-bold text-saino-red hover:underline">
           View All Packages &gt;
         </button>
       </div>
@@ -291,31 +291,31 @@ function renderMarketplaceView() {
     </section>
 
     <!-- 7. COMPARE BEFORE YOU BOOK WIDGET -->
-    <section class="mb-14 bg-white rounded-3xl border border-slate-200 p-6 sm:p-8 shadow-sm">
+    <section class="mb-14 bg-white rounded-3xl border border-saino-gray-200 p-6 sm:p-8 shadow-sm">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
         <div class="lg:col-span-4">
-          <span class="text-xs font-black uppercase tracking-wider text-[#991b1b] mb-1 block">Decision Helper</span>
-          <h3 class="text-2xl font-black text-slate-900 leading-tight mb-2">Compare Before you book</h3>
-          <p class="text-xs sm:text-sm text-slate-600 mb-6 leading-relaxed">
+          <span class="text-xs font-black uppercase tracking-wider text-saino-red mb-1 block">Decision Helper</span>
+          <h3 class="text-2xl font-black text-saino-gray-900 leading-tight mb-2">Compare Before you book</h3>
+          <p class="text-xs sm:text-sm text-saino-gray-600 mb-6 leading-relaxed">
             Compare 25+ verified hospitals, clinics & labs side-by-side to find the right care, OPD pricing, and emergency facilities.
           </p>
-          <button onclick="navigateTo('discovery')" class="px-5 py-2.5 bg-[#991b1b] hover:bg-[#881337] text-white font-bold rounded-xl text-xs shadow-md transition">
+          <button onclick="navigateTo('discovery')" class="px-5 py-2.5 bg-saino-red hover:bg-saino-red-dark text-white font-bold rounded-xl text-xs shadow-md transition">
             COMPARE PROVIDERS
           </button>
         </div>
 
-        <div class="lg:col-span-8 bg-slate-50 p-5 rounded-2xl border border-slate-200">
+        <div class="lg:col-span-8 bg-saino-gray-50 p-5 rounded-2xl border border-saino-gray-200">
           <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
             <!-- Hospital A -->
-            <div class="flex-1 bg-white p-4 rounded-xl border border-slate-200 shadow-xs text-xs w-full">
+            <div class="flex-1 bg-white p-4 rounded-xl border border-saino-gray-200 shadow-xs text-xs w-full">
               <div class="flex items-center space-x-3 mb-2">
                 <img src="https://images.unsplash.com/photo-1587351021759-3e566b6af7cc?w=120" class="w-10 h-10 rounded-lg object-cover">
                 <div>
-                  <strong class="text-slate-900 block font-bold text-xs">Norvic International Hospital</strong>
-                  <span class="text-amber-500 font-bold">⭐ 4.8</span> · <span class="text-slate-400">Thapathali</span>
+                  <strong class="text-saino-gray-900 block font-bold text-xs">Norvic International Hospital</strong>
+                  <span class="text-amber-500 font-bold">⭐ 4.8</span> · <span class="text-saino-gray-400">Thapathali</span>
                 </div>
               </div>
-              <div class="space-y-1 text-slate-600 text-[11px] pt-2 border-t border-slate-100">
+              <div class="space-y-1 text-saino-gray-600 text-[11px] pt-2 border-t border-saino-gray-100">
                 <div>OPD Consultation: <strong>Rs. 1,000</strong></div>
                 <div>24/7 Emergency: <strong>Yes (Level-1)</strong></div>
               </div>
@@ -327,15 +327,15 @@ function renderMarketplaceView() {
             </div>
 
             <!-- Hospital B -->
-            <div class="flex-1 bg-white p-4 rounded-xl border border-slate-200 shadow-xs text-xs w-full">
+            <div class="flex-1 bg-white p-4 rounded-xl border border-saino-gray-200 shadow-xs text-xs w-full">
               <div class="flex items-center space-x-3 mb-2">
                 <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=120" class="w-10 h-10 rounded-lg object-cover">
                 <div>
-                  <strong class="text-slate-900 block font-bold text-xs">Grande International Hospital</strong>
-                  <span class="text-amber-500 font-bold">⭐ 4.7</span> · <span class="text-slate-400">Dhapasi</span>
+                  <strong class="text-saino-gray-900 block font-bold text-xs">Grande International Hospital</strong>
+                  <span class="text-amber-500 font-bold">⭐ 4.7</span> · <span class="text-saino-gray-400">Dhapasi</span>
                 </div>
               </div>
-              <div class="space-y-1 text-slate-600 text-[11px] pt-2 border-t border-slate-100">
+              <div class="space-y-1 text-saino-gray-600 text-[11px] pt-2 border-t border-saino-gray-100">
                 <div>OPD Consultation: <strong>Rs. 950</strong></div>
                 <div>24/7 Emergency: <strong>Yes (Level-1)</strong></div>
               </div>
@@ -347,12 +347,12 @@ function renderMarketplaceView() {
 
     <!-- 8. EMERGENCY CARE: BLOOD BANKS & AMBULANCES (2 COLUMNS - ENQUIRE NOW WHATSAPP) -->
     <section class="mb-14">
-      <div class="flex items-center justify-between mb-6 pb-3 border-b border-slate-200">
+      <div class="flex items-center justify-between mb-6 pb-3 border-b border-saino-gray-200">
         <div>
-          <span class="text-xs font-black uppercase tracking-wider text-[#991b1b]">24/7 Rapid Response</span>
-          <h2 class="text-xl sm:text-2xl font-black text-slate-900">Emergency Care & Blood Banks in Nepal</h2>
+          <span class="text-xs font-black uppercase tracking-wider text-saino-red">24/7 Rapid Response</span>
+          <h2 class="text-xl sm:text-2xl font-black text-saino-gray-900">Emergency Care & Blood Banks in Nepal</h2>
         </div>
-        <button onclick="navigateTo('discovery')" class="text-xs font-bold text-[#991b1b] hover:underline">
+        <button onclick="navigateTo('discovery')" class="text-xs font-bold text-saino-red hover:underline">
           Emergency Directory &gt;
         </button>
       </div>
@@ -360,20 +360,20 @@ function renderMarketplaceView() {
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
         
         <!-- Left Column: Blood Banks -->
-        <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-xs">
-          <div class="flex items-center justify-between mb-4 pb-2 border-b border-slate-100">
-            <h4 class="text-xs font-black uppercase text-slate-700 flex items-center space-x-1.5">
-              <i data-lucide="droplet" class="w-4 h-4 text-rose-600"></i>
+        <div class="bg-white rounded-2xl border border-saino-gray-200 p-5 shadow-xs">
+          <div class="flex items-center justify-between mb-4 pb-2 border-b border-saino-gray-100">
+            <h4 class="text-xs font-black uppercase text-saino-gray-700 flex items-center space-x-1.5">
+              <i data-lucide="droplet" class="w-4 h-4 text-saino-red"></i>
               <span>Blood Banks</span>
             </h4>
-            <span class="text-[11px] text-slate-400 font-semibold">Available Units</span>
+            <span class="text-[11px] text-saino-gray-400 font-semibold">Available Units</span>
           </div>
           <div class="space-y-3 text-xs">
             ${emergencyBloodBanks.map(b => `
-              <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div class="p-3.5 rounded-xl bg-saino-gray-50 border border-saino-gray-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                 <div>
-                  <strong class="text-slate-900 block font-bold text-xs">${b.name}</strong>
-                  <span class="text-[11px] text-slate-500">${b.area} · <span class="text-rose-600 font-semibold">${b.special}</span></span>
+                  <strong class="text-saino-gray-900 block font-bold text-xs">${b.name}</strong>
+                  <span class="text-[11px] text-saino-gray-500">${b.area} · <span class="text-saino-red font-semibold">${b.special}</span></span>
                 </div>
                 <div class="flex items-center space-x-2 flex-shrink-0">
                   <button onclick="openCustomWhatsApp('Blood Bank Enquiry: ${b.name}', 'URGENT: I need blood group availability and assistance at ${b.name}. (Patient query via SAINO HEALTH: +977 9761427155)')" class="px-3 py-1.5 bg-[#25d366] hover:bg-[#1ebd5a] text-white font-bold rounded-lg transition text-[11px] flex items-center space-x-1.5 shadow-xs whitespace-nowrap">
@@ -387,20 +387,20 @@ function renderMarketplaceView() {
         </div>
 
         <!-- Right Column: Ambulances -->
-        <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-xs">
-          <div class="flex items-center justify-between mb-4 pb-2 border-b border-slate-100">
-            <h4 class="text-xs font-black uppercase text-slate-700 flex items-center space-x-1.5">
-              <i data-lucide="truck" class="w-4 h-4 text-rose-600"></i>
+        <div class="bg-white rounded-2xl border border-saino-gray-200 p-5 shadow-xs">
+          <div class="flex items-center justify-between mb-4 pb-2 border-b border-saino-gray-100">
+            <h4 class="text-xs font-black uppercase text-saino-gray-700 flex items-center space-x-1.5">
+              <i data-lucide="truck" class="w-4 h-4 text-saino-red"></i>
               <span>Ambulances</span>
             </h4>
-            <span class="text-[11px] text-slate-400 font-semibold">24/7 Dispatch</span>
+            <span class="text-[11px] text-saino-gray-400 font-semibold">24/7 Dispatch</span>
           </div>
           <div class="space-y-3 text-xs">
             ${emergencyAmbulances.map(a => `
-              <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div class="p-3.5 rounded-xl bg-saino-gray-50 border border-saino-gray-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                 <div>
-                  <strong class="text-slate-900 block font-bold text-xs">${a.name}</strong>
-                  <span class="text-[11px] text-slate-500">${a.area} · <span class="text-emerald-600 font-semibold">${a.opd}</span></span>
+                  <strong class="text-saino-gray-900 block font-bold text-xs">${a.name}</strong>
+                  <span class="text-[11px] text-saino-gray-500">${a.area} · <span class="text-emerald-600 font-semibold">${a.opd}</span></span>
                 </div>
                 <div class="flex items-center space-x-2 flex-shrink-0">
                   <button onclick="openCustomWhatsApp('Ambulance Dispatch Enquiry: ${a.name}', 'EMERGENCY: Immediate ambulance dispatch enquiry for ${a.name}. (Patient query via SAINO HEALTH: +977 9761427155)')" class="px-3 py-1.5 bg-[#25d366] hover:bg-[#1ebd5a] text-white font-bold rounded-lg transition text-[11px] flex items-center space-x-1.5 shadow-xs whitespace-nowrap">
@@ -420,26 +420,26 @@ function renderMarketplaceView() {
     <section class="mb-14">
       <div class="flex items-center justify-between mb-2">
         <div>
-          <span class="text-xs font-black uppercase tracking-wider text-[#991b1b]">Direct Web Booking</span>
-          <h2 class="text-xl sm:text-2xl font-black text-slate-900">Book Doctor Consultation & OPD Tokens</h2>
-          <p class="text-xs text-slate-500">Book specialist consultant tokens across top partner hospitals & clinics in Nepal via direct WhatsApp query.</p>
+          <span class="text-xs font-black uppercase tracking-wider text-saino-red">Direct Web Booking</span>
+          <h2 class="text-xl sm:text-2xl font-black text-saino-gray-900">Book Doctor Consultation & OPD Tokens</h2>
+          <p class="text-xs text-saino-gray-500">Book specialist consultant tokens across top partner hospitals & clinics in Nepal via direct WhatsApp query.</p>
         </div>
       </div>
 
       <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 mt-6">
         ${onlineDoctors.map(doc => `
-          <div class="bg-white rounded-2xl border border-slate-200 p-4 text-center shadow-xs flex flex-col items-center justify-between hover:border-rose-300 transition">
+          <div class="bg-white rounded-2xl border border-saino-gray-200 p-4 text-center shadow-xs flex flex-col items-center justify-between hover:border-saino-red/30 transition">
             <div>
-              <div class="relative w-16 h-16 rounded-full overflow-hidden mx-auto mb-2 border-2 border-[#991b1b]/20 bg-slate-100">
+              <div class="relative w-16 h-16 rounded-full overflow-hidden mx-auto mb-2 border-2 border-saino-red/20 bg-saino-gray-100">
                 <img src="${doc.image}" alt="${doc.name}" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=300&auto=format&fit=crop&q=80'">
                 <span class="absolute bottom-0 right-0 w-3.5 h-3.5 bg-emerald-500 border-2 border-white rounded-full"></span>
               </div>
-              <strong class="text-xs font-bold text-slate-900 block truncate">${doc.name}</strong>
-              <span class="text-[10px] text-slate-500 block truncate mt-0.5">${doc.role}</span>
+              <strong class="text-xs font-bold text-saino-gray-900 block truncate">${doc.name}</strong>
+              <span class="text-[10px] text-saino-gray-500 block truncate mt-0.5">${doc.role}</span>
               <span class="text-[10px] text-sky-700 font-semibold block truncate mt-0.5">${doc.hospital}</span>
               <span class="text-[10px] font-bold text-emerald-600 block mt-1">OPD Fee: ${doc.fee}</span>
             </div>
-            <button onclick="openCustomWhatsApp('Doctor OPD Consultation: ${doc.name}', 'Hi SAINO Health, I would like to book an OPD consultation token with ${doc.name} (${doc.role}) at ${doc.hospital}. Please confirm available time slots. (+977 9761427155)')" class="mt-3 w-full py-1.5 bg-[#991b1b] hover:bg-[#881337] text-white font-bold rounded-xl text-[11px] shadow-xs transition flex items-center justify-center space-x-1">
+            <button onclick="openCustomWhatsApp('Doctor OPD Consultation: ${doc.name}', 'Hi SAINO Health, I would like to book an OPD consultation token with ${doc.name} (${doc.role}) at ${doc.hospital}. Please confirm available time slots. (+977 9761427155)')" class="mt-3 w-full py-1.5 bg-saino-red hover:bg-saino-red-dark text-white font-bold rounded-xl text-[11px] shadow-xs transition flex items-center justify-center space-x-1">
               <i data-lucide="calendar" class="w-3 h-3"></i>
               <span>BOOK OPD</span>
             </button>
@@ -449,15 +449,15 @@ function renderMarketplaceView() {
     </section>
 
     <!-- 10. ARE YOU A HEALTHCARE PROVIDER? (ONBOARDING BANNER) -->
-    <section class="mb-14 bg-slate-50 rounded-3xl border border-slate-200 p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+    <section class="mb-14 bg-saino-gray-50 rounded-3xl border border-saino-gray-200 p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6">
       <div>
-        <span class="text-xs font-black uppercase tracking-wider text-[#991b1b] block mb-1">Provider Network</span>
-        <h3 class="text-xl sm:text-2xl font-black text-slate-900">Are you a Healthcare Provider in Nepal?</h3>
-        <p class="text-xs sm:text-sm text-slate-600 mt-1">
+        <span class="text-xs font-black uppercase tracking-wider text-saino-red block mb-1">Provider Network</span>
+        <h3 class="text-xl sm:text-2xl font-black text-saino-gray-900">Are you a Healthcare Provider in Nepal?</h3>
+        <p class="text-xs sm:text-sm text-saino-gray-600 mt-1">
           Join 250+ verified hospitals, clinics, diagnostic labs & pharmacies on SAINO.
         </p>
       </div>
-      <button onclick="navigateTo('list-your-care')" class="px-6 py-3 bg-[#991b1b] hover:bg-[#881337] text-white font-black rounded-full text-xs sm:text-sm shadow-md hover:shadow-lg transition whitespace-nowrap">
+      <button onclick="navigateTo('list-your-care')" class="px-6 py-3 bg-saino-red hover:bg-saino-red-dark text-white font-black rounded-full text-xs sm:text-sm shadow-md hover:shadow-lg transition whitespace-nowrap">
         LIST YOUR CARE
       </button>
     </section>
@@ -465,19 +465,19 @@ function renderMarketplaceView() {
     <!-- 11. DIGITALLY CONNECTED (NEPAL MAP GRAPHIC) -->
     <section class="mb-14 bg-gradient-to-r from-sky-50 via-white to-sky-50 rounded-3xl border border-sky-100 p-8 sm:p-10 flex flex-col md:flex-row items-center justify-between gap-8">
       <div class="max-w-md">
-        <h2 class="text-2xl sm:text-3xl font-black text-slate-900 mb-2">
-          Digitally <span class="text-[#991b1b]">Connected</span>
+        <h2 class="text-2xl sm:text-3xl font-black text-saino-gray-900 mb-2">
+          Digitally <span class="text-saino-red">Connected</span>
         </h2>
-        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+        <p class="text-xs sm:text-sm text-saino-gray-600 leading-relaxed">
           An all-in-one healthcare directory linking patients to verified providers across all 7 provinces of Nepal.
         </p>
       </div>
       <div class="flex-1 flex justify-center">
         <div class="relative w-full max-w-md h-36 bg-sky-100/50 rounded-2xl border border-sky-200/60 p-4 flex items-center justify-center overflow-hidden">
           <div class="text-center text-xs font-bold text-sky-800 space-y-1">
-            <i data-lucide="network" class="w-8 h-8 mx-auto text-[#991b1b]"></i>
+            <i data-lucide="network" class="w-8 h-8 mx-auto text-saino-red"></i>
             <span>Kathmandu · Pokhara · Chitwan · Biratnagar · Butwal · Nepalgunj · Dhangadhi</span>
-            <span class="text-[10px] text-slate-500 block">7 Provinces Connected</span>
+            <span class="text-[10px] text-saino-gray-500 block">7 Provinces Connected</span>
           </div>
         </div>
       </div>
@@ -488,33 +488,33 @@ function renderMarketplaceView() {
 // Render Horizontal Clinic Card (Matching Figma 2-Column Left Layout)
 function renderHorizontalClinicCard(c) {
   return `
-    <div class="bg-white rounded-2xl border border-slate-200 p-4 shadow-xs hover:shadow-md transition flex flex-col sm:flex-row gap-4">
-      <div class="w-full sm:w-36 h-32 sm:h-auto rounded-xl overflow-hidden bg-slate-100 flex-shrink-0 relative">
+    <div class="bg-white rounded-2xl border border-saino-gray-200 p-4 shadow-xs hover:shadow-md transition flex flex-col sm:flex-row gap-4">
+      <div class="w-full sm:w-36 h-32 sm:h-auto rounded-xl overflow-hidden bg-saino-gray-100 flex-shrink-0 relative">
         <img src="${c.image}" alt="${c.name}" class="w-full h-full object-cover">
-        <span class="absolute top-2 left-2 px-2 py-0.5 rounded-md text-[10px] font-black bg-[#991b1b] text-white shadow-xs">
+        <span class="absolute top-2 left-2 px-2 py-0.5 rounded-md text-[10px] font-black bg-saino-red text-white shadow-xs">
           ${c.badge || 'SAINO PRO'}
         </span>
       </div>
       <div class="flex-1 flex flex-col justify-between text-xs">
         <div>
           <div class="flex items-center justify-between mb-1">
-            <h4 class="text-sm font-bold text-slate-900 leading-tight">${c.name}</h4>
+            <h4 class="text-sm font-bold text-saino-gray-900 leading-tight">${c.name}</h4>
           </div>
           <div class="flex items-center space-x-1 text-amber-500 font-bold text-xs mb-1.5">
             <span>⭐</span>
-            <span class="text-slate-900">${c.rating}</span>
-            <span class="text-slate-400 font-normal">(${c.reviews} Reviews)</span>
+            <span class="text-saino-gray-900">${c.rating}</span>
+            <span class="text-saino-gray-400 font-normal">(${c.reviews} Reviews)</span>
           </div>
-          <div class="text-[11px] text-slate-600 mb-1">
-            <strong class="text-slate-800">${c.doctor || c.special || 'Specialist Consultant'}</strong>
+          <div class="text-[11px] text-saino-gray-600 mb-1">
+            <strong class="text-saino-gray-800">${c.doctor || c.special || 'Specialist Consultant'}</strong>
           </div>
-          <div class="text-[11px] text-slate-500 flex items-center mb-2">
-            <i data-lucide="map-pin" class="w-3 h-3 mr-1 text-[#991b1b] flex-shrink-0"></i>
+          <div class="text-[11px] text-saino-gray-500 flex items-center mb-2">
+            <i data-lucide="map-pin" class="w-3 h-3 mr-1 text-saino-red flex-shrink-0"></i>
             <span class="truncate">${c.area || 'Kathmandu, Nepal'}</span>
           </div>
         </div>
-        <div class="pt-2 border-t border-slate-100 flex items-center justify-between">
-          <button onclick="openCustomWhatsApp('Clinic Booking: ${c.name}', 'Hi SAINO, I want to book an appointment at ${c.name}.')" class="px-3.5 py-1.5 bg-[#991b1b] hover:bg-[#881337] text-white font-bold rounded-lg text-[11px] transition shadow-xs">
+        <div class="pt-2 border-t border-saino-gray-100 flex items-center justify-between">
+          <button onclick="openCustomWhatsApp('Clinic Booking: ${c.name}', 'Hi SAINO, I want to book an appointment at ${c.name}.')" class="px-3.5 py-1.5 bg-saino-red hover:bg-saino-red-dark text-white font-bold rounded-lg text-[11px] transition shadow-xs">
             Book on WhatsApp
           </button>
           <button onclick="filterCategory('clinic')" class="text-sky-600 hover:text-sky-800 font-semibold text-[11px] flex items-center space-x-0.5">
@@ -534,28 +534,28 @@ function renderTalkReviewItem(t, idx) {
   const initials = t.author ? t.author.split(' ').map(n => n[0]).join('').substring(0, 2) : 'PT';
 
   return `
-    <div class="bg-white rounded-2xl border border-slate-200 p-4 shadow-xs hover:shadow-md transition text-xs">
+    <div class="bg-white rounded-2xl border border-saino-gray-200 p-4 shadow-xs hover:shadow-md transition text-xs">
       <div class="flex items-center space-x-3 mb-2">
         <div class="w-8 h-8 rounded-full ${colorClass} text-white font-bold flex items-center justify-center text-xs flex-shrink-0 shadow-xs">
           ${initials}
         </div>
         <div class="truncate flex-1">
-          <strong class="text-slate-900 block font-bold text-xs truncate">${t.author}</strong>
+          <strong class="text-saino-gray-900 block font-bold text-xs truncate">${t.author}</strong>
           <div class="flex items-center space-x-1 text-amber-500 text-[10px]">
             <span>★★★★★</span>
-            <span class="text-slate-400">· 5.0</span>
+            <span class="text-saino-gray-400">· 5.0</span>
           </div>
         </div>
         <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full">
           Verified
         </span>
       </div>
-      <p class="text-slate-600 text-[11px] italic leading-relaxed mb-2">
+      <p class="text-saino-gray-600 text-[11px] italic leading-relaxed mb-2">
         "${t.body || t.title}"
       </p>
-      <div class="text-[10px] text-slate-400 flex items-center justify-between pt-1 border-t border-slate-100">
-        <span>Care at: <strong class="text-slate-700">${t.provider}</strong></span>
-        <button onclick="showToast('Liked review!')" class="text-rose-500 font-bold hover:underline">
+      <div class="text-[10px] text-saino-gray-400 flex items-center justify-between pt-1 border-t border-saino-gray-100">
+        <span>Care at: <strong class="text-saino-gray-700">${t.provider}</strong></span>
+        <button onclick="showToast('Liked review!')" class="text-saino-red font-bold hover:underline">
           ♥ Helpful
         </button>
       </div>
@@ -566,7 +566,7 @@ function renderTalkReviewItem(t, idx) {
 // Render Patient Story Card (Horizontal 3-card Showcase)
 function renderPatientStoryCard(s) {
   return `
-    <div class="bg-white rounded-3xl border border-slate-200 p-6 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+    <div class="bg-white rounded-3xl border border-saino-gray-200 p-6 shadow-sm hover:shadow-md transition flex flex-col justify-between">
       <div>
         <div class="flex items-center justify-between mb-3">
           <div class="flex items-center space-x-1 text-amber-500 text-sm">
@@ -576,13 +576,13 @@ function renderPatientStoryCard(s) {
             Verified Patient
           </span>
         </div>
-        <h4 class="text-sm font-bold text-slate-900 mb-2 leading-snug">${s.title}</h4>
-        <p class="text-xs text-slate-600 mb-4 leading-relaxed italic">"${s.body}"</p>
+        <h4 class="text-sm font-bold text-saino-gray-900 mb-2 leading-snug">${s.title}</h4>
+        <p class="text-xs text-saino-gray-600 mb-4 leading-relaxed italic">"${s.body}"</p>
       </div>
-      <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
+      <div class="pt-3 border-t border-saino-gray-100 flex items-center justify-between text-xs">
         <div>
-          <strong class="text-slate-900 block font-bold">${s.author}</strong>
-          <span class="text-[11px] text-slate-500">${s.role} · <span class="text-[#991b1b] font-semibold">${s.provider}</span></span>
+          <strong class="text-saino-gray-900 block font-bold">${s.author}</strong>
+          <span class="text-[11px] text-saino-gray-500">${s.role} · <span class="text-saino-red font-semibold">${s.provider}</span></span>
         </div>
       </div>
     </div>
@@ -592,28 +592,28 @@ function renderPatientStoryCard(s) {
 // Render Diagnostic Package Card
 function renderDiagnosticPackageCard(pkg) {
   return `
-    <div class="bg-white rounded-3xl border border-slate-200 p-6 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+    <div class="bg-white rounded-3xl border border-saino-gray-200 p-6 shadow-sm hover:shadow-md transition flex flex-col justify-between">
       <div>
         <div class="flex items-center justify-between mb-3">
-          <span class="px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-rose-50 text-rose-700 border border-rose-200">
+          <span class="px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-saino-red/10 text-saino-red-dark border border-saino-red/20">
             ${pkg.badge}
           </span>
           <span class="text-xs font-extrabold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-md">
             ${pkg.discount}
           </span>
         </div>
-        <h4 class="text-base font-bold text-slate-900 mb-2 leading-snug">${pkg.title}</h4>
-        <p class="text-xs text-slate-600 mb-4 leading-relaxed">${pkg.testsCount}</p>
-        <div class="text-xs text-slate-400 mb-4">
-          Partner: <strong class="text-slate-700">${pkg.hospital}</strong>
+        <h4 class="text-base font-bold text-saino-gray-900 mb-2 leading-snug">${pkg.title}</h4>
+        <p class="text-xs text-saino-gray-600 mb-4 leading-relaxed">${pkg.testsCount}</p>
+        <div class="text-xs text-saino-gray-400 mb-4">
+          Partner: <strong class="text-saino-gray-700">${pkg.hospital}</strong>
         </div>
       </div>
-      <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+      <div class="pt-4 border-t border-saino-gray-100 flex items-center justify-between">
         <div>
-          <span class="text-xs text-slate-400 line-through block">${pkg.originalPrice}</span>
-          <strong class="text-base font-black text-slate-900">${pkg.discountedPrice}</strong>
+          <span class="text-xs text-saino-gray-400 line-through block">${pkg.originalPrice}</span>
+          <strong class="text-base font-black text-saino-gray-900">${pkg.discountedPrice}</strong>
         </div>
-        <button onclick="openCustomWhatsApp('Diagnostic Package: ${pkg.title}', 'Hi SAINO, I would like to book the ${pkg.title} (${pkg.discountedPrice}) with home sample collection / lab visit.')" class="px-4 py-2 bg-[#991b1b] hover:bg-[#881337] text-white font-bold rounded-xl text-xs transition shadow-xs">
+        <button onclick="openCustomWhatsApp('Diagnostic Package: ${pkg.title}', 'Hi SAINO, I would like to book the ${pkg.title} (${pkg.discountedPrice}) with home sample collection / lab visit.')" class="px-4 py-2 bg-saino-red hover:bg-saino-red-dark text-white font-bold rounded-xl text-xs transition shadow-xs">
           BOOK NOW
         </button>
       </div>
@@ -627,13 +627,13 @@ function renderProviderCard(p) {
   if (p.verification === 'vvip') {
     badgeHtml = `<span class="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full text-xs font-black bg-gradient-to-r from-indigo-600 to-purple-700 text-white shadow-md backdrop-blur-sm"><i data-lucide="award" class="w-4 h-4 text-amber-300"></i><span>🏆 SAINO VVIP</span></span>`;
   } else if (p.verification === 'vip') {
-    badgeHtml = `<span class="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full text-xs font-black bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 shadow-md backdrop-blur-sm"><i data-lucide="crown" class="w-4 h-4 text-slate-950"></i><span>👑 SAINO Verified VIP</span></span>`;
+    badgeHtml = `<span class="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full text-xs font-black bg-gradient-to-r from-amber-500 to-amber-600 text-saino-gray-950 shadow-md backdrop-blur-sm"><i data-lucide="crown" class="w-4 h-4 text-saino-gray-950"></i><span>👑 SAINO Verified VIP</span></span>`;
   } else if (p.verification === 'pro') {
-    badgeHtml = `<span class="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full text-xs font-bold bg-[#0284c7] text-white shadow-md backdrop-blur-sm"><i data-lucide="check-circle-2" class="w-4 h-4 text-white"></i><span>✓ SAINO Verified Pro</span></span>`;
+    badgeHtml = `<span class="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full text-xs font-bold bg-saino-red text-white shadow-md backdrop-blur-sm"><i data-lucide="check-circle-2" class="w-4 h-4 text-white"></i><span>✓ SAINO Verified Pro</span></span>`;
   } else if (p.verification === 'prime') {
     badgeHtml = `<span class="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full text-xs font-bold bg-[#059669] text-white shadow-md backdrop-blur-sm"><i data-lucide="check-circle-2" class="w-4 h-4 text-white"></i><span>✓ SAINO Verified Prime</span></span>`;
   } else {
-    badgeHtml = `<span class="inline-flex items-center space-x-1.5 px-2.5 py-1 rounded-full text-[11px] font-bold bg-slate-900/80 text-white shadow-sm backdrop-blur-sm"><i data-lucide="check" class="w-3.5 h-3.5 text-slate-300"></i><span>Saino Listed</span></span>`;
+    badgeHtml = `<span class="inline-flex items-center space-x-1.5 px-2.5 py-1 rounded-full text-[11px] font-bold bg-saino-gray-800/80 text-white shadow-sm backdrop-blur-sm"><i data-lucide="check" class="w-3.5 h-3.5 text-saino-gray-300"></i><span>Saino Listed</span></span>`;
   }
 
   const categoryObj = window.SAINO_DATA.categories.find(c => c.id === p.category);
@@ -642,17 +642,17 @@ function renderProviderCard(p) {
   const leadInitial = p.leadDoctor ? p.leadDoctor.replace('Dr. ', '').replace('Pharm. ', '').charAt(0) : 'D';
 
   return `
-    <div class="provider-card bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition flex flex-col justify-between">
+    <div class="provider-card bg-white rounded-3xl border border-saino-gray-200 overflow-hidden shadow-sm hover:shadow-md transition flex flex-col justify-between">
       <div>
         <!-- Provider Photo / Header Cover with Top Badges -->
-        <div class="relative h-48 sm:h-52 w-full bg-slate-100 overflow-hidden">
+        <div class="relative h-48 sm:h-52 w-full bg-saino-gray-100 overflow-hidden">
           <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover">
           <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent"></div>
           
           <!-- Top Badge & Category (Exact Match to User Screenshot) -->
           <div class="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between z-10">
             <div>${badgeHtml}</div>
-            <span class="px-3 py-1 rounded-xl text-xs font-bold bg-white text-slate-800 shadow-md backdrop-blur-sm">
+            <span class="px-3 py-1 rounded-xl text-xs font-bold bg-white text-saino-gray-800 shadow-md backdrop-blur-sm">
               ${categoryName}
             </span>
           </div>
@@ -676,15 +676,15 @@ function renderProviderCard(p) {
         <!-- Provider Metrics & Details -->
         <div class="p-5 space-y-4">
           <!-- Rating & Engagement Stats Row -->
-          <div class="flex items-center justify-between text-xs pb-3 border-b border-slate-100">
+          <div class="flex items-center justify-between text-xs pb-3 border-b border-saino-gray-100">
             <div class="flex items-center space-x-1 text-amber-500 font-extrabold text-sm">
               <span>⭐</span>
-              <span class="text-slate-900">${p.rating}</span>
-              <span class="text-slate-400 font-medium text-xs">(${p.reviewsCount} Reviews)</span>
+              <span class="text-saino-gray-900">${p.rating}</span>
+              <span class="text-saino-gray-400 font-medium text-xs">(${p.reviewsCount} Reviews)</span>
             </div>
             <div class="flex items-center space-x-3 text-xs">
-              <span class="flex items-center space-x-1 text-slate-600 font-semibold">
-                <span class="text-rose-500">♥</span>
+              <span class="flex items-center space-x-1 text-saino-gray-600 font-semibold">
+                <span class="text-saino-red">♥</span>
                 <span>${(p.likesCount).toLocaleString()}</span>
               </span>
               <span class="flex items-center space-x-1 text-sky-700 font-semibold">
@@ -696,20 +696,20 @@ function renderProviderCard(p) {
 
           <!-- Lead Specialist / Doctor Card (Pill Container) -->
           ${p.leadDoctor ? `
-            <div class="bg-slate-50 p-3 rounded-2xl border border-slate-100 flex items-center space-x-3">
+            <div class="bg-saino-gray-50 p-3 rounded-2xl border border-saino-gray-100 flex items-center space-x-3">
               <div class="w-10 h-10 rounded-full bg-sky-100 text-sky-700 flex items-center justify-center flex-shrink-0 font-extrabold text-sm">
                 ${leadInitial}
               </div>
               <div class="text-xs truncate">
-                <span class="font-extrabold text-slate-900 block truncate text-xs sm:text-sm leading-snug">${p.leadDoctor}</span>
-                <span class="text-[11px] text-slate-500 truncate block mt-0.5">${p.leadDoctorRole}</span>
+                <span class="font-extrabold text-saino-gray-900 block truncate text-xs sm:text-sm leading-snug">${p.leadDoctor}</span>
+                <span class="text-[11px] text-saino-gray-500 truncate block mt-0.5">${p.leadDoctorRole}</span>
               </div>
             </div>
           ` : ''}
 
           <!-- Departments / Services Tags -->
           <div>
-            <span class="text-xs font-bold text-slate-500 block mb-2">Departments / Services:</span>
+            <span class="text-xs font-bold text-saino-gray-500 block mb-2">Departments / Services:</span>
             <div class="flex flex-wrap gap-1.5">
               ${p.departments.slice(0, 3).map(dept => `
                 <span class="px-3 py-1 bg-sky-50 text-sky-800 border border-sky-100 text-xs font-semibold rounded-xl">
@@ -717,24 +717,24 @@ function renderProviderCard(p) {
                 </span>
               `).join('')}
               ${p.departments.length > 3 ? `
-                <span class="px-2 py-1 bg-slate-100 text-slate-500 text-xs font-bold rounded-xl">+${p.departments.length - 3} more</span>
+                <span class="px-2 py-1 bg-saino-gray-100 text-saino-gray-500 text-xs font-bold rounded-xl">+${p.departments.length - 3} more</span>
               ` : ''}
             </div>
           </div>
 
           <!-- Opening Hours & Phone -->
-          <div class="text-xs text-slate-600 space-y-1.5 pt-1">
+          <div class="text-xs text-saino-gray-600 space-y-1.5 pt-1">
             <div class="flex items-center space-x-2">
-              <i data-lucide="clock" class="w-4 h-4 text-slate-400 flex-shrink-0"></i>
+              <i data-lucide="clock" class="w-4 h-4 text-saino-gray-400 flex-shrink-0"></i>
               <span class="truncate font-medium">${p.openingHours}</span>
             </div>
             ${p.showPhone ? `
               <div class="flex items-center space-x-2">
-                <i data-lucide="phone" class="w-4 h-4 text-slate-400 flex-shrink-0"></i>
-                <span class="font-semibold text-slate-800">${p.phone}</span>
+                <i data-lucide="phone" class="w-4 h-4 text-saino-gray-400 flex-shrink-0"></i>
+                <span class="font-semibold text-saino-gray-800">${p.phone}</span>
               </div>
             ` : `
-              <div class="flex items-center space-x-2 text-slate-400 text-[11px]">
+              <div class="flex items-center space-x-2 text-saino-gray-400 text-[11px]">
                 <i data-lucide="shield-alert" class="w-4 h-4 flex-shrink-0"></i>
                 <span>Direct Triage via SAINO WhatsApp</span>
               </div>
@@ -746,13 +746,13 @@ function renderProviderCard(p) {
       <!-- Action Buttons & Large WhatsApp Booking CTA -->
       <div class="p-5 pt-0 space-y-3">
         <!-- Interactive Engagement Row (Like, Interested, View Profile) -->
-        <div class="flex items-center justify-between text-xs py-2 border-t border-slate-100">
-          <button onclick="toggleLike('${p.id}')" class="flex items-center space-x-1 transition font-bold ${p.isLiked ? 'text-rose-600' : 'text-slate-600 hover:text-rose-600'}">
+        <div class="flex items-center justify-between text-xs py-2 border-t border-saino-gray-100">
+          <button onclick="toggleLike('${p.id}')" class="flex items-center space-x-1 transition font-bold ${p.isLiked ? 'text-saino-red' : 'text-saino-gray-600 hover:text-saino-red'}">
             <span>${p.isLiked ? '❤️' : '♡'}</span>
             <span>${p.isLiked ? 'Liked' : 'Like'}</span>
           </button>
 
-          <button onclick="toggleInterested('${p.id}')" class="flex items-center space-x-1 transition font-bold ${p.isInterested ? 'text-sky-600' : 'text-slate-600 hover:text-sky-600'}">
+          <button onclick="toggleInterested('${p.id}')" class="flex items-center space-x-1 transition font-bold ${p.isInterested ? 'text-sky-600' : 'text-saino-gray-600 hover:text-sky-600'}">
             <span>${p.isInterested ? '★' : '☆'}</span>
             <span>${p.isInterested ? 'Interested' : 'Mark Interested'}</span>
           </button>
@@ -786,45 +786,45 @@ function renderCampaignsView() {
       
       <!-- Top Title & Description -->
       <div class="text-center mb-8">
-        <div class="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-rose-50 border border-rose-200 text-rose-800 text-xs font-bold mb-3 shadow-xs">
-          <i data-lucide="tv" class="w-4 h-4 text-rose-600"></i>
+        <div class="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-saino-red/10 border border-saino-red/20 text-saino-red-dark text-xs font-bold mb-3 shadow-xs">
+          <i data-lucide="tv" class="w-4 h-4 text-saino-red"></i>
           <span class="uppercase tracking-wider">BIG SCREEN HEALTHCARE SHOWCASE · NEPAL</span>
         </div>
-        <h1 class="text-2xl sm:text-4xl md:text-5xl font-black text-slate-900 tracking-tight leading-tight mb-3">
+        <h1 class="text-2xl sm:text-4xl md:text-5xl font-black text-saino-gray-900 tracking-tight leading-tight mb-3">
           Promotional Campaigns & Big Screen Displays
         </h1>
-        <p class="text-sm sm:text-base text-slate-600 max-w-3xl mx-auto leading-relaxed">
+        <p class="text-sm sm:text-base text-saino-gray-600 max-w-3xl mx-auto leading-relaxed">
           Explore prominent healthcare awareness campaigns, super-speciality checkup drives, emergency bloodlines, and group health insurance schemes verified by SAINO HEALTH.
         </p>
       </div>
 
       <!-- Display Mode Selector & Controls -->
-      <div class="flex flex-wrap items-center justify-between gap-3 mb-6 bg-white p-3 rounded-2xl border border-slate-200 shadow-sm">
-        <div class="flex items-center space-x-2 text-xs font-bold text-slate-600">
-          <i data-lucide="monitor" class="w-4 h-4 text-rose-600"></i>
+      <div class="flex flex-wrap items-center justify-between gap-3 mb-6 bg-white p-3 rounded-2xl border border-saino-gray-200 shadow-sm">
+        <div class="flex items-center space-x-2 text-xs font-bold text-saino-gray-600">
+          <i data-lucide="monitor" class="w-4 h-4 text-saino-red"></i>
           <span>Display Mode:</span>
-          <div class="inline-flex rounded-xl p-1 bg-slate-100 border border-slate-200 text-xs">
-            <button onclick="setBigScreenMode('billboard')" class="px-3 py-1 rounded-lg font-bold transition ${mode === 'billboard' ? 'bg-slate-900 text-white shadow' : 'text-slate-600 hover:text-slate-900'}">
+          <div class="inline-flex rounded-xl p-1 bg-saino-gray-100 border border-saino-gray-200 text-xs">
+            <button onclick="setBigScreenMode('billboard')" class="px-3 py-1 rounded-lg font-bold transition ${mode === 'billboard' ? 'bg-saino-gray-900 text-white shadow' : 'text-saino-gray-600 hover:text-saino-gray-900'}">
               Digital Billboard (16:9)
             </button>
-            <button onclick="setBigScreenMode('spotlight')" class="px-3 py-1 rounded-lg font-bold transition ${mode === 'spotlight' ? 'bg-rose-600 text-white shadow' : 'text-slate-600 hover:text-slate-900'}">
+            <button onclick="setBigScreenMode('spotlight')" class="px-3 py-1 rounded-lg font-bold transition ${mode === 'spotlight' ? 'bg-saino-red text-white shadow' : 'text-saino-gray-600 hover:text-saino-gray-900'}">
               Spotlight Card
             </button>
-            <button onclick="setBigScreenMode('mobile')" class="px-3 py-1 rounded-lg font-bold transition ${mode === 'mobile' ? 'bg-indigo-600 text-white shadow' : 'text-slate-600 hover:text-slate-900'}">
+            <button onclick="setBigScreenMode('mobile')" class="px-3 py-1 rounded-lg font-bold transition ${mode === 'mobile' ? 'bg-indigo-600 text-white shadow' : 'text-saino-gray-600 hover:text-saino-gray-900'}">
               App Takeover Screen
             </button>
           </div>
         </div>
 
         <div class="flex items-center space-x-2">
-          <span class="text-xs text-slate-500 font-medium hidden sm:inline">Auto-Sliding Active</span>
-          <button onclick="prevBigScreenCampaign()" class="p-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 transition" title="Previous Campaign">
+          <span class="text-xs text-saino-gray-500 font-medium hidden sm:inline">Auto-Sliding Active</span>
+          <button onclick="prevBigScreenCampaign()" class="p-2 rounded-xl bg-saino-gray-100 hover:bg-saino-gray-200 text-saino-gray-700 transition" title="Previous Campaign">
             <i data-lucide="chevron-left" class="w-4 h-4"></i>
           </button>
-          <span class="text-xs font-bold text-slate-700 px-2">
+          <span class="text-xs font-bold text-saino-gray-700 px-2">
             ${AppState.activeBigScreenIndex + 1} / ${campaigns.length}
           </span>
-          <button onclick="nextBigScreenCampaign()" class="p-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 transition" title="Next Campaign">
+          <button onclick="nextBigScreenCampaign()" class="p-2 rounded-xl bg-saino-gray-100 hover:bg-saino-gray-200 text-saino-gray-700 transition" title="Next Campaign">
             <i data-lucide="chevron-right" class="w-4 h-4"></i>
           </button>
         </div>
@@ -850,7 +850,7 @@ function renderCampaignsView() {
                 <div>
                   <div class="flex items-center space-x-2">
                     <span class="text-xs font-bold text-white tracking-wide">${currentCamp.sponsor}</span>
-                    <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-rose-500 text-white shadow-sm">
+                    <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-saino-red text-white shadow-sm">
                       ${currentCamp.sponsorTier}
                     </span>
                   </div>
@@ -862,10 +862,10 @@ function renderCampaignsView() {
 
               <!-- Discount & Validity Badge -->
               <div class="flex items-center space-x-2">
-                <span class="px-3 py-1 rounded-xl text-xs font-black bg-amber-400 text-slate-950 shadow-md">
+                <span class="px-3 py-1 rounded-xl text-xs font-black bg-amber-400 text-saino-gray-950 shadow-md">
                   ★ ${currentCamp.discountBadge}
                 </span>
-                <span class="px-2.5 py-1 rounded-xl text-[11px] font-semibold bg-white/10 text-slate-200 border border-white/20">
+                <span class="px-2.5 py-1 rounded-xl text-[11px] font-semibold bg-white/10 text-saino-gray-200 border border-white/20">
                   ${currentCamp.validTill}
                 </span>
               </div>
@@ -879,7 +879,7 @@ function renderCampaignsView() {
               <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white leading-tight mb-3 drop-shadow-md">
                 ${currentCamp.title}
               </h2>
-              <p class="text-xs sm:text-sm md:text-base text-slate-200 leading-relaxed mb-6">
+              <p class="text-xs sm:text-sm md:text-base text-saino-gray-200 leading-relaxed mb-6">
                 ${currentCamp.subtitle}
               </p>
 
@@ -888,13 +888,13 @@ function renderCampaignsView() {
                 ${currentCamp.stats.map(s => `
                   <div class="bg-black/40 backdrop-blur-md border border-white/15 p-2.5 rounded-xl text-center">
                     <span class="text-xs sm:text-sm font-black text-rose-400 block">${s.val}</span>
-                    <span class="text-[10px] text-slate-300 font-medium block truncate">${s.label}</span>
+                    <span class="text-[10px] text-saino-gray-300 font-medium block truncate">${s.label}</span>
                   </div>
                 `).join('')}
               </div>
 
               <!-- Perks Checklist -->
-              <ul class="space-y-1.5 text-xs text-slate-100 mb-6">
+              <ul class="space-y-1.5 text-xs text-saino-gray-100 mb-6">
                 ${currentCamp.highlights.map(h => `
                   <li class="flex items-center space-x-2">
                     <span class="w-4 h-4 rounded-full bg-emerald-500 text-white flex items-center justify-center text-[10px] font-bold flex-shrink-0">✓</span>
@@ -938,8 +938,8 @@ function renderCampaignsView() {
       <!-- Quick Selector Thumbnails for all 6 Campaigns -->
       <div class="mb-14">
         <div class="flex items-center justify-between mb-4">
-          <h3 class="text-base md:text-lg font-bold text-slate-900">Featured Mega Campaigns in Nepal</h3>
-          <span class="text-xs text-slate-500">Click any card to load on Big Screen</span>
+          <h3 class="text-base md:text-lg font-bold text-saino-gray-900">Featured Mega Campaigns in Nepal</h3>
+          <span class="text-xs text-saino-gray-500">Click any card to load on Big Screen</span>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
@@ -949,22 +949,22 @@ function renderCampaignsView() {
               <div onclick="setBigScreenCampaign(${idx})" 
                 class="p-4 rounded-2xl border transition-all cursor-pointer flex flex-col justify-between ${
                   isActive 
-                    ? 'bg-rose-50/70 border-rose-500 ring-2 ring-rose-500/20 shadow-md scale-[1.02]' 
-                    : 'bg-white border-slate-200 hover:border-slate-300 shadow-xs'
+                    ? 'bg-saino-red/10 border-saino-red ring-2 ring-saino-red/20 shadow-md scale-[1.02]' 
+                    : 'bg-white border-saino-gray-200 hover:border-saino-gray-300 shadow-xs'
                 }">
                 <div>
                   <div class="flex items-center justify-between mb-2">
-                    <span class="px-2 py-0.5 rounded text-[10px] font-extrabold uppercase ${isActive ? 'bg-rose-600 text-white' : 'bg-slate-100 text-slate-600'}">
+                    <span class="px-2 py-0.5 rounded text-[10px] font-extrabold uppercase ${isActive ? 'bg-saino-red text-white' : 'bg-saino-gray-100 text-saino-gray-600'}">
                       ${camp.tag}
                     </span>
                     <span class="text-[11px] font-bold text-amber-600">${camp.discountBadge}</span>
                   </div>
-                  <h4 class="text-xs font-bold text-slate-900 leading-snug mb-1">${camp.title}</h4>
-                  <p class="text-[11px] text-slate-500 line-clamp-2 mb-3">${camp.subtitle}</p>
+                  <h4 class="text-xs font-bold text-saino-gray-900 leading-snug mb-1">${camp.title}</h4>
+                  <p class="text-[11px] text-saino-gray-500 line-clamp-2 mb-3">${camp.subtitle}</p>
                 </div>
-                <div class="pt-2 border-t border-slate-100 flex items-center justify-between text-[11px]">
-                  <span class="font-semibold text-slate-700 truncate">${camp.sponsor}</span>
-                  <span class="text-rose-600 font-bold flex-shrink-0">View Screen →</span>
+                <div class="pt-2 border-t border-saino-gray-100 flex items-center justify-between text-[11px]">
+                  <span class="font-semibold text-saino-gray-700 truncate">${camp.sponsor}</span>
+                  <span class="text-saino-red font-bold flex-shrink-0">View Screen →</span>
                 </div>
               </div>
             `;
@@ -973,33 +973,33 @@ function renderCampaignsView() {
       </div>
 
       <!-- "Advertise on SAINO Big Screen" Promotion Portal (For Hospitals & Advertisers) -->
-      <div class="p-6 md:p-10 rounded-3xl bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white shadow-xl relative overflow-hidden">
+      <div class="p-6 md:p-10 rounded-3xl bg-gradient-to-r from-saino-gray-900 via-indigo-950 to-saino-gray-900 text-white shadow-xl relative overflow-hidden">
         <div class="relative z-10 max-w-3xl">
-          <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-rose-500 text-white mb-3">
+          <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-saino-red text-white mb-3">
             FOR HEALTHCARE ADVERTISERS & HOSPITALS
           </span>
           <h3 class="text-xl md:text-3xl font-black mb-2">Launch Your Healthcare Campaign on SAINO Big Screen</h3>
-          <p class="text-xs md:text-sm text-slate-300 mb-6 leading-relaxed">
+          <p class="text-xs md:text-sm text-saino-gray-300 mb-6 leading-relaxed">
             Reach over 150,000+ monthly patients across Kathmandu Valley with premier billboard takeovers, category top pinning, and direct WhatsApp appointment leads.
           </p>
 
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6 text-center">
             <div class="p-3.5 rounded-xl bg-white/10 border border-white/10">
               <strong class="text-lg md:text-xl font-black text-rose-400 block">150,000+</strong>
-              <span class="text-xs text-slate-300">Monthly Patient Views</span>
+              <span class="text-xs text-saino-gray-300">Monthly Patient Views</span>
             </div>
             <div class="p-3.5 rounded-xl bg-white/10 border border-white/10">
               <strong class="text-lg md:text-xl font-black text-emerald-400 block">450+ Leads</strong>
-              <span class="text-xs text-slate-300">Avg WhatsApp Inquiries / Mo</span>
+              <span class="text-xs text-saino-gray-300">Avg WhatsApp Inquiries / Mo</span>
             </div>
             <div class="p-3.5 rounded-xl bg-white/10 border border-white/10">
               <strong class="text-lg md:text-xl font-black text-amber-400 block">#1 Top Rank</strong>
-              <span class="text-xs text-slate-300">Category Search Priority</span>
+              <span class="text-xs text-saino-gray-300">Category Search Priority</span>
             </div>
           </div>
 
           <div class="flex flex-wrap items-center gap-3">
-            <button onclick="openCustomWhatsApp('Big Screen Campaign Booking', 'Hi SAINO Advertising Team, I would like to book a Big Screen Healthcare Campaign on SAINO Health.')" class="px-5 py-3 rounded-xl bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs sm:text-sm shadow-md transition flex items-center space-x-2">
+            <button onclick="openCustomWhatsApp('Big Screen Campaign Booking', 'Hi SAINO Advertising Team, I would like to book a Big Screen Healthcare Campaign on SAINO Health.')" class="px-5 py-3 rounded-xl bg-saino-red hover:bg-saino-red-dark text-white font-bold text-xs sm:text-sm shadow-md transition flex items-center space-x-2">
               <i data-lucide="send" class="w-4 h-4"></i>
               <span>Book Big Screen Campaign Slot</span>
             </button>
@@ -1081,14 +1081,14 @@ function renderDiscoveryView() {
       
       <!-- Top Title & Navigation Quick Jump -->
       <div class="text-center mb-8 pt-2">
-        <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-rose-50 border border-rose-200 text-rose-800 text-xs font-black mb-3 shadow-xs">
-          <i data-lucide="compass" class="w-4 h-4 text-rose-600"></i>
+        <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-saino-red/10 border border-saino-red/20 text-saino-red-dark text-xs font-black mb-3 shadow-xs">
+          <i data-lucide="compass" class="w-4 h-4 text-saino-red"></i>
           <span class="uppercase tracking-wider">HEALTHCARE DISCOVERY PORTAL · NEPAL</span>
         </div>
-        <h1 class="text-2xl sm:text-4xl md:text-5xl font-black text-slate-900 tracking-tight leading-tight mb-2">
+        <h1 class="text-2xl sm:text-4xl md:text-5xl font-black text-saino-gray-900 tracking-tight leading-tight mb-2">
           Discovery & Verified Healthcare Map
         </h1>
-        <p class="text-xs sm:text-sm text-slate-600 max-w-2xl mx-auto leading-relaxed">
+        <p class="text-xs sm:text-sm text-saino-gray-600 max-w-2xl mx-auto leading-relaxed">
           Explore BookMyShow-style hospital campaigns, interactive Nepal medical maps, SAINO Rated top providers, and verified badges.
         </p>
       </div>
@@ -1096,15 +1096,15 @@ function renderDiscoveryView() {
       <!-- ========================================================================= -->
       <!-- 1. TOP SECTION: BOOKMYSHOW SCREEN PAGE / CINEMA CAROUSEL (< > & DOTS)     -->
       <!-- ========================================================================= -->
-      <div class="relative bg-slate-950 text-white rounded-3xl overflow-hidden shadow-2xl border border-slate-800 mb-14">
+      <div class="relative bg-saino-gray-950 text-white rounded-3xl overflow-hidden shadow-2xl border border-saino-gray-800 mb-14">
         
         <!-- Screen Marquee Header Bar -->
-        <div class="px-6 py-3 bg-gradient-to-r from-slate-900 via-rose-950/40 to-slate-900 border-b border-white/10 flex items-center justify-between">
+        <div class="px-6 py-3 bg-gradient-to-r from-saino-gray-900 via-saino-red/40 to-saino-gray-900 border-b border-white/10 flex items-center justify-between">
           <div class="flex items-center space-x-2 text-xs">
-            <span class="w-2.5 h-2.5 rounded-full bg-rose-500 animate-pulse"></span>
+            <span class="w-2.5 h-2.5 rounded-full bg-saino-red animate-pulse"></span>
             <span class="font-extrabold uppercase tracking-widest text-rose-400">SAINO BIG SCREEN · BOOKMYSHOW FORMAT</span>
           </div>
-          <div class="flex items-center space-x-2 text-xs text-slate-400">
+          <div class="flex items-center space-x-2 text-xs text-saino-gray-400">
             <span>Slide <strong>${AppState.discoverySlideIndex + 1}</strong> of ${campaigns.length}</span>
           </div>
         </div>
@@ -1115,7 +1115,7 @@ function renderDiscoveryView() {
           <!-- Background Banner with Dark Overlay -->
           <div class="absolute inset-0 z-0">
             <img src="${currentSlide.bannerImage}" alt="${currentSlide.title}" class="w-full h-full object-cover opacity-25 filter blur-[1px] transform scale-105 transition-all duration-700">
-            <div class="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/90 to-slate-900/70"></div>
+            <div class="absolute inset-0 bg-gradient-to-r from-saino-gray-950 via-saino-gray-950/90 to-saino-gray-900/70"></div>
           </div>
 
           <!-- Slide Content Layer -->
@@ -1123,14 +1123,14 @@ function renderDiscoveryView() {
             
             <div class="lg:col-span-8 space-y-4">
               <div class="flex flex-wrap items-center gap-2">
-                <span class="px-3 py-1 rounded-full bg-rose-600 text-white text-[10px] font-black uppercase tracking-wider shadow">
+                <span class="px-3 py-1 rounded-full bg-saino-red text-white text-[10px] font-black uppercase tracking-wider shadow">
                   ${currentSlide.tagline || 'PREMIER HEALTHCARE'}
                 </span>
                 <span class="px-3 py-1 rounded-full bg-white/10 border border-white/20 text-rose-200 text-[10px] font-bold">
                   ${currentSlide.tag || currentSlide.sponsorTier}
                 </span>
                 ${currentSlide.discountBadge ? `
-                  <span class="px-3 py-1 rounded-full bg-amber-400 text-slate-950 text-[10px] font-black shadow">
+                  <span class="px-3 py-1 rounded-full bg-amber-400 text-saino-gray-950 text-[10px] font-black shadow">
                     ⭐ ${currentSlide.discountBadge}
                   </span>
                 ` : ''}
@@ -1140,7 +1140,7 @@ function renderDiscoveryView() {
                 ${currentSlide.title}
               </h2>
 
-              <p class="text-xs sm:text-sm text-slate-300 max-w-2xl leading-relaxed">
+              <p class="text-xs sm:text-sm text-saino-gray-300 max-w-2xl leading-relaxed">
                 ${currentSlide.subtitle}
               </p>
 
@@ -1149,21 +1149,21 @@ function renderDiscoveryView() {
                 ${currentSlide.stats.map(st => `
                   <div class="p-3 rounded-2xl bg-white/10 backdrop-blur-md border border-white/10 text-center">
                     <span class="text-sm sm:text-base font-black text-rose-400 block">${st.val}</span>
-                    <span class="text-[10px] text-slate-400 block truncate">${st.label}</span>
+                    <span class="text-[10px] text-saino-gray-400 block truncate">${st.label}</span>
                   </div>
                 `).join('')}
               </div>
 
               <!-- Action CTAs -->
               <div class="pt-3 flex flex-wrap items-center gap-3">
-                <button onclick="openCustomWhatsApp('${currentSlide.title}', '${currentSlide.whatsappMsg}')" class="px-6 py-3 bg-rose-600 hover:bg-rose-700 text-white font-extrabold rounded-2xl text-xs sm:text-sm shadow-xl transition transform hover:scale-105 flex items-center space-x-2">
+                <button onclick="openCustomWhatsApp('${currentSlide.title}', '${currentSlide.whatsappMsg}')" class="px-6 py-3 bg-saino-red hover:bg-saino-red-dark text-white font-extrabold rounded-2xl text-xs sm:text-sm shadow-xl transition transform hover:scale-105 flex items-center space-x-2">
                   <i data-lucide="message-circle" class="w-4 h-4"></i>
                   <span>Direct WhatsApp Booking</span>
                 </button>
                 <button onclick="navigateTo('marketplace')" class="px-5 py-3 bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold rounded-2xl text-xs transition">
                   Explore on Marketplace →
                 </button>
-                <span class="text-[11px] text-slate-400 font-medium ml-1">
+                <span class="text-[11px] text-saino-gray-400 font-medium ml-1">
                   ⏱ ${currentSlide.validTill || 'Open Booking 2026'}
                 </span>
               </div>
@@ -1172,16 +1172,16 @@ function renderDiscoveryView() {
             <!-- Sponsor Card on Right -->
             <div class="lg:col-span-4 hidden lg:block">
               <div class="p-6 rounded-3xl bg-white/10 backdrop-blur-xl border border-white/15 shadow-2xl text-center space-y-3">
-                <div class="w-20 h-20 rounded-2xl overflow-hidden mx-auto border-2 border-rose-500 shadow-md">
+                <div class="w-20 h-20 rounded-2xl overflow-hidden mx-auto border-2 border-saino-red shadow-md">
                   <img src="${currentSlide.sponsorLogo}" class="w-full h-full object-cover">
                 </div>
                 <div>
                   <h4 class="text-sm font-bold text-white leading-snug">${currentSlide.sponsor}</h4>
-                  <span class="inline-block mt-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-rose-500/20 text-rose-300 border border-rose-500/30">
+                  <span class="inline-block mt-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-saino-red/20 text-rose-300 border border-saino-red/30">
                     ${currentSlide.sponsorTier}
                   </span>
                 </div>
-                <div class="pt-2 border-t border-white/10 text-[11px] text-slate-300">
+                <div class="pt-2 border-t border-white/10 text-[11px] text-saino-gray-300">
                   <p class="leading-relaxed">Official medical campaign partner on SAINO HEALTH platform.</p>
                 </div>
               </div>
@@ -1190,17 +1190,17 @@ function renderDiscoveryView() {
           </div>
 
           <!-- Carousel Controls: Left (<) & Right (>) Navigation Arrows -->
-          <button onclick="prevDiscoverySlide()" class="absolute left-3 top-1/2 transform -translate-y-1/2 w-11 h-11 rounded-full bg-slate-900/80 hover:bg-rose-600 text-white border border-white/20 flex items-center justify-center transition shadow-xl z-20" title="Previous Slide">
+          <button onclick="prevDiscoverySlide()" class="absolute left-3 top-1/2 transform -translate-y-1/2 w-11 h-11 rounded-full bg-saino-gray-900/80 hover:bg-saino-red text-white border border-white/20 flex items-center justify-center transition shadow-xl z-20" title="Previous Slide">
             <i data-lucide="chevron-left" class="w-6 h-6"></i>
           </button>
-          <button onclick="nextDiscoverySlide()" class="absolute right-3 top-1/2 transform -translate-y-1/2 w-11 h-11 rounded-full bg-slate-900/80 hover:bg-rose-600 text-white border border-white/20 flex items-center justify-center transition shadow-xl z-20" title="Next Slide">
+          <button onclick="nextDiscoverySlide()" class="absolute right-3 top-1/2 transform -translate-y-1/2 w-11 h-11 rounded-full bg-saino-gray-900/80 hover:bg-saino-red text-white border border-white/20 flex items-center justify-center transition shadow-xl z-20" title="Next Slide">
             <i data-lucide="chevron-right" class="w-6 h-6"></i>
           </button>
 
           <!-- Carousel Dot Indicators (o o o o o o) -->
           <div class="relative z-10 flex items-center justify-center space-x-2 pt-6">
             ${campaigns.map((_, idx) => `
-              <button onclick="setDiscoverySlide(${idx})" class="w-3 h-3 rounded-full transition-all duration-300 ${AppState.discoverySlideIndex === idx ? 'w-8 bg-rose-500' : 'bg-white/30 hover:bg-white/60'}" title="Go to slide ${idx + 1}"></button>
+              <button onclick="setDiscoverySlide(${idx})" class="w-3 h-3 rounded-full transition-all duration-300 ${AppState.discoverySlideIndex === idx ? 'w-8 bg-saino-red' : 'bg-white/30 hover:bg-white/60'}" title="Go to slide ${idx + 1}"></button>
             `).join('')}
           </div>
 
@@ -1213,25 +1213,25 @@ function renderDiscoveryView() {
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16 items-start">
         
         <!-- LEFT COLUMN: GOOGLE MAP FORMAT ("Google map kind of.") -->
-        <div class="lg:col-span-5 bg-white rounded-3xl border border-slate-200 shadow-sm p-5 sm:p-6 space-y-4 sticky top-24">
+        <div class="lg:col-span-5 bg-white rounded-3xl border border-saino-gray-200 shadow-sm p-5 sm:p-6 space-y-4 sticky top-24">
           
-          <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+          <div class="flex items-center justify-between pb-3 border-b border-saino-gray-100">
             <div class="flex items-center space-x-2">
-              <div class="w-8 h-8 rounded-xl bg-rose-50 text-rose-600 flex items-center justify-center">
+              <div class="w-8 h-8 rounded-xl bg-saino-red/10 text-saino-red flex items-center justify-center">
                 <i data-lucide="map-pin" class="w-4 h-4"></i>
               </div>
               <div>
-                <h3 class="text-sm font-extrabold text-slate-900">Healthcare Map View</h3>
-                <p class="text-[11px] text-slate-500">Google Map Format · Nepal Medical Corridors</p>
+                <h3 class="text-sm font-extrabold text-saino-gray-900">Healthcare Map View</h3>
+                <p class="text-[11px] text-saino-gray-500">Google Map Format · Nepal Medical Corridors</p>
               </div>
             </div>
-            <span class="px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 text-[10px] font-bold">
+            <span class="px-2.5 py-1 rounded-full bg-saino-gray-100 text-saino-gray-700 text-[10px] font-bold">
               6 Active Hubs
             </span>
           </div>
 
           <!-- Interactive Simulated Map Canvas -->
-          <div class="relative w-full h-64 sm:h-72 rounded-2xl bg-gradient-to-br from-slate-100 via-sky-50 to-slate-200 border border-slate-300 overflow-hidden shadow-inner flex items-center justify-center">
+          <div class="relative w-full h-64 sm:h-72 rounded-2xl bg-gradient-to-br from-saino-gray-100 via-sky-50 to-saino-gray-200 border border-saino-gray-300 overflow-hidden shadow-inner flex items-center justify-center">
             
             <!-- Map Grid Texture -->
             <div class="absolute inset-0 opacity-20 bg-[radial-gradient(#0284c7_1px,transparent_1px)] [background-size:16px_16px]"></div>
@@ -1262,12 +1262,12 @@ function renderDiscoveryView() {
                   
                   <div class="relative flex flex-col items-center">
                     ${isSelected ? `
-                      <span class="w-8 h-8 rounded-full bg-rose-500/30 animate-ping absolute -top-1"></span>
+                      <span class="w-8 h-8 rounded-full bg-saino-red/30 animate-ping absolute -top-1"></span>
                     ` : ''}
-                    <div class="w-8 h-8 rounded-full ${isSelected ? 'bg-rose-600 text-white ring-4 ring-rose-200' : 'bg-slate-900 text-white hover:bg-rose-600'} flex items-center justify-center shadow-lg transition-transform transform group-hover:scale-110">
+                    <div class="w-8 h-8 rounded-full ${isSelected ? 'bg-saino-red text-white ring-4 ring-saino-red/20' : 'bg-saino-gray-900 text-white hover:bg-saino-red'} flex items-center justify-center shadow-lg transition-transform transform group-hover:scale-110">
                       <i data-lucide="hospital" class="w-4 h-4"></i>
                     </div>
-                    <span class="mt-1 px-2 py-0.5 rounded-md text-[9px] font-extrabold whitespace-nowrap shadow-sm border ${isSelected ? 'bg-rose-900 text-white border-rose-700' : 'bg-white text-slate-800 border-slate-200'}">
+                    <span class="mt-1 px-2 py-0.5 rounded-md text-[9px] font-extrabold whitespace-nowrap shadow-sm border ${isSelected ? 'bg-saino-red text-white border-saino-red-dark' : 'bg-white text-saino-gray-800 border-saino-gray-200'}">
                       ${loc.city}
                     </span>
                   </div>
@@ -1276,38 +1276,38 @@ function renderDiscoveryView() {
             }).join('')}
 
             <!-- Map Zoom & Center Indicator -->
-            <div class="absolute bottom-2.5 right-2.5 bg-white/90 backdrop-blur-md rounded-xl px-2.5 py-1 text-[10px] font-bold text-slate-700 border border-slate-200 shadow-sm">
+            <div class="absolute bottom-2.5 right-2.5 bg-white/90 backdrop-blur-md rounded-xl px-2.5 py-1 text-[10px] font-bold text-saino-gray-700 border border-saino-gray-200 shadow-sm">
               📍 Kathmandu Valley & Provinces
             </div>
           </div>
 
           <!-- Active Location Detail Card -->
-          <div class="p-4 rounded-2xl bg-rose-50/50 border border-rose-200 space-y-2">
+          <div class="p-4 rounded-2xl bg-saino-red/5 border border-saino-red/20 space-y-2">
             <div class="flex items-start justify-between">
               <div>
-                <span class="text-[10px] font-black uppercase text-rose-700 tracking-wider">SELECTED MEDICAL CLUSTER</span>
-                <h4 class="text-sm font-bold text-slate-900">${activeLocation.name}</h4>
-                <p class="text-[11px] text-slate-600">${activeLocation.address}</p>
+                <span class="text-[10px] font-black uppercase text-saino-red-dark tracking-wider">SELECTED MEDICAL CLUSTER</span>
+                <h4 class="text-sm font-bold text-saino-gray-900">${activeLocation.name}</h4>
+                <p class="text-[11px] text-saino-gray-600">${activeLocation.address}</p>
               </div>
-              <span class="px-2 py-0.5 rounded text-[10px] font-extrabold bg-rose-600 text-white">Active</span>
+              <span class="px-2 py-0.5 rounded text-[10px] font-extrabold bg-saino-red text-white">Active</span>
             </div>
 
             <div class="grid grid-cols-2 gap-2 pt-1">
-              <div class="p-2 rounded-xl bg-white border border-rose-100 text-center">
-                <strong class="text-sm font-black text-slate-900 block">${activeLocation.hospitalCount}</strong>
-                <span class="text-[10px] text-slate-500">Verified Hospitals</span>
+              <div class="p-2 rounded-xl bg-white border border-saino-red/10 text-center">
+                <strong class="text-sm font-black text-saino-gray-900 block">${activeLocation.hospitalCount}</strong>
+                <span class="text-[10px] text-saino-gray-500">Verified Hospitals</span>
               </div>
-              <div class="p-2 rounded-xl bg-white border border-rose-100 text-center">
-                <strong class="text-sm font-black text-slate-900 block">${activeLocation.clinicCount}</strong>
-                <span class="text-[10px] text-slate-500">Specialist Clinics</span>
+              <div class="p-2 rounded-xl bg-white border border-saino-red/10 text-center">
+                <strong class="text-sm font-black text-saino-gray-900 block">${activeLocation.clinicCount}</strong>
+                <span class="text-[10px] text-saino-gray-500">Specialist Clinics</span>
               </div>
             </div>
 
-            <div class="pt-1 text-[11px] text-slate-600">
-              <strong class="text-slate-800">Featured in Hub:</strong> ${activeLocation.featured}
+            <div class="pt-1 text-[11px] text-saino-gray-600">
+              <strong class="text-saino-gray-800">Featured in Hub:</strong> ${activeLocation.featured}
             </div>
 
-            <button onclick="navigateTo('marketplace', { location: '${activeLocation.city}' })" class="w-full py-2 bg-slate-900 hover:bg-slate-800 text-white font-bold rounded-xl text-xs transition flex items-center justify-center space-x-1.5 shadow-sm">
+            <button onclick="navigateTo('marketplace', { location: '${activeLocation.city}' })" class="w-full py-2 bg-saino-gray-900 hover:bg-saino-gray-800 text-white font-bold rounded-xl text-xs transition flex items-center justify-center space-x-1.5 shadow-sm">
               <i data-lucide="compass" class="w-3.5 h-3.5 text-rose-400"></i>
               <span>View All ${activeLocation.city} Providers →</span>
             </button>
@@ -1315,15 +1315,15 @@ function renderDiscoveryView() {
 
           <!-- Location Selector Directory List -->
           <div class="space-y-1.5 pt-1">
-            <span class="text-[10px] font-black uppercase text-slate-400 tracking-wider block mb-1">ALL NEPAL MEDICAL HUBS</span>
+            <span class="text-[10px] font-black uppercase text-saino-gray-400 tracking-wider block mb-1">ALL NEPAL MEDICAL HUBS</span>
             <div class="max-h-48 overflow-y-auto space-y-1.5 pr-1">
               ${locations.map(loc => `
-                <div onclick="setDiscoveryLocation('${loc.id}')" class="p-2.5 rounded-xl border transition cursor-pointer flex items-center justify-between text-xs ${loc.id === activeLocation.id ? 'border-rose-400 bg-rose-50/60 font-bold text-rose-900' : 'border-slate-100 bg-slate-50 hover:bg-slate-100 text-slate-700'}">
+                <div onclick="setDiscoveryLocation('${loc.id}')" class="p-2.5 rounded-xl border transition cursor-pointer flex items-center justify-between text-xs ${loc.id === activeLocation.id ? 'border-saino-red bg-saino-red/10 font-bold text-saino-red-dark' : 'border-saino-gray-100 bg-saino-gray-50 hover:bg-saino-gray-100 text-saino-gray-700'}">
                   <div class="flex items-center space-x-2">
-                    <i data-lucide="map-pin" class="w-3.5 h-3.5 ${loc.id === activeLocation.id ? 'text-rose-600' : 'text-slate-400'}"></i>
+                    <i data-lucide="map-pin" class="w-3.5 h-3.5 ${loc.id === activeLocation.id ? 'text-saino-red' : 'text-saino-gray-400'}"></i>
                     <span>${loc.city} (${loc.hospitalCount} Hosp, ${loc.clinicCount} Clin)</span>
                   </div>
-                  <span class="text-[10px] text-rose-600 font-bold">Select</span>
+                  <span class="text-[10px] text-saino-red font-bold">Select</span>
                 </div>
               `).join('')}
             </div>
@@ -1332,25 +1332,25 @@ function renderDiscoveryView() {
         </div>
 
         <!-- RIGHT COLUMN: SAINO RATED MATRICES (Hospital 10, Clinic 10, Diag 5, Ambulance 5, Labs 5, Blood 5) -->
-        <div class="lg:col-span-7 bg-white rounded-3xl border border-slate-200 shadow-sm p-5 sm:p-6 space-y-5">
+        <div class="lg:col-span-7 bg-white rounded-3xl border border-saino-gray-200 shadow-sm p-5 sm:p-6 space-y-5">
           
           <div>
             <div class="flex items-center justify-between mb-1">
               <div class="flex items-center space-x-2">
-                <span class="px-2.5 py-0.5 rounded-full bg-rose-600 text-white text-[10px] font-black uppercase tracking-wider">
+                <span class="px-2.5 py-0.5 rounded-full bg-saino-red text-white text-[10px] font-black uppercase tracking-wider">
                   SAINO RATED
                 </span>
-                <h3 class="text-base sm:text-lg font-black text-slate-900">Top Rated Healthcare Services</h3>
+                <h3 class="text-base sm:text-lg font-black text-saino-gray-900">Top Rated Healthcare Services</h3>
               </div>
-              <span class="text-xs text-slate-400 font-medium">Ranked by Patient Reviews</span>
+              <span class="text-xs text-saino-gray-400 font-medium">Ranked by Patient Reviews</span>
             </div>
-            <p class="text-xs text-slate-500">
+            <p class="text-xs text-saino-gray-500">
               Validated healthcare establishments in Nepal categorized by speciality and accreditation.
             </p>
           </div>
 
           <!-- Category Navigation Pills (Hospital 10, Clinic 10, Diag 5, Ambulance 5, Labs 5, Blood 5) -->
-          <div class="flex flex-wrap gap-2 pb-2 border-b border-slate-100 text-xs">
+          <div class="flex flex-wrap gap-2 pb-2 border-b border-saino-gray-100 text-xs">
             ${[
               { key: 'hospitals', label: 'Hospital 10', icon: 'building-2', count: 10 },
               { key: 'clinics', label: 'Clinic 10', icon: 'stethoscope', count: 10 },
@@ -1363,8 +1363,8 @@ function renderDiscoveryView() {
               return `
                 <button onclick="setDiscoveryRatedTab('${tab.key}')" class="px-3 py-2 rounded-xl font-bold transition flex items-center space-x-1.5 ${
                   isActive 
-                    ? 'bg-rose-600 text-white shadow-md' 
-                    : 'bg-slate-100 hover:bg-slate-200 text-slate-700'
+                    ? 'bg-saino-red text-white shadow-md' 
+                    : 'bg-saino-gray-100 hover:bg-saino-gray-200 text-saino-gray-700'
                 }">
                   <i data-lucide="${tab.icon}" class="w-3.5 h-3.5"></i>
                   <span>${tab.label}</span>
@@ -1376,48 +1376,48 @@ function renderDiscoveryView() {
           <!-- List of Rated Providers for Selected Tab -->
           <div class="space-y-3.5 max-h-[620px] overflow-y-auto pr-1">
             ${activeRatedList.map((item, idx) => `
-              <div class="p-4 rounded-2xl border border-slate-200 bg-white hover:border-rose-300 hover:shadow-md transition flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div class="p-4 rounded-2xl border border-saino-gray-200 bg-white hover:border-saino-red hover:shadow-md transition flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 
                 <div class="flex items-start space-x-3.5">
-                  <div class="w-10 h-10 rounded-xl bg-slate-900 text-white font-black text-sm flex items-center justify-center flex-shrink-0 shadow-sm">
+                  <div class="w-10 h-10 rounded-xl bg-saino-gray-900 text-white font-black text-sm flex items-center justify-center flex-shrink-0 shadow-sm">
                     #${idx + 1}
                   </div>
                   <div>
                     <div class="flex flex-wrap items-center gap-1.5 mb-1">
-                      <h4 class="text-xs sm:text-sm font-bold text-slate-900 leading-tight">${item.name}</h4>
+                      <h4 class="text-xs sm:text-sm font-bold text-saino-gray-900 leading-tight">${item.name}</h4>
                       <span class="px-2 py-0.5 rounded text-[9px] font-black uppercase ${
                         item.badgeType === 'vvip' ? 'bg-indigo-100 text-indigo-800' :
                         item.badgeType === 'vip' ? 'bg-amber-100 text-amber-900' :
-                        item.badgeType === 'pro' ? 'bg-rose-100 text-rose-800' :
-                        'bg-slate-100 text-slate-600'
+                        item.badgeType === 'pro' ? 'bg-saino-red/10 text-saino-red-dark' :
+                        'bg-saino-gray-100 text-saino-gray-600'
                       }">
                         ${item.badge}
                       </span>
                     </div>
 
-                    <div class="flex flex-wrap items-center gap-2 text-[11px] text-slate-500">
+                    <div class="flex flex-wrap items-center gap-2 text-[11px] text-saino-gray-500">
                       <span class="flex items-center text-amber-500 font-bold">
-                        ★ ${item.rating} <span class="text-slate-400 font-normal ml-0.5">(${item.reviews} reviews)</span>
+                        ★ ${item.rating} <span class="text-saino-gray-400 font-normal ml-0.5">(${item.reviews} reviews)</span>
                       </span>
                       <span>•</span>
                       <span>📍 ${item.area}</span>
                     </div>
 
-                    <p class="text-[11px] text-slate-600 mt-1 leading-snug">
-                      <strong class="text-slate-800">Speciality:</strong> ${item.special}
+                    <p class="text-[11px] text-saino-gray-600 mt-1 leading-snug">
+                      <strong class="text-saino-gray-800">Speciality:</strong> ${item.special}
                     </p>
 
-                    <div class="flex items-center space-x-3 text-[10px] text-slate-500 mt-1">
+                    <div class="flex items-center space-x-3 text-[10px] text-saino-gray-500 mt-1">
                       <span>🕒 ${item.opd}</span>
                       <span>•</span>
-                      <span class="text-rose-700 font-bold">${item.fee}</span>
+                      <span class="text-saino-red-dark font-bold">${item.fee}</span>
                     </div>
                   </div>
                 </div>
 
                 <!-- Right Action Button -->
                 <div class="flex-shrink-0 sm:self-center">
-                  <button onclick="openCustomWhatsApp('${item.name}', 'Hello, I want to book an appointment with ${item.name} via SAINO Rated Directory.')" class="w-full sm:w-auto px-4 py-2 bg-rose-600 hover:bg-rose-700 text-white font-extrabold rounded-xl text-xs transition shadow-sm flex items-center justify-center space-x-1.5">
+                  <button onclick="openCustomWhatsApp('${item.name}', 'Hello, I want to book an appointment with ${item.name} via SAINO Rated Directory.')" class="w-full sm:w-auto px-4 py-2 bg-saino-red hover:bg-saino-red-dark text-white font-extrabold rounded-xl text-xs transition shadow-sm flex items-center justify-center space-x-1.5">
                     <i data-lucide="message-circle" class="w-3.5 h-3.5"></i>
                     <span>Book on WhatsApp</span>
                   </button>
@@ -1434,13 +1434,13 @@ function renderDiscoveryView() {
       <!-- ========================================================================= -->
       <!-- 3. LOWER SECTION: WHY VERIFICATION BADGES MATTER (EXACT SPECIFICATION)    -->
       <!-- ========================================================================= -->
-      <div class="p-6 md:p-10 bg-white rounded-3xl border border-slate-200 shadow-sm mb-14">
+      <div class="p-6 md:p-10 bg-white rounded-3xl border border-saino-gray-200 shadow-sm mb-14">
         
         <div class="text-center max-w-3xl mx-auto mb-10">
-          <h2 class="text-xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mb-2">
+          <h2 class="text-xl sm:text-3xl font-extrabold text-saino-gray-900 tracking-tight mb-2">
             Why Verification Badges Matter for Healthcare
           </h2>
-          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+          <p class="text-xs sm:text-sm text-saino-gray-600 leading-relaxed">
             Because healthcare is sensitive, SAINO validates government registrations, medical operating licenses, and doctor qualifications before granting badges.
           </p>
         </div>
@@ -1449,45 +1449,45 @@ function renderDiscoveryView() {
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           
           <!-- Card 1: FREE - Saino Listed -->
-          <div class="p-5 rounded-2xl bg-slate-50/80 border border-slate-200 flex flex-col justify-between hover:shadow-md transition">
+          <div class="p-5 rounded-2xl bg-saino-gray-50/80 border border-saino-gray-200 flex flex-col justify-between hover:shadow-md transition">
             <div>
-              <span class="inline-block px-2.5 py-0.5 rounded text-[10px] font-extrabold bg-slate-200 text-slate-700 uppercase tracking-wider mb-3">
+              <span class="inline-block px-2.5 py-0.5 rounded text-[10px] font-extrabold bg-saino-gray-200 text-saino-gray-700 uppercase tracking-wider mb-3">
                 FREE
               </span>
-              <h3 class="text-sm font-bold text-slate-900 mb-2">Saino Listed</h3>
-              <p class="text-xs text-slate-600 leading-relaxed">
+              <h3 class="text-sm font-bold text-saino-gray-900 mb-2">Saino Listed</h3>
+              <p class="text-xs text-saino-gray-600 leading-relaxed">
                 Basic directory entry. Free for all legal healthcare providers in Nepal. WhatsApp inquiries routed via manual triage.
               </p>
             </div>
-            <div class="mt-4 pt-3 border-t border-slate-200/60">
-              <span class="text-[11px] font-bold text-slate-500">NPR 0 · Free Forever</span>
+            <div class="mt-4 pt-3 border-t border-saino-gray-200/60">
+              <span class="text-[11px] font-bold text-saino-gray-500">NPR 0 · Free Forever</span>
             </div>
           </div>
 
           <!-- Card 2: PRO BADGE - ✓ SAINO Pro -->
-          <div class="p-5 rounded-2xl bg-rose-50/40 border border-rose-200 flex flex-col justify-between hover:shadow-md transition">
+          <div class="p-5 rounded-2xl bg-saino-red/10 border border-saino-red/20 flex flex-col justify-between hover:shadow-md transition">
             <div>
-              <span class="inline-block px-2.5 py-0.5 rounded text-[10px] font-extrabold bg-rose-900 text-white uppercase tracking-wider mb-3">
+              <span class="inline-block px-2.5 py-0.5 rounded text-[10px] font-extrabold bg-saino-red text-white uppercase tracking-wider mb-3">
                 PRO BADGE
               </span>
-              <h3 class="text-sm font-bold text-slate-900 mb-2">✓ SAINO Pro</h3>
-              <p class="text-xs text-slate-600 leading-relaxed">
+              <h3 class="text-sm font-bold text-saino-gray-900 mb-2">✓ SAINO Pro</h3>
+              <p class="text-xs text-saino-gray-600 leading-relaxed">
                 For specialist doctors & clinics. Includes rating stars, review replies, 5 service packages, and direct WhatsApp dispatch.
               </p>
             </div>
-            <div class="mt-4 pt-3 border-t border-rose-200/60">
-              <span class="text-[11px] font-bold text-rose-700">NPR 3,600 / month</span>
+            <div class="mt-4 pt-3 border-t border-saino-red/20">
+              <span class="text-[11px] font-bold text-saino-red-dark">NPR 3,600 / month</span>
             </div>
           </div>
 
           <!-- Card 3: VIP BADGE - 👑 SAINO VIP -->
           <div class="p-5 rounded-2xl bg-amber-50/40 border border-amber-200 flex flex-col justify-between hover:shadow-md transition">
             <div>
-              <span class="inline-block px-2.5 py-0.5 rounded text-[10px] font-extrabold bg-amber-500 text-slate-950 uppercase tracking-wider mb-3">
+              <span class="inline-block px-2.5 py-0.5 rounded text-[10px] font-extrabold bg-amber-500 text-saino-gray-950 uppercase tracking-wider mb-3">
                 VIP BADGE
               </span>
-              <h3 class="text-sm font-bold text-slate-900 mb-2">👑 SAINO VIP</h3>
-              <p class="text-xs text-slate-600 leading-relaxed">
+              <h3 class="text-sm font-bold text-saino-gray-900 mb-2">👑 SAINO VIP</h3>
+              <p class="text-xs text-saino-gray-600 leading-relaxed">
                 For polyclinics & mid-size hospitals. 15 service packages, intelligent appointment management, and 1 monthly Big Screen campaign.
               </p>
             </div>
@@ -1502,8 +1502,8 @@ function renderDiscoveryView() {
               <span class="inline-block px-2.5 py-0.5 rounded text-[10px] font-extrabold bg-indigo-600 text-white uppercase tracking-wider mb-3">
                 VVIP ADVANTAGE
               </span>
-              <h3 class="text-sm font-bold text-slate-900 mb-2">🏆 SAINO VVIP</h3>
-              <p class="text-xs text-slate-600 leading-relaxed">
+              <h3 class="text-sm font-bold text-saino-gray-900 mb-2">🏆 SAINO VVIP</h3>
+              <p class="text-xs text-saino-gray-600 leading-relaxed">
                 Flagship presence for multispeciality hospital enterprises. Includes SEO growth, local optimization, and 2 monthly billboard campaigns.
               </p>
             </div>
@@ -1519,23 +1519,23 @@ function renderDiscoveryView() {
       <!-- ========================================================================= -->
       <!-- 4. REVIEWS SECTION: PATIENT REVIEWS SLIDER (Review < >)                  -->
       <!-- ========================================================================= -->
-      <div class="bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900 text-white rounded-3xl p-6 sm:p-10 shadow-2xl mb-12">
+      <div class="bg-gradient-to-br from-saino-gray-900 via-saino-gray-950 to-saino-gray-900 text-white rounded-3xl p-6 sm:p-10 shadow-2xl mb-12">
         
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8 pb-6 border-b border-white/10">
           <div>
-            <span class="px-2.5 py-0.5 rounded-full bg-rose-600 text-white text-[10px] font-black uppercase tracking-wider">
+            <span class="px-2.5 py-0.5 rounded-full bg-saino-red text-white text-[10px] font-black uppercase tracking-wider">
               PATIENT EXPERIENCES
             </span>
             <h3 class="text-xl sm:text-3xl font-extrabold mt-2">What Patients Say About Healthcare Providers</h3>
-            <p class="text-xs text-slate-300 mt-1">Real stories and hospital feedback from verified patients in Nepal.</p>
+            <p class="text-xs text-saino-gray-300 mt-1">Real stories and hospital feedback from verified patients in Nepal.</p>
           </div>
 
           <!-- Carousel Controls: Prev (<) and Next (>) Arrows -->
           <div class="flex items-center space-x-2">
-            <button onclick="prevDiscoveryReview()" class="w-10 h-10 rounded-xl bg-white/10 hover:bg-rose-600 text-white flex items-center justify-center transition border border-white/10" title="Previous Reviews">
+            <button onclick="prevDiscoveryReview()" class="w-10 h-10 rounded-xl bg-white/10 hover:bg-saino-red text-white flex items-center justify-center transition border border-white/10" title="Previous Reviews">
               <i data-lucide="chevron-left" class="w-5 h-5"></i>
             </button>
-            <button onclick="nextDiscoveryReview()" class="w-10 h-10 rounded-xl bg-white/10 hover:bg-rose-600 text-white flex items-center justify-center transition border border-white/10" title="Next Reviews">
+            <button onclick="nextDiscoveryReview()" class="w-10 h-10 rounded-xl bg-white/10 hover:bg-saino-red text-white flex items-center justify-center transition border border-white/10" title="Next Reviews">
               <i data-lucide="chevron-right" class="w-5 h-5"></i>
             </button>
           </div>
@@ -1550,12 +1550,12 @@ function renderDiscoveryView() {
                   <span>${rev.tag}</span>
                 </div>
                 <h4 class="text-sm font-bold text-white mb-2 leading-snug">"${rev.title}"</h4>
-                <p class="text-xs text-slate-300 leading-relaxed mb-4">"${rev.body}"</p>
+                <p class="text-xs text-saino-gray-300 leading-relaxed mb-4">"${rev.body}"</p>
               </div>
               <div class="pt-3 border-t border-white/10 flex items-center justify-between text-xs">
                 <div>
                   <strong class="text-white block">${rev.author}</strong>
-                  <span class="text-[11px] text-slate-400">${rev.role}</span>
+                  <span class="text-[11px] text-saino-gray-400">${rev.role}</span>
                 </div>
                 <span class="text-[11px] font-semibold text-rose-300">${rev.provider}</span>
               </div>
@@ -1621,14 +1621,14 @@ function renderListYourCareView() {
       
       <!-- Top Title & Description (Page 1 Spec) -->
       <div class="text-center mb-10">
-        <div class="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-rose-50 border border-rose-200 text-rose-800 text-xs font-bold mb-3 shadow-xs">
-          <i data-lucide="plus-circle" class="w-4 h-4 text-rose-600"></i>
+        <div class="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-saino-red/10 border border-saino-red/20 text-saino-red-dark text-xs font-bold mb-3 shadow-xs">
+          <i data-lucide="plus-circle" class="w-4 h-4 text-saino-red"></i>
           <span class="uppercase tracking-wider">LIST YOUR BUSINESS & HEALTHCARE SERVICES</span>
         </div>
-        <h1 class="text-2xl sm:text-4xl md:text-5xl font-black text-slate-900 tracking-tight leading-tight mb-3">
+        <h1 class="text-2xl sm:text-4xl md:text-5xl font-black text-saino-gray-900 tracking-tight leading-tight mb-3">
           Built to Host Every Part of Your Healthcare Ecosystem
         </h1>
-        <p class="text-sm sm:text-base text-slate-600 max-w-3xl mx-auto leading-relaxed">
+        <p class="text-sm sm:text-base text-saino-gray-600 max-w-3xl mx-auto leading-relaxed">
           After successful collaboration with Healthcare Organizations, we are equipped to bring and connect the healthcare experience better via SAINO.
         </p>
       </div>
@@ -1636,8 +1636,8 @@ function renderListYourCareView() {
       <!-- WHAT CAN YOU LIST? 9 CATEGORY ILLUSION CARDS (Page 1 Spec) -->
       <div class="mb-12">
         <div class="flex items-center justify-between mb-4">
-          <h3 class="text-base md:text-lg font-bold text-slate-900">What Can You List on SAINO HEALTH?</h3>
-          <span class="text-xs text-rose-600 font-bold">9 Healthcare Categories</span>
+          <h3 class="text-base md:text-lg font-bold text-saino-gray-900">What Can You List on SAINO HEALTH?</h3>
+          <span class="text-xs text-saino-red font-bold">9 Healthcare Categories</span>
         </div>
 
         <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-4">
@@ -1652,13 +1652,13 @@ function renderListYourCareView() {
             { title: 'Wellness Facilities', sub: 'Ayurveda, Physiotherapy, Yoga & Mental Wellness', icon: 'sparkles', color: 'violet' },
             { title: 'Health INSURANCE', sub: 'Cashless Mediclaim, Family Health Cover Policies', icon: 'shield-check', color: 'sky' }
           ].map(c => `
-            <div class="p-5 rounded-2xl bg-white border border-slate-200 shadow-xs hover:shadow-md hover:border-rose-300 transition flex items-start space-x-3.5">
-              <div class="w-10 h-10 rounded-xl bg-rose-50 text-rose-600 flex items-center justify-center flex-shrink-0 mt-0.5 border border-rose-100">
+            <div class="p-5 rounded-2xl bg-white border border-saino-gray-200 shadow-xs hover:shadow-md hover:border-saino-red/30 transition flex items-start space-x-3.5">
+              <div class="w-10 h-10 rounded-xl bg-saino-red/10 text-saino-red flex items-center justify-center flex-shrink-0 mt-0.5 border border-saino-red/20">
                 <i data-lucide="${c.icon}" class="w-5 h-5"></i>
               </div>
               <div>
-                <h4 class="text-xs sm:text-sm font-bold text-slate-900 leading-tight">${c.title}</h4>
-                <p class="text-[11px] text-slate-500 mt-0.5 leading-snug">${c.sub}</p>
+                <h4 class="text-xs sm:text-sm font-bold text-saino-gray-900 leading-tight">${c.title}</h4>
+                <p class="text-[11px] text-saino-gray-500 mt-0.5 leading-snug">${c.sub}</p>
               </div>
             </div>
           `).join('')}
@@ -1666,13 +1666,13 @@ function renderListYourCareView() {
       </div>
 
       <!-- WHAT ARE THE SERVICES WE OFFER: VISUAL REPRESENTATION (Page 1 & 2 Spec) -->
-      <div class="p-6 md:p-8 bg-gradient-to-r from-slate-900 via-slate-950 to-slate-900 text-white rounded-3xl shadow-xl mb-12">
+      <div class="p-6 md:p-8 bg-gradient-to-r from-saino-gray-900 via-saino-gray-950 to-saino-gray-900 text-white rounded-3xl shadow-xl mb-12">
         <div class="max-w-3xl mb-6">
-          <span class="px-2.5 py-0.5 rounded-full bg-rose-600 text-white text-[10px] font-black uppercase tracking-wider">
+          <span class="px-2.5 py-0.5 rounded-full bg-saino-red text-white text-[10px] font-black uppercase tracking-wider">
             SERVICES WE OFFER
           </span>
           <h3 class="text-xl md:text-3xl font-extrabold mt-2 mb-2">Comprehensive Healthcare Technology Suite</h3>
-          <p class="text-xs md:text-sm text-slate-300 leading-relaxed">
+          <p class="text-xs md:text-sm text-saino-gray-300 leading-relaxed">
             Apart from healthcare hosting, SAINO Health also provides SEO services, appointment management, integrated payment gateways, and walk-in/walk-out booking intelligence — all accessible from a single platform.
           </p>
         </div>
@@ -1693,75 +1693,75 @@ function renderListYourCareView() {
             { title: 'SAINO Corp Health', icon: 'briefcase', comingSoon: true }
           ].map(s => `
             <div class="p-3.5 rounded-xl bg-white/10 border border-white/10 flex items-center space-x-2.5">
-              <i data-lucide="${s.icon}" class="w-4 h-4 text-rose-400 flex-shrink-0"></i>
-              <span class="font-semibold text-slate-100 text-[11px] leading-tight">${s.title}</span>
-              ${s.comingSoon ? `<span class="px-1.5 py-0.2 rounded text-[9px] bg-amber-400 text-slate-950 font-black">Soon</span>` : ''}
+              <i data-lucide="${s.icon}" class="w-4 h-4 text-saino-red flex-shrink-0"></i>
+              <span class="font-semibold text-saino-gray-100 text-[11px] leading-tight">${s.title}</span>
+              ${s.comingSoon ? `<span class="px-1.5 py-0.2 rounded text-[9px] bg-amber-400 text-saino-gray-950 font-black">Soon</span>` : ''}
             </div>
           `).join('')}
         </div>
       </div>
 
       <!-- INTERACTIVE TWO-COLUMN ONBOARDING PORTAL (Page 2 Specification) -->
-      <div class="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden mb-12 grid grid-cols-1 lg:grid-cols-12">
+      <div class="bg-white rounded-3xl border border-saino-gray-200 shadow-sm overflow-hidden mb-12 grid grid-cols-1 lg:grid-cols-12">
         
         <!-- Left Side: SAINO Logo & Do It Yourself Sign-In / Register Form -->
-        <div class="lg:col-span-5 p-6 sm:p-8 bg-slate-50 border-r border-slate-200 flex flex-col justify-between">
+        <div class="lg:col-span-5 p-6 sm:p-8 bg-saino-gray-50 border-r border-saino-gray-200 flex flex-col justify-between">
           <div>
             <div class="mb-6">
               <img src="assets/logo.png" alt="SAINO HEALTH" class="h-16 w-auto object-contain">
-              <h3 class="text-base font-extrabold text-slate-900 mt-4">Do it yourself</h3>
-              <p class="text-xs text-slate-500">Sign in or register your healthcare business</p>
+              <h3 class="text-base font-extrabold text-saino-gray-900 mt-4">Do it yourself</h3>
+              <p class="text-xs text-saino-gray-500">Sign in or register your healthcare business</p>
             </div>
 
             <form onsubmit="handleListYourCareSubmit(event)" class="space-y-3.5 text-xs">
               <div>
-                <label class="block font-bold text-slate-700 mb-1">Email ID</label>
-                <input type="email" id="lycEmail" required placeholder="admin@careclinic.np" class="w-full bg-white border border-slate-300 rounded-xl p-3 text-slate-800 focus:ring-2 focus:ring-rose-500 focus:outline-none">
+                <label class="block font-bold text-saino-gray-700 mb-1">Email ID</label>
+                <input type="email" id="lycEmail" required placeholder="admin@careclinic.np" class="w-full bg-white border border-saino-gray-300 rounded-xl p-3 text-saino-gray-800 focus:ring-2 focus:ring-saino-red focus:outline-none">
               </div>
               <div>
-                <label class="block font-bold text-slate-700 mb-1">Password</label>
-                <input type="password" id="lycPassword" required placeholder="••••••••" class="w-full bg-white border border-slate-300 rounded-xl p-3 text-slate-800 focus:ring-2 focus:ring-rose-500 focus:outline-none">
+                <label class="block font-bold text-saino-gray-700 mb-1">Password</label>
+                <input type="password" id="lycPassword" required placeholder="••••••••" class="w-full bg-white border border-saino-gray-300 rounded-xl p-3 text-saino-gray-800 focus:ring-2 focus:ring-saino-red focus:outline-none">
               </div>
-              <button type="submit" class="w-full py-3 bg-rose-600 hover:bg-rose-700 text-white font-extrabold rounded-xl transition shadow-md">
+              <button type="submit" class="w-full py-3 bg-saino-red hover:bg-saino-red-dark text-white font-extrabold rounded-xl transition shadow-md">
                 Proceed to Register / Manage
               </button>
               <div class="flex items-center justify-between text-[11px] pt-1">
-                <a href="#" onclick="showToast('Password reset link dispatched to email!')" class="text-rose-600 hover:underline font-semibold">Forgot Password</a>
-                <a href="#" onclick="showToast('OTP sent to verified business mobile!')" class="text-slate-600 hover:underline font-semibold">Log in with OTP</a>
+                <a href="#" onclick="showToast('Password reset link dispatched to email!')" class="text-saino-red hover:underline font-semibold">Forgot Password</a>
+                <a href="#" onclick="showToast('OTP sent to verified business mobile!')" class="text-saino-gray-600 hover:underline font-semibold">Log in with OTP</a>
               </div>
             </form>
           </div>
 
-          <div class="mt-8 pt-6 border-t border-slate-200 text-slate-500 text-[11px]">
-            <p class="font-bold text-slate-700">Didn't Have an Account? <a href="#tierComparisonSection" class="text-rose-600 hover:underline font-black">Sign up below</a></p>
-            <p class="mt-1">In case of any query, please write to: <a href="mailto:support@sainotechventures.com" class="text-rose-600 font-bold underline">support@sainotechventures.com</a></p>
+          <div class="mt-8 pt-6 border-t border-saino-gray-200 text-saino-gray-500 text-[11px]">
+            <p class="font-bold text-saino-gray-700">Didn't Have an Account? <a href="#tierComparisonSection" class="text-saino-red hover:underline font-black">Sign up below</a></p>
+            <p class="mt-1">In case of any query, please write to: <a href="mailto:support@sainotechventures.com" class="text-saino-red font-bold underline">support@sainotechventures.com</a></p>
           </div>
         </div>
 
         <!-- Right Side: Visual Feature Pillars (Page 2 Specification) -->
         <div class="lg:col-span-7 p-6 sm:p-8 flex flex-col justify-between bg-white">
           <div>
-            <span class="text-xs font-black uppercase text-rose-600 tracking-wider">SUPERFAST ONBOARDING</span>
-            <h3 class="text-xl font-bold text-slate-900 mt-1 mb-6">Why Healthcare Providers Choose SAINO</h3>
+            <span class="text-xs font-black uppercase text-saino-red tracking-wider">SUPERFAST ONBOARDING</span>
+            <h3 class="text-xl font-bold text-saino-gray-900 mt-1 mb-6">Why Healthcare Providers Choose SAINO</h3>
 
             <div class="space-y-4">
-              <div class="p-4 rounded-2xl bg-rose-50/50 border border-rose-100 flex items-start space-x-3.5">
-                <div class="w-9 h-9 rounded-xl bg-rose-600 text-white flex items-center justify-center flex-shrink-0 mt-0.5">
+              <div class="p-4 rounded-2xl bg-saino-red/5 border border-saino-red/10 flex items-start space-x-3.5">
+                <div class="w-9 h-9 rounded-xl bg-saino-red text-white flex items-center justify-center flex-shrink-0 mt-0.5">
                   <i data-lucide="file-check" class="w-4 h-4"></i>
                 </div>
                 <div>
-                  <h4 class="text-xs font-bold text-slate-900 leading-tight">Complete your registration with Company ID and PAN Details.</h4>
-                  <p class="text-[11px] text-slate-500 mt-0.5">Seamless compliance and legal entity verification across Nepal.</p>
+                  <h4 class="text-xs font-bold text-saino-gray-900 leading-tight">Complete your registration with Company ID and PAN Details.</h4>
+                  <p class="text-[11px] text-saino-gray-500 mt-0.5">Seamless compliance and legal entity verification across Nepal.</p>
                 </div>
               </div>
 
               <div class="p-4 rounded-2xl bg-amber-50/50 border border-amber-100 flex items-start space-x-3.5">
-                <div class="w-9 h-9 rounded-xl bg-amber-500 text-slate-950 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <div class="w-9 h-9 rounded-xl bg-amber-500 text-saino-gray-950 flex items-center justify-center flex-shrink-0 mt-0.5">
                   <i data-lucide="zap" class="w-4 h-4"></i>
                 </div>
                 <div>
-                  <h4 class="text-xs font-bold text-slate-900 leading-tight">Take your listing and badge superfast.</h4>
-                  <p class="text-[11px] text-slate-500 mt-0.5">Instant marketplace directory publication and SEO indexing.</p>
+                  <h4 class="text-xs font-bold text-saino-gray-900 leading-tight">Take your listing and badge superfast.</h4>
+                  <p class="text-[11px] text-saino-gray-500 mt-0.5">Instant marketplace directory publication and SEO indexing.</p>
                 </div>
               </div>
 
@@ -1770,8 +1770,8 @@ function renderListYourCareView() {
                   <i data-lucide="message-square" class="w-4 h-4"></i>
                 </div>
                 <div>
-                  <h4 class="text-xs font-bold text-slate-900 leading-tight">Manage Reviews, Campaigns & Appointment Booking Superfast.</h4>
-                  <p class="text-[11px] text-slate-500 mt-0.5">Direct WhatsApp appointment routing with zero patient friction.</p>
+                  <h4 class="text-xs font-bold text-saino-gray-900 leading-tight">Manage Reviews, Campaigns & Appointment Booking Superfast.</h4>
+                  <p class="text-[11px] text-saino-gray-500 mt-0.5">Direct WhatsApp appointment routing with zero patient friction.</p>
                 </div>
               </div>
 
@@ -1780,8 +1780,8 @@ function renderListYourCareView() {
                   <i data-lucide="trending-up" class="w-4 h-4"></i>
                 </div>
                 <div>
-                  <h4 class="text-xs font-bold text-slate-900 leading-tight">Monitor Insights and Analytics easily.</h4>
-                  <p class="text-[11px] text-slate-500 mt-0.5">Live tracking of patient views, click-to-book ratios, and reach.</p>
+                  <h4 class="text-xs font-bold text-saino-gray-900 leading-tight">Monitor Insights and Analytics easily.</h4>
+                  <p class="text-[11px] text-saino-gray-500 mt-0.5">Live tracking of patient views, click-to-book ratios, and reach.</p>
                 </div>
               </div>
             </div>
@@ -1793,33 +1793,33 @@ function renderListYourCareView() {
       <!-- 4-TIER SUBSCRIPTION PRICING PLANS (Page 3 - 7 Official Specification) -->
       <div id="tierComparisonSection" class="mb-14">
         <div class="text-center mb-8">
-          <span class="px-3 py-1 rounded-full text-xs font-black bg-rose-50 text-rose-800 uppercase tracking-wider">
+          <span class="px-3 py-1 rounded-full text-xs font-black bg-saino-red/10 text-saino-red-dark uppercase tracking-wider">
             SUBSCRIPTION TIERS & VERIFIED BADGES
           </span>
-          <h2 class="text-xl md:text-3xl font-extrabold text-slate-900 mt-2 mb-2">Choose the Right Growth Plan for Your Facility</h2>
-          <p class="text-xs md:text-sm text-slate-500">From free directory listings to flagship enterprise growth packages</p>
+          <h2 class="text-xl md:text-3xl font-extrabold text-saino-gray-900 mt-2 mb-2">Choose the Right Growth Plan for Your Facility</h2>
+          <p class="text-xs md:text-sm text-saino-gray-500">From free directory listings to flagship enterprise growth packages</p>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           ${window.SAINO_DATA.subscriptionTiers.map(plan => `
-            <div class="rounded-3xl border ${plan.highlight ? 'border-2 border-rose-500 shadow-xl bg-rose-50/20 ring-4 ring-rose-500/10' : 'border-slate-200 bg-white shadow-sm'} p-5 sm:p-6 flex flex-col justify-between relative">
+            <div class="rounded-3xl border ${plan.highlight ? 'border-2 border-saino-red shadow-xl bg-saino-red/10 ring-4 ring-saino-red/10' : 'border-saino-gray-200 bg-white shadow-sm'} p-5 sm:p-6 flex flex-col justify-between relative">
               ${plan.popularTag ? `
-                <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 px-3 py-0.5 bg-rose-600 text-white text-[9px] font-black uppercase tracking-wider rounded-full shadow">
+                <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 px-3 py-0.5 bg-saino-red text-white text-[9px] font-black uppercase tracking-wider rounded-full shadow">
                   ${plan.popularTag}
                 </div>
               ` : ''}
 
               <div>
                 <div class="mb-4">
-                  <span class="text-xs font-black text-rose-700 uppercase tracking-wider">${plan.name}</span>
-                  <div class="text-xl sm:text-2xl font-black text-slate-900 mt-1">${plan.price}</div>
-                  <span class="text-[11px] text-slate-400 font-medium">${plan.period}</span>
+                  <span class="text-xs font-black text-saino-red-dark uppercase tracking-wider">${plan.name}</span>
+                  <div class="text-xl sm:text-2xl font-black text-saino-gray-900 mt-1">${plan.price}</div>
+                  <span class="text-[11px] text-saino-gray-400 font-medium">${plan.period}</span>
                 </div>
 
-                <ul class="space-y-2 mb-6 text-xs text-slate-700">
+                <ul class="space-y-2 mb-6 text-xs text-saino-gray-700">
                   ${plan.features.map(f => `
                     <li class="flex items-start space-x-2">
-                      <i data-lucide="check" class="w-3.5 h-3.5 text-rose-600 flex-shrink-0 mt-0.5"></i>
+                      <i data-lucide="check" class="w-3.5 h-3.5 text-saino-red flex-shrink-0 mt-0.5"></i>
                       <span class="leading-snug">${f}</span>
                     </li>
                   `).join('')}
@@ -1828,8 +1828,8 @@ function renderListYourCareView() {
 
               <button onclick="openUpgradeBadgeModal('${plan.id}')" class="w-full py-2.5 px-4 rounded-xl text-xs font-bold transition ${
                 plan.highlight 
-                  ? 'bg-rose-600 hover:bg-rose-700 text-white shadow-md' 
-                  : 'bg-slate-900 hover:bg-slate-800 text-white'
+                  ? 'bg-saino-red hover:bg-saino-red-dark text-white shadow-md' 
+                  : 'bg-saino-gray-900 hover:bg-saino-gray-800 text-white'
               }">
                 ${plan.cta}
               </button>
@@ -1839,24 +1839,24 @@ function renderListYourCareView() {
       </div>
 
       <!-- DOCUMENT UPLOAD & COMPLIANCE GUIDE FOR PAID BADGES (Page 3 & 4 Specification) -->
-      <div class="bg-white rounded-3xl border border-slate-200 p-6 md:p-8 shadow-sm mb-12">
-        <div class="mb-6 pb-4 border-b border-slate-100">
-          <div class="flex items-center space-x-2 text-rose-600 text-xs font-bold uppercase mb-1">
+      <div class="bg-white rounded-3xl border border-saino-gray-200 p-6 md:p-8 shadow-sm mb-12">
+        <div class="mb-6 pb-4 border-b border-saino-gray-100">
+          <div class="flex items-center space-x-2 text-saino-red text-xs font-bold uppercase mb-1">
             <i data-lucide="shield-alert" class="w-4 h-4"></i>
             <span>COMPLIANCE & VERIFICATION STANDARDS</span>
           </div>
-          <h3 class="text-lg md:text-xl font-bold text-slate-900">Required Verification Documents for Paid Badges</h3>
-          <p class="text-xs text-slate-500 mt-0.5">All documents must be crisp 200 DPI scans (PDF, JPEG, or PNG up to 5MB with 4 outer corners visible).</p>
+          <h3 class="text-lg md:text-xl font-bold text-saino-gray-900">Required Verification Documents for Paid Badges</h3>
+          <p class="text-xs text-saino-gray-500 mt-0.5">All documents must be crisp 200 DPI scans (PDF, JPEG, or PNG up to 5MB with 4 outer corners visible).</p>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 text-xs">
           <!-- Hospital & Clinic -->
-          <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200">
-            <h4 class="font-bold text-slate-900 mb-2 flex items-center space-x-1.5 text-xs">
-              <i data-lucide="building-2" class="w-4 h-4 text-rose-600"></i>
+          <div class="p-4 rounded-2xl bg-saino-gray-50 border border-saino-gray-200">
+            <h4 class="font-bold text-saino-gray-900 mb-2 flex items-center space-x-1.5 text-xs">
+              <i data-lucide="building-2" class="w-4 h-4 text-saino-red"></i>
               <span>Hospital & Clinic</span>
             </h4>
-            <ul class="space-y-1 text-[11px] text-slate-600">
+            <ul class="space-y-1 text-[11px] text-saino-gray-600">
               <li>• Facility Operating Licence</li>
               <li>• Clinical Establishment Act Reg.</li>
               <li>• Biomedical waste (BMW) mgmt</li>
@@ -1868,12 +1868,12 @@ function renderListYourCareView() {
           </div>
 
           <!-- Diagnostic Centres -->
-          <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200">
-            <h4 class="font-bold text-slate-900 mb-2 flex items-center space-x-1.5 text-xs">
-              <i data-lucide="microscope" class="w-4 h-4 text-rose-600"></i>
+          <div class="p-4 rounded-2xl bg-saino-gray-50 border border-saino-gray-200">
+            <h4 class="font-bold text-saino-gray-900 mb-2 flex items-center space-x-1.5 text-xs">
+              <i data-lucide="microscope" class="w-4 h-4 text-saino-red"></i>
               <span>Diagnostic & Labs</span>
             </h4>
-            <ul class="space-y-1 text-[11px] text-slate-600">
+            <ul class="space-y-1 text-[11px] text-saino-gray-600">
               <li>• Lab Accreditation Certificate</li>
               <li>• PNDT Act Registration</li>
               <li>• AERB / Radiation Safety Approval</li>
@@ -1882,12 +1882,12 @@ function renderListYourCareView() {
           </div>
 
           <!-- Blood Banks -->
-          <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200">
-            <h4 class="font-bold text-slate-900 mb-2 flex items-center space-x-1.5 text-xs">
-              <i data-lucide="droplet" class="w-4 h-4 text-rose-600"></i>
+          <div class="p-4 rounded-2xl bg-saino-gray-50 border border-saino-gray-200">
+            <h4 class="font-bold text-saino-gray-900 mb-2 flex items-center space-x-1.5 text-xs">
+              <i data-lucide="droplet" class="w-4 h-4 text-saino-red"></i>
               <span>Blood Banks</span>
             </h4>
-            <ul class="space-y-1 text-[11px] text-slate-600">
+            <ul class="space-y-1 text-[11px] text-saino-gray-600">
               <li>• Drug & Component License</li>
               <li>• Medical Officer Credentials</li>
               <li>• Equipment Calibration Logs</li>
@@ -1895,12 +1895,12 @@ function renderListYourCareView() {
           </div>
 
           <!-- Homecare Centres -->
-          <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200">
-            <h4 class="font-bold text-slate-900 mb-2 flex items-center space-x-1.5 text-xs">
-              <i data-lucide="home" class="w-4 h-4 text-rose-600"></i>
+          <div class="p-4 rounded-2xl bg-saino-gray-50 border border-saino-gray-200">
+            <h4 class="font-bold text-saino-gray-900 mb-2 flex items-center space-x-1.5 text-xs">
+              <i data-lucide="home" class="w-4 h-4 text-saino-red"></i>
               <span>Homecare Centres</span>
             </h4>
-            <ul class="space-y-1 text-[11px] text-slate-600">
+            <ul class="space-y-1 text-[11px] text-saino-gray-600">
               <li>• Nursing Agency/Trade License</li>
               <li>• Staff Background Clearances</li>
               <li>• Staff Medical Certifications</li>
@@ -1910,7 +1910,7 @@ function renderListYourCareView() {
       </div>
 
       <!-- INTERACTIVE FACILITY REGISTRATION FORM (Pages 3 & 4 Specification) -->
-      <div class="bg-gradient-to-br from-slate-900 via-[#881337] to-slate-950 text-white rounded-3xl p-6 sm:p-10 shadow-2xl">
+      <div class="bg-gradient-to-br from-saino-gray-900 via-saino-red-dark to-saino-gray-950 text-white rounded-3xl p-6 sm:p-10 shadow-2xl">
         <div class="max-w-2xl mb-8">
           <span class="px-3 py-1 rounded-full bg-white/20 text-white text-xs font-black uppercase tracking-wider">
             INSTANT ONBOARDING
@@ -1922,44 +1922,44 @@ function renderListYourCareView() {
         <form onsubmit="handleFacilityRegistration(event)" class="space-y-5 text-xs max-w-3xl">
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label class="block font-bold text-slate-200 mb-1">Organisation Name</label>
-              <input type="text" id="regOrgName" required placeholder="e.g. Kathmandu City Care Hospital" class="w-full bg-white/10 border border-white/20 rounded-xl p-3 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-rose-400">
+              <label class="block font-bold text-saino-gray-200 mb-1">Organisation Name</label>
+              <input type="text" id="regOrgName" required placeholder="e.g. Kathmandu City Care Hospital" class="w-full bg-white/10 border border-white/20 rounded-xl p-3 text-white placeholder-saino-gray-400 focus:outline-none focus:ring-2 focus:ring-rose-400">
             </div>
             <div>
-              <label class="block font-bold text-slate-200 mb-1">Organisation Address / Location</label>
-              <input type="text" id="regOrgAddress" required placeholder="e.g. Lazimpat, Kathmandu" class="w-full bg-white/10 border border-white/20 rounded-xl p-3 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-rose-400">
+              <label class="block font-bold text-saino-gray-200 mb-1">Organisation Address / Location</label>
+              <input type="text" id="regOrgAddress" required placeholder="e.g. Lazimpat, Kathmandu" class="w-full bg-white/10 border border-white/20 rounded-xl p-3 text-white placeholder-saino-gray-400 focus:outline-none focus:ring-2 focus:ring-rose-400">
             </div>
           </div>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label class="block font-bold text-slate-200 mb-1">Company Registration No.</label>
-              <input type="text" id="regOrgRegNo" required placeholder="e.g. REG-784920/081" class="w-full bg-white/10 border border-white/20 rounded-xl p-3 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-rose-400">
+              <label class="block font-bold text-saino-gray-200 mb-1">Company Registration No.</label>
+              <input type="text" id="regOrgRegNo" required placeholder="e.g. REG-784920/081" class="w-full bg-white/10 border border-white/20 rounded-xl p-3 text-white placeholder-saino-gray-400 focus:outline-none focus:ring-2 focus:ring-rose-400">
             </div>
             <div>
-              <label class="block font-bold text-slate-200 mb-1">Organisation VAT / PAN No.</label>
-              <input type="text" id="regOrgPan" required placeholder="e.g. 601928471" class="w-full bg-white/10 border border-white/20 rounded-xl p-3 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-rose-400">
+              <label class="block font-bold text-saino-gray-200 mb-1">Organisation VAT / PAN No.</label>
+              <input type="text" id="regOrgPan" required placeholder="e.g. 601928471" class="w-full bg-white/10 border border-white/20 rounded-xl p-3 text-white placeholder-saino-gray-400 focus:outline-none focus:ring-2 focus:ring-rose-400">
             </div>
           </div>
 
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div>
-              <label class="block font-bold text-slate-200 mb-1">Contact Person Full Name</label>
-              <input type="text" id="regContactName" required placeholder="Dr. Ramesh Sharma" class="w-full bg-white/10 border border-white/20 rounded-xl p-3 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-rose-400">
+              <label class="block font-bold text-saino-gray-200 mb-1">Contact Person Full Name</label>
+              <input type="text" id="regContactName" required placeholder="Dr. Ramesh Sharma" class="w-full bg-white/10 border border-white/20 rounded-xl p-3 text-white placeholder-saino-gray-400 focus:outline-none focus:ring-2 focus:ring-rose-400">
             </div>
             <div>
-              <label class="block font-bold text-slate-200 mb-1">Mobile Number</label>
-              <input type="tel" id="regMobile" required placeholder="9801234567" class="w-full bg-white/10 border border-white/20 rounded-xl p-3 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-rose-400">
+              <label class="block font-bold text-saino-gray-200 mb-1">Mobile Number</label>
+              <input type="tel" id="regMobile" required placeholder="9801234567" class="w-full bg-white/10 border border-white/20 rounded-xl p-3 text-white placeholder-saino-gray-400 focus:outline-none focus:ring-2 focus:ring-rose-400">
             </div>
             <div>
-              <label class="block font-bold text-slate-200 mb-1">Official Email Address</label>
-              <input type="email" id="regEmail" required placeholder="contact@hospital.np" class="w-full bg-white/10 border border-white/20 rounded-xl p-3 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-rose-400">
+              <label class="block font-bold text-saino-gray-200 mb-1">Official Email Address</label>
+              <input type="email" id="regEmail" required placeholder="contact@hospital.np" class="w-full bg-white/10 border border-white/20 rounded-xl p-3 text-white placeholder-saino-gray-400 focus:outline-none focus:ring-2 focus:ring-rose-400">
             </div>
           </div>
 
           <div>
-            <label class="block font-bold text-slate-200 mb-1">Choose Verification Plan</label>
-            <select id="regPlanSelect" class="w-full bg-slate-900 border border-white/20 rounded-xl p-3 text-white focus:outline-none focus:ring-2 focus:ring-rose-400">
+            <label class="block font-bold text-saino-gray-200 mb-1">Choose Verification Plan</label>
+            <select id="regPlanSelect" class="w-full bg-saino-gray-900 border border-white/20 rounded-xl p-3 text-white focus:outline-none focus:ring-2 focus:ring-rose-400">
               <option value="listed">SAINO LISTED (Free Listing - NPR 0)</option>
               <option value="pro" selected>SAINO PRO (✓ Pro Verified - NPR 3,600 / month)</option>
               <option value="vip">SAINO VIP (👑 VIP Verified - NPR 5,900 / month)</option>
@@ -1968,7 +1968,7 @@ function renderListYourCareView() {
           </div>
 
           <div class="pt-2 flex flex-wrap items-center gap-4">
-            <button type="submit" class="px-6 py-3.5 bg-white hover:bg-rose-50 text-rose-950 font-black rounded-2xl shadow-xl transition transform hover:scale-105 text-xs sm:text-sm">
+            <button type="submit" class="px-6 py-3.5 bg-white hover:bg-rose-50 text-saino-gray-950 font-black rounded-2xl shadow-xl transition transform hover:scale-105 text-xs sm:text-sm">
               Submit Facility for Verification →
             </button>
             <span class="text-[11px] text-rose-200">🔒 256-Bit SSL Encrypted & Legal Sign Agreement via SAINO</span>
@@ -2000,9 +2000,9 @@ function renderBoostView() {
   return `
     <div class="max-w-5xl mx-auto mb-16">
       <!-- Hero Banner -->
-      <div class="p-8 md:p-12 rounded-3xl bg-gradient-to-r from-indigo-900 via-purple-900 to-slate-900 text-white mb-10 shadow-xl relative overflow-hidden">
+      <div class="p-8 md:p-12 rounded-3xl bg-gradient-to-r from-indigo-900 via-purple-900 to-saino-gray-900 text-white mb-10 shadow-xl relative overflow-hidden">
         <div class="relative z-10 max-w-2xl">
-          <span class="px-3 py-1 rounded-full text-xs font-bold bg-amber-400 text-slate-950 uppercase tracking-wider">
+          <span class="px-3 py-1 rounded-full text-xs font-bold bg-amber-400 text-saino-gray-950 uppercase tracking-wider">
             SAINO BOOST & HEALTHCARE CAMPAIGNS
           </span>
           <h1 class="text-2xl md:text-4xl font-extrabold mt-3 mb-3">
@@ -2012,7 +2012,7 @@ function renderBoostView() {
             Showcase your hospital departments, special diagnostic packages, or insurance schemes to targeted patients actively searching for care in your district.
           </p>
           <div class="flex flex-wrap items-center gap-3">
-            <button onclick="openAdCampaignModal()" class="px-5 py-2.5 bg-white text-slate-900 font-bold rounded-xl text-xs md:text-sm hover:bg-slate-100 transition shadow">
+            <button onclick="openAdCampaignModal()" class="px-5 py-2.5 bg-white text-saino-gray-900 font-bold rounded-xl text-xs md:text-sm hover:bg-saino-gray-100 transition shadow">
               Launch Advertising Campaign
             </button>
             <button onclick="navigateTo('contact')" class="px-5 py-2.5 bg-white/10 text-white font-bold rounded-xl text-xs md:text-sm hover:bg-white/20 transition border border-white/20">
@@ -2024,48 +2024,48 @@ function renderBoostView() {
 
       <!-- Feature Grid -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+        <div class="bg-white p-6 rounded-2xl border border-saino-gray-200 shadow-sm">
           <div class="w-10 h-10 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center mb-3">
             <i data-lucide="trending-up" class="w-5 h-5"></i>
           </div>
-          <h3 class="text-base font-bold text-slate-900 mb-2">Category Search Pinning</h3>
-          <p class="text-xs text-slate-600 leading-relaxed">
+          <h3 class="text-base font-bold text-saino-gray-900 mb-2">Category Search Pinning</h3>
+          <p class="text-xs text-saino-gray-600 leading-relaxed">
             Appear at the #1 position when patients search for specific specialities like "Cardiologist in Kathmandu" or "24/7 Ambulance".
           </p>
         </div>
 
-        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+        <div class="bg-white p-6 rounded-2xl border border-saino-gray-200 shadow-sm">
           <div class="w-10 h-10 rounded-xl bg-sky-100 text-sky-700 flex items-center justify-center mb-3">
             <i data-lucide="layers" class="w-5 h-5"></i>
           </div>
-          <h3 class="text-base font-bold text-slate-900 mb-2">Home Banner Showcase</h3>
-          <p class="text-xs text-slate-600 leading-relaxed">
+          <h3 class="text-base font-bold text-saino-gray-900 mb-2">Home Banner Showcase</h3>
+          <p class="text-xs text-saino-gray-600 leading-relaxed">
             Interactive top carousel placement with 8 rotating sponsored slots linking straight to your WhatsApp triage booking team.
           </p>
         </div>
 
-        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+        <div class="bg-white p-6 rounded-2xl border border-saino-gray-200 shadow-sm">
           <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center mb-3">
             <i data-lucide="bar-chart-3" class="w-5 h-5"></i>
           </div>
-          <h3 class="text-base font-bold text-slate-900 mb-2">Transparent ROI Analytics</h3>
-          <p class="text-xs text-slate-600 leading-relaxed">
+          <h3 class="text-base font-bold text-saino-gray-900 mb-2">Transparent ROI Analytics</h3>
+          <p class="text-xs text-saino-gray-600 leading-relaxed">
             Real-time measurement of patient card impressions, WhatsApp appointment initiates, profile clicks, and phone leads.
           </p>
         </div>
       </div>
 
       <!-- Advertising FAQ Section (Page 4 Requirement) -->
-      <div class="bg-white p-6 md:p-8 rounded-3xl border border-slate-200 shadow-sm mb-10">
-        <h3 class="text-lg font-bold text-slate-900 mb-4">Advertising & Payment Policies FAQ</h3>
+      <div class="bg-white p-6 md:p-8 rounded-3xl border border-saino-gray-200 shadow-sm mb-10">
+        <h3 class="text-lg font-bold text-saino-gray-900 mb-4">Advertising & Payment Policies FAQ</h3>
         <div class="space-y-4">
           ${window.SAINO_DATA.boostFaqs.map(faq => `
-            <div class="p-4 rounded-xl bg-slate-50 border border-slate-100">
-              <h4 class="text-xs md:text-sm font-bold text-slate-800 mb-1 flex items-center space-x-2">
+            <div class="p-4 rounded-xl bg-saino-gray-50 border border-saino-gray-100">
+              <h4 class="text-xs md:text-sm font-bold text-saino-gray-800 mb-1 flex items-center space-x-2">
                 <i data-lucide="help-circle" class="w-4 h-4 text-sky-600 flex-shrink-0"></i>
                 <span>${faq.q}</span>
               </h4>
-              <p class="text-xs text-slate-600 leading-relaxed pl-6">${faq.a}</p>
+              <p class="text-xs text-saino-gray-600 leading-relaxed pl-6">${faq.a}</p>
             </div>
           `).join('')}
         </div>
@@ -2082,55 +2082,55 @@ function renderAboutView() {
     <div class="max-w-4xl mx-auto mb-16">
       <!-- Mission & Hero with Large Official Logo -->
       <div class="text-center mb-12">
-        <div class="inline-block p-5 sm:p-7 bg-white rounded-3xl shadow-xl border border-slate-200 mb-6">
+        <div class="inline-block p-5 sm:p-7 bg-white rounded-3xl shadow-xl border border-saino-gray-200 mb-6">
           <img src="assets/logo.png" alt="SAINO HEALTH" class="h-28 sm:h-36 md:h-40 w-auto max-w-[360px] object-contain mx-auto">
         </div>
         <div class="block">
-          <span class="px-4 py-1.5 rounded-full text-xs sm:text-sm font-extrabold bg-rose-100 text-rose-800 uppercase tracking-widest">
+          <span class="px-4 py-1.5 rounded-full text-xs sm:text-sm font-extrabold bg-saino-red/10 text-saino-red-dark uppercase tracking-widest">
             CONNECTED. SIMPLIFIED. BETTER HEALTH.
           </span>
         </div>
-        <h1 class="text-2xl md:text-4xl font-extrabold text-slate-900 mt-4 mb-2">
+        <h1 class="text-2xl md:text-4xl font-extrabold text-saino-gray-900 mt-4 mb-2">
           Discover. Explore. Choose. Book with Confidence.
         </h1>
-        <p class="text-sm md:text-base text-slate-600 max-w-2xl mx-auto leading-relaxed">
+        <p class="text-sm md:text-base text-saino-gray-600 max-w-2xl mx-auto leading-relaxed">
           At SAINO Health, we bring together accurate, relevant, and thoughtfully presented information about healthcare providers and services, enabling users to discover, explore, and make more informed healthcare decisions with confidence.
         </p>
       </div>
 
       <!-- Core Quote 1 (Page 4 spec) -->
       <div class="quote-box p-6 md:p-8 rounded-2xl mb-12 shadow-sm">
-        <p class="text-base md:text-lg font-medium text-slate-800 italic leading-relaxed mb-3">
+        <p class="text-base md:text-lg font-medium text-saino-gray-800 italic leading-relaxed mb-3">
           “Healthcare should not be a collection of disconnected services. It should be a connected ecosystem where people, providers, and information come together to make better decisions.”
         </p>
-        <span class="text-xs font-bold text-sky-700 tracking-wider uppercase">— SAINO Health</span>
+        <span class="text-xs font-bold text-saino-red tracking-wider uppercase">— SAINO Health</span>
       </div>
 
       <!-- Our Offerings (Page 4 & 5 spec) -->
-      <div class="bg-white rounded-3xl border border-slate-200 p-6 md:p-8 shadow-sm mb-12">
-        <h3 class="text-lg font-bold text-slate-900 mb-4">Our Offerings</h3>
+      <div class="bg-white rounded-3xl border border-saino-gray-200 p-6 md:p-8 shadow-sm mb-12">
+        <h3 class="text-lg font-bold text-saino-gray-900 mb-4">Our Offerings</h3>
         <div class="space-y-4">
-          <div class="flex items-start space-x-3 p-3 rounded-xl bg-slate-50 border border-slate-100">
+          <div class="flex items-start space-x-3 p-3 rounded-xl bg-saino-gray-50 border border-saino-gray-100">
             <span class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5">✓</span>
             <div>
-              <strong class="text-xs md:text-sm text-slate-900 block">Comprehensive Healthcare Directory</strong>
-              <p class="text-xs text-slate-600 mt-0.5">Detailed and verified information on healthcare providers, helping users discover doctors, clinics, hospitals, diagnostic centres, and healthcare services.</p>
+              <strong class="text-xs md:text-sm text-saino-gray-900 block">Comprehensive Healthcare Directory</strong>
+              <p class="text-xs text-saino-gray-600 mt-0.5">Detailed and verified information on healthcare providers, helping users discover doctors, clinics, hospitals, diagnostic centres, and healthcare services.</p>
             </div>
           </div>
 
-          <div class="flex items-start space-x-3 p-3 rounded-xl bg-slate-50 border border-slate-100">
+          <div class="flex items-start space-x-3 p-3 rounded-xl bg-saino-gray-50 border border-saino-gray-100">
             <span class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5">✓</span>
             <div>
-              <strong class="text-xs md:text-sm text-slate-900 block">Online Appointment Booking</strong>
-              <p class="text-xs text-slate-600 mt-0.5">Explore provider profiles, services, reviews, and availability, and book appointments conveniently through SAINO Health WhatsApp integration.</p>
+              <strong class="text-xs md:text-sm text-saino-gray-900 block">Online Appointment Booking</strong>
+              <p class="text-xs text-saino-gray-600 mt-0.5">Explore provider profiles, services, reviews, and availability, and book appointments conveniently through SAINO Health WhatsApp integration.</p>
             </div>
           </div>
 
-          <div class="flex items-start space-x-3 p-3 rounded-xl bg-slate-50 border border-slate-100">
+          <div class="flex items-start space-x-3 p-3 rounded-xl bg-saino-gray-50 border border-saino-gray-100">
             <span class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5">✓</span>
             <div>
-              <strong class="text-xs md:text-sm text-slate-900 block">Connected Healthcare Services</strong>
-              <p class="text-xs text-slate-600 mt-0.5">Access a growing network of healthcare providers and services through one trusted, connected marketplace.</p>
+              <strong class="text-xs md:text-sm text-saino-gray-900 block">Connected Healthcare Services</strong>
+              <p class="text-xs text-saino-gray-600 mt-0.5">Access a growing network of healthcare providers and services through one trusted, connected marketplace.</p>
             </div>
           </div>
         </div>
@@ -2138,56 +2138,56 @@ function renderAboutView() {
 
       <!-- Core Quote 2 (Page 5 spec) -->
       <div class="quote-box p-6 md:p-8 rounded-2xl mb-12 shadow-sm">
-        <p class="text-base md:text-lg font-medium text-slate-800 italic leading-relaxed mb-3">
+        <p class="text-base md:text-lg font-medium text-saino-gray-800 italic leading-relaxed mb-3">
           “The best care is more than a service—it is the feeling of being genuinely understood, cared for, and supported by someone you can trust.”
         </p>
-        <span class="text-xs font-bold text-sky-700 tracking-wider uppercase">— Our Care Philosophy</span>
+        <span class="text-xs font-bold text-saino-red tracking-wider uppercase">— Our Care Philosophy</span>
       </div>
 
       <!-- 4 Pillars: Connect · Trust · Transparency · Choice (Page 5 & 6 spec) -->
       <div class="mb-12">
         <div class="text-center mb-8">
           <span class="text-xs font-bold uppercase tracking-wider text-sky-600">Our Approach to Healthcare</span>
-          <h2 class="text-xl md:text-2xl font-bold text-slate-900 mt-1">Connecting People with Healthcare They Can Trust</h2>
+          <h2 class="text-xl md:text-2xl font-bold text-saino-gray-900 mt-1">Connecting People with Healthcare They Can Trust</h2>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+          <div class="bg-white p-6 rounded-2xl border border-saino-gray-200 shadow-sm">
             <div class="w-10 h-10 rounded-xl bg-sky-100 text-sky-700 flex items-center justify-center mb-3">
               <i data-lucide="link" class="w-5 h-5"></i>
             </div>
-            <h3 class="text-base font-bold text-slate-900 mb-2">Connect</h3>
-            <p class="text-xs text-slate-600 leading-relaxed">
+            <h3 class="text-base font-bold text-saino-gray-900 mb-2">Connect</h3>
+            <p class="text-xs text-saino-gray-600 leading-relaxed">
               Healthcare is more than finding a doctor or booking an appointment. It is about creating meaningful connections between people and the healthcare providers they choose. SAINO Health helps bring patients and providers closer through easier discovery, access, and communication.
             </p>
           </div>
 
-          <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+          <div class="bg-white p-6 rounded-2xl border border-saino-gray-200 shadow-sm">
             <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center mb-3">
               <i data-lucide="shield-check" class="w-5 h-5"></i>
             </div>
-            <h3 class="text-base font-bold text-slate-900 mb-2">Trust</h3>
-            <p class="text-xs text-slate-600 leading-relaxed">
+            <h3 class="text-base font-bold text-saino-gray-900 mb-2">Trust</h3>
+            <p class="text-xs text-saino-gray-600 leading-relaxed">
               Trust is at the heart of healthcare. We are committed to providing reliable provider information and maintaining a responsible verification system, helping people explore healthcare options with greater confidence.
             </p>
           </div>
 
-          <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+          <div class="bg-white p-6 rounded-2xl border border-saino-gray-200 shadow-sm">
             <div class="w-10 h-10 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center mb-3">
               <i data-lucide="eye" class="w-5 h-5"></i>
             </div>
-            <h3 class="text-base font-bold text-slate-900 mb-2">Transparency</h3>
-            <p class="text-xs text-slate-600 leading-relaxed">
+            <h3 class="text-base font-bold text-saino-gray-900 mb-2">Transparency</h3>
+            <p class="text-xs text-saino-gray-600 leading-relaxed">
               We believe people deserve clarity when making healthcare decisions. We strive to present provider information, services, reviews, activities, and promotional placements clearly, so users can explore their options and make informed choices.
             </p>
           </div>
 
-          <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+          <div class="bg-white p-6 rounded-2xl border border-saino-gray-200 shadow-sm">
             <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center mb-3">
               <i data-lucide="sparkles" class="w-5 h-5"></i>
             </div>
-            <h3 class="text-base font-bold text-slate-900 mb-2">Choice</h3>
-            <p class="text-xs text-slate-600 leading-relaxed">
+            <h3 class="text-base font-bold text-saino-gray-900 mb-2">Choice</h3>
+            <p class="text-xs text-saino-gray-600 leading-relaxed">
               Every individual has different healthcare needs. We believe people should have the freedom to explore relevant providers and services, understand their options, and choose the care that feels right for them.
             </p>
           </div>
@@ -2195,7 +2195,7 @@ function renderAboutView() {
       </div>
 
       <!-- Data Privacy & Security (Page 6 spec) -->
-      <div class="bg-slate-900 text-white rounded-3xl p-6 md:p-8 mb-12 shadow-xl">
+      <div class="bg-saino-gray-900 text-white rounded-3xl p-6 md:p-8 mb-12 shadow-xl">
         <div class="flex items-center space-x-3 mb-4">
           <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center">
             <i data-lucide="lock" class="w-5 h-5"></i>
@@ -2206,7 +2206,7 @@ function renderAboutView() {
           </div>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs text-slate-300 mb-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs text-saino-gray-300 mb-6">
           <div class="flex items-center space-x-2">
             <i data-lucide="shield" class="w-4 h-4 text-emerald-400"></i>
             <span>SAINO does not have access to your private medical data.</span>
@@ -2229,8 +2229,8 @@ function renderAboutView() {
       <!-- Health Care Investors (Page 6 spec) -->
       <div class="p-6 rounded-2xl bg-gradient-to-r from-sky-50 to-blue-50 border border-sky-200 flex flex-col sm:flex-row items-center justify-between gap-4">
         <div>
-          <h4 class="text-base font-bold text-slate-900">HEALTH CARE INVESTORS</h4>
-          <p class="text-xs text-slate-600">Let’s build the future of connected healthcare together.</p>
+          <h4 class="text-base font-bold text-saino-gray-900">HEALTH CARE INVESTORS</h4>
+          <p class="text-xs text-saino-gray-600">Let’s build the future of connected healthcare together.</p>
         </div>
         <button onclick="navigateTo('contact')" class="px-4 py-2 bg-sky-600 text-white rounded-xl text-xs font-bold hover:bg-sky-700 transition shadow-sm">
           [Investor Relations →]
@@ -2250,10 +2250,10 @@ function renderContactView() {
         <span class="px-3 py-1 rounded-full text-xs font-bold bg-sky-100 text-sky-800 uppercase tracking-wider">
           Contact SAINO Health
         </span>
-        <h1 class="text-2xl md:text-4xl font-extrabold text-slate-900 mt-3 mb-2">
+        <h1 class="text-2xl md:text-4xl font-extrabold text-saino-gray-900 mt-3 mb-2">
           We’re Here to Connect
         </h1>
-        <p class="text-sm md:text-base text-slate-600 max-w-2xl mx-auto leading-relaxed">
+        <p class="text-sm md:text-base text-saino-gray-600 max-w-2xl mx-auto leading-relaxed">
           Whether you’re looking to discover healthcare, join SAINO Health as a provider, promote your services, partner with us, or learn more about our platform, our team is here to help.
         </p>
       </div>
@@ -2261,55 +2261,55 @@ function renderContactView() {
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
         <!-- Left: Audience Information Router (Page 7 spec) -->
         <div class="lg:col-span-5 space-y-4">
-          <h3 class="text-sm font-bold uppercase tracking-wider text-slate-400">How can we help?</h3>
+          <h3 class="text-sm font-bold uppercase tracking-wider text-saino-gray-400">How can we help?</h3>
 
-          <div class="p-4 rounded-2xl bg-white border border-slate-200 shadow-xs">
-            <h4 class="text-xs font-bold text-slate-900 flex items-center space-x-1.5 mb-1">
+          <div class="p-4 rounded-2xl bg-white border border-saino-gray-200 shadow-xs">
+            <h4 class="text-xs font-bold text-saino-gray-900 flex items-center space-x-1.5 mb-1">
               <i data-lucide="user" class="w-4 h-4 text-sky-600"></i>
               <span>For Patients & Users</span>
             </h4>
-            <p class="text-xs text-slate-600">Questions about finding providers, appointments, profiles, reviews, or using SAINO Health.</p>
+            <p class="text-xs text-saino-gray-600">Questions about finding providers, appointments, profiles, reviews, or using SAINO Health.</p>
           </div>
 
-          <div class="p-4 rounded-2xl bg-white border border-slate-200 shadow-xs">
-            <h4 class="text-xs font-bold text-slate-900 flex items-center space-x-1.5 mb-1">
+          <div class="p-4 rounded-2xl bg-white border border-saino-gray-200 shadow-xs">
+            <h4 class="text-xs font-bold text-saino-gray-900 flex items-center space-x-1.5 mb-1">
               <i data-lucide="stethoscope" class="w-4 h-4 text-emerald-600"></i>
               <span>For Healthcare Providers</span>
             </h4>
-            <p class="text-xs text-slate-600">Join SAINO Health, create or manage your profile, get verified, reach more users, or learn about provider services.</p>
+            <p class="text-xs text-saino-gray-600">Join SAINO Health, create or manage your profile, get verified, reach more users, or learn about provider services.</p>
           </div>
 
-          <div class="p-4 rounded-2xl bg-white border border-slate-200 shadow-xs">
-            <h4 class="text-xs font-bold text-slate-900 flex items-center space-x-1.5 mb-1">
+          <div class="p-4 rounded-2xl bg-white border border-saino-gray-200 shadow-xs">
+            <h4 class="text-xs font-bold text-saino-gray-900 flex items-center space-x-1.5 mb-1">
               <i data-lucide="building" class="w-4 h-4 text-purple-600"></i>
               <span>For Healthcare Businesses & Advertisers</span>
             </h4>
-            <p class="text-xs text-slate-600">Explore visibility, campaigns, promotions, and other opportunities to grow your presence on SAINO Health.</p>
+            <p class="text-xs text-saino-gray-600">Explore visibility, campaigns, promotions, and other opportunities to grow your presence on SAINO Health.</p>
           </div>
 
-          <div class="p-4 rounded-2xl bg-white border border-slate-200 shadow-xs">
-            <h4 class="text-xs font-bold text-slate-900 flex items-center space-x-1.5 mb-1">
+          <div class="p-4 rounded-2xl bg-white border border-saino-gray-200 shadow-xs">
+            <h4 class="text-xs font-bold text-saino-gray-900 flex items-center space-x-1.5 mb-1">
               <i data-lucide="handshake" class="w-4 h-4 text-amber-600"></i>
               <span>For Partnerships & Investors</span>
             </h4>
-            <p class="text-xs text-slate-600">Connect with us for strategic healthcare networks, technology collaborations, and investment opportunities.</p>
+            <p class="text-xs text-saino-gray-600">Connect with us for strategic healthcare networks, technology collaborations, and investment opportunities.</p>
           </div>
 
           <!-- Office Details (Page 8 spec) -->
-          <div class="p-5 rounded-2xl bg-slate-900 text-white shadow-md">
-            <h4 class="text-xs font-bold uppercase tracking-wider text-sky-400 mb-2">Our Office: KATHMANDU, NEPAL</h4>
-            <p class="text-xs text-slate-300 leading-relaxed mb-3">
+          <div class="p-5 rounded-2xl bg-saino-gray-900 text-white shadow-md">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-saino-red-light mb-2">Our Office: KATHMANDU, NEPAL</h4>
+            <p class="text-xs text-saino-gray-300 leading-relaxed mb-3">
               <strong>SAINO Tech Ventures Pvt. Ltd.</strong><br>
               Tejasswee Girls Hostel, opp<br>
               Suruchi Marg, Kathmandu-31<br>
               Kathmandu 44600, Nepal
             </p>
-            <div class="space-y-1 text-xs text-slate-300 mb-3">
+            <div class="space-y-1 text-xs text-saino-gray-300 mb-3">
               <div>✉ info@sainotechventures.com</div>
               <div>✉ sales@sainotechventures.com</div>
               <div>✉ support@sainohealth.com</div>
             </div>
-            <button onclick="showToast('Opening Google Maps Directions to Kathmandu Office')" class="text-xs font-bold text-sky-400 hover:text-sky-300 inline-flex items-center space-x-1">
+            <button onclick="showToast('Opening Google Maps Directions to Kathmandu Office')" class="text-xs font-bold text-saino-red-light hover:text-saino-red-light/80 inline-flex items-center space-x-1">
               <span>Get Directions →</span>
             </button>
           </div>
@@ -2317,14 +2317,14 @@ function renderContactView() {
 
         <!-- Right: Interactive Inquiry Form (Page 8 spec) -->
         <div class="lg:col-span-7">
-          <div class="bg-white p-6 md:p-8 rounded-3xl border border-slate-200 shadow-sm">
-            <h3 class="text-lg font-bold text-slate-900 mb-2">Send an Inquiry</h3>
-            <p class="text-xs text-slate-500 mb-6">Have a question, suggestion, or opportunity to share? Reach out to us.</p>
+          <div class="bg-white p-6 md:p-8 rounded-3xl border border-saino-gray-200 shadow-sm">
+            <h3 class="text-lg font-bold text-saino-gray-900 mb-2">Send an Inquiry</h3>
+            <p class="text-xs text-saino-gray-500 mb-6">Have a question, suggestion, or opportunity to share? Reach out to us.</p>
 
             <form id="contactForm" onsubmit="handleContactSubmit(event)" class="space-y-4">
               <div>
-                <label class="block text-xs font-bold text-slate-700 mb-1">Interested In: (BOX)</label>
-                <select id="contactTopic" required class="w-full text-xs bg-slate-50 border border-slate-200 rounded-xl p-3 text-slate-800 focus:outline-none focus:ring-2 focus:ring-sky-500">
+                <label class="block text-xs font-bold text-saino-gray-700 mb-1">Interested In: (BOX)</label>
+                <select id="contactTopic" required class="w-full text-xs bg-saino-gray-50 border border-saino-gray-200 rounded-xl p-3 text-saino-gray-800 focus:outline-none focus:ring-2 focus:ring-sky-500">
                   <option value="Patient Appointment Inquiry">Patient Appointment / Healthcare Finding</option>
                   <option value="Healthcare Provider Verification & Badge Upgrade">Healthcare Provider Verification & Badge Upgrade</option>
                   <option value="Healthcare Business Advertising & Campaigns (SAINO Boost)">Healthcare Business Advertising & Campaigns (SAINO Boost)</option>
@@ -2335,23 +2335,23 @@ function renderContactView() {
 
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label class="block text-xs font-bold text-slate-700 mb-1">Full Name</label>
-                  <input type="text" id="contactName" required placeholder="e.g. Dr. Ramesh Karki / Sita Sharma" class="w-full text-xs bg-slate-50 border border-slate-200 rounded-xl p-3 text-slate-800 focus:outline-none focus:ring-2 focus:ring-sky-500">
+                  <label class="block text-xs font-bold text-saino-gray-700 mb-1">Full Name</label>
+                  <input type="text" id="contactName" required placeholder="e.g. Dr. Ramesh Karki / Sita Sharma" class="w-full text-xs bg-saino-gray-50 border border-saino-gray-200 rounded-xl p-3 text-saino-gray-800 focus:outline-none focus:ring-2 focus:ring-sky-500">
                 </div>
                 <div>
-                  <label class="block text-xs font-bold text-slate-700 mb-1">Phone / WhatsApp Number</label>
-                  <input type="tel" id="contactPhone" required placeholder="+977-98XXXXXXXX" class="w-full text-xs bg-slate-50 border border-slate-200 rounded-xl p-3 text-slate-800 focus:outline-none focus:ring-2 focus:ring-sky-500">
+                  <label class="block text-xs font-bold text-saino-gray-700 mb-1">Phone / WhatsApp Number</label>
+                  <input type="tel" id="contactPhone" required placeholder="+977-98XXXXXXXX" class="w-full text-xs bg-saino-gray-50 border border-saino-gray-200 rounded-xl p-3 text-saino-gray-800 focus:outline-none focus:ring-2 focus:ring-sky-500">
                 </div>
               </div>
 
               <div>
-                <label class="block text-xs font-bold text-slate-700 mb-1">Email Address</label>
-                <input type="email" id="contactEmail" required placeholder="your.email@provider.com" class="w-full text-xs bg-slate-50 border border-slate-200 rounded-xl p-3 text-slate-800 focus:outline-none focus:ring-2 focus:ring-sky-500">
+                <label class="block text-xs font-bold text-saino-gray-700 mb-1">Email Address</label>
+                <input type="email" id="contactEmail" required placeholder="your.email@provider.com" class="w-full text-xs bg-saino-gray-50 border border-saino-gray-200 rounded-xl p-3 text-saino-gray-800 focus:outline-none focus:ring-2 focus:ring-sky-500">
               </div>
 
               <div>
-                <label class="block text-xs font-bold text-slate-700 mb-1">Message / Requirements</label>
-                <textarea id="contactMessage" rows="4" required placeholder="Describe your inquiry, clinic details, or advertising timeline..." class="w-full text-xs bg-slate-50 border border-slate-200 rounded-xl p-3 text-slate-800 focus:outline-none focus:ring-2 focus:ring-sky-500"></textarea>
+                <label class="block text-xs font-bold text-saino-gray-700 mb-1">Message / Requirements</label>
+                <textarea id="contactMessage" rows="4" required placeholder="Describe your inquiry, clinic details, or advertising timeline..." class="w-full text-xs bg-saino-gray-50 border border-saino-gray-200 rounded-xl p-3 text-saino-gray-800 focus:outline-none focus:ring-2 focus:ring-sky-500"></textarea>
               </div>
 
               <button type="submit" class="w-full py-3 bg-sky-600 hover:bg-sky-700 text-white font-bold rounded-xl text-xs md:text-sm transition shadow-md flex items-center justify-center space-x-2">
@@ -2405,7 +2405,7 @@ function updateAdTrack() {
     if (idx === AppState.currentAdIndex) {
       btn.className = 'w-5 h-2 rounded-full transition-all bg-sky-600';
     } else {
-      btn.className = 'w-2 h-2 rounded-full transition-all bg-slate-300';
+      btn.className = 'w-2 h-2 rounded-full transition-all bg-saino-gray-300';
     }
   });
 }
@@ -2525,11 +2525,11 @@ function openProviderModal(providerId) {
   if (!modalContainer) return;
 
   modalContainer.innerHTML = `
-    <div class="fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-3 md:p-6 modal-overlay">
-      <div class="bg-white w-full max-w-4xl rounded-3xl shadow-2xl overflow-hidden border border-slate-200 modal-content animate-in fade-in zoom-in-95 duration-200 max-h-[90vh] flex flex-col">
+    <div class="fixed inset-0 z-50 overflow-y-auto bg-saino-gray-900/60 backdrop-blur-sm flex items-center justify-center p-3 md:p-6 modal-overlay">
+      <div class="bg-white w-full max-w-4xl rounded-3xl shadow-2xl overflow-hidden border border-saino-gray-200 modal-content animate-in fade-in zoom-in-95 duration-200 max-h-[90vh] flex flex-col">
         
         <!-- Modal Top Bar with Cover & Doctor Spotlight -->
-        <div class="relative bg-gradient-to-r from-sky-900 via-indigo-900 to-slate-900 text-white p-6 md:p-8 flex-shrink-0">
+        <div class="relative bg-gradient-to-r from-sky-900 via-indigo-900 to-saino-gray-900 text-white p-6 md:p-8 flex-shrink-0">
           <button onclick="closeModal()" class="absolute top-4 right-4 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition">
             <i data-lucide="x" class="w-5 h-5"></i>
           </button>
@@ -2543,8 +2543,8 @@ function openProviderModal(providerId) {
                 <div class="flex flex-wrap items-center gap-2 mb-1">
                   <h2 class="text-xl md:text-2xl font-bold">${p.name}</h2>
                   ${p.verification === 'vvip' ? `<span class="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full text-xs font-black bg-gradient-to-r from-indigo-600 to-purple-700 text-white shadow-md"><i data-lucide="award" class="w-3.5 h-3.5 text-amber-300"></i><span>🏆 SAINO VVIP</span></span>` : ''}
-                  ${p.verification === 'vip' ? `<span class="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full text-xs font-black bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 shadow-md"><i data-lucide="crown" class="w-3.5 h-3.5 text-slate-950"></i><span>👑 SAINO Verified VIP</span></span>` : ''}
-                  ${p.verification === 'pro' ? `<span class="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full text-xs font-bold bg-[#0284c7] text-white shadow-md"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-white"></i><span>✓ SAINO Verified Pro</span></span>` : ''}
+                  ${p.verification === 'vip' ? `<span class="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full text-xs font-black bg-gradient-to-r from-amber-500 to-amber-600 text-saino-gray-950 shadow-md"><i data-lucide="crown" class="w-3.5 h-3.5 text-saino-gray-950"></i><span>👑 SAINO Verified VIP</span></span>` : ''}
+                  ${p.verification === 'pro' ? `<span class="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full text-xs font-bold bg-saino-red text-white shadow-md"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-white"></i><span>✓ SAINO Verified Pro</span></span>` : ''}
                   ${p.verification === 'prime' ? `<span class="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full text-xs font-bold bg-[#059669] text-white shadow-md"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-white"></i><span>✓ SAINO Verified Prime</span></span>` : ''}
                   ${p.verification === 'listed' ? `<span class="inline-flex items-center space-x-1.5 px-2.5 py-1 rounded-full text-[11px] font-medium bg-white/20 text-white"><i data-lucide="check" class="w-3 h-3"></i><span>Saino Listed</span></span>` : ''}
                 </div>
@@ -2569,7 +2569,7 @@ function openProviderModal(providerId) {
                 <strong class="text-white font-bold">${p.leadDoctor}</strong> · 
                 <span class="text-sky-200">${p.leadDoctorRole} (${p.leadDoctorExperience})</span>
               </div>
-              <div class="flex items-center space-x-3 text-slate-200">
+              <div class="flex items-center space-x-3 text-saino-gray-200">
                 <span>⭐ ${p.rating} (${p.reviewsCount} Reviews)</span>
                 <span>♥ ${(p.likesCount).toLocaleString()} Likes</span>
                 <span>👥 ${p.interestedCount} Interested</span>
@@ -2579,27 +2579,27 @@ function openProviderModal(providerId) {
         </div>
 
         <!-- Navigation Tabs (Page 10 & 11 Spec) -->
-        <div class="border-b border-slate-200 px-6 bg-slate-50 flex space-x-6 text-xs font-bold text-slate-600 overflow-x-auto no-scrollbar flex-shrink-0">
-          <button onclick="switchProviderTab('about')" id="tabBtn-about" class="py-3 border-b-2 border-sky-600 text-sky-600">About</button>
-          <button onclick="switchProviderTab('services')" id="tabBtn-services" class="py-3 border-b-2 border-transparent hover:text-slate-900">Services & Fees</button>
-          <button onclick="switchProviderTab('reviews')" id="tabBtn-reviews" class="py-3 border-b-2 border-transparent hover:text-slate-900">Reviews (${p.reviews ? p.reviews.length : 0})</button>
-          <button onclick="switchProviderTab('activity')" id="tabBtn-activity" class="py-3 border-b-2 border-transparent hover:text-slate-900">Activity & Updates</button>
-          <button onclick="switchProviderTab('photos')" id="tabBtn-photos" class="py-3 border-b-2 border-transparent hover:text-slate-900">Photos Gallery</button>
-          <button onclick="switchProviderTab('availability')" id="tabBtn-availability" class="py-3 border-b-2 border-transparent hover:text-slate-900">Doctor Availability</button>
+        <div class="border-b border-saino-gray-200 px-6 bg-saino-gray-50 flex space-x-6 text-xs font-bold text-saino-gray-600 overflow-x-auto no-scrollbar flex-shrink-0">
+          <button onclick="switchProviderTab('about')" id="tabBtn-about" class="py-3 border-b-2 border-saino-red text-saino-red">About</button>
+          <button onclick="switchProviderTab('services')" id="tabBtn-services" class="py-3 border-b-2 border-transparent hover:text-saino-gray-900">Services & Fees</button>
+          <button onclick="switchProviderTab('reviews')" id="tabBtn-reviews" class="py-3 border-b-2 border-transparent hover:text-saino-gray-900">Reviews (${p.reviews ? p.reviews.length : 0})</button>
+          <button onclick="switchProviderTab('activity')" id="tabBtn-activity" class="py-3 border-b-2 border-transparent hover:text-saino-gray-900">Activity & Updates</button>
+          <button onclick="switchProviderTab('photos')" id="tabBtn-photos" class="py-3 border-b-2 border-transparent hover:text-saino-gray-900">Photos Gallery</button>
+          <button onclick="switchProviderTab('availability')" id="tabBtn-availability" class="py-3 border-b-2 border-transparent hover:text-saino-gray-900">Doctor Availability</button>
         </div>
 
         <!-- Tab Content Area -->
-        <div id="providerTabContent" class="p-6 overflow-y-auto custom-scrollbar flex-1 space-y-4 text-xs text-slate-700">
+        <div id="providerTabContent" class="p-6 overflow-y-auto custom-scrollbar flex-1 space-y-4 text-xs text-saino-gray-700">
           ${renderProviderAboutTab(p)}
         </div>
 
         <!-- Modal Footer -->
-        <div class="p-4 bg-slate-50 border-t border-slate-200 flex items-center justify-between text-xs flex-shrink-0">
-          <div class="text-slate-500">
+        <div class="p-4 bg-saino-gray-50 border-t border-saino-gray-200 flex items-center justify-between text-xs flex-shrink-0">
+          <div class="text-saino-gray-500">
             Opening Hours: <strong>${p.openingHours}</strong>
           </div>
           <div class="flex items-center space-x-3">
-            <button onclick="openWriteReviewModal('${p.id}')" class="px-3 py-1.5 bg-white border border-slate-300 text-slate-700 font-semibold rounded-lg hover:bg-slate-100 transition">
+            <button onclick="openWriteReviewModal('${p.id}')" class="px-3 py-1.5 bg-white border border-saino-gray-300 text-saino-gray-700 font-semibold rounded-lg hover:bg-saino-gray-100 transition">
               ✍ Write a Review
             </button>
             <button onclick="openBookingWhatsApp('${p.id}')" class="px-4 py-1.5 bg-emerald-600 text-white font-bold rounded-lg hover:bg-emerald-700 transition">
@@ -2620,11 +2620,11 @@ function switchProviderTab(tabName) {
   if (!p) return;
 
   document.querySelectorAll('[id^="tabBtn-"]').forEach(btn => {
-    btn.className = 'py-3 border-b-2 border-transparent hover:text-slate-900';
+    btn.className = 'py-3 border-b-2 border-transparent hover:text-saino-gray-900';
   });
   const activeBtn = document.getElementById(`tabBtn-${tabName}`);
   if (activeBtn) {
-    activeBtn.className = 'py-3 border-b-2 border-sky-600 text-sky-600 font-bold';
+    activeBtn.className = 'py-3 border-b-2 border-saino-red text-saino-red font-bold';
   }
 
   const container = document.getElementById('providerTabContent');
@@ -2637,13 +2637,13 @@ function switchProviderTab(tabName) {
     case 'services':
       container.innerHTML = `
         <div class="space-y-3">
-          <h4 class="text-sm font-bold text-slate-900">Available Consultation & Service Packages</h4>
+          <h4 class="text-sm font-bold text-saino-gray-900">Available Consultation & Service Packages</h4>
           <div class="space-y-2">
             ${p.services.map(s => `
-              <div class="p-3.5 rounded-xl border border-slate-200 bg-slate-50/60 flex items-center justify-between">
+              <div class="p-3.5 rounded-xl border border-saino-gray-200 bg-saino-gray-50/60 flex items-center justify-between">
                 <div>
-                  <strong class="text-xs text-slate-900 block">${s.name}</strong>
-                  <span class="text-[11px] text-slate-500">Consultant: ${s.doctor}</span>
+                  <strong class="text-xs text-saino-gray-900 block">${s.name}</strong>
+                  <span class="text-[11px] text-saino-gray-500">Consultant: ${s.doctor}</span>
                 </div>
                 <div class="text-right">
                   <span class="text-xs font-bold text-sky-700 block">${s.fee}</span>
@@ -2661,24 +2661,24 @@ function switchProviderTab(tabName) {
       container.innerHTML = `
         <div class="space-y-4">
           <div class="flex items-center justify-between">
-            <h4 class="text-sm font-bold text-slate-900">Patient Reviews & Experiences</h4>
+            <h4 class="text-sm font-bold text-saino-gray-900">Patient Reviews & Experiences</h4>
             <button onclick="openWriteReviewModal('${p.id}')" class="text-xs font-bold text-sky-600 hover:text-sky-700">
               + Add Your Review
             </button>
           </div>
           <div class="space-y-3">
             ${p.reviews && p.reviews.length > 0 ? p.reviews.map(r => `
-              <div class="p-4 rounded-xl border border-slate-200 bg-slate-50">
+              <div class="p-4 rounded-xl border border-saino-gray-200 bg-saino-gray-50">
                 <div class="flex items-center justify-between mb-1.5">
-                  <span class="font-bold text-slate-800 text-xs">${r.user}</span>
-                  <span class="text-[11px] text-slate-400">${r.date}</span>
+                  <span class="font-bold text-saino-gray-800 text-xs">${r.user}</span>
+                  <span class="text-[11px] text-saino-gray-400">${r.date}</span>
                 </div>
                 <div class="text-amber-500 text-xs mb-1">
                   ${'★'.repeat(Math.round(r.rating))} (${r.rating})
                 </div>
-                <p class="text-xs text-slate-600 leading-relaxed">"${r.comment}"</p>
+                <p class="text-xs text-saino-gray-600 leading-relaxed">"${r.comment}"</p>
               </div>
-            `).join('') : '<p class="text-xs text-slate-400">No reviews submitted yet.</p>'}
+            `).join('') : '<p class="text-xs text-saino-gray-400">No reviews submitted yet.</p>'}
           </div>
         </div>
       `;
@@ -2686,12 +2686,12 @@ function switchProviderTab(tabName) {
     case 'activity':
       container.innerHTML = `
         <div class="space-y-3">
-          <h4 class="text-sm font-bold text-slate-900">Recent Facility Activity & Health Drives</h4>
+          <h4 class="text-sm font-bold text-saino-gray-900">Recent Facility Activity & Health Drives</h4>
           <ul class="space-y-2 text-xs">
             ${p.activity.map(act => `
-              <li class="p-3 rounded-xl bg-slate-50 border border-slate-100 flex items-start space-x-2.5">
+              <li class="p-3 rounded-xl bg-saino-gray-50 border border-saino-gray-100 flex items-start space-x-2.5">
                 <i data-lucide="check-circle" class="w-4 h-4 text-sky-600 flex-shrink-0 mt-0.5"></i>
-                <span class="text-slate-700">${act}</span>
+                <span class="text-saino-gray-700">${act}</span>
               </li>
             `).join('')}
           </ul>
@@ -2701,10 +2701,10 @@ function switchProviderTab(tabName) {
     case 'photos':
       container.innerHTML = `
         <div>
-          <h4 class="text-sm font-bold text-slate-900 mb-3">Facility & Infrastructure Photos</h4>
+          <h4 class="text-sm font-bold text-saino-gray-900 mb-3">Facility & Infrastructure Photos</h4>
           <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
             ${p.photos.map(photo => `
-              <div class="h-36 rounded-xl overflow-hidden border border-slate-200 shadow-xs">
+              <div class="h-36 rounded-xl overflow-hidden border border-saino-gray-200 shadow-xs">
                 <img src="${photo}" class="w-full h-full object-cover">
               </div>
             `).join('')}
@@ -2715,13 +2715,13 @@ function switchProviderTab(tabName) {
     case 'availability':
       container.innerHTML = `
         <div class="space-y-3">
-          <h4 class="text-sm font-bold text-slate-900">Doctor OPD & Consultation Availability</h4>
+          <h4 class="text-sm font-bold text-saino-gray-900">Doctor OPD & Consultation Availability</h4>
           <div class="space-y-2">
             ${p.availability.map(av => `
-              <div class="p-3 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-between text-xs">
+              <div class="p-3 rounded-xl bg-saino-gray-50 border border-saino-gray-100 flex items-center justify-between text-xs">
                 <div>
-                  <strong class="text-slate-900 block">${av.doctor}</strong>
-                  <span class="text-slate-500">${av.day}</span>
+                  <strong class="text-saino-gray-900 block">${av.doctor}</strong>
+                  <span class="text-saino-gray-500">${av.day}</span>
                 </div>
                 <span class="px-2.5 py-1 rounded bg-sky-100 text-sky-800 font-bold">${av.time}</span>
               </div>
@@ -2739,26 +2739,26 @@ function renderProviderAboutTab(p) {
   return `
     <div class="space-y-4">
       <div>
-        <h4 class="text-sm font-bold text-slate-900 mb-1">About Facility</h4>
-        <p class="text-xs text-slate-600 leading-relaxed">${p.about}</p>
+        <h4 class="text-sm font-bold text-saino-gray-900 mb-1">About Facility</h4>
+        <p class="text-xs text-saino-gray-600 leading-relaxed">${p.about}</p>
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-        <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-100">
-          <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider block mb-1">Location & Directions</span>
-          <p class="text-xs text-slate-800 font-semibold">${p.location}, ${p.city}</p>
+        <div class="p-3.5 rounded-xl bg-saino-gray-50 border border-saino-gray-100">
+          <span class="text-[11px] font-bold text-saino-gray-400 uppercase tracking-wider block mb-1">Location & Directions</span>
+          <p class="text-xs text-saino-gray-800 font-semibold">${p.location}, ${p.city}</p>
           ${p.website ? `<a href="${p.website}" target="_blank" class="text-xs text-sky-600 hover:underline mt-1 block">Visit Official Website →</a>` : ''}
         </div>
 
-        <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-100">
-          <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider block mb-1">Emergency & OPD Schedule</span>
-          <p class="text-xs text-slate-800 font-semibold">${p.openingHours}</p>
+        <div class="p-3.5 rounded-xl bg-saino-gray-50 border border-saino-gray-100">
+          <span class="text-[11px] font-bold text-saino-gray-400 uppercase tracking-wider block mb-1">Emergency & OPD Schedule</span>
+          <p class="text-xs text-saino-gray-800 font-semibold">${p.openingHours}</p>
           <span class="text-[11px] text-emerald-600 font-semibold block mt-1">✓ Instant WhatsApp Booking Enabled</span>
         </div>
       </div>
 
       <div>
-        <h4 class="text-sm font-bold text-slate-900 mb-2">Speciality Departments</h4>
+        <h4 class="text-sm font-bold text-saino-gray-900 mb-2">Speciality Departments</h4>
         <div class="flex flex-wrap gap-1.5">
           ${p.departments.map(d => `<span class="px-2.5 py-1 rounded-lg bg-sky-50 text-sky-800 text-xs font-semibold">${d}</span>`).join('')}
         </div>
@@ -2776,8 +2776,8 @@ function openBookingWhatsApp(providerId) {
   if (!modalContainer) return;
 
   modalContainer.innerHTML = `
-    <div class="fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-3 md:p-6 modal-overlay">
-      <div class="bg-white w-full max-w-lg rounded-3xl shadow-2xl overflow-hidden border border-slate-200 modal-content animate-in fade-in zoom-in-95 duration-200">
+    <div class="fixed inset-0 z-50 overflow-y-auto bg-saino-gray-900/60 backdrop-blur-sm flex items-center justify-center p-3 md:p-6 modal-overlay">
+      <div class="bg-white w-full max-w-lg rounded-3xl shadow-2xl overflow-hidden border border-saino-gray-200 modal-content animate-in fade-in zoom-in-95 duration-200">
         
         <div class="bg-gradient-to-r from-emerald-700 to-teal-800 p-6 text-white relative">
           <button onclick="closeModal()" class="absolute top-4 right-4 p-1.5 rounded-full bg-white/10 hover:bg-white/20 text-white transition">
@@ -2793,8 +2793,8 @@ function openBookingWhatsApp(providerId) {
 
         <form onsubmit="handleWhatsAppBookingSubmit(event, '${p.id}')" class="p-6 space-y-4 text-xs">
           <div>
-            <label class="block font-bold text-slate-700 mb-1">Select Service / Department</label>
-            <select id="wbService" class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-slate-800 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+            <label class="block font-bold text-saino-gray-700 mb-1">Select Service / Department</label>
+            <select id="wbService" class="w-full bg-saino-gray-50 border border-saino-gray-200 rounded-xl p-3 text-saino-gray-800 focus:outline-none focus:ring-2 focus:ring-emerald-500">
               ${p.services.map(s => `<option value="${s.name}">${s.name} (${s.fee})</option>`).join('')}
               <option value="General OPD Consultation">General OPD Consultation</option>
             </select>
@@ -2802,18 +2802,18 @@ function openBookingWhatsApp(providerId) {
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
-              <label class="block font-bold text-slate-700 mb-1">Patient Full Name</label>
-              <input type="text" id="wbPatientName" required placeholder="e.g. Binod Shrestha" class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-slate-800 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+              <label class="block font-bold text-saino-gray-700 mb-1">Patient Full Name</label>
+              <input type="text" id="wbPatientName" required placeholder="e.g. Binod Shrestha" class="w-full bg-saino-gray-50 border border-saino-gray-200 rounded-xl p-3 text-saino-gray-800 focus:outline-none focus:ring-2 focus:ring-emerald-500">
             </div>
             <div>
-              <label class="block font-bold text-slate-700 mb-1">Preferred Date</label>
-              <input type="date" id="wbDate" required value="${new Date().toISOString().split('T')[0]}" class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-slate-800 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+              <label class="block font-bold text-saino-gray-700 mb-1">Preferred Date</label>
+              <input type="date" id="wbDate" required value="${new Date().toISOString().split('T')[0]}" class="w-full bg-saino-gray-50 border border-saino-gray-200 rounded-xl p-3 text-saino-gray-800 focus:outline-none focus:ring-2 focus:ring-emerald-500">
             </div>
           </div>
 
           <div>
-            <label class="block font-bold text-slate-700 mb-1">Brief Symptoms or Notes (Optional)</label>
-            <textarea id="wbNotes" rows="2" placeholder="e.g. Chest discomfort since 2 days, need ECG & consultation..." class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-slate-800 focus:outline-none focus:ring-2 focus:ring-emerald-500"></textarea>
+            <label class="block font-bold text-saino-gray-700 mb-1">Brief Symptoms or Notes (Optional)</label>
+            <textarea id="wbNotes" rows="2" placeholder="e.g. Chest discomfort since 2 days, need ECG & consultation..." class="w-full bg-saino-gray-50 border border-saino-gray-200 rounded-xl p-3 text-saino-gray-800 focus:outline-none focus:ring-2 focus:ring-emerald-500"></textarea>
           </div>
 
           <div class="p-3 rounded-xl bg-emerald-50 text-emerald-800 text-[11px] flex items-center space-x-2 border border-emerald-100">
@@ -2822,7 +2822,7 @@ function openBookingWhatsApp(providerId) {
           </div>
 
           <div class="pt-2 flex items-center justify-end space-x-3">
-            <button type="button" onclick="closeModal()" class="px-4 py-2.5 text-slate-600 font-semibold hover:bg-slate-100 rounded-xl transition">
+            <button type="button" onclick="closeModal()" class="px-4 py-2.5 text-saino-gray-600 font-semibold hover:bg-saino-gray-100 rounded-xl transition">
               Cancel
             </button>
             <button type="submit" class="px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl transition shadow-md flex items-center space-x-2">
@@ -2885,10 +2885,10 @@ function openUpgradeBadgeModal(preselectedTier = 'prime') {
   if (!modalContainer) return;
 
   modalContainer.innerHTML = `
-    <div class="fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-3 md:p-6 modal-overlay">
-      <div class="bg-white w-full max-w-2xl rounded-3xl shadow-2xl overflow-hidden border border-slate-200 modal-content animate-in fade-in zoom-in-95 duration-200">
+    <div class="fixed inset-0 z-50 overflow-y-auto bg-saino-gray-900/60 backdrop-blur-sm flex items-center justify-center p-3 md:p-6 modal-overlay">
+      <div class="bg-white w-full max-w-2xl rounded-3xl shadow-2xl overflow-hidden border border-saino-gray-200 modal-content animate-in fade-in zoom-in-95 duration-200">
         
-        <div class="bg-gradient-to-r from-[#881337] via-[#991b1b] to-[#7f1d1d] p-6 text-white relative">
+        <div class="bg-gradient-to-r from-saino-red-dark via-saino-red to-saino-red-dark p-6 text-white relative">
           <button onclick="closeModal()" class="absolute top-4 right-4 p-1.5 rounded-full bg-white/10 hover:bg-white/20 text-white transition">
             <i data-lucide="x" class="w-4 h-4"></i>
           </button>
@@ -2902,16 +2902,16 @@ function openUpgradeBadgeModal(preselectedTier = 'prime') {
 
         <form onsubmit="handleUpgradeSubmit(event)" class="p-6 space-y-4 text-xs">
           <div>
-            <label class="block font-bold text-slate-700 mb-1">Select Verification Tier</label>
+            <label class="block font-bold text-saino-gray-700 mb-1">Select Verification Tier</label>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
               ${window.SAINO_DATA.subscriptionTiers.map(t => `
-                <label class="p-3.5 rounded-2xl border ${t.id === preselectedTier ? 'border-rose-500 bg-rose-50 ring-2 ring-rose-500/20' : 'border-slate-200 bg-slate-50'} flex flex-col justify-between cursor-pointer">
+                <label class="p-3.5 rounded-2xl border ${t.id === preselectedTier ? 'border-saino-red bg-saino-red/10 ring-2 ring-saino-red/20' : 'border-saino-gray-200 bg-saino-gray-50'} flex flex-col justify-between cursor-pointer">
                   <div class="flex items-center justify-between mb-2">
-                    <input type="radio" name="tierPlan" value="${t.id}" ${t.id === preselectedTier ? 'checked' : ''} class="text-rose-600">
-                    <span class="text-[9px] font-black uppercase ${t.type === 'paid' ? 'text-rose-700' : 'text-slate-400'}">${t.name}</span>
+                    <input type="radio" name="tierPlan" value="${t.id}" ${t.id === preselectedTier ? 'checked' : ''} class="text-saino-red">
+                    <span class="text-[9px] font-black uppercase ${t.type === 'paid' ? 'text-saino-red-dark' : 'text-saino-gray-400'}">${t.name}</span>
                   </div>
-                  <strong class="text-slate-900 text-xs">${t.badge}</strong>
-                  <span class="text-rose-700 font-bold text-xs mt-1">${t.price}</span>
+                  <strong class="text-saino-gray-900 text-xs">${t.badge}</strong>
+                  <span class="text-saino-red-dark font-bold text-xs mt-1">${t.price}</span>
                 </label>
               `).join('')}
             </div>
@@ -2919,23 +2919,23 @@ function openUpgradeBadgeModal(preselectedTier = 'prime') {
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
-              <label class="block font-bold text-slate-700 mb-1">Hospital / Clinic / Provider Name</label>
-              <input type="text" id="upgOrgName" required placeholder="e.g. Kathmandu Care Clinic" class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-slate-800 focus:outline-none focus:ring-2 focus:ring-rose-500">
+              <label class="block font-bold text-saino-gray-700 mb-1">Hospital / Clinic / Provider Name</label>
+              <input type="text" id="upgOrgName" required placeholder="e.g. Kathmandu Care Clinic" class="w-full bg-saino-gray-50 border border-saino-gray-200 rounded-xl p-3 text-saino-gray-800 focus:outline-none focus:ring-2 focus:ring-saino-red">
             </div>
             <div>
-              <label class="block font-bold text-slate-700 mb-1">Contact Person & Phone</label>
-              <input type="text" id="upgContact" required placeholder="e.g. Dr. Karki / 98XXXXXXXX" class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-slate-800 focus:outline-none focus:ring-2 focus:ring-rose-500">
+              <label class="block font-bold text-saino-gray-700 mb-1">Contact Person & Phone</label>
+              <input type="text" id="upgContact" required placeholder="e.g. Dr. Karki / 98XXXXXXXX" class="w-full bg-saino-gray-50 border border-saino-gray-200 rounded-xl p-3 text-saino-gray-800 focus:outline-none focus:ring-2 focus:ring-saino-red">
             </div>
           </div>
 
           <div>
-            <label class="block font-bold text-slate-700 mb-1">Business Email</label>
-            <input type="email" id="upgEmail" required placeholder="admin@careclinic.np" class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-slate-800 focus:outline-none focus:ring-2 focus:ring-rose-500">
+            <label class="block font-bold text-saino-gray-700 mb-1">Business Email</label>
+            <input type="email" id="upgEmail" required placeholder="admin@careclinic.np" class="w-full bg-saino-gray-50 border border-saino-gray-200 rounded-xl p-3 text-saino-gray-800 focus:outline-none focus:ring-2 focus:ring-saino-red">
           </div>
 
           <div>
-            <label class="block font-bold text-slate-700 mb-1">Payment Method (Esewa / Khalti / FonePay / Bank Transfer)</label>
-            <select class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-slate-800">
+            <label class="block font-bold text-saino-gray-700 mb-1">Payment Method (Esewa / Khalti / FonePay / Bank Transfer)</label>
+            <select class="w-full bg-saino-gray-50 border border-saino-gray-200 rounded-xl p-3 text-saino-gray-800">
               <option>eSewa Digital Wallet</option>
               <option>Khalti Digital Wallet</option>
               <option>FonePay Direct QR</option>
@@ -2944,10 +2944,10 @@ function openUpgradeBadgeModal(preselectedTier = 'prime') {
           </div>
 
           <div class="pt-2 flex items-center justify-end space-x-3">
-            <button type="button" onclick="closeModal()" class="px-4 py-2.5 text-slate-600 font-semibold hover:bg-slate-100 rounded-xl transition">
+            <button type="button" onclick="closeModal()" class="px-4 py-2.5 text-saino-gray-600 font-semibold hover:bg-saino-gray-100 rounded-xl transition">
               Cancel
             </button>
-            <button type="submit" class="px-5 py-2.5 bg-rose-600 hover:bg-rose-700 text-white font-bold rounded-xl transition shadow-md">
+            <button type="submit" class="px-5 py-2.5 bg-saino-red hover:bg-saino-red-dark text-white font-bold rounded-xl transition shadow-md">
               Proceed to Verification & Badge Upgrade
             </button>
           </div>
@@ -2975,26 +2975,26 @@ function openWriteReviewModal(providerId) {
   if (!modalContainer) return;
 
   modalContainer.innerHTML = `
-    <div class="fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-3 md:p-6 modal-overlay">
-      <div class="bg-white w-full max-w-md rounded-3xl shadow-2xl overflow-hidden border border-slate-200 modal-content animate-in fade-in zoom-in-95 duration-200">
+    <div class="fixed inset-0 z-50 overflow-y-auto bg-saino-gray-900/60 backdrop-blur-sm flex items-center justify-center p-3 md:p-6 modal-overlay">
+      <div class="bg-white w-full max-w-md rounded-3xl shadow-2xl overflow-hidden border border-saino-gray-200 modal-content animate-in fade-in zoom-in-95 duration-200">
         
-        <div class="bg-slate-900 p-6 text-white relative">
+        <div class="bg-saino-gray-900 p-6 text-white relative">
           <button onclick="closeModal()" class="absolute top-4 right-4 p-1.5 rounded-full bg-white/10 hover:bg-white/20 text-white transition">
             <i data-lucide="x" class="w-4 h-4"></i>
           </button>
           <h3 class="text-base font-bold">Write a Review</h3>
-          <p class="text-xs text-slate-400 mt-0.5">${p.name}</p>
+          <p class="text-xs text-saino-gray-400 mt-0.5">${p.name}</p>
         </div>
 
         <form onsubmit="handleReviewSubmit(event, '${p.id}')" class="p-6 space-y-4 text-xs">
           <div>
-            <label class="block font-bold text-slate-700 mb-1">Your Full Name</label>
-            <input type="text" id="revName" required placeholder="e.g. Pooja Sharma" class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-slate-800 focus:outline-none focus:ring-2 focus:ring-sky-500">
+            <label class="block font-bold text-saino-gray-700 mb-1">Your Full Name</label>
+            <input type="text" id="revName" required placeholder="e.g. Pooja Sharma" class="w-full bg-saino-gray-50 border border-saino-gray-200 rounded-xl p-3 text-saino-gray-800 focus:outline-none focus:ring-2 focus:ring-sky-500">
           </div>
 
           <div>
-            <label class="block font-bold text-slate-700 mb-1">Rating (1 - 5 Stars)</label>
-            <select id="revRating" class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-slate-800">
+            <label class="block font-bold text-saino-gray-700 mb-1">Rating (1 - 5 Stars)</label>
+            <select id="revRating" class="w-full bg-saino-gray-50 border border-saino-gray-200 rounded-xl p-3 text-saino-gray-800">
               <option value="5">⭐⭐⭐⭐⭐ 5 Stars (Outstanding Experience)</option>
               <option value="4">⭐⭐⭐⭐ 4 Stars (Very Good)</option>
               <option value="3">⭐⭐⭐ 3 Stars (Satisfactory)</option>
@@ -3004,12 +3004,12 @@ function openWriteReviewModal(providerId) {
           </div>
 
           <div>
-            <label class="block font-bold text-slate-700 mb-1">Your Review & Feedback</label>
-            <textarea id="revComment" rows="3" required placeholder="Share your experience with the doctors, staff, facility hygiene, and waiting time..." class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-slate-800 focus:outline-none focus:ring-2 focus:ring-sky-500"></textarea>
+            <label class="block font-bold text-saino-gray-700 mb-1">Your Review & Feedback</label>
+            <textarea id="revComment" rows="3" required placeholder="Share your experience with the doctors, staff, facility hygiene, and waiting time..." class="w-full bg-saino-gray-50 border border-saino-gray-200 rounded-xl p-3 text-saino-gray-800 focus:outline-none focus:ring-2 focus:ring-sky-500"></textarea>
           </div>
 
           <div class="pt-2 flex items-center justify-end space-x-3">
-            <button type="button" onclick="closeModal()" class="px-4 py-2 text-slate-600 font-semibold hover:bg-slate-100 rounded-xl transition">
+            <button type="button" onclick="closeModal()" class="px-4 py-2 text-saino-gray-600 font-semibold hover:bg-saino-gray-100 rounded-xl transition">
               Cancel
             </button>
             <button type="submit" class="px-5 py-2 bg-sky-600 hover:bg-sky-700 text-white font-bold rounded-xl transition shadow-md">
@@ -3053,11 +3053,11 @@ function openProviderSignInModal(defaultTab = 'patient') {
   if (!modalContainer) return;
 
   modalContainer.innerHTML = `
-    <div class="fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-3 md:p-6 modal-overlay">
-      <div class="bg-white w-full max-w-md rounded-3xl shadow-2xl overflow-hidden border border-slate-200 modal-content animate-in fade-in zoom-in-95 duration-200">
+    <div class="fixed inset-0 z-50 overflow-y-auto bg-saino-gray-900/60 backdrop-blur-sm flex items-center justify-center p-3 md:p-6 modal-overlay">
+      <div class="bg-white w-full max-w-md rounded-3xl shadow-2xl overflow-hidden border border-saino-gray-200 modal-content animate-in fade-in zoom-in-95 duration-200">
         
         <!-- Header with SAINO Crimson Theme -->
-        <div class="bg-gradient-to-r from-[#881337] via-[#991b1b] to-[#7f1d1d] p-6 text-white relative">
+        <div class="bg-gradient-to-r from-saino-red-dark via-saino-red to-saino-red-dark p-6 text-white relative">
           <button onclick="closeModal()" class="absolute top-4 right-4 p-1.5 rounded-full bg-white/10 hover:bg-white/20 text-white transition">
             <i data-lucide="x" class="w-4 h-4"></i>
           </button>
@@ -3071,11 +3071,11 @@ function openProviderSignInModal(defaultTab = 'patient') {
 
         <!-- Role Tab Switcher: Patient / Customer vs Provider -->
         <div class="p-6 pb-2">
-          <div class="grid grid-cols-2 gap-2 p-1 bg-slate-100 rounded-2xl text-xs font-bold mb-4">
-            <button type="button" id="tabBtnPatient" onclick="switchLoginTab('patient')" class="py-2.5 rounded-xl transition ${defaultTab === 'patient' ? 'bg-white text-rose-700 shadow-sm' : 'text-slate-500 hover:text-slate-800'}">
+          <div class="grid grid-cols-2 gap-2 p-1 bg-saino-gray-100 rounded-2xl text-xs font-bold mb-4">
+            <button type="button" id="tabBtnPatient" onclick="switchLoginTab('patient')" class="py-2.5 rounded-xl transition ${defaultTab === 'patient' ? 'bg-white text-saino-red-dark shadow-sm' : 'text-saino-gray-500 hover:text-saino-gray-800'}">
               👤 Patient / Customer
             </button>
-            <button type="button" id="tabBtnProvider" onclick="switchLoginTab('provider')" class="py-2.5 rounded-xl transition ${defaultTab === 'provider' ? 'bg-white text-rose-700 shadow-sm' : 'text-slate-500 hover:text-slate-800'}">
+            <button type="button" id="tabBtnProvider" onclick="switchLoginTab('provider')" class="py-2.5 rounded-xl transition ${defaultTab === 'provider' ? 'bg-white text-saino-red-dark shadow-sm' : 'text-saino-gray-500 hover:text-saino-gray-800'}">
               🏥 Doctor / Provider
             </button>
           </div>
@@ -3084,24 +3084,24 @@ function openProviderSignInModal(defaultTab = 'patient') {
         <!-- Patient Login Form -->
         <div id="loginFormPatient" class="${defaultTab === 'patient' ? 'block' : 'hidden'} px-6 pb-6 space-y-4 text-xs">
           <div>
-            <label class="block font-bold text-slate-700 mb-1">Mobile Number or Email</label>
-            <input type="text" required placeholder="e.g. 9801234567 or pooja@gmail.com" class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-slate-800 focus:outline-none focus:ring-2 focus:ring-rose-500">
+            <label class="block font-bold text-saino-gray-700 mb-1">Mobile Number or Email</label>
+            <input type="text" required placeholder="e.g. 9801234567 or pooja@gmail.com" class="w-full bg-saino-gray-50 border border-saino-gray-200 rounded-xl p-3 text-saino-gray-800 focus:outline-none focus:ring-2 focus:ring-saino-red">
           </div>
           <div>
-            <label class="block font-bold text-slate-700 mb-1">Password / 4-Digit OTP</label>
-            <input type="password" required placeholder="••••••••" class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-slate-800 focus:outline-none focus:ring-2 focus:ring-rose-500">
+            <label class="block font-bold text-saino-gray-700 mb-1">Password / 4-Digit OTP</label>
+            <input type="password" required placeholder="••••••••" class="w-full bg-saino-gray-50 border border-saino-gray-200 rounded-xl p-3 text-saino-gray-800 focus:outline-none focus:ring-2 focus:ring-saino-red">
           </div>
           <div class="flex items-center justify-between text-[11px]">
-            <label class="flex items-center space-x-1.5 text-slate-600 cursor-pointer">
-              <input type="checkbox" checked class="rounded text-rose-600">
+            <label class="flex items-center space-x-1.5 text-saino-gray-600 cursor-pointer">
+              <input type="checkbox" checked class="rounded text-saino-red">
               <span>Remember me</span>
             </label>
-            <a href="#" onclick="showToast('OTP sent to your mobile number!')" class="text-rose-600 font-bold hover:underline">Get Login OTP</a>
+            <a href="#" onclick="showToast('OTP sent to your mobile number!')" class="text-saino-red font-bold hover:underline">Get Login OTP</a>
           </div>
-          <button type="button" onclick="handlePatientSignInSubmit(event)" class="w-full py-3 bg-rose-600 hover:bg-rose-700 text-white font-bold rounded-xl transition shadow-md">
+          <button type="button" onclick="handlePatientSignInSubmit(event)" class="w-full py-3 bg-saino-red hover:bg-saino-red-dark text-white font-bold rounded-xl transition shadow-md">
             Sign In as Patient / Customer
           </button>
-          <div class="p-3 rounded-xl bg-rose-50 border border-rose-100 text-[11px] text-rose-900 leading-relaxed">
+          <div class="p-3 rounded-xl bg-saino-red/10 border border-saino-red/20 text-[11px] text-saino-red-dark leading-relaxed">
             💡 <strong>Fast Access:</strong> You can also browse providers and book via WhatsApp as a guest without signing in!
           </div>
         </div>
@@ -3109,18 +3109,18 @@ function openProviderSignInModal(defaultTab = 'patient') {
         <!-- Provider Login Form -->
         <div id="loginFormProvider" class="${defaultTab === 'provider' ? 'block' : 'hidden'} px-6 pb-6 space-y-4 text-xs">
           <div>
-            <label class="block font-bold text-slate-700 mb-1">Provider ID / Official Email</label>
-            <input type="text" required placeholder="doctor@clinic.np or NORVIC-ADMIN" class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-slate-800 focus:outline-none focus:ring-2 focus:ring-rose-500">
+            <label class="block font-bold text-saino-gray-700 mb-1">Provider ID / Official Email</label>
+            <input type="text" required placeholder="doctor@clinic.np or NORVIC-ADMIN" class="w-full bg-saino-gray-50 border border-saino-gray-200 rounded-xl p-3 text-saino-gray-800 focus:outline-none focus:ring-2 focus:ring-saino-red">
           </div>
           <div>
-            <label class="block font-bold text-slate-700 mb-1">Hospital Admin Password</label>
-            <input type="password" required placeholder="••••••••" class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-slate-800 focus:outline-none focus:ring-2 focus:ring-rose-500">
+            <label class="block font-bold text-saino-gray-700 mb-1">Hospital Admin Password</label>
+            <input type="password" required placeholder="••••••••" class="w-full bg-saino-gray-50 border border-saino-gray-200 rounded-xl p-3 text-saino-gray-800 focus:outline-none focus:ring-2 focus:ring-saino-red">
           </div>
-          <button type="button" onclick="handleProviderSignInSubmit(event)" class="w-full py-3 bg-slate-900 hover:bg-slate-800 text-white font-bold rounded-xl transition shadow-md">
+          <button type="button" onclick="handleProviderSignInSubmit(event)" class="w-full py-3 bg-saino-gray-900 hover:bg-saino-gray-800 text-white font-bold rounded-xl transition shadow-md">
             Sign In to Hospital Dashboard
           </button>
-          <div class="text-center text-slate-500 text-[11px]">
-            New Healthcare Provider? <button type="button" onclick="openUpgradeBadgeModal('prime')" class="text-rose-600 font-bold hover:underline">Register Facility Here</button>
+          <div class="text-center text-saino-gray-500 text-[11px]">
+            New Healthcare Provider? <button type="button" onclick="openUpgradeBadgeModal('prime')" class="text-saino-red font-bold hover:underline">Register Facility Here</button>
           </div>
         </div>
 
@@ -3141,19 +3141,19 @@ function switchLoginTab(tab) {
     if (patientForm) patientForm.classList.remove('hidden');
     if (providerForm) providerForm.classList.add('hidden');
     if (tabBtnPatient) {
-      tabBtnPatient.className = 'py-2.5 rounded-xl transition bg-white text-rose-700 shadow-sm';
+      tabBtnPatient.className = 'py-2.5 rounded-xl transition bg-white text-saino-red-dark shadow-sm';
     }
     if (tabBtnProvider) {
-      tabBtnProvider.className = 'py-2.5 rounded-xl transition text-slate-500 hover:text-slate-800';
+      tabBtnProvider.className = 'py-2.5 rounded-xl transition text-saino-gray-500 hover:text-saino-gray-800';
     }
   } else {
     if (patientForm) patientForm.classList.add('hidden');
     if (providerForm) providerForm.classList.remove('hidden');
     if (tabBtnProvider) {
-      tabBtnProvider.className = 'py-2.5 rounded-xl transition bg-white text-rose-700 shadow-sm';
+      tabBtnProvider.className = 'py-2.5 rounded-xl transition bg-white text-saino-red-dark shadow-sm';
     }
     if (tabBtnPatient) {
-      tabBtnPatient.className = 'py-2.5 rounded-xl transition text-slate-500 hover:text-slate-800';
+      tabBtnPatient.className = 'py-2.5 rounded-xl transition text-saino-gray-500 hover:text-saino-gray-800';
     }
   }
 }
