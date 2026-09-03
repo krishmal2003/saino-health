@@ -3255,3 +3255,4 @@ function bindProvidersShowcaseEvents() {}
 function bindBoostEvents() {}
 function bindAboutEvents() {}
 function bindContactEvents() {}
+

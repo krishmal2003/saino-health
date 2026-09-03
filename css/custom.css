@@ -12,6 +12,7 @@
   --gold-light: #fef3c7;
   --navy: #1A2B4C;
   --navy-light: #2A4070;
+   --header-bg:#d6d6d6;
 
   /* Footer */
   --footer-bg: #c0c5cc;
@@ -20,6 +21,42 @@
   --footer-link-hover: #E31B23;
   --footer-border: rgba(26, 26, 26, 0.12);
 }
+.saino-header-bg {
+    background-color: var(--header-bg);
+}
+
+/* =========================================================
+   HEADER ACTION BUTTONS
+   Sign In + Get Started
+   ========================================================= */
+
+.header-action-btn {
+    width: 96px  ;
+    min-width: 96px  ;
+    max-width: 96px  ;
+
+    height: 36px  ;
+    min-height: 36px  ;
+    max-height: 36px  ;
+
+    padding: 0  ;
+    margin: 0  ;
+
+    display: flex  ;
+    align-items: center  ;
+    justify-content: center  ;
+
+    border-radius: 8px  ;
+    box-sizing: border-box  ;
+
+    font-size: 12px  ;
+    font-weight: 700  ;
+    line-height: 1  ;
+
+    white-space: nowrap  ;
+}
+
+
 
 
 /* =========================================================
@@ -251,13 +288,13 @@
 
 /* 1. Force a very dark background behind the slide */
 .big-screen-frame .relative.rounded-2xl {
-  background: rgba(10, 10, 10, 0.92) !important;
-  background-blend-mode: multiply !important;
+  background: rgba(10, 10, 10, 0.92)  ;
+  background-blend-mode: multiply  ;
 }
 
 /* 2. Darken the background image */
 .big-screen-frame .absolute.inset-0.z-0 img {
-  opacity: 0.2 !important;
+  opacity: 0.2  ;
 }
 
 /* 3. All white text → change to pure white with strong shadow */
@@ -268,10 +305,10 @@
 .big-screen-frame h2,
 .big-screen-frame h3,
 .big-screen-frame h4 {
-  color: #ffffff !important;
-  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.95), 0 0 40px rgba(0, 0, 0, 0.5) !important;
-  opacity: 1 !important;
-  font-weight: 700 !important;
+  color: #030303  ;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.95), 0 0 40px rgba(0, 0, 0, 0.5)  ;
+  opacity: 1  ;
+  font-weight: 700  ;
 }
 
 /* 4. Make all body text light grey for readability */
@@ -280,199 +317,199 @@
 .big-screen-frame .text-xs,
 .big-screen-frame .leading-relaxed,
 .big-screen-frame .text-slate-300:not(h2):not(h3):not(h4) {
-  color: #e2e8f0 !important;
-  text-shadow: 0 2px 15px rgba(0, 0, 0, 0.9) !important;
-  opacity: 1 !important;
+  color: #2f3133  ;
+  text-shadow: 0 2px 15px rgba(0, 0, 0, 0.9)  ;
+  opacity: 1  ;
 }
 
 /* 5. Accent colors – bright pink and yellow */
 .big-screen-frame .text-rose-400,
 .big-screen-frame .text-rose-400.block,
 .big-screen-frame .text-rose-400.font-black {
-  color: #fb7185 !important;
-  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.9) !important;
-  font-weight: 900 !important;
+  color: #45292d  ;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.9)  ;
+  font-weight: 900  ;
 }
 .big-screen-frame .text-rose-300 {
-  color: #fda4af !important;
-  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.9) !important;
+  color: #fda4af  ;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.9)  ;
 }
 .big-screen-frame .text-amber-400 {
-  color: #fbbf24 !important;
-  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.9) !important;
+  color: #fbbf24  ;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.9)  ;
 }
 .big-screen-frame .text-rose-100 {
-  color: #ffe4e6 !important;
-  text-shadow: 0 2px 15px rgba(0, 0, 0, 0.8) !important;
+  color: #ffe4e6  ;
+  text-shadow: 0 2px 15px rgba(0, 0, 0, 0.8)  ;
 }
 
 /* 6. Stats numbers – large, bold, bright pink */
 .big-screen-frame .grid .text-rose-400,
 .big-screen-frame .stats-number {
-  font-size: 1.8rem !important;
-  font-weight: 900 !important;
-  color: #fb7185 !important;
-  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.9) !important;
+  font-size: 1.8rem  ;
+  font-weight: 900  ;
+  color: #fb7185  ;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.9)  ;
   letter-spacing: 0.02em;
 }
 
 /* 7. Stats pills – dark background with blur */
 .big-screen-frame .bg-black\/40 {
-  background-color: rgba(0, 0, 0, 0.75) !important;
+  background-color: rgba(0, 0, 0, 0.75)  ;
   backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px !important;
-  padding: 0.75rem 1rem !important;
+  border-radius: 12px  ;
+  padding: 0.75rem 1rem  ;
 }
 
 /* 8. Stats pill labels – visible light grey */
 .big-screen-frame .bg-black\/40 .text-slate-300,
 .big-screen-frame .bg-black\/40 .text-slate-400 {
-  color: #cbd5e1 !important;
-  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.5) !important;
-  font-weight: 600 !important;
+  color: #cbd5e1  ;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.5)  ;
+  font-weight: 600  ;
 }
 
 /* 9. Sponsor card – darker, readable */
 .big-screen-frame .bg-white\/10 {
-  background-color: rgba(0, 0, 0, 0.6) !important;
+  background-color: rgba(0, 0, 0, 0.6)  ;
   backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 16px !important;
+  border-radius: 16px  ;
 }
 .big-screen-frame .bg-white\/10 .text-white {
-  color: #ffffff !important;
-  text-shadow: 0 2px 15px rgba(0, 0, 0, 0.7) !important;
+  color: #ffffff  ;
+  text-shadow: 0 2px 15px rgba(0, 0, 0, 0.7)  ;
 }
 .big-screen-frame .bg-white\/10 .text-slate-300 {
-  color: #cbd5e1 !important;
+  color: #cbd5e1  ;
 }
 
 /* 10. Tagline pills – dark background, light text */
 .big-screen-frame .bg-white\/20 {
-  background-color: rgba(0, 0, 0, 0.6) !important;
-  color: #e2e8f0 !important;
-  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.6) !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  background-color: rgba(0, 0, 0, 0.6)  ;
+  color: #e2e8f0  ;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.6)  ;
+  border: 1px solid rgba(255, 255, 255, 0.1)  ;
 }
 
 /* 11. "100% Free Volunteer Triage" badge – yellow background, dark text */
 .big-screen-frame .bg-amber-400 {
-  background-color: #fbbf24 !important;
-  color: #1a1a1a !important;
-  text-shadow: none !important;
-  font-weight: 800 !important;
-  padding: 0.25rem 0.75rem !important;
-  border-radius: 9999px !important;
+  background-color: #fbbf24  ;
+  color: #1a1a1a  ;
+  text-shadow: none  ;
+  font-weight: 800  ;
+  padding: 0.25rem 0.75rem  ;
+  border-radius: 9999px  ;
 }
 
 /* 12. Buttons – green and visible */
 .big-screen-frame .bg-emerald-500 {
-  background-color: #10b981 !important;
-  color: #ffffff !important;
-  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.2) !important;
+  background-color: #10b981  ;
+  color: #ffffff  ;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.2)  ;
 }
 .big-screen-frame .bg-emerald-500:hover {
-  background-color: #059669 !important;
+  background-color: #059669  ;
 }
 
 /* 13. "Explore on Marketplace" button */
 .big-screen-frame .bg-white\/10.hover\:bg-white\/20 {
-  background-color: rgba(255, 255, 255, 0.12) !important;
-  color: #e2e8f0 !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  background-color: rgba(255, 255, 255, 0.12)  ;
+  color: #e2e8f0  ;
+  border: 1px solid rgba(255, 255, 255, 0.1)  ;
 }
 .big-screen-frame .bg-white\/10.hover\:bg-white\/20:hover {
-  background-color: rgba(255, 255, 255, 0.2) !important;
+  background-color: rgba(255, 255, 255, 0.2)  ;
 }
 
 /* 14. "Open Booking" text */
 .big-screen-frame .text-slate-400 {
-  color: #94a3b8 !important;
-  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.6) !important;
+  color: #94a3b8  ;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.6)  ;
 }
 
 /* 15. Carousel dots – visible */
 .big-screen-frame .bg-white\/30 {
-  background-color: rgba(255, 255, 255, 0.5) !important;
+  background-color: rgba(255, 255, 255, 0.5)  ;
 }
 .big-screen-frame .bg-rose-500 {
-  background-color: #f43f5e !important;
+  background-color: #f43f5e  ;
 }
 
 /* 16. Screen header text */
 .big-screen-frame .text-rose-400.font-extrabold {
-  color: #fb7185 !important;
-  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.8) !important;
+  color: #fb7185  ;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.8)  ;
 }
 .big-screen-frame .text-slate-400.text-xs {
-  color: #94a3b8 !important;
+  color: #94a3b8  ;
 }
 
 /* 17. Sponsor name */
 .big-screen-frame .text-xs.font-bold.text-white {
-  color: #ffffff !important;
-  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.8) !important;
+  color: #ffffff  ;
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.8)  ;
 }
 .big-screen-frame .bg-saino-red.text-white {
-  color: #ffffff !important;
+  color: #ffffff  ;
 }
 
 /* 18. Navigation arrows */
 .big-screen-frame button.bg-slate-gray-900\/80 {
-  background-color: rgba(0, 0, 0, 0.8) !important;
+  background-color: rgba(0, 0, 0, 0.8)  ;
 }
 .big-screen-frame button.bg-slate-gray-900\/80:hover {
-  background-color: rgba(0, 0, 0, 0.95) !important;
+  background-color: rgba(0, 0, 0, 0.95)  ;
 }
 
 /* 19. Discount badge – yellow, dark text */
 .big-screen-frame .bg-amber-400.text-saino-gray-950 {
-  background-color: #fbbf24 !important;
-  color: #1a1a1a !important;
-  text-shadow: none !important;
+  background-color: #fbbf24  ;
+  color: #1a1a1a  ;
+  text-shadow: none  ;
 }
 
 /* 20. Sponsor tier badge */
 .big-screen-frame .bg-saino-red.text-white.shadow-sm {
-  background-color: #E31B23 !important;
-  color: #ffffff !important;
+  background-color: #E31B23  ;
+  color: #ffffff  ;
 }
 
 /* 21. Ensure all text is opaque */
 .big-screen-frame * {
-  opacity: 1 !important;
+  opacity: 1  ;
 }
 
 /* 22. Fix the "EVERY DROP CONNECTS A LIFE" tagline */
 .big-screen-frame .text-rose-300.mb-2 {
-  color: #fda4af !important;
-  font-weight: 800 !important;
+  color: #fda4af  ;
+  font-weight: 800  ;
   letter-spacing: 0.1em;
-  font-size: 0.9rem !important;
+  font-size: 0.9rem  ;
 }
 
 /* 23. Campaign title – large and bold */
 .big-screen-frame h2.text-4xl,
 .big-screen-frame h2.text-3xl,
 .big-screen-frame h2.text-2xl {
-  color: #ffffff !important;
-  text-shadow: 0 2px 30px rgba(0, 0, 0, 0.9) !important;
-  font-weight: 900 !important;
-  font-size: 2.2rem !important;
+  color: #ffffff  ;
+  text-shadow: 0 2px 30px rgba(0, 0, 0, 0.9)  ;
+  font-weight: 900  ;
+  font-size: 2.2rem  ;
 }
 
 /* 24. Description/subtitle text */
 .big-screen-frame .text-slate-200.leading-relaxed {
-  color: #e2e8f0 !important;
-  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.9) !important;
-  font-size: 1rem !important;
+  color: #e2e8f0  ;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.9)  ;
+  font-size: 1rem  ;
 }
 
 /* 25. Highlight list items */
 .big-screen-frame .text-slate-100 {
-  color: #f1f5f9 !important;
-  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.7) !important;
+  color: #f1f5f9  ;
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.7)  ;
 }
 
 
@@ -1229,3 +1266,7 @@ html {
 
 .text-saino-gray-300 { color: #B0BEC5; }
 .text-saino-gray-400 { color: #B0BEC5; }
+
+button {
+    min-height: 44px;
+}
