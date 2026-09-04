@@ -159,28 +159,44 @@ function renderMarketplaceView() {
   const emergencyAmbulances = window.SAINO_DATA.sainoRated ? window.SAINO_DATA.sainoRated.ambulances.slice(0, 4) : [];
 
   return `
-    <!-- 1. BIG RED BILLBOARD HERO BANNER (Connecting Nepal to Better Care) -->
-    <section class="mb-14 rounded-3xl bg-saino-red text-white p-8 sm:p-12 shadow-xl relative overflow-hidden text-center">
-      <div class="relative z-10 max-w-2xl mx-auto">
-        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-white/15 text-white text-xs font-bold mb-3 backdrop-blur-xs">
-          <span class="w-2 h-2 rounded-full bg-amber-400"></span>
-          <span class="uppercase tracking-wider">Fast-Track Healthcare Ecosystem</span>
-        </div>
-        <h2 class="text-2xl sm:text-4xl md:text-5xl font-black tracking-tight mb-3 leading-tight">
-          Connecting Nepal to Better Care
-        </h2>
-        <p class="text-xs sm:text-base text-rose-100 mb-6 leading-relaxed max-w-xl mx-auto">
-          Nepal's most trusted healthcare discovery & direct WhatsApp booking ecosystem.
-        </p>
-        <button onclick="navigateTo('discovery')" class="px-6 py-3 rounded-full bg-white text-saino-red font-black text-xs sm:text-sm hover:bg-rose-50 transition shadow-lg inline-flex items-center space-x-2">
-          <span>EXPLORE NOW</span>
-          <i data-lucide="arrow-right" class="w-4 h-4"></i>
-        </button>
-      </div>
-      <!-- Decorative background accents -->
-      <div class="absolute -right-16 -bottom-16 w-64 h-64 rounded-full bg-white/5 pointer-events-none"></div>
-      <div class="absolute -left-16 -top-16 w-64 h-64 rounded-full bg-white/5 pointer-events-none"></div>
-    </section>
+<!-- Catalogue / Ads Section -->
+<section class="mb-8 rounded-xl bg-saino-red text-white h-[180px] flex items-center justify-center shadow-md relative overflow-hidden">
+
+  <div class="text-center relative z-10 px-4">
+
+    <!-- Auto Changing Title -->
+    <h2
+      id="adTitle"
+      class="text-sm sm:text-base font-bold mb-1 transition-opacity duration-500"
+    >
+      Catalogue / Ads Section
+    </h2>
+
+    <!-- Auto Changing Description -->
+    <p
+      id="adDescription"
+      class="text-[9px] sm:text-[10px] text-white/70 mb-2 transition-opacity duration-500"
+    >
+      Rotating promo banner, sponsored placements & platform announcements
+    </p>
+
+    <!-- Slider Dots -->
+    <div class="flex justify-center items-center gap-1.5">
+
+      <span class="ad-dot w-1.5 h-1.5 rounded-full bg-white transition-all duration-300"></span>
+
+      <span class="ad-dot w-1.5 h-1.5 rounded-full bg-white/40 transition-all duration-300"></span>
+
+      <span class="ad-dot w-1.5 h-1.5 rounded-full bg-white/40 transition-all duration-300"></span>
+
+      <span class="ad-dot w-1.5 h-1.5 rounded-full bg-white/40 transition-all duration-300"></span>
+
+    </div>
+
+  </div>
+
+</section>
+
 
     <!-- 2. DOCTORS TRUSTED HEALTHCARE PROVIDERS (HOSPITALS SECTION) -->
     <section class="mb-14">
@@ -297,7 +313,7 @@ function renderMarketplaceView() {
           <span class="text-xs font-black uppercase tracking-wider text-saino-red mb-1 block">Decision Helper</span>
           <h3 class="text-2xl font-black text-saino-gray-900 leading-tight mb-2">Compare Before you book</h3>
           <p class="text-xs sm:text-sm text-saino-gray-600 mb-6 leading-relaxed">
-            Compare 25+ verified hospitals, clinics & labs side-by-side to find the right care, OPD pricing, and emergency facilities.
+               Compare 25+ verified doctors, specialists & healthcare providers side-by-side to find the right care, consultation fees, and availability.
           </p>
           <button onclick="navigateTo('discovery')" class="px-5 py-2.5 bg-saino-red hover:bg-saino-red-dark text-white font-bold rounded-xl text-xs shadow-md transition">
             COMPARE PROVIDERS
@@ -311,13 +327,13 @@ function renderMarketplaceView() {
               <div class="flex items-center space-x-3 mb-2">
                 <img src="https://images.unsplash.com/photo-1587351021759-3e566b6af7cc?w=120" class="w-10 h-10 rounded-lg object-cover">
                 <div>
-                  <strong class="text-saino-gray-900 block font-bold text-xs">Norvic International Hospital</strong>
+                  <strong class="text-saino-gray-900 block font-bold text-xs">Dr Mhomad fathan</strong>
                   <span class="text-amber-500 font-bold">⭐ 4.8</span> · <span class="text-saino-gray-400">Thapathali</span>
                 </div>
               </div>
               <div class="space-y-1 text-saino-gray-600 text-[11px] pt-2 border-t border-saino-gray-100">
-                <div>OPD Consultation: <strong>Rs. 1,000</strong></div>
-                <div>24/7 Emergency: <strong>Yes (Level-1)</strong></div>
+                <div>Full body checkup doctor</div>
+                <div>Available: <strong>24/7</strong></div>
               </div>
             </div>
 
@@ -331,13 +347,13 @@ function renderMarketplaceView() {
               <div class="flex items-center space-x-3 mb-2">
                 <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=120" class="w-10 h-10 rounded-lg object-cover">
                 <div>
-                  <strong class="text-saino-gray-900 block font-bold text-xs">Grande International Hospital</strong>
+                  <strong class="text-saino-gray-900 block font-bold text-xs">Dr.Charlos</strong>
                   <span class="text-amber-500 font-bold">⭐ 4.7</span> · <span class="text-saino-gray-400">Dhapasi</span>
                 </div>
               </div>
               <div class="space-y-1 text-saino-gray-600 text-[11px] pt-2 border-t border-saino-gray-100">
-                <div>OPD Consultation: <strong>Rs. 950</strong></div>
-                <div>24/7 Emergency: <strong>Yes (Level-1)</strong></div>
+                <div>General Physician <strong></strong></div>
+                <div>Available:<strong>24/7</strong></div>
               </div>
             </div>
           </div>
@@ -1386,6 +1402,7 @@ function renderDiscoveryView() {
                     <div class="flex flex-wrap items-center gap-1.5 mb-1">
                       <h4 class="text-xs sm:text-sm font-bold text-saino-gray-900 leading-tight">${item.name}</h4>
                       <span class="px-2 py-0.5 rounded text-[9px] font-black uppercase ${
+                         item.badgeType === 'saino discovery' ? 'bg-indigo-100 text-indigo-800' :
                         item.badgeType === 'vvip' ? 'bg-indigo-100 text-indigo-800' :
                         item.badgeType === 'vip' ? 'bg-amber-100 text-amber-900' :
                         item.badgeType === 'pro' ? 'bg-saino-red/10 text-saino-red-dark' :
@@ -1452,9 +1469,9 @@ function renderDiscoveryView() {
           <div class="p-5 rounded-2xl bg-saino-gray-50/80 border border-saino-gray-200 flex flex-col justify-between hover:shadow-md transition">
             <div>
               <span class="inline-block px-2.5 py-0.5 rounded text-[10px] font-extrabold bg-saino-gray-200 text-saino-gray-700 uppercase tracking-wider mb-3">
-                FREE
+                free
               </span>
-              <h3 class="text-sm font-bold text-saino-gray-900 mb-2">Saino Listed</h3>
+              <h3 class="text-sm font-bold text-saino-gray-900 mb-2">saino discovery</h3>
               <p class="text-xs text-saino-gray-600 leading-relaxed">
                 Basic directory entry. Free for all legal healthcare providers in Nepal. WhatsApp inquiries routed via manual triage.
               </p>
@@ -3256,3 +3273,89 @@ function bindBoostEvents() {}
 function bindAboutEvents() {}
 function bindContactEvents() {}
 
+// ========================================
+// Catalogue / Ads Auto Slider
+// ========================================
+
+document.addEventListener("DOMContentLoaded", function () {
+
+  const adTitle = document.getElementById("adTitle");
+  const adDescription = document.getElementById("adDescription");
+  const adDots = document.querySelectorAll(".ad-dot");
+
+  // Stop if Ads section is not available on this page
+  if (!adTitle || !adDescription || !adDots.length) {
+    return;
+  }
+
+  const ads = [
+    {
+      title: "Catalogue / Ads Section",
+      description:
+        "Rotating promo banner, sponsored placements & platform announcements"
+    },
+    {
+      title: "Discover Trusted Healthcare",
+      description:
+        "Explore verified hospitals, clinics, diagnostic centres & more"
+    },
+    {
+      title: "Find the Right Care for You",
+      description:
+        "Compare healthcare providers and discover services across Nepal"
+    },
+    {
+      title: "Connect with Better Healthcare",
+      description:
+        "Discover healthcare providers, read reviews and make informed decisions"
+    }
+  ];
+
+  let currentAd = 0;
+
+  function showAd(index) {
+
+    // Fade out
+    adTitle.style.opacity = "0";
+    adDescription.style.opacity = "0";
+
+    setTimeout(() => {
+
+      // Change text
+      adTitle.textContent = ads[index].title;
+      adDescription.textContent = ads[index].description;
+
+      // Update dots
+      adDots.forEach((dot, i) => {
+
+        if (i === index) {
+          dot.classList.remove("bg-white/40");
+          dot.classList.add("bg-white");
+        } else {
+          dot.classList.remove("bg-white");
+          dot.classList.add("bg-white/40");
+        }
+
+      });
+
+      // Fade in
+      adTitle.style.opacity = "1";
+      adDescription.style.opacity = "1";
+
+    }, 300);
+  }
+
+  // Auto play every 3 seconds
+  setInterval(() => {
+
+    currentAd++;
+
+    if (currentAd >= ads.length) {
+      currentAd = 0;
+    }
+
+    showAd(currentAd);
+
+  }, 3000);
+
+});
