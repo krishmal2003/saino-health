@@ -142,343 +142,1038 @@ function renderApp() {
 // 1. MARKETPLACE VIEW RENDERING (EXACT FIGMA HOMEPAGE SPEC)
 // ==========================================
 function renderMarketplaceView() {
-  const allProviders = window.SAINO_DATA.providers || [];
-  const hospitals = allProviders.filter(p => p.category === 'hospital');
-  const topHospitals = hospitals.slice(0, 3);
-  
-  const clinics = window.SAINO_DATA.sainoRated ? window.SAINO_DATA.sainoRated.clinics : [];
-  const topClinics = clinics.slice(0, 3);
-  
-  const diagnosticProviders = allProviders.filter(p => p.category === 'diagnostic');
-  const topDiagnostics = diagnosticProviders.slice(0, 3);
 
-  const talkReviews = window.SAINO_DATA.talkOfTheTown || [];
-  const diagnosticPackages = window.SAINO_DATA.diagnosticPackages || [];
-  const onlineDoctors = window.SAINO_DATA.onlineDoctors || [];
-  const emergencyBloodBanks = window.SAINO_DATA.sainoRated ? window.SAINO_DATA.sainoRated.bloodBanks.slice(0, 3) : [];
-  const emergencyAmbulances = window.SAINO_DATA.sainoRated ? window.SAINO_DATA.sainoRated.ambulances.slice(0, 4) : [];
+  const allProviders = AppState.providers || window.SAINO_DATA.providers || [];
+
+  // ==========================================
+  // PROVIDER GROUPS
+  // ==========================================
+
+  const hospitals = allProviders
+    .filter(p => p.category === 'hospital')
+    .slice(0, 3);
+
+  const clinics = allProviders
+    .filter(p => p.category === 'clinic')
+    .slice(0, 3);
+
+  const diagnostics = allProviders
+    .filter(p => p.category === 'diagnostic')
+    .slice(0, 3);
+
+  const wellness = allProviders
+    .filter(p => p.category === 'wellness')
+    .slice(0, 3);
+
+  const homecare = allProviders
+    .filter(p => p.category === 'homecare')
+    .slice(0, 3);
+
+  const insurance = allProviders
+    .filter(p => p.category === 'insurance')
+    .slice(0, 3);
+
+  const diagnosticPackages =
+    window.SAINO_DATA.diagnosticPackages || [];
+
+  const talkReviews =
+    window.SAINO_DATA.talkOfTheTown || [];
+
+  const onlineDoctors =
+    window.SAINO_DATA.onlineDoctors || [];
+
+  const emergencyBloodBanks =
+    window.SAINO_DATA.sainoRated?.bloodBanks?.slice(0, 3) || [];
+
+  const emergencyAmbulances =
+    window.SAINO_DATA.sainoRated?.ambulances?.slice(0, 3) || [];
+
+
+  // ==========================================
+  // QUICK HEALTHCARE SERVICES
+  // ==========================================
+
+  const quickServices = [
+    {
+      id: 'hospital',
+      title: 'Hospital',
+      icon: 'building-2',
+      description: 'Hospitals & specialist care'
+    },
+    {
+      id: 'clinic',
+      title: 'Clinic',
+      icon: 'stethoscope',
+      description: 'Doctors & OPD clinics'
+    },
+    {
+      id: 'diagnostic',
+      title: 'Diagnostic / Lab',
+      icon: 'activity',
+      description: 'Labs, MRI, CT & scans'
+    },
+    {
+      id: 'packages',
+      title: 'Diagnostic Packages',
+      icon: 'package-check',
+      description: 'Health screening packages'
+    },
+    {
+      id: 'wellness',
+      title: 'Wellness Centre',
+      icon: 'sparkles',
+      description: 'Wellness & preventive care'
+    },
+    {
+      id: 'homecare',
+      title: 'Homecare & Elderly',
+      icon: 'heart-handshake',
+      description: 'Care at your doorstep'
+    },
+    {
+      id: 'insurance',
+      title: 'Health Insurance',
+      icon: 'shield-check',
+      description: 'Protect your health'
+    },
+    {
+      id: 'bloodbank',
+      title: 'Blood Bank',
+      icon: 'droplets',
+      description: 'Emergency blood services'
+    }
+  ];
+
+
+  // ==========================================
+  // HERO / SEARCH
+  // ==========================================
 
   return `
-<!-- Catalogue / Ads Section -->
-<section class="mb-8 rounded-xl bg-saino-red text-white h-[180px] flex items-center justify-center shadow-md relative overflow-hidden">
-
-  <div class="text-center relative z-10 px-4">
-
-    <!-- Auto Changing Title -->
-    <h2
-      id="adTitle"
-      class="text-sm sm:text-base font-bold mb-1 transition-opacity duration-500"
-    >
-      Catalogue / Ads Section
-    </h2>
-
-    <!-- Auto Changing Description -->
-    <p
-      id="adDescription"
-      class="text-[9px] sm:text-[10px] text-white/70 mb-2 transition-opacity duration-500"
-    >
-      Rotating promo banner, sponsored placements & platform announcements
-    </p>
-
-    <!-- Slider Dots -->
-    <div class="flex justify-center items-center gap-1.5">
-
-      <span class="ad-dot w-1.5 h-1.5 rounded-full bg-white transition-all duration-300"></span>
-
-      <span class="ad-dot w-1.5 h-1.5 rounded-full bg-white/40 transition-all duration-300"></span>
-
-      <span class="ad-dot w-1.5 h-1.5 rounded-full bg-white/40 transition-all duration-300"></span>
-
-      <span class="ad-dot w-1.5 h-1.5 rounded-full bg-white/40 transition-all duration-300"></span>
-
-    </div>
-
-  </div>
-
-</section>
 
 
-    <!-- 2. DOCTORS TRUSTED HEALTHCARE PROVIDERS (HOSPITALS SECTION) -->
-    <section class="mb-14">
-      <div class="flex items-center justify-between mb-2">
-        <h2 class="text-lg sm:text-xl font-bold text-saino-gray-900">Doctors trusted healthcare providers</h2>
-        <button onclick="filterCategory('hospital')" class="text-xs font-bold text-saino-red hover:underline flex items-center space-x-1">
-          <span>Explore all hospital providers</span>
-          <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
-        </button>
-      </div>
-      <div class="flex items-center justify-between mb-6 pb-2 border-b border-saino-gray-100">
-        <span class="text-xs font-extrabold uppercase tracking-wider text-saino-gray-500">Hospitals</span>
-        <button onclick="filterCategory('hospital')" class="text-xs font-black text-saino-gray-700 hover:text-saino-red">
-          VIEW ALL (${hospitals.length}) &gt;
-        </button>
+
+    <!-- ==========================================
+         2. CATALOGUE / ADS
+    =========================================== -->
+
+    <section class="mb-8 rounded-xl bg-saino-red text-white h-[180px] flex items-center justify-center shadow-md relative overflow-hidden">
+
+      <div class="text-center relative z-10 px-4">
+
+        <h2
+          id="adTitle"
+          class="text-sm sm:text-base font-bold mb-1 transition-opacity duration-500">
+          Catalogue / Ads Section
+        </h2>
+
+        <p
+          id="adDescription"
+          class="text-[9px] sm:text-[10px] text-white/70 mb-2 transition-opacity duration-500">
+          Rotating healthcare promotions, sponsored placements & platform announcements
+        </p>
+
+        <div class="flex justify-center items-center gap-1.5">
+
+          <span class="ad-dot w-1.5 h-1.5 rounded-full bg-white"></span>
+          <span class="ad-dot w-1.5 h-1.5 rounded-full bg-white/40"></span>
+          <span class="ad-dot w-1.5 h-1.5 rounded-full bg-white/40"></span>
+          <span class="ad-dot w-1.5 h-1.5 rounded-full bg-white/40"></span>
+
+        </div>
+
       </div>
 
-      <!-- 3 Featured Hospital Cards Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        ${topHospitals.map(h => renderProviderCard(h)).join('')}
-      </div>
     </section>
 
-    <!-- 3. TWO-COLUMN SECTION: CLINICS (Left) + TALK OF THE TOWN / REVIEWS (Right) -->
+
+
+    <!-- ==========================================
+         4. QUICK HEALTHCARE SERVICES
+    =========================================== -->
+
     <section class="mb-14">
+
+      <div class="flex items-center justify-between mb-6">
+
+        <div>
+
+          <span class="text-xs font-black uppercase tracking-wider text-saino-red">
+            Healthcare Services
+          </span>
+
+          <h2 class="text-xl sm:text-2xl font-black text-saino-gray-900">
+            Explore Healthcare
+          </h2>
+
+          <p class="text-xs text-saino-gray-500 mt-1">
+            Everything you need across the healthcare journey.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3">
+
+        ${quickServices.map(service => `
+
+          <button
+            onclick="${
+              service.id === 'packages'
+                ? "document.getElementById('diagnostic-packages-section')?.scrollIntoView({behavior:'smooth'})"
+                : `filterCategory('${service.id}')`
+            }"
+            class="group bg-white rounded-2xl border border-saino-gray-200 p-4 text-center hover:border-saino-red/30 hover:shadow-md transition">
+
+            <div class="w-11 h-11 mx-auto rounded-xl bg-saino-red/10 text-saino-red flex items-center justify-center group-hover:bg-saino-red group-hover:text-white transition">
+
+              <i data-lucide="${service.icon}" class="w-5 h-5"></i>
+
+            </div>
+
+            <h3 class="mt-3 text-[11px] sm:text-xs font-black text-saino-gray-900">
+              ${service.title}
+            </h3>
+
+            <p class="mt-1 text-[9px] text-saino-gray-500 leading-tight">
+              ${service.description}
+            </p>
+
+          </button>
+
+        `).join('')}
+
+      </div>
+
+    </section>
+
+
+    <!-- ==========================================
+         5. HOSPITALS
+    =========================================== -->
+
+    <section class="mb-14">
+
+      <div class="flex items-center justify-between mb-6 pb-3 border-b border-saino-gray-200">
+
+        <div>
+
+          <span class="text-xs font-black uppercase tracking-wider text-saino-red">
+            Trusted Healthcare Providers
+          </span>
+
+          <h2 class="text-xl sm:text-2xl font-black text-saino-gray-900">
+            Hospitals
+          </h2>
+
+        </div>
+
+        <button
+          onclick="filterCategory('hospital')"
+          class="text-xs font-bold text-saino-red hover:underline">
+          View All →
+        </button>
+
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        ${hospitals.map(p => renderProviderCard(p)).join('')}
+
+      </div>
+
+    </section>
+
+
+    <!-- ==========================================
+         6. CLINICS + REVIEWS
+    =========================================== -->
+
+    <section class="mb-14">
+
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
-        
-        <!-- LEFT: CLINICS COLUMN (7 cols) - View All -->
+
+        <!-- CLINICS -->
+
         <div class="lg:col-span-7">
+
           <div class="flex items-center justify-between mb-5 pb-2 border-b border-saino-gray-200">
-            <h3 class="text-base sm:text-lg font-black text-saino-gray-900 uppercase tracking-wide">CLINICS</h3>
-            <button onclick="filterCategory('clinic')" class="text-xs font-bold text-saino-red hover:underline">
-              View All (${clinics.length}) &gt;
+
+            <h2 class="text-base sm:text-lg font-black text-saino-gray-900 uppercase tracking-wide">
+              Clinics
+            </h2>
+
+            <button
+              onclick="filterCategory('clinic')"
+              class="text-xs font-bold text-saino-red hover:underline">
+              View All →
             </button>
+
           </div>
 
           <div class="space-y-4">
-            ${topClinics.map(c => renderHorizontalClinicCard(c)).join('')}
+
+            ${clinics.map(c => renderProviderCard(c)).join('')}
+
           </div>
+
         </div>
 
-        <!-- RIGHT: TALK OF THE TOWN / PATIENT EXPERIENCES COLUMN (5 cols) - Read All -->
+
+        <!-- PATIENT REVIEWS -->
+
         <div class="lg:col-span-5">
+
           <div class="flex items-center justify-between mb-5 pb-2 border-b border-saino-gray-200">
-            <h3 class="text-base sm:text-lg font-black text-saino-gray-900">Real experience from our patients</h3>
-            <button onclick="navigateTo('discovery')" class="text-xs font-bold text-saino-red hover:underline">
-              Read All &gt;
+
+            <div>
+
+              <span class="text-xs font-black uppercase tracking-wider text-saino-red">
+                Community
+              </span>
+
+              <h2 class="text-base sm:text-lg font-black text-saino-gray-900">
+                Patient Reviews
+              </h2>
+
+            </div>
+
+            <button
+              onclick="navigateTo('discovery')"
+              class="text-xs font-bold text-saino-red hover:underline">
+              Read All →
             </button>
+
           </div>
 
-          <div class="space-y-3.5">
-            ${talkReviews.slice(0, 5).map((r, i) => renderTalkReviewItem(r, i)).join('')}
+          <div class="space-y-3">
+
+            ${talkReviews.slice(0, 5)
+              .map((r, i) => renderTalkReviewItem(r, i))
+              .join('')}
+
           </div>
+
         </div>
 
       </div>
+
     </section>
 
-    <!-- 4. DIAGNOSTIC CENTRES & PATHOLOGY LABS IN NEPAL (Replaces duplicate review section) -->
-    <section class="mb-14">
-      <div class="flex items-center justify-between mb-6">
+
+    <!-- ==========================================
+         7. DISCOVERY / SOCIAL ENGAGEMENT
+    =========================================== -->
+
+    <section class="mb-14 rounded-3xl bg-saino-gray-50 border border-saino-gray-200 p-6 sm:p-8">
+
+      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-5">
+
         <div>
-          <span class="text-xs font-black uppercase tracking-wider text-saino-red">Advanced Diagnostics & Pathology</span>
-          <h2 class="text-xl sm:text-2xl font-black text-saino-gray-900">Top Diagnostic Centres & Labs in Nepal</h2>
-          <p class="text-xs text-saino-gray-500">ISO-certified pathology, 3.0T MRI, 128 Slice CT & home sample collection</p>
+
+          <span class="text-xs font-black uppercase tracking-wider text-saino-red">
+            SAINO Discovery
+          </span>
+
+          <h2 class="text-xl sm:text-2xl font-black text-saino-gray-900 mt-1">
+            Like · Comment · Interested · Saved
+          </h2>
+
+          <p class="text-xs sm:text-sm text-saino-gray-600 mt-1 max-w-2xl">
+            Discover healthcare providers, read real patient experiences,
+            share your opinion and save providers for later.
+          </p>
+
         </div>
-        <button onclick="filterCategory('diagnostic')" class="text-xs font-bold text-saino-red hover:underline">
-          View All Labs &gt;
+
+        <button
+          onclick="navigateTo('discovery')"
+          class="px-5 py-3 rounded-xl bg-white border border-saino-gray-200 text-saino-gray-800 text-xs font-black hover:border-saino-red/30 hover:text-saino-red transition shadow-xs">
+          EXPLORE DISCOVERY
         </button>
+
+      </div>
+
+    </section>
+
+
+    <!-- ==========================================
+         8. DIAGNOSTICS / LABS
+    =========================================== -->
+
+    <section class="mb-14">
+
+      <div class="flex items-center justify-between mb-6">
+
+        <div>
+
+          <span class="text-xs font-black uppercase tracking-wider text-saino-red">
+            Diagnostics & Laboratory
+          </span>
+
+          <h2 class="text-xl sm:text-2xl font-black text-saino-gray-900">
+            Diagnostic Centres & Labs
+          </h2>
+
+          <p class="text-xs text-saino-gray-500 mt-1">
+            Pathology · MRI · CT · Ultrasound · X-Ray · Home Sample Collection
+          </p>
+
+        </div>
+
+        <button
+          onclick="filterCategory('diagnostic')"
+          class="text-xs font-bold text-saino-red hover:underline">
+          View All →
+        </button>
+
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        ${topDiagnostics.map(d => renderProviderCard(d)).join('')}
+
+        ${diagnostics.map(p => renderProviderCard(p)).join('')}
+
       </div>
+
     </section>
 
-    <!-- 5. SPECIAL OFFER AMBER BANNER -->
-    <section class="mb-14 p-5 sm:p-6 rounded-2xl bg-gradient-to-r from-amber-50 via-amber-100/70 to-orange-50 border border-amber-200/80 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-      <div class="flex items-center space-x-3">
-        <div class="w-10 h-10 rounded-xl bg-amber-500 text-white flex items-center justify-center font-black text-xs flex-shrink-0 shadow-xs">
-          OFFER
-        </div>
-        <div>
-          <strong class="text-xs sm:text-sm font-extrabold text-saino-gray-900 block">Book OPD Consultation via SAINO & get 20% discount on Diagnostic Lab tests.</strong>
-          <span class="text-xs text-saino-gray-600">Valid across all partner hospitals and ISO-accredited pathlabs in Kathmandu Valley.</span>
-        </div>
-      </div>
-      <button onclick="openCustomWhatsApp('Special 20% Offer', 'Hi SAINO, I would like to claim the 20% Diagnostic Lab discount offer on my upcoming OPD appointment. (+977 9761427155)')" class="px-5 py-2.5 bg-saino-red hover:bg-saino-red-dark text-white font-bold rounded-xl text-xs whitespace-nowrap shadow-md transition">
-        CLAIM OFFER NOW
-      </button>
-    </section>
 
-    <!-- 6. DIAGNOSTIC PACKAGES (3 Cards) -->
-    <section class="mb-14">
+    <!-- ==========================================
+         9. DIAGNOSTIC PACKAGES
+    =========================================== -->
+
+    <section
+      id="diagnostic-packages-section"
+      class="mb-14">
+
       <div class="flex items-center justify-between mb-6">
+
         <div>
-          <span class="text-xs font-black uppercase tracking-wider text-saino-red">Preventive Wellness</span>
-          <h2 class="text-xl sm:text-2xl font-black text-saino-gray-900">Diagnostic Packages</h2>
+
+          <span class="text-xs font-black uppercase tracking-wider text-saino-red">
+            Preventive Healthcare
+          </span>
+
+          <h2 class="text-xl sm:text-2xl font-black text-saino-gray-900">
+            Diagnostic Packages
+          </h2>
+
+          <p class="text-xs text-saino-gray-500 mt-1">
+            Choose complete health screening packages for you and your family.
+          </p>
+
         </div>
-        <button onclick="filterCategory('diagnostic')" class="text-xs font-bold text-saino-red hover:underline">
-          View All Packages &gt;
-        </button>
+
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        ${diagnosticPackages.map(pkg => renderDiagnosticPackageCard(pkg)).join('')}
+
+        ${diagnosticPackages
+          .slice(0, 6)
+          .map(pkg => renderDiagnosticPackageCard(pkg))
+          .join('')}
+
       </div>
+
     </section>
 
-    <!-- 7. COMPARE BEFORE YOU BOOK WIDGET -->
-    <section class="mb-14 bg-white rounded-3xl border border-saino-gray-200 p-6 sm:p-8 shadow-sm">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-        <div class="lg:col-span-4">
-          <span class="text-xs font-black uppercase tracking-wider text-saino-red mb-1 block">Decision Helper</span>
-          <h3 class="text-2xl font-black text-saino-gray-900 leading-tight mb-2">Compare Before you book</h3>
-          <p class="text-xs sm:text-sm text-saino-gray-600 mb-6 leading-relaxed">
-               Compare 25+ verified doctors, specialists & healthcare providers side-by-side to find the right care, consultation fees, and availability.
-          </p>
-          <button onclick="navigateTo('discovery')" class="px-5 py-2.5 bg-saino-red hover:bg-saino-red-dark text-white font-bold rounded-xl text-xs shadow-md transition">
-            COMPARE PROVIDERS
-          </button>
-        </div>
 
-        <div class="lg:col-span-8 bg-saino-gray-50 p-5 rounded-2xl border border-saino-gray-200">
-          <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
-            <!-- Hospital A -->
-            <div class="flex-1 bg-white p-4 rounded-xl border border-saino-gray-200 shadow-xs text-xs w-full">
-              <div class="flex items-center space-x-3 mb-2">
-                <img src="https://images.unsplash.com/photo-1587351021759-3e566b6af7cc?w=120" class="w-10 h-10 rounded-lg object-cover">
-                <div>
-                  <strong class="text-saino-gray-900 block font-bold text-xs">Dr Mhomad fathan</strong>
-                  <span class="text-amber-500 font-bold">⭐ 4.8</span> · <span class="text-saino-gray-400">Thapathali</span>
-                </div>
-              </div>
-              <div class="space-y-1 text-saino-gray-600 text-[11px] pt-2 border-t border-saino-gray-100">
-                <div>Full body checkup doctor</div>
-                <div>Available: <strong>24/7</strong></div>
-              </div>
-            </div>
+    <!-- ==========================================
+         10. HOMECARE & ELDERLY CARE
+    =========================================== -->
 
-            <!-- VS Circle -->
-            <div class="w-8 h-8 rounded-full bg-emerald-600 text-white font-black text-xs flex items-center justify-center flex-shrink-0 shadow-md">
-              VS
-            </div>
-
-            <!-- Hospital B -->
-            <div class="flex-1 bg-white p-4 rounded-xl border border-saino-gray-200 shadow-xs text-xs w-full">
-              <div class="flex items-center space-x-3 mb-2">
-                <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=120" class="w-10 h-10 rounded-lg object-cover">
-                <div>
-                  <strong class="text-saino-gray-900 block font-bold text-xs">Dr.Charlos</strong>
-                  <span class="text-amber-500 font-bold">⭐ 4.7</span> · <span class="text-saino-gray-400">Dhapasi</span>
-                </div>
-              </div>
-              <div class="space-y-1 text-saino-gray-600 text-[11px] pt-2 border-t border-saino-gray-100">
-                <div>General Physician <strong></strong></div>
-                <div>Available:<strong>24/7</strong></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 8. EMERGENCY CARE: BLOOD BANKS & AMBULANCES (2 COLUMNS - ENQUIRE NOW WHATSAPP) -->
     <section class="mb-14">
-      <div class="flex items-center justify-between mb-6 pb-3 border-b border-saino-gray-200">
-        <div>
-          <span class="text-xs font-black uppercase tracking-wider text-saino-red">24/7 Rapid Response</span>
-          <h2 class="text-xl sm:text-2xl font-black text-saino-gray-900">Emergency Care & Blood Banks in Nepal</h2>
+
+      <div class="rounded-3xl bg-white border border-saino-gray-200 shadow-sm overflow-hidden">
+
+        <div class="p-6 sm:p-8">
+
+          <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-5 mb-7">
+
+            <div>
+
+              <span class="text-xs font-black uppercase tracking-wider text-saino-red">
+                Care at Home
+              </span>
+
+              <h2 class="text-xl sm:text-2xl font-black text-saino-gray-900 mt-1">
+                Homecare & Elderly Care
+              </h2>
+
+              <p class="text-xs sm:text-sm text-saino-gray-600 mt-1 max-w-2xl">
+                Professional healthcare support at home — from elderly care
+                and home nursing to doctor visits and post-operative support.
+              </p>
+
+            </div>
+
+            <button
+              onclick="filterCategory('homecare')"
+              class="px-5 py-2.5 rounded-xl bg-saino-red text-white text-xs font-black hover:bg-saino-red-dark transition">
+              VIEW HOMECARE
+            </button>
+
+          </div>
+
+
+          <!-- HOMECARE SERVICES -->
+
+          <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 mb-7">
+
+            <button
+              onclick="filterBookingType('home_nurse')"
+              class="p-4 rounded-2xl bg-saino-gray-50 border border-saino-gray-200 hover:border-saino-red/30 transition">
+
+              <i data-lucide="heart-handshake"
+                 class="w-5 h-5 text-saino-red mx-auto">
+              </i>
+
+              <span class="block mt-2 text-[10px] font-black text-saino-gray-800">
+                Home Nurse
+              </span>
+
+            </button>
+
+
+            <button
+              onclick="filterBookingType('home_doc')"
+              class="p-4 rounded-2xl bg-saino-gray-50 border border-saino-gray-200 hover:border-saino-red/30 transition">
+
+              <i data-lucide="stethoscope"
+                 class="w-5 h-5 text-saino-red mx-auto">
+              </i>
+
+              <span class="block mt-2 text-[10px] font-black text-saino-gray-800">
+                Home Doctor
+              </span>
+
+            </button>
+
+
+            <button
+              onclick="filterCategory('homecare')"
+              class="p-4 rounded-2xl bg-saino-gray-50 border border-saino-gray-200 hover:border-saino-red/30 transition">
+
+              <i data-lucide="accessibility"
+                 class="w-5 h-5 text-saino-red mx-auto">
+              </i>
+
+              <span class="block mt-2 text-[10px] font-black text-saino-gray-800">
+                Elderly Care
+              </span>
+
+            </button>
+
+
+            <button
+              onclick="filterCategory('homecare')"
+              class="p-4 rounded-2xl bg-saino-gray-50 border border-saino-gray-200 hover:border-saino-red/30 transition">
+
+              <i data-lucide="heart-pulse"
+                 class="w-5 h-5 text-saino-red mx-auto">
+              </i>
+
+              <span class="block mt-2 text-[10px] font-black text-saino-gray-800">
+                Post-Op Care
+              </span>
+
+            </button>
+
+
+            <button
+              onclick="filterCategory('homecare')"
+              class="p-4 rounded-2xl bg-saino-gray-50 border border-saino-gray-200 hover:border-saino-red/30 transition">
+
+              <i data-lucide="activity"
+                 class="w-5 h-5 text-saino-red mx-auto">
+              </i>
+
+              <span class="block mt-2 text-[10px] font-black text-saino-gray-800">
+                Home Physio
+              </span>
+
+            </button>
+
+
+            <button
+              onclick="filterCategory('homecare')"
+              class="p-4 rounded-2xl bg-saino-gray-50 border border-saino-gray-200 hover:border-saino-red/30 transition">
+
+              <i data-lucide="pill"
+                 class="w-5 h-5 text-saino-red mx-auto">
+              </i>
+
+              <span class="block mt-2 text-[10px] font-black text-saino-gray-800">
+                Care Support
+              </span>
+
+            </button>
+
+          </div>
+
+
+          <!-- HOMECARE PROVIDERS -->
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+
+            ${homecare.map(p => renderProviderCard(p)).join('')}
+
+          </div>
+
+
+          <div class="mt-6">
+
+            <button
+              onclick="filterBookingType('home_nurse')"
+              class="w-full sm:w-auto px-7 py-3 rounded-xl bg-saino-red hover:bg-saino-red-dark text-white text-xs font-black shadow-md transition">
+
+              BOOK HOMECARE
+
+            </button>
+
+          </div>
+
         </div>
-        <button onclick="navigateTo('discovery')" class="text-xs font-bold text-saino-red hover:underline">
-          Emergency Directory &gt;
-        </button>
+
       </div>
+
+    </section>
+
+
+    <!-- ==========================================
+         11. HEALTH INSURANCE
+    =========================================== -->
+
+    <section class="mb-14">
+
+      <div class="rounded-3xl bg-white border border-saino-gray-200 shadow-sm p-6 sm:p-8">
+
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-5 mb-7">
+
+          <div>
+
+            <span class="text-xs font-black uppercase tracking-wider text-saino-red">
+              Healthcare Protection
+            </span>
+
+            <h2 class="text-xl sm:text-2xl font-black text-saino-gray-900 mt-1">
+              Health Insurance
+            </h2>
+
+            <p class="text-xs sm:text-sm text-saino-gray-600 mt-1">
+              Protect your health and your family with the right healthcare coverage.
+            </p>
+
+          </div>
+
+          <button
+            onclick="filterCategory('insurance')"
+            class="px-5 py-2.5 rounded-xl bg-saino-red text-white text-xs font-black hover:bg-saino-red-dark transition">
+            EXPLORE INSURANCE
+          </button>
+
+        </div>
+
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-7">
+
+          <div class="p-4 rounded-2xl bg-saino-gray-50 border border-saino-gray-200">
+
+            <i data-lucide="user"
+               class="w-5 h-5 text-saino-red mb-2">
+            </i>
+
+            <strong class="text-xs font-black text-saino-gray-900 block">
+              Individual Plans
+            </strong>
+
+            <span class="text-[10px] text-saino-gray-500">
+              Personal healthcare protection
+            </span>
+
+          </div>
+
+
+          <div class="p-4 rounded-2xl bg-saino-gray-50 border border-saino-gray-200">
+
+            <i data-lucide="users"
+               class="w-5 h-5 text-saino-red mb-2">
+            </i>
+
+            <strong class="text-xs font-black text-saino-gray-900 block">
+              Family Plans
+            </strong>
+
+            <span class="text-[10px] text-saino-gray-500">
+              Protect your whole family
+            </span>
+
+          </div>
+
+
+          <div class="p-4 rounded-2xl bg-saino-gray-50 border border-saino-gray-200">
+
+            <i data-lucide="building-2"
+               class="w-5 h-5 text-saino-red mb-2">
+            </i>
+
+            <strong class="text-xs font-black text-saino-gray-900 block">
+              Corporate Plans
+            </strong>
+
+            <span class="text-[10px] text-saino-gray-500">
+              Employee healthcare coverage
+            </span>
+
+          </div>
+
+
+          <div class="p-4 rounded-2xl bg-saino-gray-50 border border-saino-gray-200">
+
+            <i data-lucide="badge-check"
+               class="w-5 h-5 text-saino-red mb-2">
+            </i>
+
+            <strong class="text-xs font-black text-saino-gray-900 block">
+              Cashless Networks
+            </strong>
+
+            <span class="text-[10px] text-saino-gray-500">
+              Partner hospital networks
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+          ${insurance.map(p => renderProviderCard(p)).join('')}
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ==========================================
+         12. WELLNESS CENTRES
+    =========================================== -->
+
+    <section class="mb-14">
+
+      <div class="flex items-center justify-between mb-6">
+
+        <div>
+
+          <span class="text-xs font-black uppercase tracking-wider text-saino-red">
+            Preventive & Lifestyle Care
+          </span>
+
+          <h2 class="text-xl sm:text-2xl font-black text-saino-gray-900">
+            Wellness Centres
+          </h2>
+
+          <p class="text-xs text-saino-gray-500 mt-1">
+            Ayurveda · Yoga · Physiotherapy · Mental Wellness · Preventive Care
+          </p>
+
+        </div>
+
+        <button
+          onclick="filterCategory('wellness')"
+          class="text-xs font-bold text-saino-red hover:underline">
+          View All →
+        </button>
+
+      </div>
+
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+        ${wellness.map(p => renderProviderCard(p)).join('')}
+
+      </div>
+
+    </section>
+
+
+    <!-- ==========================================
+         13. COMPARE BEFORE YOU BOOK
+    =========================================== -->
+
+    <section class="mb-14 bg-white rounded-3xl border border-saino-gray-200 p-6 sm:p-8 shadow-sm">
+
+      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-5">
+
+        <div>
+
+          <span class="text-xs font-black uppercase tracking-wider text-saino-red">
+            Decision Helper
+          </span>
+
+          <h2 class="text-xl sm:text-2xl font-black text-saino-gray-900 mt-1">
+            Compare Before You Book
+          </h2>
+
+          <p class="text-xs sm:text-sm text-saino-gray-600 mt-1 max-w-2xl">
+            Compare ratings, reviews, services, pricing, availability and
+            SAINO badge levels before making your healthcare decision.
+          </p>
+
+        </div>
+
+        <button
+          onclick="navigateTo('discovery')"
+          class="px-6 py-3 rounded-xl bg-saino-red hover:bg-saino-red-dark text-white text-xs font-black shadow-md transition">
+          COMPARE PROVIDERS
+        </button>
+
+      </div>
+
+    </section>
+
+
+    <!-- ==========================================
+         14. EMERGENCY / BLOOD BANK
+    =========================================== -->
+
+    <section class="mb-14">
+
+      <div class="flex items-center justify-between mb-6 pb-3 border-b border-saino-gray-200">
+
+        <div>
+
+          <span class="text-xs font-black uppercase tracking-wider text-saino-red">
+            24/7 Rapid Response
+          </span>
+
+          <h2 class="text-xl sm:text-2xl font-black text-saino-gray-900">
+            Emergency Care & Blood Banks
+          </h2>
+
+        </div>
+
+        <button
+          onclick="navigateTo('discovery')"
+          class="text-xs font-bold text-saino-red hover:underline">
+          Emergency Directory →
+        </button>
+
+      </div>
+
 
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        
-        <!-- Left Column: Blood Banks -->
+
+
+        <!-- BLOOD BANK -->
+
         <div class="bg-white rounded-2xl border border-saino-gray-200 p-5 shadow-xs">
+
           <div class="flex items-center justify-between mb-4 pb-2 border-b border-saino-gray-100">
-            <h4 class="text-xs font-black uppercase text-saino-gray-700 flex items-center space-x-1.5">
-              <i data-lucide="droplet" class="w-4 h-4 text-saino-red"></i>
-              <span>Blood Banks</span>
-            </h4>
-            <span class="text-[11px] text-saino-gray-400 font-semibold">Available Units</span>
+
+            <h3 class="text-xs font-black uppercase text-saino-gray-700 flex items-center gap-2">
+
+              <i data-lucide="droplet"
+                 class="w-4 h-4 text-saino-red">
+              </i>
+
+              Blood Banks
+
+            </h3>
+
+            <span class="text-[10px] text-saino-gray-400 font-semibold">
+              Emergency
+            </span>
+
           </div>
-          <div class="space-y-3 text-xs">
+
+
+          <div class="space-y-3">
+
             ${emergencyBloodBanks.map(b => `
-              <div class="p-3.5 rounded-xl bg-saino-gray-50 border border-saino-gray-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                <div>
-                  <strong class="text-saino-gray-900 block font-bold text-xs">${b.name}</strong>
-                  <span class="text-[11px] text-saino-gray-500">${b.area} · <span class="text-saino-red font-semibold">${b.special}</span></span>
-                </div>
-                <div class="flex items-center space-x-2 flex-shrink-0">
-                  <button onclick="openCustomWhatsApp('Blood Bank Enquiry: ${b.name}', 'URGENT: I need blood group availability and assistance at ${b.name}. (Patient query via SAINO HEALTH: +977 9761427155)')" class="px-3 py-1.5 bg-[#25d366] hover:bg-[#1ebd5a] text-white font-bold rounded-lg transition text-[11px] flex items-center space-x-1.5 shadow-xs whitespace-nowrap">
-                    <i data-lucide="message-circle" class="w-3.5 h-3.5"></i>
-                    <span>Enquire on WhatsApp</span>
-                  </button>
-                </div>
+
+              <div class="p-3 rounded-xl bg-saino-gray-50 border border-saino-gray-100">
+
+                <strong class="text-xs text-saino-gray-900 block">
+                  ${b.name}
+                </strong>
+
+                <span class="text-[10px] text-saino-gray-500 block mt-1">
+                  ${b.area || ''}
+                </span>
+
+                <button
+                  onclick="openCustomWhatsApp('Blood Bank Enquiry: ${b.name}', 'Hello SAINO, I need blood availability information from ${b.name}.')"
+                  class="mt-2 px-3 py-1.5 bg-saino-red text-white rounded-lg text-[10px] font-bold">
+                  Enquire Now
+                </button>
+
               </div>
+
             `).join('')}
+
           </div>
+
         </div>
 
-        <!-- Right Column: Ambulances -->
+
+        <!-- AMBULANCE -->
+
         <div class="bg-white rounded-2xl border border-saino-gray-200 p-5 shadow-xs">
+
           <div class="flex items-center justify-between mb-4 pb-2 border-b border-saino-gray-100">
-            <h4 class="text-xs font-black uppercase text-saino-gray-700 flex items-center space-x-1.5">
-              <i data-lucide="truck" class="w-4 h-4 text-saino-red"></i>
-              <span>Ambulances</span>
-            </h4>
-            <span class="text-[11px] text-saino-gray-400 font-semibold">24/7 Dispatch</span>
+
+            <h3 class="text-xs font-black uppercase text-saino-gray-700 flex items-center gap-2">
+
+              <i data-lucide="truck"
+                 class="w-4 h-4 text-saino-red">
+              </i>
+
+              Ambulance
+
+            </h3>
+
+            <span class="text-[10px] text-saino-gray-400 font-semibold">
+              24/7 Dispatch
+            </span>
+
           </div>
-          <div class="space-y-3 text-xs">
+
+
+          <div class="space-y-3">
+
             ${emergencyAmbulances.map(a => `
-              <div class="p-3.5 rounded-xl bg-saino-gray-50 border border-saino-gray-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                <div>
-                  <strong class="text-saino-gray-900 block font-bold text-xs">${a.name}</strong>
-                  <span class="text-[11px] text-saino-gray-500">${a.area} · <span class="text-emerald-600 font-semibold">${a.opd}</span></span>
-                </div>
-                <div class="flex items-center space-x-2 flex-shrink-0">
-                  <button onclick="openCustomWhatsApp('Ambulance Dispatch Enquiry: ${a.name}', 'EMERGENCY: Immediate ambulance dispatch enquiry for ${a.name}. (Patient query via SAINO HEALTH: +977 9761427155)')" class="px-3 py-1.5 bg-[#25d366] hover:bg-[#1ebd5a] text-white font-bold rounded-lg transition text-[11px] flex items-center space-x-1.5 shadow-xs whitespace-nowrap">
-                    <i data-lucide="message-circle" class="w-3.5 h-3.5"></i>
-                    <span>Enquire on WhatsApp</span>
-                  </button>
-                </div>
+
+              <div class="p-3 rounded-xl bg-saino-gray-50 border border-saino-gray-100">
+
+                <strong class="text-xs text-saino-gray-900 block">
+                  ${a.name}
+                </strong>
+
+                <span class="text-[10px] text-saino-gray-500 block mt-1">
+                  ${a.area || ''}
+                </span>
+
+                <button
+                  onclick="openCustomWhatsApp('Ambulance Dispatch: ${a.name}', 'Hello SAINO, I need an ambulance dispatch enquiry for ${a.name}.')"
+                  class="mt-2 px-3 py-1.5 bg-saino-red text-white rounded-lg text-[10px] font-bold">
+                  Request Ambulance
+                </button>
+
               </div>
+
             `).join('')}
+
           </div>
+
         </div>
 
       </div>
+
     </section>
 
-    <!-- 9. DOCTORS OPD CONSULTATION & PATIENT QUERIES (WEB BOOKING PLATFORM) -->
+
+    <!-- ==========================================
+         15. DOCTOR OPD
+    =========================================== -->
+
     <section class="mb-14">
-      <div class="flex items-center justify-between mb-2">
-        <div>
-          <span class="text-xs font-black uppercase tracking-wider text-saino-red">Direct Web Booking</span>
-          <h2 class="text-xl sm:text-2xl font-black text-saino-gray-900">Book Doctor Consultation & OPD Tokens</h2>
-          <p class="text-xs text-saino-gray-500">Book specialist consultant tokens across top partner hospitals & clinics in Nepal via direct WhatsApp query.</p>
-        </div>
+
+      <div class="mb-6">
+
+        <span class="text-xs font-black uppercase tracking-wider text-saino-red">
+          Direct Healthcare Booking
+        </span>
+
+        <h2 class="text-xl sm:text-2xl font-black text-saino-gray-900">
+          Doctor Consultation & OPD
+        </h2>
+
+        <p class="text-xs text-saino-gray-500 mt-1">
+          Discover doctors and request OPD consultation bookings.
+        </p>
+
       </div>
 
-      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 mt-6">
-        ${onlineDoctors.map(doc => `
-          <div class="bg-white rounded-2xl border border-saino-gray-200 p-4 text-center shadow-xs flex flex-col items-center justify-between hover:border-saino-red/30 transition">
-            <div>
-              <div class="relative w-16 h-16 rounded-full overflow-hidden mx-auto mb-2 border-2 border-saino-red/20 bg-saino-gray-100">
-                <img src="${doc.image}" alt="${doc.name}" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=300&auto=format&fit=crop&q=80'">
-                <span class="absolute bottom-0 right-0 w-3.5 h-3.5 bg-emerald-500 border-2 border-white rounded-full"></span>
-              </div>
-              <strong class="text-xs font-bold text-saino-gray-900 block truncate">${doc.name}</strong>
-              <span class="text-[10px] text-saino-gray-500 block truncate mt-0.5">${doc.role}</span>
-              <span class="text-[10px] text-sky-700 font-semibold block truncate mt-0.5">${doc.hospital}</span>
-              <span class="text-[10px] font-bold text-emerald-600 block mt-1">OPD Fee: ${doc.fee}</span>
+
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
+
+        ${onlineDoctors.slice(0, 10).map(doc => `
+
+          <div class="bg-white rounded-2xl border border-saino-gray-200 p-4 text-center shadow-xs">
+
+            <div class="relative w-16 h-16 rounded-full overflow-hidden mx-auto mb-2 border-2 border-saino-red/20">
+
+              <img
+                src="${doc.image}"
+                alt="${doc.name}"
+                class="w-full h-full object-cover">
+
             </div>
-            <button onclick="openCustomWhatsApp('Doctor OPD Consultation: ${doc.name}', 'Hi SAINO Health, I would like to book an OPD consultation token with ${doc.name} (${doc.role}) at ${doc.hospital}. Please confirm available time slots. (+977 9761427155)')" class="mt-3 w-full py-1.5 bg-saino-red hover:bg-saino-red-dark text-white font-bold rounded-xl text-[11px] shadow-xs transition flex items-center justify-center space-x-1">
-              <i data-lucide="calendar" class="w-3 h-3"></i>
-              <span>BOOK OPD</span>
+
+            <strong class="text-xs font-bold text-saino-gray-900 block truncate">
+              ${doc.name}
+            </strong>
+
+            <span class="text-[10px] text-saino-gray-500 block truncate mt-1">
+              ${doc.role}
+            </span>
+
+            <span class="text-[10px] text-sky-700 font-semibold block truncate mt-1">
+              ${doc.hospital}
+            </span>
+
+            <button
+              onclick="openCustomWhatsApp('Doctor OPD Consultation: ${doc.name}', 'Hi SAINO Health, I would like to book an OPD consultation with ${doc.name} at ${doc.hospital}.')"
+              class="mt-3 w-full py-2 bg-saino-red hover:bg-saino-red-dark text-white font-bold rounded-xl text-[10px]">
+              BOOK OPD
             </button>
+
           </div>
+
         `).join('')}
+
       </div>
+
     </section>
 
-    <!-- 10. ARE YOU A HEALTHCARE PROVIDER? (ONBOARDING BANNER) -->
+
+    <!-- ==========================================
+         16. PROVIDER ONBOARDING
+    =========================================== -->
+
     <section class="mb-14 bg-saino-gray-50 rounded-3xl border border-saino-gray-200 p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+
       <div>
-        <span class="text-xs font-black uppercase tracking-wider text-saino-red block mb-1">Provider Network</span>
-        <h3 class="text-xl sm:text-2xl font-black text-saino-gray-900">Are you a Healthcare Provider in Nepal?</h3>
+
+        <span class="text-xs font-black uppercase tracking-wider text-saino-red block mb-1">
+          SAINO Provider Network
+        </span>
+
+        <h2 class="text-xl sm:text-2xl font-black text-saino-gray-900">
+          Are you a Healthcare Provider?
+        </h2>
+
         <p class="text-xs sm:text-sm text-saino-gray-600 mt-1">
-          Join 250+ verified hospitals, clinics, diagnostic labs & pharmacies on SAINO.
+          List your hospital, clinic, diagnostic centre, wellness centre,
+          homecare service or health insurance business on SAINO HEALTH.
         </p>
+
       </div>
-      <button onclick="navigateTo('list-your-care')" class="px-6 py-3 bg-saino-red hover:bg-saino-red-dark text-white font-black rounded-full text-xs sm:text-sm shadow-md hover:shadow-lg transition whitespace-nowrap">
+
+      <button
+        onclick="navigateTo('list-your-care')"
+        class="px-6 py-3 bg-saino-red hover:bg-saino-red-dark text-white font-black rounded-full text-xs sm:text-sm shadow-md transition whitespace-nowrap">
         LIST YOUR CARE
       </button>
-    </section>
 
-    <!-- 11. DIGITALLY CONNECTED (NEPAL MAP GRAPHIC) -->
+    </section>
+      <!-- 11. DIGITALLY CONNECTED (NEPAL MAP GRAPHIC) -->
     <section class="mb-14 bg-gradient-to-r from-sky-50 via-white to-sky-50 rounded-3xl border border-sky-100 p-8 sm:p-10 flex flex-col md:flex-row items-center justify-between gap-8">
       <div class="max-w-md">
         <h2 class="text-2xl sm:text-3xl font-black text-saino-gray-900 mb-2">
@@ -500,6 +1195,10 @@ function renderMarketplaceView() {
     </section>
   `;
 }
+
+    
+
+
 
 // Render Horizontal Clinic Card (Matching Figma 2-Column Left Layout)
 function renderHorizontalClinicCard(c) {
@@ -639,19 +1338,71 @@ function renderDiagnosticPackageCard(pkg) {
 
 // Render Individual Provider Card (Matching Exact Layout from Screenshot & Figma)
 function renderProviderCard(p) {
-  let badgeHtml = '';
-  if (p.verification === 'vvip') {
-    badgeHtml = `<span class="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full text-xs font-black bg-gradient-to-r from-indigo-600 to-purple-700 text-white shadow-md backdrop-blur-sm"><i data-lucide="award" class="w-4 h-4 text-amber-300"></i><span>🏆 SAINO VVIP</span></span>`;
-  } else if (p.verification === 'vip') {
-    badgeHtml = `<span class="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full text-xs font-black bg-gradient-to-r from-amber-500 to-amber-600 text-saino-gray-950 shadow-md backdrop-blur-sm"><i data-lucide="crown" class="w-4 h-4 text-saino-gray-950"></i><span>👑 SAINO Verified VIP</span></span>`;
-  } else if (p.verification === 'pro') {
-    badgeHtml = `<span class="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full text-xs font-bold bg-saino-red text-white shadow-md backdrop-blur-sm"><i data-lucide="check-circle-2" class="w-4 h-4 text-white"></i><span>✓ SAINO Verified Pro</span></span>`;
-  } else if (p.verification === 'prime') {
-    badgeHtml = `<span class="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full text-xs font-bold bg-[#059669] text-white shadow-md backdrop-blur-sm"><i data-lucide="check-circle-2" class="w-4 h-4 text-white"></i><span>✓ SAINO Verified Prime</span></span>`;
-  } else {
-    badgeHtml = `<span class="inline-flex items-center space-x-1.5 px-2.5 py-1 rounded-full text-[11px] font-bold bg-saino-gray-800/80 text-white shadow-sm backdrop-blur-sm"><i data-lucide="check" class="w-3.5 h-3.5 text-saino-gray-300"></i><span>Saino Listed</span></span>`;
-  }
+ let badgeHtml = '';
 
+const verification = String(p.verification || '').toLowerCase();
+
+if (verification === 'vvip') {
+
+  badgeHtml = `
+    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full
+      text-xs font-black
+      bg-gradient-to-r from-indigo-600 to-purple-700
+      text-white shadow-md">
+
+      <i data-lucide="award" class="w-4 h-4 text-amber-300"></i>
+
+      <span>🏆 SAINO VVIP</span>
+
+    </span>
+  `;
+
+} else if (verification === 'vip') {
+
+  badgeHtml = `
+    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full
+      text-xs font-black
+      bg-gradient-to-r from-amber-500 to-amber-600
+      text-saino-gray-950 shadow-md">
+
+      <i data-lucide="crown" class="w-4 h-4"></i>
+
+      <span>👑 SAINO VIP</span>
+
+    </span>
+  `;
+
+} else if (verification === 'pro') {
+
+  badgeHtml = `
+    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full
+      text-xs font-black
+      bg-saino-red text-white shadow-md">
+
+      <i data-lucide="check-circle-2" class="w-4 h-4"></i>
+
+      <span>✓ SAINO Pro</span>
+
+    </span>
+  `;
+
+} else {
+
+  // prime / listed / undefined
+  // Everything else becomes the free Discovery badge.
+
+  badgeHtml = `
+    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full
+      text-xs font-black
+      bg-saino-gray-800 text-white shadow-md">
+
+      <i data-lucide="compass" class="w-4 h-4"></i>
+
+      <span>🆓 SAINO Discovery</span>
+
+    </span>
+  `;
+}
   const categoryObj = window.SAINO_DATA.categories.find(c => c.id === p.category);
   const categoryName = categoryObj ? categoryObj.name : p.category;
 
