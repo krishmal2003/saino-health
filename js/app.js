@@ -1412,9 +1412,24 @@ if (verification === 'vvip') {
     <div class="provider-card bg-white rounded-3xl border border-saino-gray-200 overflow-hidden shadow-sm hover:shadow-md transition flex flex-col justify-between">
       <div>
         <!-- Provider Photo / Header Cover with Top Badges -->
-        <div class="relative h-48 sm:h-52 w-full bg-saino-gray-100 overflow-hidden">
-          <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent"></div>
+      <div
+  class="relative h-48 sm:h-52 w-full bg-saino-gray-100 overflow-hidden cursor-pointer group"
+  onclick="openProviderModal('${p.id}')"
+  title="View ${p.name} Profile"
+>
+  <img
+    src="${p.image}"
+    alt="${p.name}"
+    class="w-full h-full object-cover transition duration-300 group-hover:scale-105"
+  >
+
+  <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent"></div>
+
+  <!-- View Profile overlay -->
+  <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+    <span class="px-4 py-2 rounded-xl  text-saino-gray-900 text-xs font-black shadow-lg flex items-center gap-2">
+       </span>
+  </div>
           
           <!-- Top Badge & Category (Exact Match to User Screenshot) -->
           <div class="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between z-10">

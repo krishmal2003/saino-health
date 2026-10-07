@@ -1,0 +1,1432 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SAINO HEALTH - Search, Discover, Review & Book Healthcare in Nepal</title>
+  <meta name="description" content="Nepal's premier connected healthcare marketplace. Search, discover, review and book doctor consultations, hospital OPD, diagnostic scans, homecare nurses and emergency blood bank across Kathmandu, Lalitpur, Pokhara and nationwide.">
+
+  <!-- Google Fonts (Plus Jakarta Sans & Inter) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <link href="css/custom.css" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
+          },
+          colors: {
+            saino: {
+              red: '#ad0b0e',
+              'red-dark': '#B3121A',
+              'red-light': '#FDE8E9',
+              navy: '#1A2B4C',
+              'navy-light': '#2A4070',
+              gray: {
+                50: '#F8F9FA',
+                100: '#F1F3F5',
+                200: '#E9ECEF',
+                300: '#DEE2E6',
+                400: '#CED4DA',
+                500: '#ADB5BD',
+                600: '#6C757D',
+                700: '#495057',
+                800: '#343A40',
+                900: '#212529',
+              }
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/logo.png">
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="css/custom.css">
+</head>
+
+
+   <!-- Top Header -->
+<header class="sticky top-0 z-40 bg-[#d6d6d6] backdrop-blur-md border-b border-saino-gray-200 shadow-sm">    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between min-h-[72px] py-2 gap-4">
+        
+        <!-- Brand Logo -->
+        <a href="#" data-nav="marketplace" class="flex items-center space-x-3 group py-1 flex-shrink-0 ml-0 md:-ml-8">
+  <img src="assets/logo.png" alt="SAINO HEALTH" class="h-12 sm:h-14 md:h-16 w-auto max-w-[200px] object-contain transition group-hover:scale-105 drop-shadow-xs">
+</a>
+
+            <!-- Header Search Bar - Desktop Only -->
+    <div class="hidden md:flex flex-1 max-w-xl items-center bg-saino-gray-50 rounded-lg border border-saino-gray-200 p-1 pl-4 shadow-sm focus-within:border-saino-red focus-within:ring-2 focus-within:ring-saino-red/20 transition">
+      <i data-lucide="search" class="w-4 h-4 text-saino-gray-400 mr-2 flex-shrink-0"></i>
+
+      <input 
+        type="text" 
+        id="headerSearchInput" 
+        placeholder="Search hospitals, clinics, services..." 
+        class="bg-transparent flex-1 text-xs text-saino-gray-800 font-medium focus:outline-none placeholder-saino-gray-400"
+      >
+
+      <div class="h-4 w-px bg-saino-gray-300 mx-2"></div>
+
+      <select 
+        id="headerLocationSelect" 
+        class="bg-transparent text-xs text-saino-gray-600 font-semibold focus:outline-none cursor-pointer pr-2"
+      >
+        <option value="all">All Locations</option>
+        <option value="Kathmandu">Kathmandu</option>
+        <option value="Lalitpur">Lalitpur</option>
+        <option value="Bhaktapur">Bhaktapur</option>
+        <option value="Pokhara">Pokhara</option>
+        <option value="Chitwan">Chitwan</option>
+      </select>
+
+      <button 
+        onclick="triggerHeaderSearch()" 
+        class="px-4 py-1.5 bg-[#ad0b0e] hover:bg-saino-red-dark text-white font-bold rounded-lg text-xs transition shadow-sm"
+      >
+        Search
+      </button>
+    </div>
+
+      
+<!-- Right Actions - Desktop -->
+<div class="hidden md:flex items-center gap-2 flex-shrink-0">
+
+  <button
+    onclick="openProviderSignInModal('patient')"
+    class="header-action-btn bg-saino-red hover:bg-saino-red-dark text-white"
+  >
+    Sign In
+  </button>
+
+  <a
+    href="#"
+    class="header-action-btn bg-saino-red hover:bg-saino-red-dark text-white"
+  >
+    <span>Get Started</span>
+  </a>
+
+</div>
+
+        <!-- Mobile + Tablet Actions (Sign In + Menu) - visible below 768px -->
+        <div class="md:hidden flex items-center space-x-2 ml-auto">
+            <button
+        onclick="openProviderSignInModal('patient')"
+        class="w-24 h-9 px-3 rounded-lg bg-saino-red hover:bg-saino-red-dark border border-saino-red text-white font-bold text-xs flex items-center justify-center transition shadow-xs"
+      >
+        Sign In
+      </button>
+          <button id="mobileMenuBtn" class="p-2 rounded-xl text-saino-gray-600 hover:bg-saino-gray-100 transition">
+            <i data-lucide="menu" class="w-6 h-6"></i>
+          </button>
+        </div>
+
+      </div>
+  </div>
+
+    <!-- Sub-Navigation -->
+<div class="bg-[#d6d6d6] px-4 sm:px-6 lg:px-8 py-2">      
+  <div class="max-w-7xl mx-auto flex items-center justify-between text-xs font-bold text-saino-gray-600">
+        <nav class="flex items-center space-x-6">
+          <a href="#" data-nav="marketplace" class="text-saino-red font-black uppercase tracking-wider hover:text-saino-red-dark transition">HOME</a>
+          <a href="#" data-nav="about" class="text-saino-gray-800 font-semibold uppercase tracking-wider hover:text-saino-red transition">Discover</a>
+          <a href="#" data-nav="discovery" class="text-saino-gray-800 font-semibold uppercase tracking-wider hover:text-saino-red transition">Find Health care</a>
+          <a href="#" data-nav="discovery" class="text-saino-gray-800 font-semibold uppercase tracking-wider hover:text-saino-red transition">My Appoinments</a>
+          <a href="#" data-nav="discovery" class="text-saino-gray-800 font-semibold uppercase tracking-wider hover:text-saino-red transition">Saved</a>
+
+        </nav>
+        <div class="hidden md:flex items-center space-x-5 text-saino-gray-700 font-semibold text-[11px]">
+    
+          <a href="list-your-care.html" class="text-saino-gray-700 hover:text-saino-red transition">List Your Care</a>
+          <a href="#" data-nav="contact" class="text-saino-gray-700 hover:text-saino-red transition">About Us</a>
+          <a href="#" data-nav="about" class="text-saino-gray-700 hover:text-saino-red transition">Contact Us</a>
+          <a href="#" data-nav="contact" class="text-saino-gray-700 hover:text-saino-red transition">FAQs</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Menu -->
+    <div id="mobileMenu" class="lg:hidden hidden border-t border-saino-gray-200 bg-white px-4 py-4 space-y-2 shadow-lg">
+      <a href="#" data-nav="marketplace" class="block px-3 py-2 rounded-lg text-sm font-semibold text-saino-gray-900 hover:bg-saino-red/5 hover:text-saino-red transition">Home</a>
+      <a href="#" data-nav="discovery" class="block px-3 py-2 rounded-lg text-sm font-semibold text-saino-gray-900 hover:bg-saino-red/5 hover:text-saino-red transition flex items-center justify-between">
+        <span>Discovery</span>
+        <span class="px-1.5 py-0.5 rounded text-[10px] bg-saino-red/10 text-saino-red font-bold">Explore</span>
+      </a>
+      <a href="#" data-nav="about" class="block px-3 py-2 rounded-lg text-sm font-semibold text-saino-gray-900 hover:bg-saino-red/5 hover:text-saino-red transition">About us</a>
+      <a href="#" data-nav="contact" class="block px-3 py-2 rounded-lg text-sm font-semibold text-saino-gray-900 hover:bg-saino-red/5 hover:text-saino-red transition">Contact us</a>
+      <a href="#" data-nav="list-your-care" class="block px-3 py-2 rounded-lg text-sm font-semibold text-saino-red hover:bg-saino-red/5 transition">List your care</a>
+      <div class="pt-3 border-t border-saino-gray-100 mb-2">
+        <button onclick="openProviderSignInModal('patient')" class="w-full py-2.5 text-xs font-bold text-saino-gray-800 border border-saino-gray-200 rounded-xl hover:border-saino-red hover:text-saino-red hover:bg-saino-red/5 transition flex items-center justify-center space-x-2">
+          <i data-lucide="user" class="w-4 h-4 text-saino-red"></i>
+          <span>Sign In / Register</span>
+        </button>
+      </div>
+      <a href="tel:+9779761427155" class="w-full py-2.5 text-xs font-bold bg-saino-red hover:bg-saino-red-dark text-white rounded-xl shadow flex items-center justify-center space-x-2 transition">
+        <i data-lucide="phone-call" class="w-3.5 h-3.5"></i>
+        <span>Call Hotline: +977 9761427155</span>
+      </a>
+    </div>
+  </header>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Provider Registration - SAINO</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background: #f4f7f9;
+            color: #222;
+            font-size: 13px;
+        }
+
+        
+
+        /* ================= MAIN ================= */
+
+        .container {
+            width: 92%;
+            max-width: 1200px;
+            margin: 25px auto 50px;
+        }
+
+        .page-title h1 {
+            font-size: 22px;
+            margin-bottom: 6px;
+        }
+
+        .page-title p {
+            color: #777;
+            margin-bottom: 25px;
+        }
+
+        /* ================= STEPS ================= */
+  .steps {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    gap: 10px;
+}
+
+.step {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    color: #7b8490;
+    font-size: 10px;
+    font-weight: 500;
+
+    text-decoration: none;
+
+    padding: 7px 9px;
+    border-radius: 6px;
+
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    white-space: nowrap;
+}
+
+.step:hover {
+    background: #fde8e9;
+    color: #b3121a;
+}
+
+.step:hover .circle {
+    background: #b3121a;
+    color: white;
+}
+
+.step.active {
+    background: #fde8e9;
+    color: #b3121a;
+    font-weight: 700;
+}
+
+.circle {
+    width: 19px;
+    height: 19px;
+
+    min-width: 19px;
+
+    border-radius: 50%;
+
+    background: #dce1e6;
+    color: #687382;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 9px;
+    font-weight: 700;
+}
+
+.step.active .circle {
+    background: #b3121a;
+    color: white;
+}
+
+        /* ================= CARD ================= */
+
+        .card {
+            background: white;
+            border: 1px solid #e0e4e7;
+            border-radius: 7px;
+            padding: 22px;
+            margin-bottom: 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+        }
+
+        .card-title {
+            font-size: 17px;
+            font-weight: bold;
+            margin-bottom: 4px;
+        }
+
+        .card-subtitle {
+            color: #777;
+            font-size: 11px;
+            margin-bottom: 18px;
+        }
+
+        /* ================= FORM ================= */
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px 25px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-weight: bold;
+            margin-bottom: 6px;
+            font-size: 11px;
+        }
+
+        .required {
+            color: #e3262e;
+        }
+
+        .form-group input,
+        .form-group select {
+            height: 37px;
+            border: 1px solid #cfd5da;
+            border-radius: 4px;
+            padding: 0 10px;
+            outline: none;
+            background: white;
+            color: #555;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: #e3262e;
+        }
+
+        /* ================= PAYMENT ================= */
+
+        .payment-title {
+            font-size: 12px;
+            font-weight: bold;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .payment-options {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .payment-option {
+            border: 1px solid #d8dde1;
+            border-radius: 5px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            padding: 0 12px;
+            cursor: pointer;
+        }
+
+        .payment-option:hover {
+            border-color: #e3262e;
+        }
+
+        .payment-option input {
+            margin-left: auto;
+        }
+
+        .payment-logo {
+            font-weight: bold;
+            font-size: 12px;
+        }
+
+        .visa {
+            color: #2372b9;
+        }
+
+        .master {
+            color: #e3262e;
+        }
+
+        .khalti {
+            color: #6331a7;
+        }
+
+        /* ================= DOCUMENTS ================= */
+
+        .documents-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .progress {
+            font-size: 10px;
+            color: #777;
+            background: #f1f3f5;
+            padding: 5px 9px;
+            border-radius: 10px;
+        }
+
+        .document {
+            min-height: 57px;
+            border-top: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 9px 5px;
+        }
+
+        .document-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .doc-number {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background: #f0f2f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 10px;
+            font-weight: bold;
+        }
+
+        .document-name {
+            font-weight: bold;
+            font-size: 11px;
+        }
+
+        .document-type {
+            color: #888;
+            font-size: 9px;
+            margin-top: 3px;
+        }
+
+        .upload-btn {
+            border: 1px dashed #aeb6bd;
+            background: white;
+            padding: 8px 14px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 10px;
+            color: #555;
+        }
+
+        .upload-btn:hover {
+            border-color: #e3262e;
+            color: #e3262e;
+        }
+
+        .uploaded {
+            color: #188447;
+            font-size: 9px;
+        }
+
+        .warning {
+            color: #e3262e;
+            font-size: 9px;
+        }
+
+        /* ================= BUTTON ================= */
+
+        .continue-area {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 15px;
+        }
+
+        .continue-btn {
+            background: #c91822;
+            color: white;
+            border: none;
+            padding: 11px 22px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 11px;
+        }
+
+        .continue-btn:hover {
+            background: #a9111a;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #e9eef2;
+            border-top: 3px solid #168ad3;
+            padding: 30px 6% 15px;
+        }
+
+        .footer-content {
+            max-width: 1150px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 12px;
+            margin-bottom: 12px;
+        }
+
+        .footer-column a {
+            display: block;
+            text-decoration: none;
+            color: #666;
+            font-size: 9px;
+            margin-bottom: 6px;
+        }
+
+        .footer-column a:hover {
+            color: #e3262e;
+        }
+
+        .footer-logo {
+            text-align: center;
+            margin-top: 25px;
+        }
+
+        .footer-logo .logo {
+            font-size: 22px;
+        }
+
+        .footer-logo p {
+            font-size: 9px;
+            color: #777;
+            margin-top: 5px;
+        }
+
+        .social {
+            margin-top: 15px;
+        }
+
+        .social span {
+            display: inline-flex;
+            width: 27px;
+            height: 27px;
+            border-radius: 50%;
+            background: #e3262e;
+            color: white;
+            align-items: center;
+            justify-content: center;
+            margin: 3px;
+            font-size: 11px;
+        }
+
+        .copyright {
+            text-align: center;
+            color: #888;
+            font-size: 9px;
+            margin-top: 25px;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 900px) {
+
+            .top-header {
+                flex-wrap: wrap;
+                height: auto;
+                padding: 15px;
+                gap: 10px;
+            }
+
+            .search-box {
+                order: 3;
+                width: 100%;
+            }
+
+            .nav {
+                overflow-x: auto;
+                justify-content: flex-start;
+                padding: 0 15px;
+                gap: 20px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .payment-options {
+                grid-template-columns: 1fr;
+            }
+
+            .steps {
+                overflow-x: auto;
+                gap: 15px;
+            }
+
+            .steps::before {
+                display: none;
+            }
+
+            .step {
+                white-space: nowrap;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            body {
+                font-size: 12px;
+            }
+
+            .container {
+                width: 94%;
+                margin-top: 15px;
+            }
+
+            .page-title h1 {
+                font-size: 18px;
+            }
+
+            .card {
+                padding: 15px;
+            }
+
+            .document {
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .document-info {
+                align-items: flex-start;
+            }
+
+            .upload-btn {
+                padding: 7px 8px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .header-buttons {
+                width: 100%;
+            }
+
+            .header-buttons button {
+                margin: 0 5px 0 0;
+            }
+        }
+        /* ================= SELECTED PROVIDER TYPE ================= */
+
+.selected-provider-type {
+    background: #fde8e9;
+    border: 1px solid #f3c4c6;
+    border-radius: 5px;
+    padding: 9px 12px;
+    margin-bottom: 12px;
+    font-size: 10px;
+    color: #555;
+}
+
+.selected-provider-type span {
+    font-weight: 500;
+}
+
+.selected-provider-type strong {
+    color: #b3121a;
+    margin-left: 5px;
+}
+
+
+/* ================= TECHNICAL UPLOAD ================= */
+
+.technical-upload {
+    margin-top: 18px;
+    padding: 12px 14px;
+    background: #f8f9fa;
+    border: 1px solid #e0e4e8;
+    border-radius: 5px;
+}
+
+.technical-upload h3 {
+    font-size: 11px;
+    font-weight: bold;
+    margin-bottom: 7px;
+}
+
+.technical-upload ul {
+    padding-left: 17px;
+    margin: 0;
+}
+
+.technical-upload li {
+    font-size: 9px;
+    color: #555;
+    margin-bottom: 4px;
+    line-height: 1.4;
+}
+    </style>
+</head>
+<body>
+
+<!-- ================= MAIN ================= -->
+
+<main class="container">
+
+    <div class="page-title">
+        <h1>Provider Registration</h1>
+        <p>Bank Details & Documents</p>
+        <p>Complete your bank details and upload necessary documents.</p>
+    </div>
+
+
+    <!-- STEPS -->
+
+    <a href="organization-details.html" class="step">
+        <span class="circle">1</span>
+        <span>Organization Details</span>
+    </a>
+
+    <a href="provider-details.html" class="step">
+        <span class="circle">2</span>
+        <span>Choose Plan</span>
+    </a>
+
+    <a href="bank-details.html" class="step active">
+        <span class="circle">3</span>
+        <span>Bank Details & Documents</span>
+    </a>
+
+    <a href="legal-agreement.html" class="step">
+        <span class="circle">4</span>
+        <span>Legal Agreement</span>
+    </a>
+
+    <a href="check-submit.html" class="step">
+        <span class="circle">5</span>
+        <span>Check & Submit</span>
+    </a>
+
+</div>
+
+
+    <!-- BANK DETAILS -->
+
+    <section class="card">
+
+        <h2 class="card-title">Bank Details (Paid)</h2>
+
+        <p class="card-subtitle">
+            Provide your bank account details for payment processing.
+        </p>
+
+        <div class="form-grid">
+
+            <div class="form-group">
+                <label>Account Holder Name <span class="required">*</span></label>
+                <input type="text" id="accountHolder" placeholder="Enter account holder name">
+            </div>
+
+            <div class="form-group">
+                <label>Account Number <span class="required">*</span></label>
+                <input type="text" id="accountNumber" placeholder="Enter account number">
+            </div>
+
+            <div class="form-group">
+                <label>Bank Name <span class="required">*</span></label>
+                <select id="bankName">
+                    <option value="">Select your bank</option>
+                    <option>Bank of Ceylon</option>
+                    <option>People's Bank</option>
+                    <option>Commercial Bank</option>
+                    <option>Sampath Bank</option>
+                    <option>HNB</option>
+                    <option>Nations Trust Bank</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Branch Name <span class="required">*</span></label>
+                <select id="branchName">
+                    <option value="">Select your branch</option>
+                    <option>Colombo</option>
+                    <option>Gampaha</option>
+                    <option>Kandy</option>
+                    <option>Negombo</option>
+                </select>
+            </div>
+
+        </div>
+
+
+        <div class="payment-title">
+            Digital Payment Options
+        </div>
+
+        <p class="card-subtitle">
+            You can also receive payments through the following channels.
+        </p>
+
+        <div class="payment-options">
+
+            <label class="payment-option">
+                <span class="payment-logo visa">eZ Cash</span>
+                <input type="radio" name="payment">
+            </label>
+
+            <label class="payment-option">
+                <span class="payment-logo master">FriMi</span>
+                <input type="radio" name="payment">
+            </label>
+
+            <label class="payment-option">
+                <span class="payment-logo khalti">Khalti</span>
+                <input type="radio" name="payment">
+            </label>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= DOCUMENTS ================= -->
+
+<section class="card">
+
+    <div class="documents-header">
+
+        <div>
+            <h2 class="card-title">
+                Upload Documents (Paid Users)
+            </h2>
+
+            <p class="card-subtitle">
+                Upload the required documents based on your healthcare provider type.
+            </p>
+        </div>
+
+        <span class="progress" id="documentProgress">
+            0 documents
+        </span>
+
+    </div>
+
+
+    <!-- SELECTED ORGANIZATION TYPE -->
+
+    <div class="selected-provider-type">
+        <span>Organization Type:</span>
+        <strong id="selectedOrganizationType">
+            Loading...
+        </strong>
+    </div>
+
+
+    <!-- DYNAMIC DOCUMENT LIST -->
+
+    <div id="documentsContainer"></div>
+
+
+    <!-- TECHNICAL IMAGE UPLOAD -->
+
+    <div class="technical-upload">
+
+        <h3>
+            Technical Image Upload
+        </h3>
+
+        <ul>
+            <li>200 DPI Scan or Crisp</li>
+            <li>All stamps, official seals, signatures and expiration dates must be perfectly readable.</li>
+            <li>Framing: Four Outer Corners document visibility</li>
+            <li>PDF, JPEG or PNG 5MB.</li>
+        </ul>
+
+    </div>
+
+
+    <div class="continue-area">
+
+        <button
+            class="continue-btn"
+            onclick="continueRegistration()"
+        >
+            Continue to Legal Agreement →
+        </button>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="footer-content">
+
+        <div class="footer-column">
+
+            <h3>Patients</h3>
+
+            <a href="#">Find Doctors</a>
+            <a href="#">Hospitals</a>
+            <a href="#">Clinics</a>
+            <a href="#">Book Appointment</a>
+            <a href="#">Health Records</a>
+            <a href="#">Health Articles</a>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h3>Healthcare Providers</h3>
+
+            <a href="#">Login</a>
+            <a href="#">Register</a>
+            <a href="#">Manage Profile</a>
+            <a href="#">Appointments</a>
+            <a href="#">Billing</a>
+            <a href="#">Provider Dashboard</a>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h3>For Administrators</h3>
+
+            <a href="#">Healthcare Management</a>
+            <a href="#">Manage Healthcare Providers</a>
+            <a href="#">Reports</a>
+            <a href="#">Analytics</a>
+            <a href="#">System Settings</a>
+            <a href="#">Support</a>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-logo">
+
+        <div class="logo">
+            S<span>AI</span>NO
+        </div>
+
+        <p>
+            Connecting patients with quality healthcare.
+        </p>
+
+        <div class="social">
+            <span>f</span>
+            <span>𝕏</span>
+            <span>in</span>
+            <span>◎</span>
+        </div>
+
+    </div>
+
+
+    <div class="copyright">
+        © 2026 SAINO. All Rights Reserved.
+    </div>
+
+</footer>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+    // Search button
+    function searchService() {
+
+        const search =
+            document.querySelector(".search-box input").value.trim();
+
+        if (search === "") {
+            alert("Please enter something to search.");
+        } else {
+            alert("Searching for: " + search);
+        }
+    }
+
+
+    // Sign in
+    function login() {
+        alert("Sign In page will open.");
+    }
+
+
+    // Get Started
+    function getStarted() {
+        alert("Welcome to SAINO!");
+    }
+
+
+    // File upload
+
+/* =========================================================
+   DOCUMENT LIST BASED ON ORGANIZATION TYPE
+========================================================= */
+
+const documentRequirements = {
+
+    "Hospital": [
+        "Facility Operating Licence",
+        "Clinical Establishment Act Registration",
+        "Biomedical Waste (BMW) Management",
+        "Fire Safety and NOC",
+        "Professional Indemnity Insurance",
+        "Tax and Incorporation Documents",
+        "PAN / EIN or Corporate Charter"
+    ],
+
+    "Clinic": [
+        "Facility Operating Licence",
+        "Clinical Establishment Act Registration",
+        "Biomedical Waste (BMW) Management",
+        "Fire Safety and NOC",
+        "Professional Indemnity Insurance",
+        "Tax and Incorporation Documents",
+        "PAN / EIN or Corporate Charter"
+    ],
+
+    "Diagnostic Centre / Lab": [
+        "Lab Accreditation Certificate",
+        "PNDT Act Registration",
+        "AERB / Radiation Safety Approval",
+        "Signatory Doctor Qualifications"
+    ],
+
+    "Blood Bank": [
+        "Drug and Component License",
+        "Medical Officer Credentials",
+        "Equipment Calibration Logs"
+    ],
+
+    "Home Care": [
+        "Nursing Agency / Trade License",
+        "Staff Background Clearances",
+        "Staff Medical Certifications"
+    ],
+
+    "Ambulance Provider": [],
+
+    "Wellness Centre": []
+
+};
+
+
+/* =========================================================
+   LOAD DOCUMENTS
+========================================================= */
+
+function loadDocuments() {
+
+    const organizationType =
+        localStorage.getItem("sainoOrganizationType");
+
+    const typeDisplay =
+        document.getElementById("selectedOrganizationType");
+
+    const container =
+        document.getElementById("documentsContainer");
+
+    const progress =
+        document.getElementById("documentProgress");
+
+
+    // If organization type is missing
+    if (!organizationType) {
+
+        typeDisplay.textContent = "Not selected";
+
+        container.innerHTML = `
+            <div class="warning">
+                Please go back to Organization Details and select
+                your organization type.
+            </div>
+        `;
+
+        progress.textContent = "0 documents";
+
+        return;
+    }
+
+
+    // Show selected organization
+    typeDisplay.textContent = organizationType;
+
+
+    // Get documents
+    const documents =
+        documentRequirements[organizationType] || [];
+
+
+    // No specific documents
+    if (documents.length === 0) {
+
+        container.innerHTML = `
+            <div class="info-message">
+                No specific document list has been configured for
+                <strong>${organizationType}</strong>.
+                Please upload the applicable legal and registration
+                documents.
+            </div>
+        `;
+
+        progress.textContent = "0 documents";
+
+        return;
+    }
+
+
+    // Clear old documents
+    container.innerHTML = "";
+
+
+    // Create documents
+    documents.forEach((documentName, index) => {
+
+        const number = index + 1;
+
+        const documentHTML = `
+
+            <div class="document">
+
+                <div class="document-info">
+
+                    <div class="doc-number">
+                        ${number}
+                    </div>
+
+                    <div>
+
+                        <div class="document-name">
+
+                            ${documentName}
+
+                            <span class="required">*</span>
+
+                        </div>
+
+                        <div class="document-type">
+                            PDF, JPG, JPEG, PNG • Max 5MB
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div>
+
+                    <input
+                        type="file"
+                        id="file${number}"
+                        hidden
+                        accept=".pdf,.jpg,.jpeg,.png"
+                        onchange="uploadFile(${number})"
+                    >
+
+                    <button
+                        type="button"
+                        class="upload-btn"
+                        onclick="document.getElementById('file${number}').click()"
+                    >
+                        ↑ Upload Document
+                    </button>
+
+                    <div id="status${number}"></div>
+
+                </div>
+
+            </div>
+
+        `;
+
+        container.insertAdjacentHTML(
+            "beforeend",
+            documentHTML
+        );
+
+    });
+
+
+    progress.textContent =
+        `0 of ${documents.length} uploaded`;
+
+}
+
+
+/* =========================================================
+   FILE UPLOAD
+========================================================= */
+
+function uploadFile(number) {
+
+    const fileInput =
+        document.getElementById("file" + number);
+
+    const status =
+        document.getElementById("status" + number);
+
+    if (!fileInput || !status) {
+        return;
+    }
+
+
+    if (fileInput.files.length === 0) {
+        return;
+    }
+
+
+    const file =
+        fileInput.files[0];
+
+
+    const maxSize =
+        5 * 1024 * 1024;
+
+
+    /* File size validation */
+
+    if (file.size > maxSize) {
+
+        status.innerHTML =
+            `<div class="warning">
+                File must be less than 5MB.
+            </div>`;
+
+        fileInput.value = "";
+
+        return;
+    }
+
+
+    /* File type validation */
+
+    const allowedTypes = [
+        "application/pdf",
+        "image/jpeg",
+        "image/png"
+    ];
+
+
+    if (!allowedTypes.includes(file.type)) {
+
+        status.innerHTML =
+            `<div class="warning">
+                Only PDF, JPG, JPEG and PNG files are allowed.
+            </div>`;
+
+        fileInput.value = "";
+
+        return;
+    }
+
+
+    /* Success */
+
+    status.innerHTML =
+        `<div class="uploaded">
+            ✓ ${file.name} uploaded
+        </div>`;
+
+
+    updateDocumentProgress();
+
+}
+
+
+/* =========================================================
+   UPDATE PROGRESS
+========================================================= */
+
+function updateDocumentProgress() {
+
+    const organizationType =
+        localStorage.getItem("sainoOrganizationType");
+
+    const documents =
+        documentRequirements[organizationType] || [];
+
+
+    let uploaded = 0;
+
+
+    documents.forEach((document, index) => {
+
+        const fileInput =
+            document.getElementById(`file${index + 1}`);
+
+        if (
+            fileInput &&
+            fileInput.files.length > 0
+        ) {
+            uploaded++;
+        }
+
+    });
+
+
+    document.getElementById(
+        "documentProgress"
+    ).textContent =
+        `${uploaded} of ${documents.length} uploaded`;
+
+}
+
+
+/* =========================================================
+   CONTINUE
+========================================================= */
+
+function continueRegistration() {
+
+    const organizationType =
+        localStorage.getItem("sainoOrganizationType");
+
+    const documents =
+        documentRequirements[organizationType] || [];
+
+
+    /* Check required documents */
+
+    for (let i = 0; i < documents.length; i++) {
+
+        const fileInput =
+            document.getElementById(`file${i + 1}`);
+
+
+        if (
+            fileInput &&
+            fileInput.files.length === 0
+        ) {
+
+            alert(
+                `Please upload the required document:\n\n${documents[i]}`
+            );
+
+            return;
+        }
+
+    }
+
+
+    alert(
+        "Documents uploaded successfully!\n\n" +
+        "Moving to Legal Agreement..."
+    );
+
+
+    window.location.href =
+        "legal-agreement.html";
+
+}
+
+
+/* =========================================================
+   PAGE LOAD
+========================================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    loadDocuments
+);
+
+
+
+    // Continue button
+    function continueRegistration() {
+
+        const accountHolder =
+            document.getElementById("accountHolder").value.trim();
+
+        const accountNumber =
+            document.getElementById("accountNumber").value.trim();
+
+        const bank =
+            document.getElementById("bankName").value;
+
+        const branch =
+            document.getElementById("branchName").value;
+
+
+        if (
+            accountHolder === "" ||
+            accountNumber === "" ||
+            bank === "" ||
+            branch === ""
+        ) {
+
+            alert("Please complete all required bank details.");
+
+            return;
+        }
+
+        alert(
+            "Bank details saved successfully!\n\n" +
+            "Moving to Legal Agreement..."
+        );
+    }
+
+</script>
+
+</body>
+</html>
