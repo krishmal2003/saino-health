@@ -1230,15 +1230,12 @@ function uploadFile(number) {
         return;
     }
 
-
     if (fileInput.files.length === 0) {
         return;
     }
 
-
     const file =
         fileInput.files[0];
-
 
     const maxSize =
         5 * 1024 * 1024;
@@ -1255,6 +1252,8 @@ function uploadFile(number) {
 
         fileInput.value = "";
 
+        updateDocumentProgress();
+
         return;
     }
 
@@ -1267,7 +1266,6 @@ function uploadFile(number) {
         "image/png"
     ];
 
-
     if (!allowedTypes.includes(file.type)) {
 
         status.innerHTML =
@@ -1276,6 +1274,8 @@ function uploadFile(number) {
             </div>`;
 
         fileInput.value = "";
+
+        updateDocumentProgress();
 
         return;
     }
@@ -1289,13 +1289,17 @@ function uploadFile(number) {
         </div>`;
 
 
+    /* Update 0 of 7 → 1 of 7 → 2 of 7 ... */
+
     updateDocumentProgress();
 
 }
 
 
+
+
 /* =========================================================
-   UPDATE PROGRESS
+   UPDATE DOCUMENT PROGRESS
 ========================================================= */
 
 function updateDocumentProgress() {
@@ -1306,31 +1310,43 @@ function updateDocumentProgress() {
     const documents =
         documentRequirements[organizationType] || [];
 
+    let uploadedCount = 0;
 
-    let uploaded = 0;
 
-
-    documents.forEach((document, index) => {
+    // Check every document
+    documents.forEach((documentName, index) => {
 
         const fileInput =
             document.getElementById(`file${index + 1}`);
 
         if (
             fileInput &&
+            fileInput.files &&
             fileInput.files.length > 0
         ) {
-            uploaded++;
+
+            uploadedCount++;
+
         }
 
     });
 
 
-    document.getElementById(
-        "documentProgress"
-    ).textContent =
-        `${uploaded} of ${documents.length} uploaded`;
+    // Update progress text
+    const progress =
+        document.getElementById("documentProgress");
+
+    if (progress) {
+
+        progress.textContent =
+            `${uploadedCount} of ${documents.length} uploaded`;
+
+    }
 
 }
+
+    
+
 
 
 /* =========================================================
@@ -1393,39 +1409,42 @@ document.addEventListener(
 
 
     // Continue button
-    function continueRegistration() {
+    function continueBankDetails() {
 
-        const accountHolder =
-            document.getElementById("accountHolder").value.trim();
+    const accountHolder =
+        document.getElementById("accountHolder").value.trim();
 
-        const accountNumber =
-            document.getElementById("accountNumber").value.trim();
+    const accountNumber =
+        document.getElementById("accountNumber").value.trim();
 
-        const bank =
-            document.getElementById("bankName").value;
+    const bank =
+        document.getElementById("bankName").value;
 
-        const branch =
-            document.getElementById("branchName").value;
+    const branch =
+        document.getElementById("branchName").value;
 
 
-        if (
-            accountHolder === "" ||
-            accountNumber === "" ||
-            bank === "" ||
-            branch === ""
-        ) {
+    if (
+        accountHolder === "" ||
+        accountNumber === "" ||
+        bank === "" ||
+        branch === ""
+    ) {
 
-            alert("Please complete all required bank details.");
+        alert("Please complete all required bank details.");
 
-            return;
-        }
-
-        alert(
-            "Bank details saved successfully!\n\n" +
-            "Moving to Legal Agreement..."
-        );
+        return;
     }
 
+
+    alert(
+        "Bank details saved successfully!\n\n" +
+        "Moving to Legal Agreement..."
+    );
+
+
+    window.location.href = "legal-agreement.html";
+}
 </script>
 
 </body>
