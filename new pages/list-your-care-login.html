@@ -1126,26 +1126,34 @@
 
   /* Provider Login */
 
- function providerLogin(event) {
+  function providerLogin(event) {
 
-  event.preventDefault();
+    event.preventDefault();
 
-  const email =
-    document.getElementById("providerEmail").value.trim();
+    const email =
+      document.getElementById("providerEmail").value;
 
-  const password =
-    document.getElementById("providerPassword").value.trim();
+    const password =
+      document.getElementById("providerPassword").value;
 
-  if (!email || !password) {
-    alert("Please enter your email and password.");
-    return;
+
+    if (!email || !password) {
+
+      alert("Please enter your email and password.");
+
+      return;
+
+    }
+
+
+    /*
+      Connect your real login/API here later.
+    */
+
+    alert("Login successful!");
+
   }
 
-  // Login successful
-  // Go to provider information update page
-  window.location.href = "update-information.html";
-
-}
 
   /* Forgot Password */
 

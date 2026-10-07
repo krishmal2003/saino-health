@@ -1,0 +1,515 @@
+
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Update Information | SAINO HEALTH</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f8f9fa;
+      color: #212529;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    .saino-red {
+      color: #ad0b0e;
+    }
+
+    .saino-bg {
+      background: #ad0b0e;
+    }
+
+    .input-field {
+      width: 100%;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      padding: 11px 13px;
+      font-size: 13px;
+      outline: none;
+      transition: 0.2s;
+      background: white;
+    }
+
+    .input-field:focus {
+      border-color: #ad0b0e;
+      box-shadow: 0 0 0 2px rgba(173, 11, 14, 0.08);
+    }
+
+    .label {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      color: #374151;
+      margin-bottom: 6px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="bg-[#d6d6d6] border-b border-gray-300">
+
+    <div class="max-w-7xl mx-auto px-5 py-3">
+
+      <div class="flex items-center justify-between gap-4">
+
+        <!-- Logo -->
+        <a href="index.html" class="flex items-center">
+          <img
+            src="assets/logo.png"
+            alt="SAINO HEALTH"
+            class="h-10 w-auto"
+          >
+        </a>
+
+        <!-- Right -->
+        <div class="flex items-center gap-3">
+
+          <a
+            href="index.html"
+            class="text-xs font-semibold text-gray-700 hover:text-[#ad0b0e]"
+          >
+            Home
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <!-- MAIN -->
+  <main class="min-h-[calc(100vh-130px)] py-10 px-4">
+
+    <div class="max-w-4xl mx-auto">
+
+      <!-- Heading -->
+      <div class="text-center mb-8">
+
+        <p class="text-[11px] font-bold uppercase tracking-widest text-[#ad0b0e] mb-2">
+          Provider Account
+        </p>
+
+        <h1 class="text-2xl md:text-3xl font-extrabold text-[#071126]">
+          Update Your Information
+        </h1>
+
+        <p class="text-xs md:text-sm text-gray-500 mt-3 max-w-xl mx-auto">
+          Please review and update your healthcare organization information
+          before continuing to your SAINO HEALTH dashboard.
+        </p>
+
+      </div>
+
+
+      <!-- FORM CARD -->
+
+<form
+  id="updateInformationForm"
+  onsubmit="submitInformation(event)"
+  novalidate
+  class="bg-white rounded-2xl shadow-sm border border-gray-200 p-5 md:p-8"
+>
+
+
+        <!-- Organization Information -->
+        <div class="mb-8">
+
+          <div class="flex items-center gap-3 mb-5">
+
+            <div
+              class="w-9 h-9 rounded-lg bg-[#fde8e9] flex items-center justify-center"
+            >
+              <i data-lucide="building-2" class="w-5 h-5 text-[#ad0b0e]"></i>
+            </div>
+
+            <div>
+              <h2 class="text-base font-extrabold text-[#071126]">
+                Organization Information
+              </h2>
+
+              <p class="text-[11px] text-gray-500">
+                Basic details about your healthcare organization
+              </p>
+            </div>
+
+          </div>
+
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+
+            <!-- Organization Name -->
+            <div>
+              <label class="label">
+                Organization Name *
+              </label>
+
+              <input
+                type="text"
+                id="organizationName"
+                class="input-field"
+                placeholder="Enter organization name"
+                required
+              >
+            </div>
+
+
+            <!-- Healthcare Type -->
+            <div>
+              <label class="label">
+                Healthcare Type *
+              </label>
+
+              <select
+                id="healthcareType"
+                class="input-field"
+                required
+              >
+                <option value="">Select healthcare type</option>
+                <option>Hospital</option>
+                <option>Clinic</option>
+                <option>Diagnostic Centre</option>
+                <option>Laboratory</option>
+                <option>Wellness Centre</option>
+                <option>Pharmacy</option>
+                <option>Other</option>
+              </select>
+            </div>
+
+
+            <!-- Registration / Company ID -->
+            <div>
+              <label class="label">
+                Registration / Company ID *
+              </label>
+
+              <input
+                type="text"
+                id="companyId"
+                class="input-field"
+                placeholder="Enter registration or company ID"
+                required
+              >
+            </div>
+
+
+            <!-- PAN -->
+            <div>
+              <label class="label">
+                PAN Number
+              </label>
+
+              <input
+                type="text"
+                id="panNumber"
+                class="input-field"
+                placeholder="Enter PAN number"
+              >
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- Contact Information -->
+        <div class="mb-8">
+
+          <div class="flex items-center gap-3 mb-5">
+
+            <div
+              class="w-9 h-9 rounded-lg bg-[#fde8e9] flex items-center justify-center"
+            >
+              <i data-lucide="phone" class="w-5 h-5 text-[#ad0b0e]"></i>
+            </div>
+
+            <div>
+              <h2 class="text-base font-extrabold text-[#071126]">
+                Contact Information
+              </h2>
+
+              <p class="text-[11px] text-gray-500">
+                Contact details patients can use to reach you
+              </p>
+            </div>
+
+          </div>
+
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+
+            <!-- Phone -->
+            <div>
+              <label class="label">
+                Phone Number *
+              </label>
+
+              <input
+                type="tel"
+                id="phoneNumber"
+                class="input-field"
+                placeholder="Enter phone number"
+                required
+              >
+            </div>
+
+
+            <!-- Email -->
+            <div>
+              <label class="label">
+                Email Address *
+              </label>
+
+              <input
+                type="email"
+                id="emailAddress"
+                class="input-field"
+                placeholder="Enter email address"
+                required
+              >
+            </div>
+
+
+            <!-- Website -->
+            <div>
+              <label class="label">
+                Website
+              </label>
+
+              <input
+                type="url"
+                id="website"
+                class="input-field"
+                placeholder="https://example.com"
+              >
+            </div>
+
+
+            <!-- City -->
+            <div>
+              <label class="label">
+                City / Location *
+              </label>
+
+              <input
+                type="text"
+                id="city"
+                class="input-field"
+                placeholder="Enter city or location"
+                required
+              >
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- Address -->
+        <div class="mb-8">
+
+          <div class="flex items-center gap-3 mb-5">
+
+            <div
+              class="w-9 h-9 rounded-lg bg-[#fde8e9] flex items-center justify-center"
+            >
+              <i data-lucide="map-pin" class="w-5 h-5 text-[#ad0b0e]"></i>
+            </div>
+
+            <div>
+              <h2 class="text-base font-extrabold text-[#071126]">
+                Address
+              </h2>
+
+              <p class="text-[11px] text-gray-500">
+                Your organization's physical location
+              </p>
+            </div>
+
+          </div>
+
+
+          <textarea
+            id="address"
+            rows="3"
+            class="input-field resize-none"
+            placeholder="Enter complete address"
+            required
+          ></textarea>
+
+        </div>
+
+
+        <!-- Description -->
+        <div class="mb-8">
+
+          <label class="label">
+            Organization Description
+          </label>
+
+          <textarea
+            id="description"
+            rows="4"
+            class="input-field resize-none"
+            placeholder="Tell patients about your organization, services and facilities..."
+          ></textarea>
+
+        </div>
+
+
+        <!-- Confirmation -->
+        <div
+          class="flex items-start gap-3 p-4 rounded-xl bg-[#f8f9fa] border border-gray-200 mb-6"
+        >
+
+          <input
+            type="checkbox"
+            id="informationConfirm"
+            class="mt-1 w-4 h-4 accent-[#ad0b0e]"
+            required
+          >
+
+          <label
+            for="informationConfirm"
+            class="text-[11px] leading-relaxed text-gray-600"
+          >
+            I confirm that the information provided above is accurate and
+            belongs to my healthcare organization.
+          </label>
+
+        </div>
+
+
+        <!-- Buttons -->
+        <div class="flex flex-col sm:flex-row justify-between gap-3">
+
+          <a
+            href="index.html"
+            class="text-center border border-gray-300 text-gray-700 px-6 py-3 rounded-lg text-xs font-bold hover:bg-gray-50 transition"
+          >
+            Cancel
+          </a>
+
+          <button
+            type="submit"
+            class="bg-[#ad0b0e] text-white px-8 py-3 rounded-lg text-xs font-extrabold hover:bg-[#8f090c] transition flex items-center justify-center gap-2"
+          >
+            Submit & Continue
+
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </button>
+
+        </div>
+
+      </form>
+
+    </div>
+
+  </main>
+
+
+  <!-- FOOTER -->
+  <footer class="bg-[#dfe4e8] border-t border-gray-300">
+
+    <div class="max-w-7xl mx-auto px-5 py-5">
+
+      <div class="text-center">
+
+        <p class="text-[10px] text-gray-600">
+          © 2026 SAINO HEALTH. All rights reserved.
+        </p>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+
+  <!-- JAVASCRIPT -->
+  <script>
+
+    lucide.createIcons();
+
+function submitInformation(event) {
+
+  event.preventDefault();
+
+  // Get information if the provider entered anything
+  const providerInformation = {
+
+    organizationName:
+      document.getElementById("organizationName").value.trim(),
+
+    healthcareType:
+      document.getElementById("healthcareType").value,
+
+    companyId:
+      document.getElementById("companyId").value.trim(),
+
+    panNumber:
+      document.getElementById("panNumber").value.trim(),
+
+    phoneNumber:
+      document.getElementById("phoneNumber").value.trim(),
+
+    emailAddress:
+      document.getElementById("emailAddress").value.trim(),
+
+    website:
+      document.getElementById("website").value.trim(),
+
+    city:
+      document.getElementById("city").value.trim(),
+
+    address:
+      document.getElementById("address").value.trim(),
+
+    description:
+      document.getElementById("description").value.trim()
+  };
+
+
+  // Save entered information
+  localStorage.setItem(
+    "providerInformation",
+    JSON.stringify(providerInformation)
+  );
+
+
+  // Go directly to Thank You page
+  window.location.href = "thank-you.html";
+
+}
+
+  </script>
+
+</body>
+</html>

@@ -988,19 +988,8 @@ function selectPlan(planName, planPrice, planPeriod) {
     localStorage.setItem("selectedPlanPrice", planPrice);
     localStorage.setItem("selectedPlanPeriod", planPeriod);
 
-    // Free plan
-    if (planName === "Saino Free") {
-
-        // Free plan skips Bank Details & Documents
-        // and Legal Agreement
-        window.location.href = "check-submit.html";
-
-    } else {
-
-        // Paid plans
-        // Go to Verification / Bank Details
-        window.location.href = "bank-details.html";
-    }
+    // Go to Bank Details & Documents
+    window.location.href = "bank-details.html";
 }
 </script>
 

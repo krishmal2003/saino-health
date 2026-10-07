@@ -1612,12 +1612,11 @@ window.onload = function() {
 
 /* ================= SUBMIT ================= */
 
-/* ================= SUBMIT REGISTRATION ================= */
-
 function submitRegistration() {
 
     const confirmation =
         document.getElementById("finalConfirm");
+
 
     if (!confirmation.checked) {
 
@@ -1626,52 +1625,40 @@ function submitRegistration() {
         );
 
         return;
+
     }
 
-    const selectedPlan =
-        localStorage.getItem("selectedPlanName");
 
-    if (selectedPlan === "Saino Free") {
+    /*
+       Here registration would normally be
+       sent to your backend/database.
+    */
 
-        alert(
-            "Free registration submitted successfully!"
-        );
 
-    } else {
+    alert(
+        "Registration submitted successfully!\n\n" +
+        "Your application has been sent for verification."
+    );
 
-        alert(
-            "Registration submitted successfully!\n\n" +
-            "Your application has been sent for verification."
-        );
-    }
 
-    // Clear temporary registration data
+    // Optional: clear saved temporary data
     localStorage.clear();
 
-    // Go to Login page
-    window.location.href = "list-your-care-login.html";
+
+    // Go to success page
+    window.location.href = "registration-success.html";
+
 }
+
 
 
 /* ================= BACK ================= */
 
 function goBack() {
 
-    const selectedPlan =
-        localStorage.getItem("selectedPlanName");
+    window.location.href =
+        "legal-agreement.html";
 
-    if (selectedPlan === "Saino Free") {
-
-        // Free Plan → Choose Plan
-        window.location.href =
-            "provider-details.html";
-
-    } else {
-
-        // Paid Plans → Legal Agreement
-        window.location.href =
-            "legal-agreement.html";
-    }
 }
 
 
