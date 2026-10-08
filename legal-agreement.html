@@ -53,8 +53,7 @@
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="assets/logo.png">
 
-  <!-- Custom Styles -->
-  <link rel="stylesheet" href="css/custom.css">
+  
 
 
 
@@ -1103,7 +1102,7 @@ footer {
                     </span>
 
                     <a
-                        href="#"
+                        href="javascript:void(0);"
                         class="view-document"
                         onclick="viewDocument('Healthcare Marketplace Terms & Conditions')"
                     >
@@ -1555,15 +1554,12 @@ footer {
 
 
 
-<!-- ================= JAVASCRIPT ================= -->
-
 <script>
-    /* =========================================================
-   DOCUMENT LIST BASED ON ORGANIZATION TYPE
+/* =========================================================
+   DOCUMENT REQUIREMENTS
 ========================================================= */
 
 const documentRequirements = {
-
     "Hospital": [
         "Facility Operating Licence",
         "Clinical Establishment Act Registration",
@@ -1606,7 +1602,6 @@ const documentRequirements = {
     "Ambulance Provider": [],
 
     "Wellness Centre": []
-
 };
 
 
@@ -1629,7 +1624,13 @@ function loadDocuments() {
         document.getElementById("documentProgress");
 
 
-    // If organization type is missing
+    if (!typeDisplay || !container || !progress) {
+        return;
+    }
+
+
+    /* Organization type not selected */
+
     if (!organizationType) {
 
         typeDisplay.textContent = "Not selected";
@@ -1647,24 +1648,28 @@ function loadDocuments() {
     }
 
 
-    // Show selected organization
+    /* Display organization type */
+
     typeDisplay.textContent = organizationType;
 
 
-    // Get documents
+    /* Get required documents */
+
     const documents =
         documentRequirements[organizationType] || [];
 
 
-    // No specific documents
+    /* No specific documents */
+
     if (documents.length === 0) {
 
         container.innerHTML = `
-            <div class="info-message">
+            <div class="info-message"
+                 style="padding:12px;background:#f8f9fa;border:1px solid #e0e4e8;border-radius:5px;color:#555;font-size:11px;">
                 No specific document list has been configured for
                 <strong>${organizationType}</strong>.
                 Please upload the applicable legal and registration
-                documents.
+                documents if required.
             </div>
         `;
 
@@ -1674,17 +1679,18 @@ function loadDocuments() {
     }
 
 
-    // Clear old documents
+    /* Clear existing documents */
+
     container.innerHTML = "";
 
 
-    // Create documents
+    /* Create document rows */
+
     documents.forEach((documentName, index) => {
 
         const number = index + 1;
 
         const documentHTML = `
-
             <div class="document">
 
                 <div class="document-info">
@@ -1696,11 +1702,8 @@ function loadDocuments() {
                     <div>
 
                         <div class="document-name">
-
                             ${documentName}
-
                             <span class="required">*</span>
-
                         </div>
 
                         <div class="document-type">
@@ -1710,7 +1713,6 @@ function loadDocuments() {
                     </div>
 
                 </div>
-
 
                 <div>
 
@@ -1735,7 +1737,6 @@ function loadDocuments() {
                 </div>
 
             </div>
-
         `;
 
         container.insertAdjacentHTML(
@@ -1748,7 +1749,6 @@ function loadDocuments() {
 
     progress.textContent =
         `0 of ${documents.length} uploaded`;
-
 }
 
 
@@ -1764,16 +1764,20 @@ function uploadFile(number) {
     const status =
         document.getElementById("status" + number);
 
+
     if (!fileInput || !status) {
         return;
     }
 
-    if (fileInput.files.length === 0) {
+
+    if (!fileInput.files || fileInput.files.length === 0) {
         return;
     }
 
+
     const file =
         fileInput.files[0];
+
 
     const maxSize =
         5 * 1024 * 1024;
@@ -1783,10 +1787,11 @@ function uploadFile(number) {
 
     if (file.size > maxSize) {
 
-        status.innerHTML =
-            `<div class="warning">
+        status.innerHTML = `
+            <div class="warning">
                 File must be less than 5MB.
-            </div>`;
+            </div>
+        `;
 
         fileInput.value = "";
 
@@ -1804,12 +1809,14 @@ function uploadFile(number) {
         "image/png"
     ];
 
+
     if (!allowedTypes.includes(file.type)) {
 
-        status.innerHTML =
-            `<div class="warning">
+        status.innerHTML = `
+            <div class="warning">
                 Only PDF, JPG, JPEG and PNG files are allowed.
-            </div>`;
+            </div>
+        `;
 
         fileInput.value = "";
 
@@ -1819,21 +1826,17 @@ function uploadFile(number) {
     }
 
 
-    /* Success */
+    /* Upload successful */
 
-    status.innerHTML =
-        `<div class="uploaded">
+    status.innerHTML = `
+        <div class="uploaded">
             ✓ ${file.name} uploaded
-        </div>`;
+        </div>
+    `;
 
-
-    /* Update 0 of 7 → 1 of 7 → 2 of 7 ... */
 
     updateDocumentProgress();
-
 }
-
-
 
 
 /* =========================================================
@@ -1851,28 +1854,28 @@ function updateDocumentProgress() {
     let uploadedCount = 0;
 
 
-    // Check every document
     documents.forEach((documentName, index) => {
 
         const fileInput =
-            document.getElementById(`file${index + 1}`);
+            document.getElementById(
+                `file${index + 1}`
+            );
+
 
         if (
             fileInput &&
             fileInput.files &&
             fileInput.files.length > 0
         ) {
-
             uploadedCount++;
-
         }
 
     });
 
 
-    // Update progress text
     const progress =
         document.getElementById("documentProgress");
+
 
     if (progress) {
 
@@ -1880,23 +1883,27 @@ function updateDocumentProgress() {
             `${uploadedCount} of ${documents.length} uploaded`;
 
     }
-
 }
 
-    
 
-
-
-
-
-
-
-/* Search */
+/* =========================================================
+   SEARCH
+========================================================= */
 
 function searchService() {
 
+    const searchInput =
+        document.getElementById("searchInput");
+
+
+    if (!searchInput) {
+        return;
+    }
+
+
     const value =
-        document.getElementById("searchInput").value.trim();
+        searchInput.value.trim();
+
 
     if (value === "") {
 
@@ -1907,11 +1914,12 @@ function searchService() {
         alert("Searching for: " + value);
 
     }
-
 }
 
 
-/* Sign in */
+/* =========================================================
+   SIGN IN
+========================================================= */
 
 function signIn() {
 
@@ -1920,7 +1928,9 @@ function signIn() {
 }
 
 
-/* Get started */
+/* =========================================================
+   GET STARTED
+========================================================= */
 
 function getStarted() {
 
@@ -1929,16 +1939,21 @@ function getStarted() {
 }
 
 
-/* Change plan */
-
+/* =========================================================
+   CHANGE PLAN
+========================================================= */
 
 function changePlan() {
-    alert("Opening plan selection...");
-    window.location.href = "provider-details.html";
+
+    window.location.href =
+        "provider-details.html";
+
 }
 
 
-/* View document */
+/* =========================================================
+   VIEW DOCUMENT
+========================================================= */
 
 function viewDocument(documentName) {
 
@@ -1950,59 +1965,162 @@ function viewDocument(documentName) {
 }
 
 
+/* =========================================================
+   GO TO CHECK & SUBMIT
+========================================================= */
+
 function goToCheckSubmit() {
 
-    /* =========================================
-       CHECK REQUIRED DOCUMENTS
-       ========================================= */
+    /* Get selected plan */
+
+    const selectedPlan =
+        localStorage.getItem("selectedPlanName");
+
+
+    /* =====================================================
+       CHECK PLAN
+    ===================================================== */
+
+    if (!selectedPlan) {
+
+        alert(
+            "No plan has been selected.\n\n" +
+            "Please go back and select a plan."
+        );
+
+        return;
+    }
+
+
+    /* =====================================================
+       FREE PLAN
+    ===================================================== */
+
+    if (
+        selectedPlan === "Saino Free" ||
+        selectedPlan === "Free"
+    ) {
+
+        localStorage.setItem(
+            "legalAgreementsAccepted",
+            "true"
+        );
+
+        localStorage.setItem(
+            "uploadedDocuments",
+            JSON.stringify([])
+        );
+
+        localStorage.setItem(
+            "agreementCount",
+            "7"
+        );
+
+
+        window.location.href =
+            "check-submit.html";
+
+        return;
+    }
+
+
+    /* =====================================================
+       PAID PLAN
+    ===================================================== */
 
     const organizationType =
         localStorage.getItem("sainoOrganizationType");
 
+
+    if (!organizationType) {
+
+        alert(
+            "Organization type is missing.\n\n" +
+            "Please go back to Organization Details."
+        );
+
+        return;
+    }
+
+
     const documents =
         documentRequirements[organizationType] || [];
 
-    for (let i = 0; i < documents.length; i++) {
+
+    /* =====================================================
+       CHECK REQUIRED DOCUMENTS
+    ===================================================== */
+
+    for (
+        let i = 0;
+        i < documents.length;
+        i++
+    ) {
 
         const fileInput =
-            document.getElementById(`file${i + 1}`);
+            document.getElementById(
+                `file${i + 1}`
+            );
 
-        if (!fileInput || fileInput.files.length === 0) {
+
+        if (
+            !fileInput ||
+            !fileInput.files ||
+            fileInput.files.length === 0
+        ) {
 
             alert(
-                `Please upload the required document:\n\n${documents[i]}`
+                "Please upload the required document:\n\n" +
+                documents[i]
             );
 
             return;
         }
+
     }
 
 
-    /* =========================================
-       CHECK ALL LEGAL AGREEMENTS
-       ========================================= */
+    /* =====================================================
+       CHECK ALL 7 AGREEMENTS
+    ===================================================== */
 
     const agreementCheckboxes =
         document.querySelectorAll(
-            '.agreement-item input[type="checkbox"]'
+            ".agreement-check"
         );
 
-    for (let i = 0; i < agreementCheckboxes.length; i++) {
+
+    if (agreementCheckboxes.length !== 7) {
+
+        alert(
+            "There should be 7 legal agreements on this page."
+        );
+
+        return;
+    }
+
+
+    for (
+        let i = 0;
+        i < agreementCheckboxes.length;
+        i++
+    ) {
 
         if (!agreementCheckboxes[i].checked) {
 
             alert(
-                "Please accept all legal agreements before continuing."
+                "Please accept all 7 legal agreements before continuing."
             );
 
             return;
         }
+
     }
 
 
-    /* =========================================
-       SAVE LEGAL AGREEMENT STATUS
-       ========================================= */
+    /* =====================================================
+       SAVE AGREEMENT STATUS
+    ===================================================== */
 
     localStorage.setItem(
         "legalAgreementsAccepted",
@@ -2010,16 +2128,24 @@ function goToCheckSubmit() {
     );
 
 
-    /* =========================================
+    /* =====================================================
        SAVE UPLOADED DOCUMENT NAMES
-       ========================================= */
+    ===================================================== */
 
     const uploadedDocuments = [];
 
-    for (let i = 0; i < documents.length; i++) {
+
+    for (
+        let i = 0;
+        i < documents.length;
+        i++
+    ) {
 
         const fileInput =
-            document.getElementById(`file${i + 1}`);
+            document.getElementById(
+                `file${i + 1}`
+            );
+
 
         if (
             fileInput &&
@@ -2030,8 +2156,11 @@ function goToCheckSubmit() {
             uploadedDocuments.push(
                 fileInput.files[0].name
             );
+
         }
+
     }
+
 
     localStorage.setItem(
         "uploadedDocuments",
@@ -2039,61 +2168,92 @@ function goToCheckSubmit() {
     );
 
 
-    /* =========================================
-       SAVE AGREEMENT CHECK STATUS
-       ========================================= */
+    /* =====================================================
+       SAVE AGREEMENT COUNT
+    ===================================================== */
 
     localStorage.setItem(
         "agreementCount",
-        agreementCheckboxes.length
+        agreementCheckboxes.length.toString()
     );
 
 
-    /* =========================================
+    /* =====================================================
        CONFIRM
-       ========================================= */
+    ===================================================== */
 
-    const confirmed = confirm(
-        "Documents uploaded successfully!\n\n" +
-        "All legal agreements have been accepted successfully.\n\n" +
-        "You can now continue to Check & Submit."
-    );
+    const confirmed =
+        confirm(
+            "Documents uploaded successfully!\n\n" +
+            "All 7 legal agreements have been accepted successfully.\n\n" +
+            "Continue to Check & Submit?"
+        );
 
 
     if (confirmed) {
 
         window.location.href =
             "check-submit.html";
+
     }
+
 }
 
- 
-document.addEventListener("DOMContentLoaded", function () {
 
-    const planName = localStorage.getItem("selectedPlanName");
-    const planPrice = localStorage.getItem("selectedPlanPrice");
-    const planPeriod = localStorage.getItem("selectedPlanPeriod");
+/* =========================================================
+   PAGE LOAD
+========================================================= */
 
-    const planNameElement =
-        document.getElementById("selectedPlanName");
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
 
-    const planPriceElement =
-        document.getElementById("selectedPlanPrice");
+        /* ================================================
+           LOAD SELECTED PLAN
+        ================================================ */
 
-    if (planNameElement) {
+        const planName =
+            localStorage.getItem("selectedPlanName");
 
-        planNameElement.textContent =
-            planName || "No plan selected";
+        const planPrice =
+            localStorage.getItem("selectedPlanPrice");
+
+
+        const planNameElement =
+            document.getElementById(
+                "selectedPlanName"
+            );
+
+        const planPriceElement =
+            document.getElementById(
+                "selectedPlanPrice"
+            );
+
+
+        if (planNameElement) {
+
+            planNameElement.textContent =
+                planName || "No plan selected";
+
+        }
+
+
+        if (planPriceElement) {
+
+            planPriceElement.textContent =
+                planPrice || "Please select a plan";
+
+        }
+
+
+        /* ================================================
+           LOAD DOCUMENTS
+        ================================================ */
+
+        loadDocuments();
+
     }
-
-    if (planPriceElement) {
-
-        planPriceElement.textContent =
-            planPrice || "Please select a plan";
-    }
-
-});
+);
 </script>
-
 </body>
 </html>
