@@ -624,7 +624,8 @@
     </label>
 
     <select id="organizationType" required>
-    
+    <option value="">Select organization type</option>
+
         <option value="Hospital">Hospital</option>
         <option value="Clinic">Clinic</option>
         <option value="Diagnostic Centre / Lab">Diagnostic Centre / Lab</option>
@@ -637,123 +638,138 @@
         </div>
 
 
-        <!-- ORGANIZATION NAME -->
+       <!-- ORGANIZATION NAME -->
 
-        <div class="field">
+<div class="field">
 
-            <label>
-                Organization Name <span class="required">*</span>
-            </label>
+    <label>
+        Organization Name <span class="required">*</span>
+    </label>
 
-            <input
-                type="text"
-                placeholder="Enter your organization name"
-            >
+    <input
+        type="text"
+        id="organizationName"
+        placeholder="Enter your organization name"
+    >
 
-        </div>
-
-
-        <!-- REGISTRATION -->
-
-        <div class="field">
-
-            <label>
-                Healthcare Company Registration No. <span class="required">*</span>
-            </label>
-
-            <input
-                type="text"
-                placeholder="Enter your company registration number"
-            >
-
-        </div>
+</div>
 
 
-        <!-- VAT -->
+<!-- REGISTRATION -->
 
-        <div class="field">
+<div class="field">
 
-            <label>
-                Organization VATPAN <span class="required">*</span>
-            </label>
+    <label>
+        Healthcare Company Registration No. <span class="required">*</span>
+    </label>
 
-            <input
-                type="text"
-                placeholder="Enter VATPAN number"
-            >
+    <input
+        type="text"
+        id="registrationNo"
+        placeholder="Enter your company registration number"
+    >
 
-        </div>
-
-
-        <!-- ADDRESS -->
-
-        <div class="field">
-
-            <label>
-                Address <span class="required">*</span>
-            </label>
-
-            <input
-                type="text"
-                placeholder="Select your address"
-            >
-
-        </div>
+</div>
 
 
-        <!-- CONTACT -->
+<!-- VAT -->
 
-        <div class="contact-box">
+<div class="field">
 
-            <h3 class="contact-title">
-                Contact Person Details
-            </h3>
+    <label>
+        Organization VATPAN <span class="required">*</span>
+    </label>
 
-            <p class="contact-description">
-                Tell us about your personal details
-            </p>
+    <input
+        type="text"
+        id="vatpan"
+        placeholder="Enter VATPAN number"
+    >
 
-
-            <div class="field">
-
-                <label>
-                    Full Name <span class="required">*</span>
-                </label>
-
-                <input
-                    type="text"
-                    placeholder="Enter your full name"
-                >
-
-            </div>
+</div>
 
 
-            <div class="field">
+<!-- ADDRESS -->
 
-                <label>
-                    Email Address <span class="required">*</span>
-                </label>
+<div class="field">
 
-                <input
-                    type="email"
-                    placeholder="example@gmail.com"
-                >
+    <label>
+        Address <span class="required">*</span>
+    </label>
 
-            </div>
+    <input
+        type="text"
+        id="address"
+        placeholder="Select your address"
+    >
+
+</div>
 
 
-            <div class="field">
+<!-- CONTACT -->
 
-                <label>
-                    Mobile Number <span class="required">*</span>
-                </label>
+<div class="contact-box">
 
-                <input
-                    type="tel"
-                    placeholder="+977-98XXXXXXXX"
-                >
+    <h3 class="contact-title">
+        Contact Person Details
+    </h3>
 
-            </div>
+    <p class="contact-description">
+        Tell us about your personal details
+    </p>
+
+
+    <!-- FULL NAME -->
+
+    <div class="field">
+
+        <label>
+            Full Name <span class="required">*</span>
+        </label>
+
+        <input
+            type="text"
+            id="contactFullName"
+            placeholder="Enter your full name"
+        >
+
+    </div>
+
+
+    <!-- EMAIL -->
+
+    <div class="field">
+
+        <label>
+            Email Address <span class="required">*</span>
+        </label>
+
+        <input
+            type="email"
+            id="contactEmail"
+            placeholder="example@gmail.com"
+        >
+
+    </div>
+
+
+    <!-- MOBILE -->
+
+    <div class="field">
+
+        <label>
+            Mobile Number <span class="required">*</span>
+        </label>
+
+        <input
+            type="tel"
+            id="contactPhone"
+            placeholder="+977-98XXXXXXXX"
+        >
+
+    </div>
+
+</div>
 
 
             <!-- INFO -->
@@ -890,21 +906,127 @@ function continueToPlan() {
     const organizationType =
         document.getElementById("organizationType").value;
 
+    const organizationName =
+        document.getElementById("organizationName").value.trim();
+
+    const registrationNo =
+        document.getElementById("registrationNo").value.trim();
+
+    const vatpan =
+        document.getElementById("vatpan").value.trim();
+
+    const address =
+        document.getElementById("address").value.trim();
+
+    const contactFullName =
+        document.getElementById("contactFullName").value.trim();
+
+    const contactEmail =
+        document.getElementById("contactEmail").value.trim();
+
+    const contactPhone =
+        document.getElementById("contactPhone").value.trim();
+
+
+    /* ================= VALIDATION ================= */
+
     if (organizationType === "") {
         alert("Please select your organization type.");
         return;
     }
 
-    // Save organization type for the next pages
+    if (organizationName === "") {
+        alert("Please enter your organization name.");
+        return;
+    }
+
+    if (registrationNo === "") {
+        alert("Please enter your company registration number.");
+        return;
+    }
+
+    if (vatpan === "") {
+        alert("Please enter your VATPAN number.");
+        return;
+    }
+
+    if (address === "") {
+        alert("Please enter your address.");
+        return;
+    }
+
+    if (contactFullName === "") {
+        alert("Please enter  your full name.");
+        return;
+    }
+
+    if (contactEmail === "") {
+        alert("Please enter your email.");
+        return;
+    }
+
+    if (contactPhone === "") {
+        alert("Please enter your mobile number.");
+        return;
+    }
+
+
+    /* ================= SAVE ORGANIZATION DATA ================= */
+
     localStorage.setItem(
         "sainoOrganizationType",
         organizationType
     );
 
-    // Go to plan selection
-    window.location.href = "provider-details.html";
-}
+    localStorage.setItem(
+        "providerType",
+        organizationType
+    );
 
+    localStorage.setItem(
+        "providerName",
+        organizationName
+    );
+
+    localStorage.setItem(
+        "registrationNo",
+        registrationNo
+    );
+
+    localStorage.setItem(
+        "vatpan",
+        vatpan
+    );
+
+    localStorage.setItem(
+        "address",
+        address
+    );
+
+
+    /* ================= SAVE CONTACT DATA ================= */
+
+    localStorage.setItem(
+        "contactFullName",
+        contactFullName
+    );
+
+    localStorage.setItem(
+        "email",
+        contactEmail
+    );
+
+    localStorage.setItem(
+        "phone",
+        contactPhone
+    );
+
+
+    /* ================= NEXT PAGE ================= */
+
+    window.location.href =
+        "provider-details.html";
+}
 
 </script>
 

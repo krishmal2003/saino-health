@@ -55,7 +55,7 @@
 
   <!-- Custom Styles -->
   <link rel="stylesheet" href="css/custom.css">
-</head>
+
 
 
    <!-- Top Header -->
@@ -195,7 +195,147 @@ body {
     font-size: 14px;
     line-height: 1.5;
 }
+@media (max-width: 600px) {
+ .card {
+                padding: 15px;
+            }
 
+            .document {
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .document-info {
+                align-items: flex-start;
+            }
+
+            .upload-btn {
+                padding: 7px 8px;
+            }}
+            .selected-provider-type {
+    background: #fde8e9;
+    border: 1px solid #f3c4c6;
+    border-radius: 5px;
+    padding: 9px 12px;
+    margin-bottom: 12px;
+    font-size: 10px;
+    color: #555;
+}
+
+.selected-provider-type span {
+    font-weight: 500;
+}
+
+.selected-provider-type strong {
+    color: #b3121a;
+    margin-left: 5px;
+}
+/* ================= TECHNICAL UPLOAD ================= */
+
+.technical-upload {
+    margin-top: 18px;
+    padding: 12px 14px;
+    background: #f8f9fa;
+    border: 1px solid #e0e4e8;
+    border-radius: 5px;
+}
+
+.technical-upload h3 {
+    font-size: 11px;
+    font-weight: bold;
+    margin-bottom: 7px;
+}
+
+.technical-upload ul {
+    padding-left: 17px;
+    margin: 0;
+}
+
+.technical-upload li {
+    font-size: 9px;
+    color: #555;
+    margin-bottom: 4px;
+    line-height: 1.4;
+}
+        /* ================= DOCUMENTS ================= */
+
+        .documents-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .progress {
+            font-size: 10px;
+            color: #777;
+            background: #f1f3f5;
+            padding: 5px 9px;
+            border-radius: 10px;
+        }
+
+        .document {
+            min-height: 57px;
+            border-top: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 9px 5px;
+        }
+
+        .document-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .doc-number {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background: #f0f2f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 10px;
+            font-weight: bold;
+        }
+
+        .document-name {
+            font-weight: bold;
+            font-size: 11px;
+        }
+
+        .document-type {
+            color: #888;
+            font-size: 9px;
+            margin-top: 3px;
+        }
+
+        .upload-btn {
+            border: 1px dashed #aeb6bd;
+            background: white;
+            padding: 8px 14px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 10px;
+            color: #555;
+        }
+
+        .upload-btn:hover {
+            border-color: #e3262e;
+            color: #e3262e;
+        }
+
+        .uploaded {
+            color: #188447;
+            font-size: 9px;
+        }
+
+        .warning {
+            color: #e3262e;
+            font-size: 9px;
+        }
 
 
 /* ================= MAIN ================= */
@@ -677,6 +817,29 @@ footer {
         width: 100%;
     }
 }
+/*****Document Upload Section*****/
+/* ================= DOCUMENT UPLOAD ================= */
+
+  .card {
+            background: white;
+            border: 1px solid #e0e4e7;
+            border-radius: 7px;
+            padding: 22px;
+            margin-bottom: 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+        }
+
+        .card-title {
+            font-size: 17px;
+            font-weight: bold;
+            margin-bottom: 4px;
+        }
+
+        .card-subtitle {
+            color: #777;
+            font-size: 11px;
+            margin-bottom: 18px;
+        }
 
 </style>
 </head>
@@ -764,6 +927,60 @@ footer {
         >
             Change plan
         </button>
+
+    </div>
+        <!-- ================= DOCUMENTS ================= -->
+
+<section class="card">
+
+    <div class="documents-header">
+
+        <div>
+            <h2 class="card-title">
+                Upload Documents (Paid Users)
+            </h2>
+
+            <p class="card-subtitle">
+                Upload the required documents based on your healthcare provider type.
+            </p>
+        </div>
+
+        <span class="progress" id="documentProgress">
+            0 documents
+        </span>
+
+    </div>
+
+
+    <!-- SELECTED ORGANIZATION TYPE -->
+
+    <div class="selected-provider-type">
+        <span>Organization Type:</span>
+        <strong id="selectedOrganizationType">
+            Loading...
+        </strong>
+    </div>
+
+
+    <!-- DYNAMIC DOCUMENT LIST -->
+
+    <div id="documentsContainer"></div>
+
+
+    <!-- TECHNICAL IMAGE UPLOAD -->
+
+    <div class="technical-upload">
+
+        <h3>
+            Technical Image Upload
+        </h3>
+
+        <ul>
+            <li>200 DPI Scan or Crisp</li>
+            <li>All stamps, official seals, signatures and expiration dates must be perfectly readable.</li>
+            <li>Framing: Four Outer Corners document visibility</li>
+            <li>PDF, JPEG or PNG 5MB.</li>
+        </ul>
 
     </div>
 
@@ -1271,6 +1488,347 @@ footer {
 <!-- ================= JAVASCRIPT ================= -->
 
 <script>
+    /* =========================================================
+   DOCUMENT LIST BASED ON ORGANIZATION TYPE
+========================================================= */
+
+const documentRequirements = {
+
+    "Hospital": [
+        "Facility Operating Licence",
+        "Clinical Establishment Act Registration",
+        "Biomedical Waste (BMW) Management",
+        "Fire Safety and NOC",
+        "Professional Indemnity Insurance",
+        "Tax and Incorporation Documents",
+        "PAN / EIN or Corporate Charter"
+    ],
+
+    "Clinic": [
+        "Facility Operating Licence",
+        "Clinical Establishment Act Registration",
+        "Biomedical Waste (BMW) Management",
+        "Fire Safety and NOC",
+        "Professional Indemnity Insurance",
+        "Tax and Incorporation Documents",
+        "PAN / EIN or Corporate Charter"
+    ],
+
+    "Diagnostic Centre / Lab": [
+        "Lab Accreditation Certificate",
+        "PNDT Act Registration",
+        "AERB / Radiation Safety Approval",
+        "Signatory Doctor Qualifications"
+    ],
+
+    "Blood Bank": [
+        "Drug and Component License",
+        "Medical Officer Credentials",
+        "Equipment Calibration Logs"
+    ],
+
+    "Home Care": [
+        "Nursing Agency / Trade License",
+        "Staff Background Clearances",
+        "Staff Medical Certifications"
+    ],
+
+    "Ambulance Provider": [],
+
+    "Wellness Centre": []
+
+};
+
+
+/* =========================================================
+   LOAD DOCUMENTS
+========================================================= */
+
+function loadDocuments() {
+
+    const organizationType =
+        localStorage.getItem("sainoOrganizationType");
+
+    const typeDisplay =
+        document.getElementById("selectedOrganizationType");
+
+    const container =
+        document.getElementById("documentsContainer");
+
+    const progress =
+        document.getElementById("documentProgress");
+
+
+    // If organization type is missing
+    if (!organizationType) {
+
+        typeDisplay.textContent = "Not selected";
+
+        container.innerHTML = `
+            <div class="warning">
+                Please go back to Organization Details and select
+                your organization type.
+            </div>
+        `;
+
+        progress.textContent = "0 documents";
+
+        return;
+    }
+
+
+    // Show selected organization
+    typeDisplay.textContent = organizationType;
+
+
+    // Get documents
+    const documents =
+        documentRequirements[organizationType] || [];
+
+
+    // No specific documents
+    if (documents.length === 0) {
+
+        container.innerHTML = `
+            <div class="info-message">
+                No specific document list has been configured for
+                <strong>${organizationType}</strong>.
+                Please upload the applicable legal and registration
+                documents.
+            </div>
+        `;
+
+        progress.textContent = "0 documents";
+
+        return;
+    }
+
+
+    // Clear old documents
+    container.innerHTML = "";
+
+
+    // Create documents
+    documents.forEach((documentName, index) => {
+
+        const number = index + 1;
+
+        const documentHTML = `
+
+            <div class="document">
+
+                <div class="document-info">
+
+                    <div class="doc-number">
+                        ${number}
+                    </div>
+
+                    <div>
+
+                        <div class="document-name">
+
+                            ${documentName}
+
+                            <span class="required">*</span>
+
+                        </div>
+
+                        <div class="document-type">
+                            PDF, JPG, JPEG, PNG • Max 5MB
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div>
+
+                    <input
+                        type="file"
+                        id="file${number}"
+                        hidden
+                        accept=".pdf,.jpg,.jpeg,.png"
+                        onchange="uploadFile(${number})"
+                    >
+
+                    <button
+                        type="button"
+                        class="upload-btn"
+                        onclick="document.getElementById('file${number}').click()"
+                    >
+                        ↑ Upload Document
+                    </button>
+
+                    <div id="status${number}"></div>
+
+                </div>
+
+            </div>
+
+        `;
+
+        container.insertAdjacentHTML(
+            "beforeend",
+            documentHTML
+        );
+
+    });
+
+
+    progress.textContent =
+        `0 of ${documents.length} uploaded`;
+
+}
+
+
+/* =========================================================
+   FILE UPLOAD
+========================================================= */
+
+function uploadFile(number) {
+
+    const fileInput =
+        document.getElementById("file" + number);
+
+    const status =
+        document.getElementById("status" + number);
+
+    if (!fileInput || !status) {
+        return;
+    }
+
+    if (fileInput.files.length === 0) {
+        return;
+    }
+
+    const file =
+        fileInput.files[0];
+
+    const maxSize =
+        5 * 1024 * 1024;
+
+
+    /* File size validation */
+
+    if (file.size > maxSize) {
+
+        status.innerHTML =
+            `<div class="warning">
+                File must be less than 5MB.
+            </div>`;
+
+        fileInput.value = "";
+
+        updateDocumentProgress();
+
+        return;
+    }
+
+
+    /* File type validation */
+
+    const allowedTypes = [
+        "application/pdf",
+        "image/jpeg",
+        "image/png"
+    ];
+
+    if (!allowedTypes.includes(file.type)) {
+
+        status.innerHTML =
+            `<div class="warning">
+                Only PDF, JPG, JPEG and PNG files are allowed.
+            </div>`;
+
+        fileInput.value = "";
+
+        updateDocumentProgress();
+
+        return;
+    }
+
+
+    /* Success */
+
+    status.innerHTML =
+        `<div class="uploaded">
+            ✓ ${file.name} uploaded
+        </div>`;
+
+
+    /* Update 0 of 7 → 1 of 7 → 2 of 7 ... */
+
+    updateDocumentProgress();
+
+}
+
+
+
+
+/* =========================================================
+   UPDATE DOCUMENT PROGRESS
+========================================================= */
+
+function updateDocumentProgress() {
+
+    const organizationType =
+        localStorage.getItem("sainoOrganizationType");
+
+    const documents =
+        documentRequirements[organizationType] || [];
+
+    let uploadedCount = 0;
+
+
+    // Check every document
+    documents.forEach((documentName, index) => {
+
+        const fileInput =
+            document.getElementById(`file${index + 1}`);
+
+        if (
+            fileInput &&
+            fileInput.files &&
+            fileInput.files.length > 0
+        ) {
+
+            uploadedCount++;
+
+        }
+
+    });
+
+
+    // Update progress text
+    const progress =
+        document.getElementById("documentProgress");
+
+    if (progress) {
+
+        progress.textContent =
+            `${uploadedCount} of ${documents.length} uploaded`;
+
+    }
+
+}
+
+    
+
+
+
+
+/* =========================================================
+   PAGE LOAD
+========================================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    loadDocuments
+);
+
+
+
 
 /* Search */
 
@@ -1331,54 +1889,146 @@ function viewDocument(documentName) {
 }
 
 
-/* Proceed to payment */
-
 function goToCheckSubmit() {
 
-    const checkboxes =
-        document.querySelectorAll(".agreement-check");
+    /* =========================================
+       CHECK REQUIRED DOCUMENTS
+       ========================================= */
 
-    let allChecked = true;
+    const organizationType =
+        localStorage.getItem("sainoOrganizationType");
 
-    checkboxes.forEach(function(checkbox) {
+    const documents =
+        documentRequirements[organizationType] || [];
 
-        if (!checkbox.checked) {
-            allChecked = false;
+    for (let i = 0; i < documents.length; i++) {
+
+        const fileInput =
+            document.getElementById(`file${i + 1}`);
+
+        if (!fileInput || fileInput.files.length === 0) {
+
+            alert(
+                `Please upload the required document:\n\n${documents[i]}`
+            );
+
+            return;
         }
-
-    });
-
-    if (!allChecked) {
-
-        alert("Please accept all 7 documents before continuing.");
-
-        return;
     }
 
-    // Save agreement status
-    localStorage.setItem("agreementsAccepted", "Yes");
 
-    // Go to Step 5
-    window.location.href = "check-submit.html";
+    /* =========================================
+       CHECK ALL LEGAL AGREEMENTS
+       ========================================= */
+
+    const agreementCheckboxes =
+        document.querySelectorAll(
+            '.agreement-item input[type="checkbox"]'
+        );
+
+    for (let i = 0; i < agreementCheckboxes.length; i++) {
+
+        if (!agreementCheckboxes[i].checked) {
+
+            alert(
+                "Please accept all legal agreements before continuing."
+            );
+
+            return;
+        }
+    }
+
+
+    /* =========================================
+       SAVE LEGAL AGREEMENT STATUS
+       ========================================= */
+
+    localStorage.setItem(
+        "legalAgreementsAccepted",
+        "true"
+    );
+
+
+    /* =========================================
+       SAVE UPLOADED DOCUMENT NAMES
+       ========================================= */
+
+    const uploadedDocuments = [];
+
+    for (let i = 0; i < documents.length; i++) {
+
+        const fileInput =
+            document.getElementById(`file${i + 1}`);
+
+        if (
+            fileInput &&
+            fileInput.files &&
+            fileInput.files.length > 0
+        ) {
+
+            uploadedDocuments.push(
+                fileInput.files[0].name
+            );
+        }
+    }
+
+    localStorage.setItem(
+        "uploadedDocuments",
+        JSON.stringify(uploadedDocuments)
+    );
+
+
+    /* =========================================
+       SAVE AGREEMENT CHECK STATUS
+       ========================================= */
+
+    localStorage.setItem(
+        "agreementCount",
+        agreementCheckboxes.length
+    );
+
+
+    /* =========================================
+       CONFIRM
+       ========================================= */
+
+    const confirmed = confirm(
+        "Documents uploaded successfully!\n\n" +
+        "All legal agreements have been accepted successfully.\n\n" +
+        "You can now continue to Check & Submit."
+    );
+
+
+    if (confirmed) {
+
+        window.location.href =
+            "check-submit.html";
+    }
 }
+
+ 
 document.addEventListener("DOMContentLoaded", function () {
 
     const planName = localStorage.getItem("selectedPlanName");
     const planPrice = localStorage.getItem("selectedPlanPrice");
+    const planPeriod = localStorage.getItem("selectedPlanPeriod");
 
-    const planNameElement = document.getElementById("selectedPlanName");
-    const planPriceElement = document.getElementById("selectedPlanPrice");
+    const planNameElement =
+        document.getElementById("selectedPlanName");
 
-    if (planName) {
-        planNameElement.textContent = planName;
-    } else {
-        planNameElement.textContent = "No plan selected";
+    const planPriceElement =
+        document.getElementById("selectedPlanPrice");
+
+    if (planNameElement) {
+
+        planNameElement.textContent =
+            planName || "No plan selected";
     }
 
-    if (planPrice) {
-        planPriceElement.textContent = planPrice;
-    } else {
-        planPriceElement.textContent = "Please select a plan";
+    if (planPriceElement) {
+
+        planPriceElement.textContent =
+            planPrice || "Please select a plan";
     }
 
 });

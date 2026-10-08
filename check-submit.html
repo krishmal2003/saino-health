@@ -54,8 +54,8 @@
   <link rel="icon" type="image/png" href="assets/logo.png">
 
   <!-- Custom Styles -->
-  <link rel="stylesheet" href="css/custom.css">
-</head>
+  
+
 
 
    <!-- Top Header -->
@@ -904,66 +904,40 @@ footer {
 
 
     <!-- ================= STEPS ================= -->
+<!-- ================= STEPS ================= -->
+<div class="steps" id="registrationSteps">
 
-    <div class="steps">
-
-
-        <div class="step">
-
-            <div class="step-number">
-                ✓
-            </div>
-
-            Organization Details
-
-        </div>
-
-
-        <div class="step">
-
-            <div class="step-number">
-                ✓
-            </div>
-
-            Choose Plan
-
-        </div>
-
-
-        <div class="step">
-
-            <div class="step-number">
-                ✓
-            </div>
-
-            Bank Details & Documents
-
-        </div>
-
-
-        <div class="step">
-
-            <div class="step-number">
-                ✓
-            </div>
-
-            Legal Agreement
-
-        </div>
-
-
-        <div class="step active">
-
-            <div class="step-number">
-                5
-            </div>
-
-            Check & Submit
-
-        </div>
-
-
+    <!-- STEP 1 -->
+    <div class="step">
+        <div class="step-number">✓</div>
+        Organization Details
     </div>
+
+    <!-- STEP 2 -->
+    <div class="step">
+        <div class="step-number">✓</div>
+        Choose Plan
+    </div>
+
+    <!-- STEP 3 - BANK -->
+    <div class="step" id="bankStep">
+        <div class="step-number">✓</div>
+        Bank Details & Documents
+    </div>
+
+    <!-- STEP 4 - LEGAL -->
+    <div class="step" id="legalStep">
+        <div class="step-number">✓</div>
+        Legal Agreement
+    </div>
+
+    <!-- CHECK & SUBMIT -->
+    <div class="step active" id="checkSubmitStep">
+        <div class="step-number" id="checkSubmitNumber">5</div>
+        Check & Submit
+    </div>
+
+</div>
 
 
 
@@ -986,96 +960,176 @@ footer {
 
 
 
-        <!-- PROVIDER -->
+        
+<!-- ================= PROVIDER DETAILS ================= -->
 
-        <div class="review-section">
+<div class="review-section">
 
-            <div class="section-title">
+    <div class="section-title">
 
-                <h3>
-                    Provider Details
-                </h3>
+        <h3>
+            Provider Details
+        </h3>
 
-                <button
-                    class="edit-btn"
-                    onclick="editProvider()"
-                >
-                    Edit
-                </button>
+        <button
+            class="edit-btn"
+            onclick="editProvider()"
+        >
+            Edit
+        </button>
 
+    </div>
+
+
+    <div class="details-grid">
+
+
+        <!-- ORGANIZATION NAME -->
+
+        <div class="detail">
+
+            <div class="detail-label">
+                Organization Name
             </div>
 
-
-            <div class="details-grid">
-
-
-                <div class="detail">
-
-                    <div class="detail-label">
-                        Provider / Organization Name
-                    </div>
-
-                    <div
-                        class="detail-value"
-                        id="providerName"
-                    >
-                        Not provided
-                    </div>
-
-                </div>
-
-
-                <div class="detail">
-
-                    <div class="detail-label">
-                        Provider Type
-                    </div>
-
-                    <div
-                        class="detail-value"
-                        id="providerType"
-                    >
-                        Not provided
-                    </div>
-
-                </div>
-
-
-                <div class="detail">
-
-                    <div class="detail-label">
-                        Email
-                    </div>
-
-                    <div
-                        class="detail-value"
-                        id="email"
-                    >
-                        Not provided
-                    </div>
-
-                </div>
-
-
-                <div class="detail">
-
-                    <div class="detail-label">
-                        Phone Number
-                    </div>
-
-                    <div
-                        class="detail-value"
-                        id="phone"
-                    >
-                        Not provided
-                    </div>
-
-                </div>
-
+            <div
+                class="detail-value"
+                id="providerName"
+            >
+                Not provided
             </div>
 
         </div>
 
+
+        <!-- ORGANIZATION TYPE -->
+
+        <div class="detail">
+
+            <div class="detail-label">
+                Organization Type
+            </div>
+
+            <div
+                class="detail-value"
+                id="providerType"
+            >
+                Not provided
+            </div>
+
+        </div>
+
+
+        <!-- REGISTRATION NUMBER -->
+
+        <div class="detail">
+
+            <div class="detail-label">
+                Healthcare Company Registration No.
+            </div>
+
+            <div
+                class="detail-value"
+                id="registrationNoDisplay"
+            >
+                Not provided
+            </div>
+
+        </div>
+
+
+        <!-- VATPAN -->
+
+        <div class="detail">
+
+            <div class="detail-label">
+                Organization VATPAN
+            </div>
+
+            <div
+                class="detail-value"
+                id="vatpanDisplay"
+            >
+                Not provided
+            </div>
+
+        </div>
+
+
+        <!-- ADDRESS -->
+
+        <div class="detail">
+
+            <div class="detail-label">
+                Address
+            </div>
+
+            <div
+                class="detail-value"
+                id="addressDisplay"
+            >
+                Not provided
+            </div>
+
+        </div>
+
+
+        <!-- CONTACT PERSON -->
+
+        <div class="detail">
+
+            <div class="detail-label">
+                Contact Person
+            </div>
+
+            <div
+                class="detail-value"
+                id="contactFullNameDisplay"
+            >
+                Not provided
+            </div>
+
+        </div>
+
+
+        <!-- EMAIL -->
+
+        <div class="detail">
+
+            <div class="detail-label">
+                Email
+            </div>
+
+            <div
+                class="detail-value"
+                id="email"
+            >
+                Not provided
+            </div>
+
+        </div>
+
+
+        <!-- PHONE -->
+
+        <div class="detail">
+
+            <div class="detail-label">
+                Phone Number
+            </div>
+
+            <div
+                class="detail-value"
+                id="phone"
+            >
+                Not provided
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
 
 
         <!-- PLAN -->
@@ -1110,7 +1164,7 @@ footer {
                         class="detail-value"
                         id="planName"
                     >
-                        SAINO VIP Verified
+                        Not Selected
                     </div>
 
                 </div>
@@ -1126,7 +1180,7 @@ footer {
                         class="detail-value"
                         id="planPrice"
                     >
-                        Annual Plan
+                        Not selected
                     </div>
 
                 </div>
@@ -1137,108 +1191,250 @@ footer {
 
 
 
-        <!-- BANK -->
+        
+<!-- ================= PAYMENT DETAILS ================= -->
 
-        <div class="review-section">
+<div class="review-section" id="paymentDetailsSection">
 
-            <div class="section-title">
+    <div class="section-title">
 
-                <h3>
-                    Bank Details
-                </h3>
+        <h3>
+            Payment Details
+        </h3>
 
-                <button
-                    class="edit-btn"
-                    onclick="editBank()"
+        <button
+            class="edit-btn"
+            onclick="editBank()"
+        >
+            Edit
+        </button>
+
+    </div>
+
+
+    <!-- BANK PAYMENT -->
+
+    <div id="bankPaymentDetails">
+
+        <div class="details-grid">
+
+            <div class="detail">
+                <div class="detail-label">
+                    Payment Method
+                </div>
+
+                <div class="detail-value">
+                    Bank Account
+                </div>
+            </div>
+
+
+            <div class="detail">
+
+                <div class="detail-label">
+                    Account Holder Name
+                </div>
+
+                <div
+                    class="detail-value"
+                    id="accountHolder"
                 >
-                    Edit
-                </button>
+                    Not provided
+                </div>
 
             </div>
 
 
-            <div class="details-grid">
+            <div class="detail">
 
-
-                <div class="detail">
-
-                    <div class="detail-label">
-                        Account Holder Name
-                    </div>
-
-                    <div
-                        class="detail-value"
-                        id="accountHolder"
-                    >
-                        Not provided
-                    </div>
-
+                <div class="detail-label">
+                    Account Number
                 </div>
 
-
-                <div class="detail">
-
-                    <div class="detail-label">
-                        Account Number
-                    </div>
-
-                    <div
-                        class="detail-value"
-                        id="accountNumber"
-                    >
-                        Not provided
-                    </div>
-
+                <div
+                    class="detail-value"
+                    id="accountNumber"
+                >
+                    Not provided
                 </div>
 
+            </div>
 
-                <div class="detail">
 
-                    <div class="detail-label">
-                        Bank Name
-                    </div>
+            <div class="detail">
 
-                    <div
-                        class="detail-value"
-                        id="bankName"
-                    >
-                        Not provided
-                    </div>
-
+                <div class="detail-label">
+                    Bank Name
                 </div>
 
+                <div
+                    class="detail-value"
+                    id="bankName"
+                >
+                    Not provided
+                </div>
 
-                <div class="detail">
+            </div>
 
-                    <div class="detail-label">
-                        Branch Name
-                    </div>
 
-                    <div
-                        class="detail-value"
-                        id="branchName"
-                    >
-                        Not provided
-                    </div>
+            <div class="detail">
 
+                <div class="detail-label">
+                    Branch Name
+                </div>
+
+                <div
+                    class="detail-value"
+                    id="branchName"
+                >
+                    Not provided
                 </div>
 
             </div>
 
         </div>
+
+    </div>
+
+
+    <!-- CARD PAYMENT -->
+
+    <div id="cardPaymentDetails" style="display:none;">
+
+        <div class="details-grid">
+
+            <div class="detail">
+
+                <div class="detail-label">
+                    Payment Method
+                </div>
+
+                <div class="detail-value">
+                    Card Payment
+                </div>
+
+            </div>
+
+
+            <div class="detail">
+
+                <div class="detail-label">
+                    Card Holder
+                </div>
+
+                <div
+                    class="detail-value"
+                    id="cardHolder"
+                >
+                    Not provided
+                </div>
+
+            </div>
+
+
+            <div class="detail">
+
+                <div class="detail-label">
+                    Card Number
+                </div>
+
+                <div
+                    class="detail-value"
+                    id="cardNumber"
+                >
+                    Not provided
+                </div>
+
+            </div>
+
+
+            <div class="detail">
+
+                <div class="detail-label">
+                    Expiry Date
+                </div>
+
+                <div
+                    class="detail-value"
+                    id="expiryDate"
+                >
+                    Not provided
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- DIGITAL PAYMENT -->
+
+    <div id="digitalPaymentDetails" style="display:none;">
+
+        <div class="details-grid">
+
+            <div class="detail">
+
+                <div class="detail-label">
+                    Payment Method
+                </div>
+
+                <div class="detail-value">
+                    Digital Payment
+                </div>
+
+            </div>
+
+
+            <div class="detail">
+
+                <div class="detail-label">
+                    Digital Service
+                </div>
+
+                <div
+                    class="detail-value"
+                    id="digitalMethod"
+                >
+                    Not provided
+                </div>
+
+            </div>
+
+
+            <div class="detail">
+
+                <div class="detail-label">
+                    Account / Phone
+                </div>
+
+                <div
+                    class="detail-value"
+                    id="digitalAccount"
+                >
+                    Not provided
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
 
 
 
         <!-- DOCUMENTS -->
 
-        <div class="review-section">
+        <div class="review-section" id="documentsSection">
 
-            <div class="section-title">
+    <div class="section-title">
 
-                <h3>
-                    Uploaded Documents
-                </h3>
-
+        <h3>
+            Uploaded Documents
+        </h3>
                 <button
                     class="edit-btn"
                     onclick="editDocuments()"
@@ -1251,105 +1447,27 @@ footer {
 
             <div id="documentsList">
 
-                <div class="document-row">
+    <div class="document-row">
 
-                    <span class="document-name">
-                        Facility Operating License
-                    </span>
+        <span class="document-name">
+            Loading uploaded documents...
+        </span>
 
-                    <span class="document-status">
-                        ✓ Uploaded
-                    </span>
+        <span class="document-status">
+            ...
+        </span>
 
-                </div>
+    </div>
 
-
-                <div class="document-row">
-
-                    <span class="document-name">
-                        Clinical Establishment Registration
-                    </span>
-
-                    <span class="document-status">
-                        ✓ Uploaded
-                    </span>
-
-                </div>
-
-
-                <div class="document-row">
-
-                    <span class="document-name">
-                        Biomedical Waste Management
-                    </span>
-
-                    <span class="document-status">
-                        ✓ Uploaded
-                    </span>
-
-                </div>
-
-
-                <div class="document-row">
-
-                    <span class="document-name">
-                        Fire Safety and NOC
-                    </span>
-
-                    <span class="document-status">
-                        ✓ Uploaded
-                    </span>
-
-                </div>
-
-
-                <div class="document-row">
-
-                    <span class="document-name">
-                        Professional Indemnity Insurance
-                    </span>
-
-                    <span class="document-status">
-                        ✓ Uploaded
-                    </span>
-
-                </div>
-
-
-                <div class="document-row">
-
-                    <span class="document-name">
-                        Tax and Incorporation Documents
-                    </span>
-
-                    <span class="document-status">
-                        ✓ Uploaded
-                    </span>
-
-                </div>
-
-
-                <div class="document-row">
-
-                    <span class="document-name">
-                        PAN / NIC or Corporate Charter
-                    </span>
-
-                    <span class="document-status">
-                        ✓ Uploaded
-                    </span>
-
-                </div>
-
-            </div>
-
-        </div>
+</div>
 
 
 
         <!-- AGREEMENT -->
 
-        <div class="review-section">
+       
+
+<div class="review-section" id="legalAgreementSection">
 
             <div class="section-title">
 
@@ -1514,9 +1632,13 @@ footer {
 <script>
 
 
+
+
 /* ================= LOAD SAVED DATA ================= */
 
-window.onload = function() {
+window.onload = function () {
+
+    /* ================= PROVIDER DATA ================= */
 
     const providerName =
         localStorage.getItem("providerName");
@@ -1530,87 +1652,360 @@ window.onload = function() {
     const phone =
         localStorage.getItem("phone");
 
-    const accountHolder =
-        localStorage.getItem("accountHolder");
-
-    const accountNumber =
-        localStorage.getItem("accountNumber");
-
-    const bankName =
-        localStorage.getItem("bankName");
-
-    const branchName =
-        localStorage.getItem("branchName");
-
 
     if (providerName) {
-
-        document.getElementById("providerName")
-            .textContent = providerName;
-
+        document.getElementById("providerName").textContent =
+            providerName;
     }
-
 
     if (providerType) {
-
-        document.getElementById("providerType")
-            .textContent = providerType;
-
+        document.getElementById("providerType").textContent =
+            providerType;
     }
-
 
     if (email) {
-
-        document.getElementById("email")
-            .textContent = email;
-
+        document.getElementById("email").textContent =
+            email;
     }
-
 
     if (phone) {
+        document.getElementById("phone").textContent =
+            phone;
+    }
+const registrationNo =
+    localStorage.getItem("registrationNo");
 
-        document.getElementById("phone")
-            .textContent = phone;
+const vatpan =
+    localStorage.getItem("vatpan");
 
+const address =
+    localStorage.getItem("address");
+
+const contactFullName =
+    localStorage.getItem("contactFullName");
+
+
+if (registrationNo) {
+    document.getElementById("registrationNoDisplay").textContent =
+        registrationNo;
+}
+
+if (vatpan) {
+    document.getElementById("vatpanDisplay").textContent =
+        vatpan;
+}
+
+if (address) {
+    document.getElementById("addressDisplay").textContent =
+        address;
+}
+
+if (contactFullName) {
+    document.getElementById("contactFullNameDisplay").textContent =
+        contactFullName;
+}
+
+    /* ================= PLAN DATA ================= */
+
+    const selectedPlan =
+        localStorage.getItem("selectedPlanName");
+
+    const selectedPlanPrice =
+        localStorage.getItem("selectedPlanPrice");
+
+
+    const planNameElement =
+        document.getElementById("planName");
+
+    const planPriceElement =
+        document.getElementById("planPrice");
+
+
+    if (selectedPlan) {
+
+        if (planNameElement) {
+            planNameElement.textContent =
+                selectedPlan;
+        }
+
+
+        if (planPriceElement) {
+
+            if (selectedPlan === "Saino Free") {
+
+                planPriceElement.textContent =
+                    "NPR 0 / month";
+
+            } else if (selectedPlanPrice) {
+
+                planPriceElement.textContent =
+                    selectedPlanPrice;
+
+            } else {
+
+                planPriceElement.textContent =
+                    "Not selected";
+            }
+        }
     }
 
 
-    if (accountHolder) {
+    /* ================= PAYMENT DATA ================= */
 
-        document.getElementById("accountHolder")
-            .textContent = accountHolder;
+    const paymentMethod =
+        localStorage.getItem("paymentMethod");
 
+
+    /* ---------------- BANK ---------------- */
+
+    if (paymentMethod === "bank") {
+
+        const accountHolder =
+            localStorage.getItem("accountHolder");
+
+        const accountNumber =
+            localStorage.getItem("accountNumber");
+
+        const bankName =
+            localStorage.getItem("bankName");
+
+        const branchName =
+            localStorage.getItem("branchName");
+
+
+        document.getElementById("bankPaymentDetails").style.display =
+            "block";
+
+        document.getElementById("cardPaymentDetails").style.display =
+            "none";
+
+        document.getElementById("digitalPaymentDetails").style.display =
+            "none";
+
+
+        if (accountHolder) {
+            document.getElementById("accountHolder").textContent =
+                accountHolder;
+        }
+
+        if (accountNumber) {
+            document.getElementById("accountNumber").textContent =
+                accountNumber;
+        }
+
+        if (bankName) {
+            document.getElementById("bankName").textContent =
+                bankName;
+        }
+
+        if (branchName) {
+            document.getElementById("branchName").textContent =
+                branchName;
+        }
     }
 
 
-    if (accountNumber) {
+    /* ---------------- CARD ---------------- */
 
-        document.getElementById("accountNumber")
-            .textContent = accountNumber;
+    else if (paymentMethod === "card") {
 
+        const cardHolder =
+            localStorage.getItem("cardHolder");
+
+        const cardNumber =
+            localStorage.getItem("cardNumber");
+
+        const expiryDate =
+            localStorage.getItem("expiryDate");
+
+
+        document.getElementById("bankPaymentDetails").style.display =
+            "none";
+
+        document.getElementById("cardPaymentDetails").style.display =
+            "block";
+
+        document.getElementById("digitalPaymentDetails").style.display =
+            "none";
+
+
+        if (cardHolder) {
+            document.getElementById("cardHolder").textContent =
+                cardHolder;
+        }
+
+        if (cardNumber) {
+            document.getElementById("cardNumber").textContent =
+                cardNumber;
+        }
+
+        if (expiryDate) {
+            document.getElementById("expiryDate").textContent =
+                expiryDate;
+        }
     }
 
 
-    if (bankName) {
+    /* ---------------- DIGITAL ---------------- */
 
-        document.getElementById("bankName")
-            .textContent = bankName;
+    else if (paymentMethod === "digital") {
 
+        const digitalMethod =
+            localStorage.getItem("digitalMethod");
+
+        const digitalAccount =
+            localStorage.getItem("digitalAccount");
+
+
+        document.getElementById("bankPaymentDetails").style.display =
+            "none";
+
+        document.getElementById("cardPaymentDetails").style.display =
+            "none";
+
+        document.getElementById("digitalPaymentDetails").style.display =
+            "block";
+
+
+        if (digitalMethod) {
+
+            const formattedMethod =
+                digitalMethod.charAt(0).toUpperCase() +
+                digitalMethod.slice(1);
+
+            document.getElementById("digitalMethod").textContent =
+                formattedMethod;
+        }
+
+
+        if (digitalAccount) {
+
+            document.getElementById("digitalAccount").textContent =
+                digitalAccount;
+        }
     }
+    const uploadedDocuments =
+    JSON.parse(
+        localStorage.getItem("uploadedDocuments") || "[]"
+    );
+
+const documentsList =
+    document.getElementById("documentsList");
+
+if (documentsList) {
+
+    if (uploadedDocuments.length > 0) {
+
+        documentsList.innerHTML = "";
+
+        uploadedDocuments.forEach(function (fileName) {
+
+            documentsList.innerHTML += `
+                <div class="document-row">
+
+                    <span class="document-name">
+                        ${fileName}
+                    </span>
+
+                    <span class="document-status">
+                        ✓ Uploaded
+                    </span>
+
+                </div>
+            `;
+
+        });
+
+    } else {
+
+        documentsList.innerHTML = `
+            <div class="document-row">
+
+                <span class="document-name">
+                    No documents uploaded
+                </span>
+
+                <span class="document-status">
+                    —
+                </span>
+
+            </div>
+        `;
+    }
+}
 
 
-    if (branchName) {
+    /* =====================================================
+       FREE PLAN
+       Organization → Choose Plan → Check & Submit
+       ===================================================== */
 
-        document.getElementById("branchName")
-            .textContent = branchName;
+    if (selectedPlan === "Saino Free") {
 
+        /* Hide Bank Step */
+
+        const bankStep =
+            document.getElementById("bankStep");
+
+        if (bankStep) {
+            bankStep.style.display = "none";
+        }
+
+
+        /* Hide Legal Step */
+
+        const legalStep =
+            document.getElementById("legalStep");
+
+        if (legalStep) {
+            legalStep.style.display = "none";
+        }
+
+
+        /* Hide Payment Details */
+
+        const paymentSection =
+            document.getElementById("paymentDetailsSection");
+
+        if (paymentSection) {
+            paymentSection.style.display = "none";
+        }
+
+
+        /* Hide Documents */
+
+        const documentsSection =
+            document.getElementById("documentsSection");
+
+        if (documentsSection) {
+            documentsSection.style.display = "none";
+        }
+
+
+        /* Hide Legal Agreement */
+
+        const legalAgreementSection =
+            document.getElementById("legalAgreementSection");
+
+        if (legalAgreementSection) {
+            legalAgreementSection.style.display = "none";
+        }
+
+
+        /* Change Check & Submit Step Number */
+
+        const checkSubmitNumber =
+            document.getElementById("checkSubmitNumber");
+
+        if (checkSubmitNumber) {
+            checkSubmitNumber.textContent = "3";
+        }
     }
 
 };
 
 
-
-/* ================= SUBMIT ================= */
+/* ================= SUBMIT REGISTRATION ================= */
 
 /* ================= SUBMIT REGISTRATION ================= */
 
@@ -1628,8 +2023,22 @@ function submitRegistration() {
         return;
     }
 
+
     const selectedPlan =
         localStorage.getItem("selectedPlanName");
+
+
+    if (!selectedPlan) {
+
+        alert(
+            "Please select a plan before submitting."
+        );
+
+        return;
+    }
+
+
+    /* ================= FREE PLAN ================= */
 
     if (selectedPlan === "Saino Free") {
 
@@ -1637,21 +2046,81 @@ function submitRegistration() {
             "Free registration submitted successfully!"
         );
 
-    } else {
+        // Clear registration data
+        localStorage.clear();
 
-        alert(
-            "Registration submitted successfully!\n\n" +
-            "Your application has been sent for verification."
-        );
+        // Go to Free Plan Thank You page
+        window.location.href =
+            "thank-you.html";
+
+        return;
     }
 
-    // Clear temporary registration data
-    localStorage.clear();
 
-    // Go to Login page
-    window.location.href = "list-your-care-login.html";
+    /* ================= PRO PLAN ================= */
+
+    if (selectedPlan === "Saino Pro") {
+
+        alert(
+            "Saino Pro registration submitted successfully!\n\n" +
+            "Your application has been sent for verification."
+        );
+
+        localStorage.clear();
+
+        // Go to Pro Plan Thank You page
+        window.location.href =
+            "thank-you-pro.html";
+
+        return;
+    }
+
+
+    /* ================= VIP PLAN ================= */
+
+    if (selectedPlan === "Saino VIP") {
+
+        alert(
+            "Saino VIP registration submitted successfully!\n\n" +
+            "Your application has been sent for verification."
+        );
+
+        localStorage.clear();
+
+        // Go to VIP Plan Thank You page
+        window.location.href =
+            "thank-you-vip.html";
+
+        return;
+    }
+
+
+    /* ================= VVIP PLAN ================= */
+
+    if (selectedPlan === "Saino VVIP") {
+
+        alert(
+            "Saino VVIP registration submitted successfully!\n\n" +
+            "Your application has been sent for verification."
+        );
+
+        localStorage.clear();
+
+        // Go to VVIP Plan Thank You page
+        window.location.href =
+            "thank-you-vvip.html";
+
+        return;
+    }
+
+
+    /* ================= UNKNOWN PLAN ================= */
+
+    alert(
+        "Selected plan could not be identified."
+    );
+
 }
-
 
 /* ================= BACK ================= */
 
