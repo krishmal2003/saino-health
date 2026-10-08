@@ -479,14 +479,14 @@
     <span>Choose Plan</span>
   </a>
 
-  <a href="bank-details.html" class="step active">
+  <a href="legal-agreement.html" class="step">
     <span class="circle">3</span>
-    <span>Bank Details & Documents</span>
+    <span>Legal Agreement & Documents</span>
   </a>
 
-  <a href="legal-agreement.html" class="step">
+  <a href="bank-details.html" class="step active">
     <span class="circle">4</span>
-    <span>Legal Agreement</span>
+    <span>Bank Details </span>
   </a>
 
   <a href="check-submit.html" class="step">
@@ -1566,7 +1566,7 @@ function continueBankDetails() {
 
         alert("Digital payment details saved successfully.");
 
-        window.location.href = "legal-agreement.html";
+        window.location.href = "check-submit.html";
 
         return;
     }
@@ -1581,7 +1581,7 @@ function continueBankDetails() {
     function goBack() {
 
       window.location.href =
-        "provider-details.html";
+        "legal-agreement.html";
 
     }
 

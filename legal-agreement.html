@@ -945,16 +945,17 @@ footer {
         <span class="circle">2</span>
         <span>Choose Plan</span>
     </a>
+       <a href="legal-agreement.html" class="step active">
+        <span class="circle">3</span>
+        <span>Legal Agreement  & Documents</span>
+    </a>
 
     <a href="bank-details.html" class="step">
-        <span class="circle">3</span>
-        <span>Bank Details & Documents</span>
+        <span class="circle">4</span>
+        <span>Bank Details </span>
     </a>
 
-    <a href="legal-agreement.html" class="step active">
-        <span class="circle">4</span>
-        <span>Legal Agreement</span>
-    </a>
+ 
 
     <a href="check-submit.html"  class="step ">
         <span class="circle">5</span>
@@ -1432,7 +1433,7 @@ footer {
 
     <div class="bottom-actions">
 
-        <a href="bank-details.html" class="back-btn">
+        <a href="provider-details.html" class="back-btn">
             <i data-lucide="arrow-left"></i>
             <span>Back</span>
         </a>
@@ -1441,7 +1442,7 @@ footer {
             class="proceed-btn"
             onclick="goToCheckSubmit()"
         >
-            Continue to Check & Submit →
+            Continue to Bank Details→
         </button>
 
     </div>
@@ -2186,14 +2187,14 @@ function goToCheckSubmit() {
         confirm(
             "Documents uploaded successfully!\n\n" +
             "All 7 legal agreements have been accepted successfully.\n\n" +
-            "Continue to Check & Submit?"
+            "Continue to bank details page?"
         );
 
 
     if (confirmed) {
 
         window.location.href =
-            "check-submit.html";
+            "bank-details.html";
 
     }
 
