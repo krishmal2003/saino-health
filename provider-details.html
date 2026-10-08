@@ -644,6 +644,49 @@
                 grid-template-columns: 1fr;
             }
         }
+        /* =========================
+   BACK BUTTON
+========================= */
+
+.back-button-wrapper {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 25px;
+}
+
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 9px 15px;
+
+    background: #ffffff;
+    color: #596474;
+
+    border: 1px solid #dfe3e7;
+    border-radius: 7px;
+
+    text-decoration: none;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    transition: all 0.2s ease;
+}
+
+.back-button i {
+    width: 15px;
+    height: 15px;
+    stroke-width: 2.5;
+}
+
+.back-button:hover {
+    color: #b3121a;
+    border-color: #b3121a;
+    background: #fde8e9;
+    transform: translateX(-2px);
+}
     </style>
 </head>
 
@@ -873,6 +916,17 @@
             </div>
 
         </div>
+                </div>
+
+        <!-- Back Button -->
+        <div class="back-button-wrapper">
+            <a href="organization-details.html" class="back-button">
+                <i data-lucide="arrow-left"></i>
+                <span>Back to Organization Details page</span>
+            </a>
+        </div>
+
+    
 
     </main>
 

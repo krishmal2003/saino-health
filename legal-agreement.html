@@ -574,7 +574,7 @@ body {
     font-size: 11px;
 }
 
-/* ================= BOTTOM ================= */
+/* ================= BOTTOM BAR ================= */
 
 .bottom-bar {
     background: white;
@@ -596,9 +596,60 @@ body {
     font-weight: bold;
 }
 
+
+/* ================= BOTTOM ACTIONS ================= */
+
+.bottom-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+/* ================= BACK BUTTON ================= */
+
+.back-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+
+    padding: 12px 18px;
+
+    background: white;
+    color: #596474;
+
+    border: 1px solid #d5dbe0;
+    border-radius: 5px;
+
+    text-decoration: none;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+}
+
+.back-btn i {
+    width: 15px;
+    height: 15px;
+    stroke-width: 2.5;
+}
+
+.back-btn:hover {
+    color: #b3121a;
+    border-color: #b3121a;
+    background: #fde8e9;
+    transform: translateX(-2px);
+}
+
+
+/* ================= CONTINUE BUTTON ================= */
+
 .proceed-btn {
     background: #c81720;
-
     color: white;
 
     border: none;
@@ -611,10 +662,13 @@ body {
     font-weight: bold;
 
     cursor: pointer;
+
+    transition: all 0.2s ease;
 }
 
 .proceed-btn:hover {
     background: #a80f17;
+    transform: translateY(-1px);
 }
 
 /* ================= FOOTER ================= */
@@ -798,15 +852,23 @@ footer {
         padding: 15px;
     }
 
-    .bottom-bar {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 15px;
-    }
+  .bottom-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 15px;
+}
 
-    .proceed-btn {
-        width: 100%;
-    }
+.bottom-actions {
+    width: 100%;
+    display: flex;
+    gap: 8px;
+}
+
+.back-btn,
+.proceed-btn {
+    flex: 1;
+    justify-content: center;
+}
 
     .footer-container {
         grid-template-columns: 1fr;
@@ -1359,25 +1421,33 @@ footer {
 
 
 
+
+
     <!-- BOTTOM -->
 
-    <div class="bottom-bar">
+<div class="bottom-bar">
 
-        <div class="accept-text">
+    <div class="accept-text">
+        Accept all 7 documents to continue
+    </div>
 
-            Accept all 7 documents to continue
+    <div class="bottom-actions">
 
-        </div>
+        <a href="bank-details.html" class="back-btn">
+            <i data-lucide="arrow-left"></i>
+            <span>Back</span>
+        </a>
 
-
-      <button
-    class="proceed-btn"
-    onclick="goToCheckSubmit()"
->
-    Continue to Check & Submit →
-</button>
+        <button
+            class="proceed-btn"
+            onclick="goToCheckSubmit()"
+        >
+            Continue to Check & Submit →
+        </button>
 
     </div>
+
+</div>
 
 
 </main>
@@ -1817,15 +1887,6 @@ function updateDocumentProgress() {
 
 
 
-
-/* =========================================================
-   PAGE LOAD
-========================================================= */
-
-document.addEventListener(
-    "DOMContentLoaded",
-    loadDocuments
-);
 
 
 
